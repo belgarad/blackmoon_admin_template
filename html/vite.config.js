@@ -14,6 +14,7 @@ pages.forEach((page) => {
 })
 
 export default {
+  base: '/blackmoon_admin_template/',
   plugins: [
     nunjucksPlugin({
       nunjucksEnvironment: new nunjucks.Environment(
