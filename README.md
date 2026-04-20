@@ -91,6 +91,7 @@ npm run format    # Format all codebase with Prettier
 
 Ready to dig deeper? Check out our extensive guides:
 
+- 🧭 [Wiki Home](./docs/wiki/Home.md)
 - 🟢 [Getting Started](./docs/getting-started.md)
 - 📐 [Layout System](./docs/layout-system.md)
 - 🎨 [Theming System](./docs/theming.md)
@@ -156,4 +157,3 @@ CSS custom properties defined in `html/src/scss/theme.scss`:
 ## License
 
 MIT © 2026 Mustafa Ceylan
-
