@@ -4,7 +4,7 @@
 
 **A Production-Ready, Blazing-Fast Admin Dashboard Template**
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-View_Dashboard-success?style=for-the-badge&logo=google-chrome)](https://mustafacnt.github.io/blackmoon_admin_template/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-View_Dashboard-success?style=for-the-badge&logo=google-chrome)](https://belgarad.github.io/blackmoon_admin_template/)
 
 [![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?logo=vite&logoColor=white)](#tech-stack)
 [![Nunjucks](https://img.shields.io/badge/Nunjucks-3.2-1C4913?logo=nunjucks&logoColor=white)](#tech-stack)
