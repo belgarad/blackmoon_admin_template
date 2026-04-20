@@ -43,3 +43,4 @@ Thumbs.db
 /html/node_modules
 /html/dist
 /html/scripts
+html/package-lock.json
