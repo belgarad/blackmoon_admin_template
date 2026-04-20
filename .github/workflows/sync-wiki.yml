@@ -1,0 +1,54 @@
+name: Sync docs to GitHub Wiki
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**"
+
+  workflow_dispatch:
+
+jobs:
+  sync-wiki:
+    name: Publish docs → GitHub Wiki
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare wiki content
+        run: |
+          # Create a staging directory with only the files the wiki needs.
+          # GitHub Wiki expects pages directly in the root of the wiki repo,
+          # so we copy docs/*.md (source of truth) flat into the staging area.
+          # These source files exist in the repository root at docs/*.md.
+          mkdir -p /tmp/wiki-content
+
+          # Core docs pages — keep original filenames (wiki slug = filename)
+          cp docs/getting-started.md       /tmp/wiki-content/Getting-Started.md
+          cp docs/layout-system.md         /tmp/wiki-content/Layout-System.md
+          cp docs/theming.md               /tmp/wiki-content/Theming.md
+          cp docs/components.md            /tmp/wiki-content/Components.md
+          cp docs/accessibility.md         /tmp/wiki-content/Accessibility.md
+          cp docs/javascript-architecture.md /tmp/wiki-content/JavaScript-Architecture.md
+
+          # Wiki navigation / home files (already wiki-ready)
+          cp docs/wiki/Home.md             /tmp/wiki-content/Home.md
+          cp docs/wiki/_Sidebar.md         /tmp/wiki-content/_Sidebar.md
+
+          # Reference sub-pages
+          cp docs/reference/color_codes.md /tmp/wiki-content/Color-Codes.md
+          cp docs/reference/README.md      /tmp/wiki-content/Reference.md
+
+      - name: Push to GitHub Wiki
+        uses: Andrew-Chen-Wang/github-wiki-action@v4
+        with:
+          path: /tmp/wiki-content
+          commit-message: "docs: sync wiki from docs/ [${{ github.sha }}]"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }}

@@ -1,9 +1,21 @@
 ## Wiki
 
-- [Home](./Home)
+- [🏠 Home](./Home)
+
+**🚀 Başlangıç**
 - [Getting Started](./Getting-Started)
-- [Layout System](./Layout-System)
-- [Theming](./Theming)
-- [Components](./Components)
-- [Accessibility](./Accessibility)
 - [JavaScript Architecture](./JavaScript-Architecture)
+
+**🎨 Tasarım & Tema**
+- [Theming](./Theming)
+- [Color Codes](./Color-Codes)
+
+**📐 Layout & Bileşenler**
+- [Layout System](./Layout-System)
+- [Components](./Components)
+
+**♿ Erişilebilirlik**
+- [Accessibility](./Accessibility)
+
+**📚 Referans**
+- [Reference](./Reference)
