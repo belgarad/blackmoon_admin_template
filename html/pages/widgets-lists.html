@@ -1,0 +1,394 @@
+{% extends "layouts/base.html" %}
+{% set title = "List Widgets" %}
+{% set activeMenu = "widgets-lists" %}
+{% set basePath = "" %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="components.html">UI Showcase</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">List Widgets</span></div>
+              </nav>
+              <h1 class="bm-page-title">List Widgets</h1>
+              <p class="bm-page-subtitle">Timelines, activity feeds, notification lists, and task checklist widgets.</p>
+            </div>
+          </div>
+
+          <div class="bm-grid-2col-mb">
+
+            <!-- ====== TIMELINE V2 WIDGET ====== -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div class="bm-card-title">Recent Activity</div>
+                <button class="bm-btn bm-btn-text bm-btn-sm">View All</button>
+              </div>
+              <div class="bm-card-body">
+                <div class="bm-timeline-v2">
+                  <div class="bm-timeline-v2-item">
+                    <div class="bm-timeline-v2-marker bm-timeline-v2-marker-success"><i class="ph ph-check-circle"></i></div>
+                    <div class="bm-timeline-v2-line"></div>
+                    <div class="bm-timeline-v2-content">
+                      <div class="bm-timeline-v2-title">Invoice #1024 paid</div>
+                      <div class="bm-timeline-v2-desc">Payment of $2,400 received from Acme Corp.</div>
+                      <div class="bm-timeline-v2-time">10 minutes ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-timeline-v2-item">
+                    <div class="bm-timeline-v2-marker"><i class="ph ph-user-plus"></i></div>
+                    <div class="bm-timeline-v2-line"></div>
+                    <div class="bm-timeline-v2-content">
+                      <div class="bm-timeline-v2-title">New user registered</div>
+                      <div class="bm-timeline-v2-desc">Jane Cooper joined as a team member.</div>
+                      <div class="bm-timeline-v2-time">35 minutes ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-timeline-v2-item">
+                    <div class="bm-timeline-v2-marker bm-timeline-v2-marker-warning"><i class="ph ph-warning"></i></div>
+                    <div class="bm-timeline-v2-line"></div>
+                    <div class="bm-timeline-v2-content">
+                      <div class="bm-timeline-v2-title">Server CPU at 92%</div>
+                      <div class="bm-timeline-v2-desc">Production server EU-West is under heavy load.</div>
+                      <div class="bm-timeline-v2-time">1 hour ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-timeline-v2-item">
+                    <div class="bm-timeline-v2-marker bm-timeline-v2-marker-danger"><i class="ph ph-x-circle"></i></div>
+                    <div class="bm-timeline-v2-line"></div>
+                    <div class="bm-timeline-v2-content">
+                      <div class="bm-timeline-v2-title">Deployment failed</div>
+                      <div class="bm-timeline-v2-desc">Build #847 failed on staging environment. Check logs.</div>
+                      <div class="bm-timeline-v2-time">2 hours ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-timeline-v2-item">
+                    <div class="bm-timeline-v2-marker bm-timeline-v2-marker-info"><i class="ph ph-info"></i></div>
+                    <div class="bm-timeline-v2-line"></div>
+                    <div class="bm-timeline-v2-content">
+                      <div class="bm-timeline-v2-title">SSL certificate renewed</div>
+                      <div class="bm-timeline-v2-desc">Certificate for *.example.com valid until Dec 2026.</div>
+                      <div class="bm-timeline-v2-time">3 hours ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-timeline-v2-item">
+                    <div class="bm-timeline-v2-marker bm-timeline-v2-marker-muted"><i class="ph ph-clock"></i></div>
+                    <div class="bm-timeline-v2-content">
+                      <div class="bm-timeline-v2-title">Backup scheduled</div>
+                      <div class="bm-timeline-v2-desc">Daily backup set for 3:00 AM UTC.</div>
+                      <div class="bm-timeline-v2-time">Yesterday</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ====== NOTIFICATIONS LIST ====== -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div class="bm-card-title">Notifications</div>
+                <button class="bm-btn bm-btn-text bm-btn-sm">Mark all read</button>
+              </div>
+              <div class="bm-card-body bm-p-0">
+                <div class="bm-list-group">
+                  <div class="bm-list-item bm-list-item-unread">
+                    <div class="bm-icon-box-primary-sm"><i class="ph ph-envelope bm-text-md-primary"></i></div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">New message from Sarah</div>
+                      <div class="bm-list-item-desc">Hey, can you review the latest mockups when you get a chance?</div>
+                      <div class="bm-list-item-time">5 min ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-list-item bm-list-item-unread">
+                    <div class="bm-icon-box-success-2"><i class="ph ph-clipboard-check bm-text-md-success"></i></div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Task completed</div>
+                      <div class="bm-list-item-desc">Michael finished "Update API documentation" task.</div>
+                      <div class="bm-list-item-time">20 min ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-icon-box-warning"><i class="ph ph-arrow-counter-clockwise bm-text-md-warning"></i></div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">System update available</div>
+                      <div class="bm-list-item-desc">Version 2.4.1 is ready to install. Includes security patches.</div>
+                      <div class="bm-list-item-time">1 hour ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-icon-box-danger"><i class="ph ph-credit-card bm-text-md-danger"></i></div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Payment failed</div>
+                      <div class="bm-list-item-desc">Invoice #1019 payment was declined. Please update billing info.</div>
+                      <div class="bm-list-item-time">3 hours ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-icon-box-muted"><i class="ph ph-user-plus bm-text-md-muted"></i></div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Team invitation accepted</div>
+                      <div class="bm-list-item-desc">Alex Rivera joined the Engineering team.</div>
+                      <div class="bm-list-item-time">Yesterday</div>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-icon-box-muted"><i class="ph ph-calendar bm-text-md-muted"></i></div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Meeting reminder</div>
+                      <div class="bm-list-item-desc">Sprint Review at 3:00 PM today in Room B.</div>
+                      <div class="bm-list-item-time">Yesterday</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bm-grid-2col-mb">
+
+            <!-- ====== TASK CHECKLIST ====== -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Tasks</div>
+                  <div class="bm-caption-muted-top">Sprint 14 — 6 of 10 done</div>
+                </div>
+                <button class="bm-btn bm-btn-primary bm-btn-sm">
+                  <i class="ph ph-plus bm-text-md"></i>
+                  Add Task
+                </button>
+              </div>
+              <div class="bm-card-body bm-p-0">
+                <div class="bm-list-group">
+                  <label class="bm-list-item bm-list-item-interactive">
+                    <input type="checkbox" class="bm-checkbox" checked disabled>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title bm-text-line-through">Set up CI/CD pipeline</div>
+                      <div class="bm-list-item-desc">Configure GitHub Actions for auto deploy</div>
+                    </div>
+                    <span class="bm-tag bm-tag-success">Done</span>
+                  </label>
+                  <label class="bm-list-item bm-list-item-interactive">
+                    <input type="checkbox" class="bm-checkbox" checked disabled>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title bm-text-line-through">Design system tokens</div>
+                      <div class="bm-list-item-desc">Define color, spacing, typography tokens</div>
+                    </div>
+                    <span class="bm-tag bm-tag-success">Done</span>
+                  </label>
+                  <label class="bm-list-item bm-list-item-interactive">
+                    <input type="checkbox" class="bm-checkbox">
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Implement dark mode toggle</div>
+                      <div class="bm-list-item-desc">Add theme switcher to header component</div>
+                    </div>
+                    <span class="bm-tag bm-tag-warning">In Progress</span>
+                  </label>
+                  <label class="bm-list-item bm-list-item-interactive">
+                    <input type="checkbox" class="bm-checkbox">
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Write API integration tests</div>
+                      <div class="bm-list-item-desc">Cover all CRUD endpoints with Jest tests</div>
+                    </div>
+                    <span class="bm-tag bm-tag-primary">To Do</span>
+                  </label>
+                  <label class="bm-list-item bm-list-item-interactive">
+                    <input type="checkbox" class="bm-checkbox">
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Optimize bundle size</div>
+                      <div class="bm-list-item-desc">Tree-shake unused components, lazy load routes</div>
+                    </div>
+                    <span class="bm-tag bm-tag-primary">To Do</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- ====== USER LIST / LEADERBOARD ====== -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div class="bm-card-title">Top Contributors</div>
+                <button class="bm-btn bm-btn-text bm-btn-sm">This Month</button>
+              </div>
+              <div class="bm-card-body bm-p-0">
+                <div class="bm-list-group">
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-sm">AJ</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Alice Johnson</div>
+                      <div class="bm-list-item-desc">48 commits · 12 PRs merged</div>
+                    </div>
+                    <div class="bm-flex-col-gap-xs" style="text-align:right;">
+                      <span class="bm-text-body-medium">1,240 pts</span>
+                      <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>18%</span>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-sm">BW</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Bob Williams</div>
+                      <div class="bm-list-item-desc">36 commits · 9 PRs merged</div>
+                    </div>
+                    <div class="bm-flex-col-gap-xs" style="text-align:right;">
+                      <span class="bm-text-body-medium">980 pts</span>
+                      <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>12%</span>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-sm">EJ</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Emily Chen</div>
+                      <div class="bm-list-item-desc">31 commits · 7 PRs merged</div>
+                    </div>
+                    <div class="bm-flex-col-gap-xs" style="text-align:right;">
+                      <span class="bm-text-body-medium">860 pts</span>
+                      <span class="bm-trend-down"><i class="ph ph-arrow-down"></i>3%</span>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-sm">DM</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">David Martinez</div>
+                      <div class="bm-list-item-desc">28 commits · 6 PRs merged</div>
+                    </div>
+                    <div class="bm-flex-col-gap-xs" style="text-align:right;">
+                      <span class="bm-text-body-medium">740 pts</span>
+                      <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>8%</span>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-sm">SR</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Sarah Robinson</div>
+                      <div class="bm-list-item-desc">22 commits · 5 PRs merged</div>
+                    </div>
+                    <div class="bm-flex-col-gap-xs" style="text-align:right;">
+                      <span class="bm-text-body-medium">620 pts</span>
+                      <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>5%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bm-grid-2col-mb">
+
+            <!-- ====== ACTIVITY FEED ====== -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div class="bm-card-title">Activity Feed</div>
+                <select class="bm-select bm-select-sm bm-w-8rem">
+                  <option>All</option>
+                  <option>Commits</option>
+                  <option>Issues</option>
+                  <option>Deploys</option>
+                </select>
+              </div>
+              <div class="bm-card-body bm-p-0">
+                <div class="bm-list-group">
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-xs">AJ</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title"><strong>Alice</strong> pushed 3 commits to <code class="bm-badge-muted">main</code></div>
+                      <div class="bm-list-item-time">12 min ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-xs">BW</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title"><strong>Bob</strong> opened issue <code class="bm-badge-muted">#342</code> — Fix pagination offset</div>
+                      <div class="bm-list-item-time">28 min ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-xs">EJ</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title"><strong>Emily</strong> merged PR <code class="bm-badge-muted">#118</code> into <code class="bm-badge-muted">develop</code></div>
+                      <div class="bm-list-item-time">1 hour ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-xs">DM</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title"><strong>David</strong> deployed <code class="bm-badge-muted">v2.4.0</code> to staging</div>
+                      <div class="bm-list-item-time">2 hours ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-xs">SR</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title"><strong>Sarah</strong> commented on issue <code class="bm-badge-muted">#339</code></div>
+                      <div class="bm-list-item-time">3 hours ago</div>
+                    </div>
+                  </div>
+                  <div class="bm-list-item">
+                    <div class="bm-avatar bm-avatar-xs">AJ</div>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title"><strong>Alice</strong> closed issue <code class="bm-badge-muted">#335</code> — Dashboard chart flickering</div>
+                      <div class="bm-list-item-time">5 hours ago</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ====== FILE LIST ====== -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div class="bm-card-title">Recent Files</div>
+                <button class="bm-btn bm-btn-outline bm-btn-sm">
+                  <i class="ph ph-upload-simple bm-text-md"></i>
+                  Upload
+                </button>
+              </div>
+              <div class="bm-card-body bm-p-0">
+                <div class="bm-list-group">
+                  <div class="bm-list-item">
+                    <i class="ph ph-file bm-text-lg-primary"></i>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Q4-Financial-Report.pdf</div>
+                      <div class="bm-list-item-desc">2.4 MB · Uploaded by Alice</div>
+                    </div>
+                    <span class="bm-text-caption-muted">2 hours ago</span>
+                  </div>
+                  <div class="bm-list-item">
+                    <i class="ph ph-table bm-text-lg-success"></i>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">User-Analytics-2024.xlsx</div>
+                      <div class="bm-list-item-desc">1.1 MB · Uploaded by Bob</div>
+                    </div>
+                    <span class="bm-text-caption-muted">5 hours ago</span>
+                  </div>
+                  <div class="bm-list-item">
+                    <i class="ph ph-image bm-text-lg-warning"></i>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">brand-assets-v3.zip</div>
+                      <div class="bm-list-item-desc">48 MB · Uploaded by Emily</div>
+                    </div>
+                    <span class="bm-text-caption-muted">Yesterday</span>
+                  </div>
+                  <div class="bm-list-item">
+                    <i class="ph ph-code bm-text-lg-info"></i>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">api-docs-openapi.json</div>
+                      <div class="bm-list-item-desc">340 KB · Uploaded by David</div>
+                    </div>
+                    <span class="bm-text-caption-muted">2 days ago</span>
+                  </div>
+                  <div class="bm-list-item">
+                    <i class="ph ph-projector-screen bm-text-lg-danger"></i>
+                    <div class="bm-list-item-body">
+                      <div class="bm-list-item-title">Sprint-Review-Deck.pptx</div>
+                      <div class="bm-list-item-desc">8.2 MB · Uploaded by Sarah</div>
+                    </div>
+                    <span class="bm-text-caption-muted">3 days ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}

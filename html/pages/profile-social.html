@@ -1,0 +1,293 @@
+{% extends "layouts/base.html" %}
+{% set title = "Social Profile" %}
+{% set activeMenu = "profile-social" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-0-pb-250">
+
+          <!-- Cover + Info -->
+          <div class="bm-card bm-overflow-hidden-mb">
+            <div class="cover">
+              <div class="cover-gradient"></div>
+              <div class="bm-pos-abs-br">
+                <button class="bm-btn bm-btn-sm bm-glass-white">
+                  <i class="ph ph-camera bm-text-md"></i>Edit Cover
+                </button>
+              </div>
+            </div>
+
+            <div class="bm-p-0-rel">
+              <div class="bm-flex-end-between-wrap">
+                <div class="bm-flex-start-gap5">
+                  <div class="avatar-hero">
+                    JD
+                    <div class="avatar-online"></div>
+                  </div>
+                  <div class="bm-pt-12">
+                    <div class="bm-flex-wrap-center-sm">
+                      <span class="bm-text-1375-bold-fg">John Doe</span>
+                      <span class="bm-badge bm-badge-primary">PRO</span>
+                    </div>
+                    <div class="bm-text-sm-muted-body">Senior Frontend Engineer at BlackMoon Admin Kit Co.</div>
+                    <div class="bm-flex-caption-muted-mt">
+                      <i class="ph ph-map-pin bm-text-md"></i>San Francisco, CA
+                      <span class="bm-text-border">·</span>
+                      <i class="ph ph-link bm-text-md"></i>
+                      <a href="#" class="bm-text-primary">adminkit.io/johndoe</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="bm-flex-gap-625-pb">
+                  <button class="bm-btn bm-btn-ghost bm-btn-sm">
+                    <i class="ph ph-envelope bm-text-md"></i>Message
+                  </button>
+                  <button id="followBtn" class="follow-btn not-following" onclick="toggleFollow()">Follow</button>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm">
+                    <i class="ph ph-dots-three bm-text-md"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Stats row -->
+              <div class="bm-flex-gap-xl-sep">
+                <div class="bm-text-center">
+                  <div class="bm-text-xl-bold-fg">2,840</div>
+                  <div class="bm-text-sm-muted">Followers</div>
+                </div>
+                <div class="bm-text-center">
+                  <div class="bm-text-xl-bold-fg">482</div>
+                  <div class="bm-text-sm-muted">Following</div>
+                </div>
+                <div class="bm-text-center">
+                  <div class="bm-text-xl-bold-fg">148</div>
+                  <div class="bm-text-sm-muted">Posts</div>
+                </div>
+                <div class="bm-text-center">
+                  <div class="bm-text-xl-bold-fg">9.6k</div>
+                  <div class="bm-text-sm-muted">Likes</div>
+                </div>
+                <div class="bm-ml-auto-flex">
+                  <a href="#" class="bm-text-muted-flex" title="GitHub"><i class="ph ph-code"></i></a>
+                  <a href="#" class="bm-text-muted-flex" title="Twitter"><i class="ph ph-tag"></i></a>
+                  <a href="#" class="bm-text-muted-flex" title="LinkedIn"><i class="ph ph-briefcase"></i></a>
+                </div>
+              </div>
+
+              <!-- Profile tabs -->
+              <div class="profile-tabs">
+                <button class="profile-tab active" data-tab="posts">Posts <span class="bm-badge bm-badge-primary bm-text-micro-badge">148</span></button>
+                <button class="profile-tab" data-tab="about">About</button>
+                <button class="profile-tab" data-tab="photos">Photos <span class="bm-badge bm-badge-info bm-text-micro-badge">36</span></button>
+                <button class="profile-tab" data-tab="connections">Connections <span class="bm-badge bm-badge-success bm-text-micro-badge">482</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="bm-grid-sidebar">
+
+            <!-- Left sidebar -->
+            <div class="bm-flex-col-gap-xl">
+              <!-- About -->
+              <div class="bm-card bm-p-lg">
+                <div class="bm-flex-between-sm-bold">
+                  About
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm"><i class="ph ph-pencil bm-text-md"></i></button>
+                </div>
+                <p class="bm-text-sm2-muted-para">
+                  Passionate frontend engineer with 8+ years crafting high-performance UIs. Open-source contributor, coffee addict, occasional blogger.
+                </p>
+                <div class="bm-flex-col-gap-625">
+                  <div class="bm-flex-caption-gap"><i class="ph ph-briefcase bm-text-md-muted"></i><span>BlackMoon Admin Kit Co. · Senior FE Engineer</span></div>
+                  <div class="bm-flex-caption-gap"><i class="ph ph-graduation-cap bm-text-md-muted"></i><span>BS Computer Science · Stanford</span></div>
+                  <div class="bm-flex-caption-gap"><i class="ph ph-map-pin bm-text-md-muted"></i><span>San Francisco, CA</span></div>
+                  <div class="bm-flex-caption-gap"><i class="ph ph-calendar bm-text-md-muted"></i><span>Joined January 2019</span></div>
+                </div>
+              </div>
+
+              <!-- Skills -->
+              <div class="bm-card bm-p-lg">
+                <div class="bm-subheading-sm">Skills</div>
+                <div>
+                  <span class="skill-tag">TypeScript</span><span class="skill-tag">React</span><span class="skill-tag">Vue.js</span>
+                  <span class="skill-tag">Node.js</span><span class="skill-tag">GraphQL</span><span class="skill-tag">Tailwind</span>
+                  <span class="skill-tag">Docker</span><span class="skill-tag">CI/CD</span>
+                </div>
+              </div>
+
+              <!-- Friends -->
+              <div class="bm-card bm-p-lg">
+                <div class="bm-flex-between-sm-bold2">
+                  Friends <a href="#" class="bm-text-sm-primary-plain">See all (482)</a>
+                </div>
+                <div class="bm-grid-3col-xs">
+                  <div class="friend-card"><div class="friend-avatar bm-bg-indigo">SR</div><div class="bm-text-sm-semibold">Sara R.</div></div>
+                  <div class="friend-card"><div class="friend-avatar bm-bg-green">MK</div><div class="bm-text-sm-semibold">Mike K.</div></div>
+                  <div class="friend-card"><div class="friend-avatar bm-bg-orange">AL</div><div class="bm-text-sm-semibold">Amy L.</div></div>
+                  <div class="friend-card"><div class="friend-avatar bm-bg-pink">TW</div><div class="bm-text-sm-semibold">Tom W.</div></div>
+                  <div class="friend-card"><div class="friend-avatar bm-bg-cyan">BN</div><div class="bm-text-sm-semibold">Beth N.</div></div>
+                  <div class="friend-card"><div class="friend-avatar bm-bg-purple">CP</div><div class="bm-text-sm-semibold">Chris P.</div></div>
+                </div>
+              </div>
+
+              <!-- Photos -->
+              <div class="bm-card bm-p-lg">
+                <div class="bm-flex-between-sm-bold2">
+                  Photos <a href="#" class="bm-text-sm-primary-plain">See all (36)</a>
+                </div>
+                <div class="profile-photos-grid">
+                  <div class="profile-photo-cell"><i class="ph ph-code bm-text-2xl-muted"></i></div>
+                  <div class="profile-photo-cell"><i class="ph ph-laptop bm-text-2xl-muted"></i></div>
+                  <div class="profile-photo-cell"><i class="ph ph-terminal bm-text-2xl-muted"></i></div>
+                  <div class="profile-photo-cell"><i class="ph ph-share-network bm-text-2xl-muted"></i></div>
+                  <div class="profile-photo-cell"><i class="ph ph-chart-bar bm-text-2xl-muted"></i></div>
+                  <div class="profile-photo-cell profile-photo-more">+31</div>
+                </div>
+              </div>
+
+              <!-- People you may know -->
+              <div class="bm-card bm-p-lg">
+                <div class="bm-subheading-sm">People You May Know</div>
+                <div class="bm-flex-col-gap-xl">
+                  <div class="suggested-user">
+                    <div class="friend-avatar friend-avatar-sm bm-bg-indigo">EL</div>
+                    <div class="bm-flex-1">
+                      <div class="bm-text-sm-semibold">Elena Lopez</div>
+                      <div class="bm-text-2xs-muted">UI/UX Lead · 12 mutual</div>
+                    </div>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.success('Request sent','Follow request sent to Elena Lopez.')">Follow</button>
+                  </div>
+                  <div class="suggested-user">
+                    <div class="friend-avatar friend-avatar-sm bm-bg-green">DK</div>
+                    <div class="bm-flex-1">
+                      <div class="bm-text-sm-semibold">David Kim</div>
+                      <div class="bm-text-2xs-muted">Backend Eng · 8 mutual</div>
+                    </div>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.success('Request sent','Follow request sent to David Kim.')">Follow</button>
+                  </div>
+                  <div class="suggested-user">
+                    <div class="friend-avatar friend-avatar-sm bm-bg-orange">NP</div>
+                    <div class="bm-flex-1">
+                      <div class="bm-text-sm-semibold">Nina Patel</div>
+                      <div class="bm-text-2xs-muted">DevOps · 5 mutual</div>
+                    </div>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.success('Request sent','Follow request sent to Nina Patel.')">Follow</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feed -->
+            <div>
+              <!-- Post composer -->
+              <div class="bm-card bm-p-mb-xl">
+                <div class="bm-flex-start-gap-md">
+                  <div class="bm-avatar">JD</div>
+                  <div class="bm-flex-1">
+                    <textarea class="bm-input bm-resize-none" rows="2" placeholder="What's on your mind, John?"></textarea>
+                    <div class="bm-flex-gap-sm-mt2">
+                      <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-image bm-text-md"></i>Photo</button>
+                      <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-video-camera bm-text-md"></i>Video</button>
+                      <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-link bm-text-md"></i>Link</button>
+                      <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-smiley bm-text-md"></i></button>
+                      <button class="bm-btn bm-btn-primary bm-btn-sm bm-ml-auto" onclick="App.toast.success('Posted!','Your update was published.')">Post</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Post 1 -->
+              <div class="bm-card bm-p-mb-xl">
+                <div class="bm-flex-center-gap-lg-mb">
+                  <div class="bm-avatar">JD</div>
+                  <div class="bm-flex-1"><div class="bm-text-body-semibold">John Doe</div><div class="bm-text-sm-muted">2 hours ago · 🌍 Public</div></div>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm"><i class="ph ph-dots-three bm-text-md"></i></button>
+                </div>
+                <p class="bm-text-sm-fg-lh2">
+                  Just launched the new BlackMoon Admin Kit v3 social profile template 🚀 Packed with real-time post feeds, friend networks, skill tags, and a beautiful cover photo layout. Check it out and let me know your thoughts!
+                </p>
+                <div class="post-img"><i class="ph ph-code bm-text-5xl-muted"></i></div>
+                <div class="post-actions">
+                  <div class="post-action" onclick="likePost(this)"><i class="ph ph-thumbs-up bm-text-lg"></i><span>142 Likes</span></div>
+                  <div class="post-action"><i class="ph ph-chat-circle bm-text-lg"></i><span>28 Comments</span></div>
+                  <div class="post-action"><i class="ph ph-share bm-text-lg"></i><span>Share</span></div>
+                  <div class="post-action bm-ml-auto" onclick="bookmarkPost(this)"><i class="ph ph-bookmark bm-text-lg"></i></div>
+                </div>
+              </div>
+
+              <!-- Post 2 -->
+              <div class="bm-card bm-p-mb-xl">
+                <div class="bm-flex-center-gap-lg-mb">
+                  <div class="bm-avatar">JD</div>
+                  <div class="bm-flex-1"><div class="bm-text-body-semibold">John Doe</div><div class="bm-text-sm-muted">Yesterday · 🔒 Friends</div></div>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm"><i class="ph ph-dots-three bm-text-md"></i></button>
+                </div>
+                <p class="bm-text-sm-fg-lh">
+                  TypeScript tip of the day: Use <code class="bm-code-chip">satisfies</code> operator to simultaneously validate and infer complex types without widening. Game changer for config objects 🔥
+                </p>
+                <div class="post-actions">
+                  <div class="post-action" onclick="likePost(this)"><i class="ph ph-thumbs-up bm-text-lg"></i><span>84 Likes</span></div>
+                  <div class="post-action"><i class="ph ph-chat-circle bm-text-lg"></i><span>12 Comments</span></div>
+                  <div class="post-action"><i class="ph ph-share bm-text-lg"></i><span>Share</span></div>
+                  <div class="post-action bm-ml-auto" onclick="bookmarkPost(this)"><i class="ph ph-bookmark bm-text-lg"></i></div>
+                </div>
+              </div>
+
+              <!-- Post 3 — shared -->
+              <div class="bm-card bm-p-mb-xl">
+                <div class="bm-flex-center-gap-md-mb">
+                  <div class="bm-avatar">JD</div>
+                  <div class="bm-flex-1"><div class="bm-text-body-semibold">John Doe shared a link</div><div class="bm-text-sm-muted">3 days ago</div></div>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm"><i class="ph ph-dots-three bm-text-md"></i></button>
+                </div>
+                <p class="bm-text-sm-fg-body">Worth reading if you care about web performance 👇</p>
+                <div class="bm-list-item-card">
+                  <div class="bm-icon-box-primary-xl"><i class="ph ph-file-text bm-text-primary"></i></div>
+                  <div><div class="bm-text-body-semibold-mb">Core Web Vitals 2025 — What Changed</div><div class="bm-text-sm-muted">web.dev · 8 min read</div></div>
+                </div>
+                <div class="post-actions">
+                  <div class="post-action" onclick="likePost(this)"><i class="ph ph-thumbs-up bm-text-lg"></i><span>61 Likes</span></div>
+                  <div class="post-action"><i class="ph ph-chat-circle bm-text-lg"></i><span>5 Comments</span></div>
+                  <div class="post-action"><i class="ph ph-share bm-text-lg"></i><span>Share</span></div>
+                  <div class="post-action bm-ml-auto" onclick="bookmarkPost(this)"><i class="ph ph-bookmark bm-text-lg"></i></div>
+                </div>
+              </div>
+
+              <!-- Post 4 — photo grid -->
+              <div class="bm-card bm-p-lg">
+                <div class="bm-flex-center-gap-lg-mb">
+                  <div class="bm-avatar">JD</div>
+                  <div class="bm-flex-1"><div class="bm-text-body-semibold">John Doe</div><div class="bm-text-sm-muted">5 days ago · 🌍 Public</div></div>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm"><i class="ph ph-dots-three bm-text-md"></i></button>
+                </div>
+                <p class="bm-text-sm-fg-lh2">Attended the Frontend Summit 2026 last week — amazing talks on performance, accessibility, and the future of reactive frameworks. Already looking forward to next year! 📸</p>
+                <div class="post-photo-grid">
+                  <div class="post-photo-main"><i class="ph ph-camera bm-text-5xl-muted"></i></div>
+                  <div class="post-photo-side">
+                    <div class="post-photo-cell"><i class="ph ph-users bm-text-2xl-muted"></i></div>
+                    <div class="post-photo-cell"><i class="ph ph-megaphone bm-text-2xl-muted"></i></div>
+                    <div class="post-photo-cell post-photo-overlay">
+                      <i class="ph ph-images bm-text-2xl-muted"></i>
+                      <span class="post-photo-count">+4</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="post-actions">
+                  <div class="post-action" onclick="likePost(this)"><i class="ph ph-thumbs-up bm-text-lg"></i><span>203 Likes</span></div>
+                  <div class="post-action"><i class="ph ph-chat-circle bm-text-lg"></i><span>47 Comments</span></div>
+                  <div class="post-action"><i class="ph ph-share bm-text-lg"></i><span>Share</span></div>
+                  <div class="post-action bm-ml-auto" onclick="bookmarkPost(this)"><i class="ph ph-bookmark bm-text-lg"></i></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/profile-social.js"></script>
+{% endblock %}

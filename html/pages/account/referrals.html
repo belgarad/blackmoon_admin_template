@@ -1,0 +1,198 @@
+{% extends "layouts/base.html" %}
+{% set title = "Referrals" %}
+{% set activeMenu = "account-referrals" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/account.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="overview.html">Account</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Referrals</span></div>
+              </nav>
+              <h1 class="bm-page-title">Referrals</h1>
+              <p class="bm-page-subtitle">Invite friends and earn rewards for each successful referral.</p>
+            </div>
+          </div>
+
+          <!-- Account Navigation -->
+          <div class="acct-nav bm-mb-xl">
+            <a href="overview.html" class="acct-nav-item">Overview</a>
+            <a href="../settings.html" class="acct-nav-item">Settings</a>
+            <a href="../security.html" class="acct-nav-item">Security</a>
+            <a href="billing.html" class="acct-nav-item">Billing</a>
+            <a href="statements.html" class="acct-nav-item">Statements</a>
+            <a href="referrals.html" class="acct-nav-item active">Referrals</a>
+            <a href="api-keys.html" class="acct-nav-item">API Keys</a>
+            <a href="logs.html" class="acct-nav-item">Logs</a>
+            <a href="activity.html" class="acct-nav-item">Activity</a>
+          </div>
+
+          <!-- Referral Link Card -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Your Referral Link</span>
+            </div>
+            <div class="bm-card-body">
+              <p class="bm-text-body-muted bm-mb-md">Share your unique referral link with friends. You'll earn <strong>$10 credit</strong> for every new user who signs up and subscribes.</p>
+              <div class="acct-referral-link-row">
+                <input class="bm-input bm-flex-1" type="text" value="https://blackmoon.app/ref/JOHNDOE2026" readonly />
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Copied','Referral link copied to clipboard.')">
+                  <i class="ph ph-copy bm-text-md"></i>
+                  Copy Link
+                </button>
+              </div>
+              <div class="bm-flex-wrap-gap-sm bm-mt-md">
+                <button class="bm-btn bm-btn-outline bm-btn-sm"><i class="ph ph-envelope bm-text-md"></i> Email Invite</button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm"><i class="ph ph-share bm-text-md"></i> Share</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Referral Stats -->
+          <div class="bm-grid-auto-lg bm-mb-lg">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-user-plus bm-text-lg-primary"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Total Invitations</div>
+                <div class="bm-stats-card-v2-value">24</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-user-check bm-text-lg-success"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Successful Referrals</div>
+                <div class="bm-stats-card-v2-value">8</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-credit-card bm-text-lg-warning"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Earnings</div>
+                <div class="bm-stats-card-v2-value">$80.00</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-info-h"><i class="ph ph-hourglass bm-text-lg-info"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Pending</div>
+                <div class="bm-stats-card-v2-value">3</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- How It Works -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-header"><span class="bm-card-title">How It Works</span></div>
+            <div class="bm-card-body">
+              <div class="acct-steps-row">
+                <div class="acct-step">
+                  <div class="bm-icon-box-primary-sm bm-mb-sm"><i class="ph ph-link bm-text-lg-primary"></i></div>
+                  <div class="bm-text-body-medium-swap">1. Share Your Link</div>
+                  <div class="bm-text-caption-muted">Send your unique referral link to friends via email or social media.</div>
+                </div>
+                <div class="acct-step">
+                  <div class="bm-icon-box-success-2 bm-mb-sm"><i class="ph ph-user-plus bm-text-lg-success"></i></div>
+                  <div class="bm-text-body-medium-swap">2. They Sign Up</div>
+                  <div class="bm-text-caption-muted">Your friend creates an account and subscribes to any paid plan.</div>
+                </div>
+                <div class="acct-step">
+                  <div class="bm-icon-box-warning bm-mb-sm"><i class="ph ph-gift bm-text-lg-warning"></i></div>
+                  <div class="bm-text-body-medium-swap">3. You Earn</div>
+                  <div class="bm-text-caption-muted">You receive $10 credit for each successful referral. No limit!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Referral History -->
+          <div class="bm-card">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Referral History</span>
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Referred User</th>
+                    <th scope="col">Date Invited</th>
+                    <th scope="col">Signup Date</th>
+                    <th scope="col" data-i18n="table.status">Status</th>
+                    <th scope="col" class="bm-text-right">Reward</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap">
+                        <div class="bm-avatar bm-avatar-sm bm-badge-primary-light">AS</div>
+                        <div><div class="bm-text-caption-medium">Alice Smith</div><div class="bm-text-2xs-muted">alice@example.com</div></div>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">Mar 15, 2026</td>
+                    <td class="bm-text-muted">Mar 18, 2026</td>
+                    <td><span class="bm-badge bm-badge-success">Subscribed</span></td>
+                    <td class="bm-text-right bm-font-semibold bm-text-success">+$10.00</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap">
+                        <div class="bm-avatar bm-avatar-sm bm-badge-success-light">BW</div>
+                        <div><div class="bm-text-caption-medium">Bob Wilson</div><div class="bm-text-2xs-muted">bob@example.com</div></div>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">Mar 10, 2026</td>
+                    <td class="bm-text-muted">Mar 12, 2026</td>
+                    <td><span class="bm-badge bm-badge-success">Subscribed</span></td>
+                    <td class="bm-text-right bm-font-semibold bm-text-success">+$10.00</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap">
+                        <div class="bm-avatar bm-avatar-sm bm-bg-warning-light3">EJ</div>
+                        <div><div class="bm-text-caption-medium">Emma Johnson</div><div class="bm-text-2xs-muted">emma@example.com</div></div>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">Feb 28, 2026</td>
+                    <td class="bm-text-muted">Mar 2, 2026</td>
+                    <td><span class="bm-badge bm-badge-warning">Free Trial</span></td>
+                    <td class="bm-text-right bm-text-muted">Pending</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap">
+                        <div class="bm-avatar bm-avatar-sm bm-card-danger-soft">MK</div>
+                        <div><div class="bm-text-caption-medium">Michael Kim</div><div class="bm-text-2xs-muted">mkim@example.com</div></div>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">Feb 20, 2026</td>
+                    <td class="bm-text-muted">—</td>
+                    <td><span class="bm-muted-chip">Not Signed Up</span></td>
+                    <td class="bm-text-right bm-text-muted">—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "layouts/auth.html" %}
+
+{% set title = "Create Account" %}
+{% set brandGradient = "linear-gradient(160deg, #4B77BE 0%, var(--primary) 50%, #32C5D2 100%)" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/auth-register.scss">
+{% endblock %}
+
+{% block brand %}
+      <h2 class="auth-brand-headline">Join thousands of teams building better products.</h2>
+      <p class="auth-brand-sub">Create your account in seconds and get full access to every feature from day one.</p>
+      <div class="auth-brand-feature">
+        <div class="auth-brand-feature-icon"><i class="ph ph-rocket-launch bm-text-md-white"></i></div>
+        <span class="auth-brand-feature-text">14-day free trial, no credit card required</span>
+      </div>
+      <div class="auth-brand-feature">
+        <div class="auth-brand-feature-icon"><i class="ph ph-shield bm-text-md-white"></i></div>
+        <span class="auth-brand-feature-text">SOC 2 compliant, data encrypted at rest</span>
+      </div>
+      <div class="auth-brand-feature">
+        <div class="auth-brand-feature-icon"><i class="ph ph-headset bm-text-md-white"></i></div>
+        <span class="auth-brand-feature-text">Priority support included for all plans</span>
+      </div>
+{% endblock %}
+
+{% block form %}
+        <h1 class="auth-title">Create your account</h1>
+        <p class="auth-subtitle">Start your 14-day free trial &mdash; no card needed</p>
+
+        <form onsubmit="handleRegister(event)" data-validate>
+          <div class="name-row">
+            <div class="bm-field auth-form-group">
+              <label class="bm-label" for="firstName" data-i18n="form.firstName">First Name</label>
+              <div class="auth-input-wrap">
+                <span class="auth-input-icon"><i class="ph ph-user"></i></span>
+                <input class="bm-input has-icon-left" type="text" id="firstName" name="first_name" placeholder="John" required autocomplete="given-name" />
+              </div>
+              <span class="bm-field-error"></span>
+            </div>
+            <div class="bm-field auth-form-group">
+              <label class="bm-label" for="lastName" data-i18n="form.lastName">Last Name</label>
+              <input class="bm-input" type="text" id="lastName" name="last_name" placeholder="Doe" required autocomplete="family-name" />
+              <span class="bm-field-error"></span>
+            </div>
+          </div>
+
+          <div class="bm-field auth-form-group">
+            <label class="bm-label" for="email" data-i18n="form.emailLabel">Email address</label>
+            <div class="auth-input-wrap">
+              <span class="auth-input-icon"><i class="ph ph-envelope"></i></span>
+              <input class="bm-input has-icon-left" type="email" id="email" name="email" placeholder="name@example.com" required autocomplete="email" />
+            </div>
+            <span class="bm-field-error"></span>
+          </div>
+
+          <div class="bm-field auth-form-group">
+            <label class="bm-label" for="password" data-i18n="form.password">Password</label>
+            <div class="auth-input-wrap">
+              <span class="auth-input-icon"><i class="ph ph-lock"></i></span>
+              <input class="bm-input has-icon-left has-icon-right" type="password" id="password" name="password" placeholder="Create a strong password" required minlength="8" autocomplete="new-password" oninput="updateStrength(this.value)" />
+              <div class="auth-input-icon-right">
+                <button type="button" class="bm-btn bm-btn-ghost bm-btn-icon bm-w-2rem" onclick="togglePwd('password','pwdEye')" tabindex="-1">
+                  <i class="ph ph-eye-slash bm-text-md"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Strength meter -->
+            <div class="bm-mt1-flex-gap1">
+              <div class="pw-meter-bar bm-flex-1"><div class="pw-meter-bar-fill bm-w-0pct" id="str1"></div></div>
+              <div class="pw-meter-bar bm-flex-1"><div class="pw-meter-bar-fill bm-w-0pct" id="str2"></div></div>
+              <div class="pw-meter-bar bm-flex-1"><div class="pw-meter-bar-fill bm-w-0pct" id="str3"></div></div>
+              <div class="pw-meter-bar bm-flex-1"><div class="pw-meter-bar-fill bm-w-0pct" id="str4"></div></div>
+            </div>
+            <p id="strLabel" class="bm-text-sm-muted-mt3"></p>
+            <span class="bm-field-error"></span>
+          </div>
+
+          <div class="bm-field auth-form-group">
+            <label class="bm-label" for="confirmPassword">Confirm Password</label>
+            <div class="auth-input-wrap">
+              <span class="auth-input-icon"><i class="ph ph-lock-key"></i></span>
+              <input class="bm-input has-icon-left has-icon-right" type="password" id="confirmPassword" name="confirm_password" placeholder="Re-enter your password" required data-rule-match="password" data-match-msg="Passwords do not match." autocomplete="new-password" />
+              <div class="auth-input-icon-right">
+                <button type="button" class="bm-btn bm-btn-ghost bm-btn-icon bm-w-2rem" onclick="togglePwd('confirmPassword','cpwdEye')" tabindex="-1">
+                  <i class="ph ph-eye-slash bm-text-md"></i>
+                </button>
+              </div>
+            </div>
+            <span class="bm-field-error"></span>
+          </div>
+
+          <div class="bm-field auth-form-group bm-flex-start-gap-sm2">
+            <input type="checkbox" class="bm-checkbox bm-mt-2px" id="terms" name="terms" required />
+            <label for="terms" class="bm-text-caption-muted-selectable">
+              I agree to the <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a>
+            </label>
+            <span class="bm-field-error"></span>
+          </div>
+
+          <button type="submit" id="registerBtn" class="bm-btn bm-btn-primary bm-w-full-cta" data-i18n="action.createAccount">
+            Create Account
+          </button>
+        </form>
+
+        <p class="bm-hint-center-mt5">
+          Already have an account? <a class="auth-link" href="login.html" data-i18n="action.signIn">Sign in</a>
+        </p>
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/register.js"></script>
+{% endblock %}

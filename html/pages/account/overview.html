@@ -1,0 +1,250 @@
+{% extends "layouts/base.html" %}
+{% set title = "Account Overview" %}
+{% set activeMenu = "account-overview" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/account.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="overview.html">Account</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Overview</span></div>
+              </nav>
+              <h1 class="bm-page-title">Account Overview</h1>
+              <p class="bm-page-subtitle">Manage your account information and preferences.</p>
+            </div>
+          </div>
+
+          <!-- Account Navigation -->
+          <div class="acct-nav bm-mb-xl">
+            <a href="overview.html" class="acct-nav-item active">Overview</a>
+            <a href="../settings.html" class="acct-nav-item">Settings</a>
+            <a href="../security.html" class="acct-nav-item">Security</a>
+            <a href="billing.html" class="acct-nav-item">Billing</a>
+            <a href="statements.html" class="acct-nav-item">Statements</a>
+            <a href="referrals.html" class="acct-nav-item">Referrals</a>
+            <a href="api-keys.html" class="acct-nav-item">API Keys</a>
+            <a href="logs.html" class="acct-nav-item">Logs</a>
+            <a href="activity.html" class="acct-nav-item">Activity</a>
+          </div>
+
+          <!-- Profile Summary Card -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-body">
+              <div class="acct-profile-row">
+                <div class="bm-avatar bm-avatar-xl bm-border-3">JD</div>
+                <div class="acct-profile-info">
+                  <div class="bm-text-lg-semibold-fg">John Doe</div>
+                  <div class="bm-text-body-muted">Full-Stack Developer</div>
+                  <div class="bm-flex-wrap-gap-sm bm-mt-sm">
+                    <span class="bm-flex-center-gap-sm-body"><i class="ph ph-envelope bm-text-md-muted"></i> john@example.com</span>
+                    <span class="bm-flex-center-gap-sm-body"><i class="ph ph-map-pin bm-text-md-muted"></i> Istanbul, Turkey</span>
+                    <span class="bm-flex-center-gap-sm-body"><i class="ph ph-calendar bm-text-md-muted"></i> Joined Mar 2022</span>
+                  </div>
+                </div>
+                <div class="acct-profile-actions">
+                  <a href="../settings.html" class="bm-btn bm-btn-outline bm-btn-sm">Edit Profile</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="bm-grid-auto-lg bm-mb-lg">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-folder bm-text-lg-primary"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Active Projects</div>
+                <div class="bm-stats-card-v2-value">12</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>3</span>
+                  <span class="bm-stats-card-v2-compared">this month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-clipboard-check bm-text-lg-success"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Tasks Completed</div>
+                <div class="bm-stats-card-v2-value">186</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>24</span>
+                  <span class="bm-stats-card-v2-compared">this week</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-users bm-text-lg-warning"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Team Members</div>
+                <div class="bm-stats-card-v2-value">8</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>2</span>
+                  <span class="bm-stats-card-v2-compared">new hires</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-info-h"><i class="ph ph-credit-card bm-text-lg-info"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Total Earnings</div>
+                <div class="bm-stats-card-v2-value">$24,850</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>12.5%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connected Accounts & Recent Activity -->
+          <div class="bm-grid-2-1-mb">
+            <!-- Connected Accounts -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <span class="bm-card-title">Connected Accounts</span>
+                <button class="bm-btn bm-btn-outline bm-btn-sm">Add New</button>
+              </div>
+              <div class="bm-card-body bm-flex-col-gap-xl">
+                <div class="bm-flex-between-plain">
+                  <div class="bm-flex-center-gap-lg">
+                    <div class="bm-icon-box-primary-sm"><i class="ph ph-code bm-text-lg-primary"></i></div>
+                    <div>
+                      <div class="bm-text-body-medium-swap">GitHub</div>
+                      <div class="bm-text-caption-muted">johndoe</div>
+                    </div>
+                  </div>
+                  <span class="bm-badge bm-badge-success">Connected</span>
+                </div>
+                <div class="bm-border-top"></div>
+                <div class="bm-flex-between-plain">
+                  <div class="bm-flex-center-gap-lg">
+                    <div class="bm-icon-box-info-h"><i class="ph ph-cloud bm-text-lg-info"></i></div>
+                    <div>
+                      <div class="bm-text-body-medium-swap">Google</div>
+                      <div class="bm-text-caption-muted">john.doe@gmail.com</div>
+                    </div>
+                  </div>
+                  <span class="bm-badge bm-badge-success">Connected</span>
+                </div>
+                <div class="bm-border-top"></div>
+                <div class="bm-flex-between-plain">
+                  <div class="bm-flex-center-gap-lg">
+                    <div class="bm-icon-box-warning"><i class="ph ph-share-network bm-text-lg-warning"></i></div>
+                    <div>
+                      <div class="bm-text-body-medium-swap">Slack</div>
+                      <div class="bm-text-caption-muted">Not connected</div>
+                    </div>
+                  </div>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">Connect</button>
+                </div>
+                <div class="bm-border-top"></div>
+                <div class="bm-flex-between-plain">
+                  <div class="bm-flex-center-gap-lg">
+                    <div class="bm-icon-box-danger-soft"><i class="ph ph-robot bm-text-lg-danger"></i></div>
+                    <div>
+                      <div class="bm-text-body-medium-swap">Jira</div>
+                      <div class="bm-text-caption-muted">Not connected</div>
+                    </div>
+                  </div>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">Connect</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <span class="bm-card-title">Recent Activity</span>
+                <a href="activity.html" class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm">View All</a>
+              </div>
+              <div class="bm-card-body bm-flex-col-gap-lg">
+                <div class="bm-flex-center-gap-lg">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-sign-in bm-text-md-success"></i></div>
+                  <div class="bm-flex-min0">
+                    <div class="bm-text-caption-medium-swap">Signed in from new device</div>
+                    <div class="bm-text-2xs-muted">Chrome on Windows · Istanbul, TR</div>
+                  </div>
+                  <span class="bm-text-2xs-muted bm-ml-auto">2 min ago</span>
+                </div>
+                <div class="bm-flex-center-gap-lg">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-pencil bm-text-md-primary"></i></div>
+                  <div class="bm-flex-min0">
+                    <div class="bm-text-caption-medium-swap">Profile updated</div>
+                    <div class="bm-text-2xs-muted">Changed phone number and bio</div>
+                  </div>
+                  <span class="bm-text-2xs-muted bm-ml-auto">1 hour ago</span>
+                </div>
+                <div class="bm-flex-center-gap-lg">
+                  <div class="bm-icon-box-warning"><i class="ph ph-key bm-text-md-warning"></i></div>
+                  <div class="bm-flex-min0">
+                    <div class="bm-text-caption-medium-swap">Password changed</div>
+                    <div class="bm-text-2xs-muted">Password updated successfully</div>
+                  </div>
+                  <span class="bm-text-2xs-muted bm-ml-auto">3 hours ago</span>
+                </div>
+                <div class="bm-flex-center-gap-lg">
+                  <div class="bm-icon-box-info-h"><i class="ph ph-receipt bm-text-md-info"></i></div>
+                  <div class="bm-flex-min0">
+                    <div class="bm-text-caption-medium-swap">Invoice #INV-0892 paid</div>
+                    <div class="bm-text-2xs-muted">$49.00 charged to Visa ****4242</div>
+                  </div>
+                  <span class="bm-text-2xs-muted bm-ml-auto">Yesterday</span>
+                </div>
+                <div class="bm-flex-center-gap-lg">
+                  <div class="bm-icon-box-danger-soft"><i class="ph ph-shield bm-text-md-danger"></i></div>
+                  <div class="bm-flex-min0">
+                    <div class="bm-text-caption-medium-swap">2FA enabled</div>
+                    <div class="bm-text-2xs-muted">Authenticator app configured</div>
+                  </div>
+                  <span class="bm-text-2xs-muted bm-ml-auto">2 days ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications Settings Quick -->
+          <div class="bm-card">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Email Notifications</span>
+              <a href="../settings.html" class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm">Manage All</a>
+            </div>
+            <div class="bm-card-body bm-flex-col-gap-xl">
+              <div class="bm-flex-between-plain">
+                <div><div class="bm-text-body-medium-swap">Security Alerts</div><div class="bm-text-caption-muted">Get notified about unusual account activity</div></div>
+                <label class="bm-cursor-pointer"><input type="checkbox" checked class="bm-input-accent" /></label>
+              </div>
+              <div class="bm-border-top"></div>
+              <div class="bm-flex-between-plain">
+                <div><div class="bm-text-body-medium-swap">Billing Reminders</div><div class="bm-text-caption-muted">Payment due dates and invoice notifications</div></div>
+                <label class="bm-cursor-pointer"><input type="checkbox" checked class="bm-input-accent" /></label>
+              </div>
+              <div class="bm-border-top"></div>
+              <div class="bm-flex-between-plain">
+                <div><div class="bm-text-body-medium-swap">Product Updates</div><div class="bm-text-caption-muted">New features and improvements</div></div>
+                <label class="bm-cursor-pointer"><input type="checkbox" class="bm-input-accent" /></label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

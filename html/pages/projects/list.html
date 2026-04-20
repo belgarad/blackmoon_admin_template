@@ -1,0 +1,275 @@
+{% extends "layouts/base.html" %}
+{% set title = "Projects" %}
+{% set activeMenu = "projects-list" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/projects.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Projects</span></div>
+              </nav>
+              <h1 class="bm-page-title" data-i18n="nav.projects">Projects</h1>
+              <p class="bm-page-subtitle">Manage and track all your team projects</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-download-simple bm-text-md"></i><span data-i18n="action.export">Export</span>
+              </button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Project Created','New project has been created.')">
+                <i class="ph ph-plus bm-text-md"></i>New Project
+              </button>
+            </div>
+          </div>
+
+          <!-- KPI Row -->
+          <div class="proj-kpi-row">
+            <div class="kpi-card">
+              <div class="kpi-label">Total Projects</div>
+              <div class="kpi-value">24</div>
+              <div class="kpi-delta up"><i class="ph ph-trend-up"></i> 3 new this month</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">In Progress</div>
+              <div class="kpi-value">12</div>
+              <div class="kpi-delta up"><i class="ph ph-trend-up"></i> On track</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Completed</div>
+              <div class="kpi-value">8</div>
+              <div class="kpi-delta up"><i class="ph ph-check-circle"></i> 2 this week</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Overdue</div>
+              <div class="kpi-value">4</div>
+              <div class="kpi-delta down"><i class="ph ph-warning"></i> Needs attention</div>
+            </div>
+          </div>
+
+          <!-- Filter -->
+          <div class="bm-card bm-mb-lg bm-overflow-visible">
+            <div class="bm-card-body bm-px-lg">
+              <div class="bm-flex-gap-wrap">
+                <input class="bm-input bm-w-max-300" type="text" placeholder="Search projects…" oninput="filterProjects(this.value)" />
+                <select class="bm-select bm-w-max-160" onchange="filterByStatus(this.value)">
+                  <option value="">All Status</option>
+                  <option value="active">Active</option>
+                  <option value="completed">Completed</option>
+                  <option value="on-hold">On Hold</option>
+                  <option value="overdue">Overdue</option>
+                </select>
+                <select class="bm-select bm-w-max-160">
+                  <option>Sort by Date</option>
+                  <option>Sort by Name</option>
+                  <option>Sort by Progress</option>
+                  <option>Sort by Budget</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Cards Grid -->
+          <div class="proj-grid" id="projectGrid">
+
+            <!-- Project Card 1 -->
+            <div class="proj-card" data-status="active">
+              <div class="proj-card-header">
+                <div class="bm-flex-center-gap-xs">
+                  <span class="proj-status-dot proj-status-active"></span>
+                  <span class="bm-badge bm-badge-success bm-text-micro-badge">Active</span>
+                </div>
+                <button class="bm-btn-icon-xs"><i class="ph ph-dots-three-vertical"></i></button>
+              </div>
+              <h3 class="proj-card-title"><a href="detail.html">Admin Dashboard Redesign</a></h3>
+              <p class="proj-card-desc">Complete overhaul of the admin panel UI with new design system and improved UX patterns.</p>
+              <div class="proj-progress-section">
+                <div class="bm-flex-between-wrap bm-mb-xs">
+                  <span class="bm-text-xs bm-font-medium">Progress</span>
+                  <span class="bm-text-xs bm-font-semibold">72%</span>
+                </div>
+                <div class="bm-progress"><div class="bm-progress-bar bm-progress-primary" style="width: 72%"></div></div>
+              </div>
+              <div class="proj-card-footer">
+                <div class="bm-avatar-group">
+                  <div class="bm-avatar bm-avatar-sm" title="John Doe">JD</div>
+                  <div class="bm-avatar bm-avatar-sm" title="Alice Johnson">AJ</div>
+                  <div class="bm-avatar bm-avatar-sm" title="Emily Chen">EC</div>
+                  <div class="bm-avatar bm-avatar-sm bm-avatar-count">+2</div>
+                </div>
+                <div class="proj-card-meta">
+                  <i class="ph ph-calendar bm-text-body"></i>
+                  <span class="bm-text-xs bm-text-muted">Apr 15, 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="proj-card" data-status="active">
+              <div class="proj-card-header">
+                <div class="bm-flex-center-gap-xs">
+                  <span class="proj-status-dot proj-status-active"></span>
+                  <span class="bm-badge bm-badge-success bm-text-micro-badge">Active</span>
+                </div>
+                <button class="bm-btn-icon-xs"><i class="ph ph-dots-three-vertical"></i></button>
+              </div>
+              <h3 class="proj-card-title"><a href="detail.html">E-Commerce Platform v2</a></h3>
+              <p class="proj-card-desc">Next-gen e-commerce platform with headless CMS integration and multi-currency support.</p>
+              <div class="proj-progress-section">
+                <div class="bm-flex-between-wrap bm-mb-xs">
+                  <span class="bm-text-xs bm-font-medium">Progress</span>
+                  <span class="bm-text-xs bm-font-semibold">45%</span>
+                </div>
+                <div class="bm-progress"><div class="bm-progress-bar bm-progress-primary" style="width: 45%"></div></div>
+              </div>
+              <div class="proj-card-footer">
+                <div class="bm-avatar-group">
+                  <div class="bm-avatar bm-avatar-sm" title="Grace Park">GP</div>
+                  <div class="bm-avatar bm-avatar-sm" title="John Doe">JD</div>
+                </div>
+                <div class="proj-card-meta">
+                  <i class="ph ph-calendar bm-text-body"></i>
+                  <span class="bm-text-xs bm-text-muted">May 30, 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="proj-card" data-status="completed">
+              <div class="proj-card-header">
+                <div class="bm-flex-center-gap-xs">
+                  <span class="proj-status-dot proj-status-completed"></span>
+                  <span class="bm-badge bm-badge-primary bm-text-micro-badge">Completed</span>
+                </div>
+                <button class="bm-btn-icon-xs"><i class="ph ph-dots-three-vertical"></i></button>
+              </div>
+              <h3 class="proj-card-title"><a href="detail.html">Mobile App Launch</a></h3>
+              <p class="proj-card-desc">Cross-platform mobile application for iOS and Android with push notifications.</p>
+              <div class="proj-progress-section">
+                <div class="bm-flex-between-wrap bm-mb-xs">
+                  <span class="bm-text-xs bm-font-medium">Progress</span>
+                  <span class="bm-text-xs bm-font-semibold">100%</span>
+                </div>
+                <div class="bm-progress"><div class="bm-progress-bar bm-progress-success" style="width: 100%"></div></div>
+              </div>
+              <div class="proj-card-footer">
+                <div class="bm-avatar-group">
+                  <div class="bm-avatar bm-avatar-sm" title="Alice Johnson">AJ</div>
+                  <div class="bm-avatar bm-avatar-sm" title="Emily Chen">EC</div>
+                  <div class="bm-avatar bm-avatar-sm" title="Grace Park">GP</div>
+                  <div class="bm-avatar bm-avatar-sm bm-avatar-count">+4</div>
+                </div>
+                <div class="proj-card-meta">
+                  <i class="ph ph-check-circle bm-text-body"></i>
+                  <span class="bm-text-xs bm-text-muted">Mar 10, 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Card 4 -->
+            <div class="proj-card" data-status="overdue">
+              <div class="proj-card-header">
+                <div class="bm-flex-center-gap-xs">
+                  <span class="proj-status-dot proj-status-overdue"></span>
+                  <span class="bm-badge bm-badge-danger bm-text-micro-badge">Overdue</span>
+                </div>
+                <button class="bm-btn-icon-xs"><i class="ph ph-dots-three-vertical"></i></button>
+              </div>
+              <h3 class="proj-card-title"><a href="detail.html">API Gateway Migration</a></h3>
+              <p class="proj-card-desc">Migrate legacy REST APIs to new GraphQL-based gateway with improved caching.</p>
+              <div class="proj-progress-section">
+                <div class="bm-flex-between-wrap bm-mb-xs">
+                  <span class="bm-text-xs bm-font-medium">Progress</span>
+                  <span class="bm-text-xs bm-font-semibold">58%</span>
+                </div>
+                <div class="bm-progress"><div class="bm-progress-bar bm-progress-danger" style="width: 58%"></div></div>
+              </div>
+              <div class="proj-card-footer">
+                <div class="bm-avatar-group">
+                  <div class="bm-avatar bm-avatar-sm" title="John Doe">JD</div>
+                  <div class="bm-avatar bm-avatar-sm" title="Emily Chen">EC</div>
+                </div>
+                <div class="proj-card-meta">
+                  <i class="ph ph-x-circle bm-text-body bm-text-danger"></i>
+                  <span class="bm-text-xs bm-text-danger">Mar 15, 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Card 5 -->
+            <div class="proj-card" data-status="on-hold">
+              <div class="proj-card-header">
+                <div class="bm-flex-center-gap-xs">
+                  <span class="proj-status-dot proj-status-on-hold"></span>
+                  <span class="bm-badge bm-badge-warning bm-text-micro-badge">On Hold</span>
+                </div>
+                <button class="bm-btn-icon-xs"><i class="ph ph-dots-three-vertical"></i></button>
+              </div>
+              <h3 class="proj-card-title"><a href="detail.html">Design System v3</a></h3>
+              <p class="proj-card-desc">Unified design system library with tokens, components, and documentation site.</p>
+              <div class="proj-progress-section">
+                <div class="bm-flex-between-wrap bm-mb-xs">
+                  <span class="bm-text-xs bm-font-medium">Progress</span>
+                  <span class="bm-text-xs bm-font-semibold">30%</span>
+                </div>
+                <div class="bm-progress"><div class="bm-progress-bar bm-progress-warning" style="width: 30%"></div></div>
+              </div>
+              <div class="proj-card-footer">
+                <div class="bm-avatar-group">
+                  <div class="bm-avatar bm-avatar-sm" title="Grace Park">GP</div>
+                </div>
+                <div class="proj-card-meta">
+                  <i class="ph ph-pause-circle bm-text-body"></i>
+                  <span class="bm-text-xs bm-text-muted">Jun 1, 2026</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Card 6 -->
+            <div class="proj-card" data-status="active">
+              <div class="proj-card-header">
+                <div class="bm-flex-center-gap-xs">
+                  <span class="proj-status-dot proj-status-active"></span>
+                  <span class="bm-badge bm-badge-success bm-text-micro-badge">Active</span>
+                </div>
+                <button class="bm-btn-icon-xs"><i class="ph ph-dots-three-vertical"></i></button>
+              </div>
+              <h3 class="proj-card-title"><a href="detail.html">Customer Portal</a></h3>
+              <p class="proj-card-desc">Self-service customer portal with ticket management, billing, and knowledge base.</p>
+              <div class="proj-progress-section">
+                <div class="bm-flex-between-wrap bm-mb-xs">
+                  <span class="bm-text-xs bm-font-medium">Progress</span>
+                  <span class="bm-text-xs bm-font-semibold">85%</span>
+                </div>
+                <div class="bm-progress"><div class="bm-progress-bar bm-progress-primary" style="width: 85%"></div></div>
+              </div>
+              <div class="proj-card-footer">
+                <div class="bm-avatar-group">
+                  <div class="bm-avatar bm-avatar-sm" title="Alice Johnson">AJ</div>
+                  <div class="bm-avatar bm-avatar-sm" title="John Doe">JD</div>
+                  <div class="bm-avatar bm-avatar-sm" title="Emily Chen">EC</div>
+                </div>
+                <div class="proj-card-meta">
+                  <i class="ph ph-calendar bm-text-body"></i>
+                  <span class="bm-text-xs bm-text-muted">Apr 25, 2026</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/project-list.js"></script>
+{% endblock %}

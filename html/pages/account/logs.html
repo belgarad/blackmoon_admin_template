@@ -1,0 +1,177 @@
+{% extends "layouts/base.html" %}
+{% set title = "Logs" %}
+{% set activeMenu = "account-logs" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/account.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="overview.html">Account</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Logs</span></div>
+              </nav>
+              <h1 class="bm-page-title">Logs</h1>
+              <p class="bm-page-subtitle">System access and security audit log.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.info('Export','Log data exported as CSV.')">
+                <i class="ph ph-download-simple bm-text-md"></i>
+                Export
+              </button>
+            </div>
+          </div>
+
+          <!-- Account Navigation -->
+          <div class="acct-nav bm-mb-xl">
+            <a href="overview.html" class="acct-nav-item">Overview</a>
+            <a href="../settings.html" class="acct-nav-item">Settings</a>
+            <a href="../security.html" class="acct-nav-item">Security</a>
+            <a href="billing.html" class="acct-nav-item">Billing</a>
+            <a href="statements.html" class="acct-nav-item">Statements</a>
+            <a href="referrals.html" class="acct-nav-item">Referrals</a>
+            <a href="api-keys.html" class="acct-nav-item">API Keys</a>
+            <a href="logs.html" class="acct-nav-item active">Logs</a>
+            <a href="activity.html" class="acct-nav-item">Activity</a>
+          </div>
+
+          <!-- Filter Bar -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-body">
+              <div class="acct-log-filters">
+                <div class="bm-flex-wrap-sm-gap">
+                  <button class="bm-btn bm-btn-primary bm-btn-sm">All</button>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">Authentication</button>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">Security</button>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">Account</button>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">API</button>
+                </div>
+                <input class="bm-input bm-w-14rem" type="text" placeholder="Search logs…" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Logs Table -->
+          <div class="bm-card">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Audit Log</span>
+              <span class="bm-text-sm-muted">Last 30 days</span>
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">IP Address</th>
+                    <th scope="col">Browser / Device</th>
+                    <th scope="col">Date &amp; Time</th>
+                    <th scope="col" data-i18n="table.status">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-sign-in bm-text-lg-success"></i> <span>Login successful</span></td>
+                    <td><span class="bm-badge bm-badge-primary">Auth</span></td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">Chrome / Windows</td>
+                    <td class="bm-text-muted">Apr 7, 2026, 09:42 AM</td>
+                    <td><span class="bm-badge bm-badge-success">Success</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-key bm-text-lg-info"></i> <span>API key created</span></td>
+                    <td><span class="bm-badge bm-badge-info">API</span></td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">Chrome / Windows</td>
+                    <td class="bm-text-muted">Apr 6, 2026, 03:15 PM</td>
+                    <td><span class="bm-badge bm-badge-success">Success</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-pencil bm-text-lg-warning"></i> <span>Profile updated</span></td>
+                    <td><span class="bm-badge bm-badge-warning">Account</span></td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">Chrome / Windows</td>
+                    <td class="bm-text-muted">Apr 6, 2026, 02:30 PM</td>
+                    <td><span class="bm-badge bm-badge-success">Success</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-shield-slash bm-text-lg-danger"></i> <span>Login failed</span></td>
+                    <td><span class="bm-badge bm-badge-primary">Auth</span></td>
+                    <td class="bm-mono-caption">203.0.113.45</td>
+                    <td class="bm-text-muted">Firefox / Linux</td>
+                    <td class="bm-text-muted">Apr 5, 2026, 11:20 PM</td>
+                    <td><span class="bm-badge bm-badge-danger">Failed</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-shield bm-text-lg-success"></i> <span>2FA verified</span></td>
+                    <td><span class="bm-badge bm-badge-success">Security</span></td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">Chrome / Windows</td>
+                    <td class="bm-text-muted">Apr 5, 2026, 09:10 AM</td>
+                    <td><span class="bm-badge bm-badge-success">Success</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-key-return bm-text-lg-info"></i> <span>Password changed</span></td>
+                    <td><span class="bm-badge bm-badge-success">Security</span></td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">Chrome / Windows</td>
+                    <td class="bm-text-muted">Apr 4, 2026, 04:45 PM</td>
+                    <td><span class="bm-badge bm-badge-success">Success</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-device-mobile-camera bm-text-lg-warning"></i> <span>New device login</span></td>
+                    <td><span class="bm-badge bm-badge-primary">Auth</span></td>
+                    <td class="bm-mono-caption">10.0.0.42</td>
+                    <td class="bm-text-muted">Safari / iPhone</td>
+                    <td class="bm-text-muted">Apr 3, 2026, 08:22 AM</td>
+                    <td><span class="bm-badge bm-badge-success">Success</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-prohibit bm-text-lg-danger"></i> <span>API rate limit exceeded</span></td>
+                    <td><span class="bm-badge bm-badge-info">API</span></td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">API Client v2.1</td>
+                    <td class="bm-text-muted">Apr 2, 2026, 06:55 PM</td>
+                    <td><span class="bm-badge bm-badge-warning">Warning</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-sign-in bm-text-lg-success"></i> <span>Login successful</span></td>
+                    <td><span class="bm-badge bm-badge-primary">Auth</span></td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">Chrome / Windows</td>
+                    <td class="bm-text-muted">Apr 2, 2026, 09:00 AM</td>
+                    <td><span class="bm-badge bm-badge-success">Success</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-receipt bm-text-lg-info"></i> <span>Invoice generated</span></td>
+                    <td><span class="bm-badge bm-badge-warning">Account</span></td>
+                    <td class="bm-mono-caption">System</td>
+                    <td class="bm-text-muted">System</td>
+                    <td class="bm-text-muted">Apr 1, 2026, 12:00 AM</td>
+                    <td><span class="bm-badge bm-badge-success">Success</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="bm-card-footer bm-justify-between">
+              <span class="bm-text-sm-muted">Showing 10 of 142 entries</span>
+              <div class="bm-pagination">
+                <button class="bm-page-btn" disabled><i class="ph ph-caret-left bm-text-body"></i></button>
+                <button class="bm-page-btn active">1</button><button class="bm-page-btn">2</button><button class="bm-page-btn">3</button><button class="bm-page-btn">…</button><button class="bm-page-btn">15</button>
+                <button class="bm-page-btn"><i class="ph ph-caret-right bm-text-body"></i></button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

@@ -1,0 +1,442 @@
+{% extends "layouts/base.html" %}
+{% set title = "Marketing Dashboard" %}
+{% set activeMenu = "dashboard-marketing" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/marketing.scss">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Marketing</span></div>
+              </nav>
+              <h1 class="bm-page-title">Marketing Dashboard</h1>
+              <p class="bm-page-subtitle">Track campaign performance, channel metrics, and engagement.</p>
+            </div>
+            <div class="bm-page-actions">
+              <select class="bm-select bm-w-10rem">
+                <option>All Campaigns</option>
+                <option>Spring Sale</option>
+                <option>Newsletter</option>
+                <option>Brand Awareness</option>
+              </select>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">
+                <i class="ph ph-plus bm-text-md"></i>
+                New Campaign
+              </button>
+            </div>
+          </div>
+
+          <!-- KPI Stats -->
+          <div class="bm-grid-auto-lg">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-credit-card bm-text-lg-primary"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Total Ad Spend</div>
+                <div class="bm-stats-card-v2-value" data-counter="28400" data-counter-prefix="$">$28,400</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>8.3%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-chart-line bm-text-lg-success"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">ROAS</div>
+                <div class="bm-stats-card-v2-value">4.2×</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>+0.4×</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-user-plus bm-text-lg-warning"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">New Leads</div>
+                <div class="bm-stats-card-v2-value" data-counter="3205">3,205</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>14.2%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-info-h"><i class="ph ph-cursor-click bm-text-lg-info"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Click-Through Rate</div>
+                <div class="bm-stats-card-v2-value">3.42%</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>0.3%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conversion Funnel Strip -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-body bm-p-0">
+              <div class="mkt-funnel-strip">
+                <div class="mkt-funnel-step">
+                  <div class="mkt-funnel-icon"><i class="ph ph-eye"></i></div>
+                  <div class="mkt-funnel-data">
+                    <div class="mkt-funnel-value" data-counter="1248000">1,248,000</div>
+                    <div class="mkt-funnel-label">Impressions</div>
+                  </div>
+                </div>
+                <div class="mkt-funnel-arrow"><i class="ph ph-caret-right"></i></div>
+                <div class="mkt-funnel-step">
+                  <div class="mkt-funnel-icon mkt-funnel-icon-info"><i class="ph ph-cursor-click"></i></div>
+                  <div class="mkt-funnel-data">
+                    <div class="mkt-funnel-value" data-counter="42710">42,710</div>
+                    <div class="mkt-funnel-label">Clicks <span class="bm-text-success bm-font-semibold">3.42%</span></div>
+                  </div>
+                </div>
+                <div class="mkt-funnel-arrow"><i class="ph ph-caret-right"></i></div>
+                <div class="mkt-funnel-step">
+                  <div class="mkt-funnel-icon mkt-funnel-icon-warning"><i class="ph ph-shopping-cart"></i></div>
+                  <div class="mkt-funnel-data">
+                    <div class="mkt-funnel-value" data-counter="3205">3,205</div>
+                    <div class="mkt-funnel-label">Leads <span class="bm-text-success bm-font-semibold">7.50%</span></div>
+                  </div>
+                </div>
+                <div class="mkt-funnel-arrow"><i class="ph ph-caret-right"></i></div>
+                <div class="mkt-funnel-step">
+                  <div class="mkt-funnel-icon mkt-funnel-icon-success"><i class="ph ph-check-circle"></i></div>
+                  <div class="mkt-funnel-data">
+                    <div class="mkt-funnel-value" data-counter="891">891</div>
+                    <div class="mkt-funnel-label">Conversions <span class="bm-text-success bm-font-semibold">27.8%</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Full-width Engagement Trend -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-header">
+              <div>
+                <div class="bm-card-title">Engagement Trend</div>
+                <div class="bm-caption-muted-top">Impressions, clicks, and conversions — last 30 days</div>
+              </div>
+              <div class="bm-tab-bar">
+                <button class="bm-btn bm-btn-primary bm-btn-sm">30d</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">90d</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">6m</button>
+              </div>
+            </div>
+            <div class="bm-card-body bm-pt-sm">
+              <div id="chart-engagement-trend" class="bm-chart-container bm-chart-container-lg"></div>
+            </div>
+          </div>
+
+          <!-- Channel Cards (3 columns) -->
+          <div class="bm-grid-3col bm-mb-xl">
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-center-gap-md bm-mb-md">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-globe bm-text-lg-primary"></i></div>
+                  <div>
+                    <div class="bm-text-body-medium-swap">Social Media</div>
+                    <div class="bm-text-2xs-muted">Facebook, Instagram, X</div>
+                  </div>
+                </div>
+                <div class="bm-flex-col-gap-sm">
+                  <div class="bm-flex-between-plain"><span class="bm-text-caption-muted">Traffic</span><span class="bm-text-caption-semibold">34%</span></div>
+                  <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar" style="width: 34%"></div></div>
+                  <div class="bm-flex-between-plain"><span class="bm-text-caption-muted">Conversions</span><span class="bm-text-caption-semibold">312</span></div>
+                  <div class="bm-flex-between-plain"><span class="bm-text-caption-muted">Cost/Conv.</span><span class="bm-text-caption-semibold">$4.20</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-center-gap-md bm-mb-md">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-envelope bm-text-lg-success"></i></div>
+                  <div>
+                    <div class="bm-text-body-medium-swap">Email</div>
+                    <div class="bm-text-2xs-muted">Newsletter & drip campaigns</div>
+                  </div>
+                </div>
+                <div class="bm-flex-col-gap-sm">
+                  <div class="bm-flex-between-plain"><span class="bm-text-caption-muted">Traffic</span><span class="bm-text-caption-semibold">28%</span></div>
+                  <div class="bm-progress bm-progress-sm bm-progress-success"><div class="bm-progress-bar" style="width: 28%"></div></div>
+                  <div class="bm-flex-between-plain"><span class="bm-text-caption-muted">Open Rate</span><span class="bm-text-caption-semibold">42.8%</span></div>
+                  <div class="bm-flex-between-plain"><span class="bm-text-caption-muted">Click Rate</span><span class="bm-text-caption-semibold">8.3%</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-center-gap-md bm-mb-md">
+                  <div class="bm-icon-box-warning"><i class="ph ph-magnifying-glass bm-text-lg-warning"></i></div>
+                  <div>
+                    <div class="bm-text-body-medium-swap">Paid Search</div>
+                    <div class="bm-text-2xs-muted">Google Ads, Bing Ads</div>
+                  </div>
+                </div>
+                <div class="bm-flex-col-gap-sm">
+                  <div class="bm-flex-between-plain"><span class="bm-text-caption-muted">Traffic</span><span class="bm-text-caption-semibold">22%</span></div>
+                  <div class="bm-progress bm-progress-sm bm-progress-warning"><div class="bm-progress-bar" style="width: 22%"></div></div>
+                  <div class="bm-flex-between-plain"><span class="bm-text-caption-muted">CPC</span><span class="bm-text-caption-semibold">$1.82</span></div>
+                  <div class="bm-flex-between-plain"><span class="bm-text-caption-muted">ROAS</span><span class="bm-text-caption-semibold bm-text-success">4.2x</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campaign Cards Grid -->
+          <div class="bm-flex-between-plain bm-mb-md">
+            <div>
+              <div class="bm-text-body-medium-swap">Active Campaigns</div>
+              <div class="bm-text-2xs-muted">4 campaigns running</div>
+            </div>
+            <a href="#" class="bm-btn bm-btn-outline bm-btn-sm">View All</a>
+          </div>
+          <div class="bm-grid-2-1-mb">
+            <!-- Campaign 1 -->
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-between-start-mb">
+                  <div>
+                    <div class="bm-text-body-medium-swap">Spring Sale 2026</div>
+                    <div class="bm-text-2xs-muted">Mar 15 – Apr 15 · <span class="bm-badge bm-badge-primary">Social</span></div>
+                  </div>
+                  <span class="bm-badge bm-badge-success">Active</span>
+                </div>
+                <div class="bm-flex-center-gap-sm bm-mb-sm">
+                  <div class="bm-progress bm-progress-sm bm-flex-1"><div class="bm-progress-bar" style="width: 72%"></div></div>
+                  <span class="bm-text-caption-semibold">72% budget</span>
+                </div>
+                <div class="bm-grid-auto-sm">
+                  <div><div class="bm-text-2xs-muted">Impressions</div><div class="bm-text-caption-semibold">342,100</div></div>
+                  <div><div class="bm-text-2xs-muted">Clicks</div><div class="bm-text-caption-semibold">12,890</div></div>
+                  <div><div class="bm-text-2xs-muted">CTR</div><div class="bm-text-caption-semibold">3.77%</div></div>
+                  <div><div class="bm-text-2xs-muted">Conversions</div><div class="bm-text-caption-semibold bm-text-success">891</div></div>
+                </div>
+              </div>
+            </div>
+            <!-- Campaign 2 -->
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-between-start-mb">
+                  <div>
+                    <div class="bm-text-body-medium-swap">Brand Awareness</div>
+                    <div class="bm-text-2xs-muted">Feb 1 – ongoing · <span class="bm-badge bm-badge-warning">Paid</span></div>
+                  </div>
+                  <span class="bm-badge bm-badge-success">Active</span>
+                </div>
+                <div class="bm-flex-center-gap-sm bm-mb-sm">
+                  <div class="bm-progress bm-progress-sm bm-flex-1 bm-progress-warning"><div class="bm-progress-bar" style="width: 58%"></div></div>
+                  <span class="bm-text-caption-semibold">58% budget</span>
+                </div>
+                <div class="bm-grid-auto-sm">
+                  <div><div class="bm-text-2xs-muted">Impressions</div><div class="bm-text-caption-semibold">567,200</div></div>
+                  <div><div class="bm-text-2xs-muted">Clicks</div><div class="bm-text-caption-semibold">15,430</div></div>
+                  <div><div class="bm-text-2xs-muted">CTR</div><div class="bm-text-caption-semibold">2.72%</div></div>
+                  <div><div class="bm-text-2xs-muted">Conversions</div><div class="bm-text-caption-semibold bm-text-success">1,204</div></div>
+                </div>
+              </div>
+            </div>
+            <!-- Campaign 3 -->
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-between-start-mb">
+                  <div>
+                    <div class="bm-text-body-medium-swap">Newsletter Q1</div>
+                    <div class="bm-text-2xs-muted">Jan 1 – Mar 31 · <span class="bm-badge bm-badge-info">Email</span></div>
+                  </div>
+                  <span class="bm-badge bm-badge-success">Active</span>
+                </div>
+                <div class="bm-flex-center-gap-sm bm-mb-sm">
+                  <div class="bm-progress bm-progress-sm bm-flex-1 bm-progress-success"><div class="bm-progress-bar" style="width: 91%"></div></div>
+                  <span class="bm-text-caption-semibold">91% budget</span>
+                </div>
+                <div class="bm-grid-auto-sm">
+                  <div><div class="bm-text-2xs-muted">Delivered</div><div class="bm-text-caption-semibold">89,400</div></div>
+                  <div><div class="bm-text-2xs-muted">Opens</div><div class="bm-text-caption-semibold">38,260</div></div>
+                  <div><div class="bm-text-2xs-muted">Open Rate</div><div class="bm-text-caption-semibold">42.8%</div></div>
+                  <div><div class="bm-text-2xs-muted">Conversions</div><div class="bm-text-caption-semibold bm-text-success">342</div></div>
+                </div>
+              </div>
+            </div>
+            <!-- Campaign 4 -->
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-between-start-mb">
+                  <div>
+                    <div class="bm-text-body-medium-swap">Product Launch</div>
+                    <div class="bm-text-2xs-muted">Mar 1 – Mar 30 · <span class="bm-badge bm-badge-primary">Social</span></div>
+                  </div>
+                  <span class="bm-muted-chip">Completed</span>
+                </div>
+                <div class="bm-flex-center-gap-sm bm-mb-sm">
+                  <div class="bm-progress bm-progress-sm bm-flex-1"><div class="bm-progress-bar" style="width: 100%"></div></div>
+                  <span class="bm-text-caption-semibold">100% budget</span>
+                </div>
+                <div class="bm-grid-auto-sm">
+                  <div><div class="bm-text-2xs-muted">Impressions</div><div class="bm-text-caption-semibold">249,300</div></div>
+                  <div><div class="bm-text-2xs-muted">Clicks</div><div class="bm-text-caption-semibold">10,560</div></div>
+                  <div><div class="bm-text-2xs-muted">CTR</div><div class="bm-text-caption-semibold">4.24%</div></div>
+                  <div><div class="bm-text-2xs-muted">Conversions</div><div class="bm-text-caption-semibold bm-text-success">768</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- A/B Tests + Top Landing Pages -->
+          <div class="bm-grid-2col-sm2">
+            <!-- A/B Tests -->
+            <div class="bm-card">
+              <div class="bm-card-header"><div class="bm-card-title">A/B Test Results</div><span class="bm-badge bm-badge-info">3 active</span></div>
+              <div class="bm-card-body bm-flex-col-gap-xl">
+                <div>
+                  <div class="bm-flex-between-mb2">
+                    <div class="bm-text-body-medium-swap">CTA Button Color</div>
+                    <span class="bm-badge bm-badge-success">Winner: B</span>
+                  </div>
+                  <div class="bm-flex-center-gap-md">
+                    <div class="bm-flex-1">
+                      <div class="bm-flex-between-mb2"><span class="bm-text-2xs-muted">Variant A — Blue</span><span class="bm-text-caption-semibold">3.2%</span></div>
+                      <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar" style="width: 32%"></div></div>
+                    </div>
+                    <div class="bm-flex-1">
+                      <div class="bm-flex-between-mb2"><span class="bm-text-2xs-muted">Variant B — Green</span><span class="bm-text-caption-semibold bm-text-success">4.8%</span></div>
+                      <div class="bm-progress bm-progress-sm bm-progress-success"><div class="bm-progress-bar" style="width: 48%"></div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bm-border-top"></div>
+                <div>
+                  <div class="bm-flex-between-mb2">
+                    <div class="bm-text-body-medium-swap">Email Subject Line</div>
+                    <span class="bm-badge bm-badge-warning">Running</span>
+                  </div>
+                  <div class="bm-flex-center-gap-md">
+                    <div class="bm-flex-1">
+                      <div class="bm-flex-between-mb2"><span class="bm-text-2xs-muted">A — "Don't miss out"</span><span class="bm-text-caption-semibold">38.1%</span></div>
+                      <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar" style="width: 38%"></div></div>
+                    </div>
+                    <div class="bm-flex-1">
+                      <div class="bm-flex-between-mb2"><span class="bm-text-2xs-muted">B — "Your exclusive deal"</span><span class="bm-text-caption-semibold">41.5%</span></div>
+                      <div class="bm-progress bm-progress-sm bm-progress-success"><div class="bm-progress-bar" style="width: 42%"></div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bm-border-top"></div>
+                <div>
+                  <div class="bm-flex-between-mb2">
+                    <div class="bm-text-body-medium-swap">Landing Page Layout</div>
+                    <span class="bm-badge bm-badge-warning">Running</span>
+                  </div>
+                  <div class="bm-flex-center-gap-md">
+                    <div class="bm-flex-1">
+                      <div class="bm-flex-between-mb2"><span class="bm-text-2xs-muted">A — Hero image</span><span class="bm-text-caption-semibold">5.1%</span></div>
+                      <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar" style="width: 51%"></div></div>
+                    </div>
+                    <div class="bm-flex-1">
+                      <div class="bm-flex-between-mb2"><span class="bm-text-2xs-muted">B — Video hero</span><span class="bm-text-caption-semibold">4.7%</span></div>
+                      <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar" style="width: 47%"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Top Landing Pages -->
+            <div class="bm-card">
+              <div class="bm-card-header"><div class="bm-card-title">Top Landing Pages</div></div>
+              <div class="bm-card-body bm-p-0">
+                <table class="bm-table bm-table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col">Page</th>
+                      <th scope="col" class="bm-text-right">Visitors</th>
+                      <th scope="col" class="bm-text-right">Conv.</th>
+                      <th scope="col" class="bm-text-right">Rate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="bm-text-caption-medium">/spring-sale</div>
+                        <div class="bm-text-2xs-muted">Spring Sale 2026</div>
+                      </td>
+                      <td class="bm-text-right">18,420</td>
+                      <td class="bm-text-right bm-font-semibold">891</td>
+                      <td class="bm-text-right bm-font-semibold bm-text-success">4.84%</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="bm-text-caption-medium">/pricing</div>
+                        <div class="bm-text-2xs-muted">Pricing Page</div>
+                      </td>
+                      <td class="bm-text-right">12,680</td>
+                      <td class="bm-text-right bm-font-semibold">634</td>
+                      <td class="bm-text-right bm-font-semibold bm-text-success">5.00%</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="bm-text-caption-medium">/product/launch</div>
+                        <div class="bm-text-2xs-muted">Product Launch</div>
+                      </td>
+                      <td class="bm-text-right">10,560</td>
+                      <td class="bm-text-right bm-font-semibold">768</td>
+                      <td class="bm-text-right bm-font-semibold bm-text-success">7.27%</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="bm-text-caption-medium">/free-trial</div>
+                        <div class="bm-text-2xs-muted">Free Trial Signup</div>
+                      </td>
+                      <td class="bm-text-right">8,340</td>
+                      <td class="bm-text-right bm-font-semibold">542</td>
+                      <td class="bm-text-right bm-font-semibold bm-text-success">6.50%</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="bm-text-caption-medium">/webinar</div>
+                        <div class="bm-text-2xs-muted">Webinar Registration</div>
+                      </td>
+                      <td class="bm-text-right">5,120</td>
+                      <td class="bm-text-right bm-font-semibold">410</td>
+                      <td class="bm-text-right bm-font-semibold bm-text-success">8.01%</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="bm-text-caption-medium">/blog/seo-guide</div>
+                        <div class="bm-text-2xs-muted">SEO Guide (Organic)</div>
+                      </td>
+                      <td class="bm-text-right">4,890</td>
+                      <td class="bm-text-right bm-font-semibold">195</td>
+                      <td class="bm-text-right bm-font-semibold">3.99%</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/chart-helpers.js"></script>
+<script src="/assets/js/pages/dashboard-marketing.js"></script>
+{% endblock %}

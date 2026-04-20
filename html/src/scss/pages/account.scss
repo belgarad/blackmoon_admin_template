@@ -1,0 +1,202 @@
+/* ================================================================
+   ACCOUNT PAGES
+   Shared styles for pages/account/*
+   ================================================================ */
+
+/* ── Account Navigation Bar ── */
+.acct-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.acct-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.acct-nav-item {
+  padding: 0.625rem 1rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--muted-fg);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.acct-nav-item:hover {
+  color: var(--fg);
+}
+
+.acct-nav-item.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+/* ── Overview: Profile Row ── */
+.acct-profile-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.acct-profile-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.acct-profile-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .acct-profile-row {
+    flex-direction: column;
+    text-align: center;
+  }
+  .acct-profile-actions {
+    justify-content: center;
+  }
+}
+
+/* ── Billing: Plan Grid ── */
+.acct-plan-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 1023px) {
+  .acct-plan-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.acct-plan-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.15s;
+}
+
+.acct-plan-card:hover {
+  border-color: var(--primary);
+}
+
+.acct-plan-active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary);
+}
+
+.acct-plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.acct-plan-amount {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1;
+}
+
+/* ── API Keys ── */
+.acct-api-key-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .acct-api-key-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.acct-info-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--info-light, rgba(59, 130, 246, 0.08));
+  border: 1px solid var(--info-border, rgba(59, 130, 246, 0.2));
+  border-radius: var(--radius-lg);
+  color: var(--fg);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+/* ── Logs: Filter Bar ── */
+.acct-log-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ── Referrals ── */
+.acct-referral-link-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .acct-referral-link-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.acct-steps-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .acct-steps-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.acct-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* ── Activity ── */
+.acct-activity-group {
+  margin-bottom: 1.5rem;
+}
+
+.acct-activity-group:last-child {
+  margin-bottom: 0;
+}
+
+.acct-activity-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-fg);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}

@@ -1,0 +1,99 @@
+/* ================================================================
+   RTL (Right-to-Left) Support
+   Applied when <html dir="rtl"> is set.
+   Uses CSS logical properties for direction-aware layout.
+   ================================================================ */
+
+[dir="rtl"] {
+  /* ── Sidebar ── */
+  .bm-sidebar {
+    left: auto;
+    right: 0;
+    border-right: none;
+    border-left: 1px solid var(--border);
+  }
+
+  .bm-wrapper {
+    margin-left: 0;
+    margin-right: var(--sidebar-width);
+  }
+
+  .bm-sidebar-collapse .bm-wrapper {
+    margin-right: var(--sidebar-width-collapse);
+  }
+
+  /* ── Sidebar submenu arrow ── */
+  .bm-submenu-arrow {
+    margin-left: 0;
+    margin-right: auto;
+    transform: rotate(180deg);
+  }
+
+  .bm-menu-item.active > .bm-menu-link .bm-submenu-arrow {
+    transform: rotate(270deg);
+  }
+
+  /* ── Sidebar bullet dots ── */
+  .bm-submenu .bm-sub-link::before {
+    left: auto;
+    right: 0;
+  }
+
+  /* ── Breadcrumb separator ── */
+  .bm-breadcrumb-separator {
+    transform: scaleX(-1);
+  }
+
+  /* ── Header actions ── */
+  .bm-header .bm-header-actions {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  /* ── Dropdown panels ── */
+  .bm-dropdown-panel {
+    left: auto;
+    right: 0;
+  }
+
+  /* ── Text alignment overrides ── */
+  .bm-text-start { text-align: right; }
+  .bm-text-end   { text-align: left; }
+
+  /* ── Margin/padding directional overrides ── */
+  .bm-ms-auto { margin-right: auto; margin-left: 0; }
+  .bm-me-auto { margin-left: auto; margin-right: 0; }
+
+  /* ── Icon flip (chevrons, arrows) ── */
+  .bm-icon-flip-rtl {
+    transform: scaleX(-1);
+  }
+
+  /* ── Timeline connector ── */
+  .bm-timeline::before {
+    left: auto;
+    right: 0;
+  }
+
+  .bm-timeline-dot {
+    left: auto;
+    right: -6px;
+  }
+
+  /* ── Mobile: reset sidebar for drawer ── */
+  @media (max-width: 1024px) {
+    .bm-sidebar {
+      right: auto;
+      left: auto;
+      transform: translateX(100%);
+    }
+
+    .bm-sidebar.open {
+      transform: translateX(0);
+    }
+
+    .bm-wrapper {
+      margin-right: 0;
+    }
+  }
+}

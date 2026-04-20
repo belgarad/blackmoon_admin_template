@@ -1,0 +1,466 @@
+{% extends "layouts/base.html" %}
+{% set title = "Modals Showcase" %}
+{% set activeMenu = "modals-showcase" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <!-- ── Page header ────────────────────────────────── -->
+          <div class="bm-flex-between-wrap-mb6">
+            <div>
+              <h1 class="bm-heading-xl-fg">Modals Showcase</h1>
+              <nav class="bm-text-sm-muted-flex">
+                <a href="dashboard.html" class="bm-link-muted" data-i18n="breadcrumb.dashboard">Dashboard</a>
+                <i class="ph ph-caret-right bm-text-body"></i>
+                <span class="bm-text-default">UI Showcase</span>
+                <i class="ph ph-caret-right bm-text-body"></i>
+                <span class="bm-text-default">Modals</span>
+              </nav>
+            </div>
+          </div>
+
+          <p class="bm-text-body-muted-mb">Explore different modal variants, dropdown menus, toast notifications, confirm dialogs, and drawer panels.</p>
+
+          <!-- ── Section: Basic Modals ──────────────────────── -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Basic Modals</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Standard modal sizes and layouts.</p>
+              <div class="bm-flex-wrap-start">
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.openModal('modalSmall')">Small Modal</button>
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.openModal('modalDefault')">Default Modal</button>
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.openModal('modalLarge')">Large Modal</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Section: Confirm Dialogs ───────────────────── -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Confirmation Dialogs</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Confirmation prompts with different severity levels.</p>
+              <div class="bm-flex-wrap-start">
+                <button class="bm-btn bm-btn-danger bm-btn-sm" onclick="App.openModal('modalConfirmDelete')">Delete Confirmation</button>
+                <button class="bm-btn bm-btn-warning bm-btn-sm" onclick="App.openModal('modalConfirmAction')">Action Confirmation</button>
+                <button class="bm-btn bm-btn-success bm-btn-sm" onclick="App.openModal('modalSuccess')">Success Dialog</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Section: Form Modal ────────────────────────── -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Form Modal</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Modal with form inputs, validation, and actions.</p>
+              <div class="bm-flex-wrap-start">
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.openModal('modalForm')">Open Form Modal</button>
+                <button class="bm-btn bm-btn-info bm-btn-sm" onclick="App.openModal('modalFormLong')">Form With Scrolling</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Section: Full-Screen Modal ─────────────────── -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Full-Screen Modal</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Full-screen overlay modal for immersive content.</p>
+              <div class="bm-flex-wrap-start">
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.openModal('modalFullScreen')">Open Full-Screen Modal</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Section: Nested Modal ──────────────────────── -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Nested Modal</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">A modal that opens another modal on top.</p>
+              <div class="bm-flex-wrap-start">
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.openModal('modalNested1')">Open Nested Modal</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Section: Dropdown ─────────────────────────── -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Dropdown</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Dropdown menus using <code class="bm-badge-muted">.bm-dropdown</code> + <code class="bm-badge-muted">data-dropdown-trigger</code></p>
+              <div class="bm-flex-wrap-gap-xl">
+                <div class="bm-dropdown">
+                  <button class="bm-btn bm-btn-primary" data-dropdown-trigger>Actions <i class="ph ph-caret-down bm-text-md"></i></button>
+                  <div class="bm-dropdown-menu">
+                    <div class="bm-dropdown-label">Options</div>
+                    <button class="bm-dropdown-item"><i class="ph ph-pencil bm-text-md"></i> Edit</button>
+                    <button class="bm-dropdown-item"><i class="ph ph-copy bm-text-md"></i> Duplicate</button>
+                    <button class="bm-dropdown-item"><i class="ph ph-archive bm-text-md"></i> Archive</button>
+                    <div class="bm-dropdown-separator"></div>
+                    <button class="bm-dropdown-item destructive"><i class="ph ph-trash bm-text-md"></i> Delete</button>
+                  </div>
+                </div>
+                <div class="bm-dropdown">
+                  <button class="bm-btn bm-btn-outline" data-dropdown-trigger>Filter <i class="ph ph-funnel bm-text-md"></i></button>
+                  <div class="bm-dropdown-menu">
+                    <button class="bm-dropdown-item">All items</button>
+                    <button class="bm-dropdown-item">Active</button>
+                    <button class="bm-dropdown-item">Inactive</button>
+                    <button class="bm-dropdown-item">Pending</button>
+                  </div>
+                </div>
+                <div class="bm-dropdown">
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon" data-dropdown-trigger><i class="ph ph-dots-three-vertical bm-text-lg"></i></button>
+                  <div class="bm-dropdown-menu bm-pos-right-0">
+                    <button class="bm-dropdown-item">View details</button>
+                    <button class="bm-dropdown-item">Export data</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Section: Toast Notifications ───────────────── -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Toast Notifications</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Toast notifications via <code class="bm-badge-muted">App.toast.success/warning/danger/info(title, message)</code></p>
+              <div class="bm-flex-wrap-gap">
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Success!','Your changes have been saved.')">Success Toast</button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.warning('Warning','Please review before continuing.')">Warning Toast</button>
+                <button class="bm-btn bm-btn-destructive bm-btn-sm" onclick="App.toast.danger('Error','Something went wrong. Try again.')">Danger Toast</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm" onclick="App.toast.info('Info','A new version is available.')">Info Toast</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Section: Confirm Dialog ────────────────────── -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Confirm Dialog</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Confirmation dialog via <code class="bm-badge-muted">App.confirm({ title, text, type, confirmText, onConfirm })</code></p>
+              <div class="bm-flex-wrap-gap">
+                <button class="bm-btn bm-btn-destructive bm-btn-sm" onclick="App.confirm({title:'Delete this item?',text:'This action cannot be undone.',type:'danger',confirmText:'Yes, delete',onConfirm:function(){App.toast.success('Deleted','Item has been removed.')}})">Delete Confirm</button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.confirm({title:'Are you sure?',text:'You are about to archive this project.',type:'warning',confirmText:'Archive',onConfirm:function(){App.toast.info('Archived','Project has been archived.')}})">Warning Confirm</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Section: Drawer ────────────────────────────── -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Drawer</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Slide-in side panels using <code class="bm-badge-muted">.bm-drawer</code> + <code class="bm-badge-muted">App.openDrawer(id)</code></p>
+              <button class="bm-btn bm-btn-primary" onclick="App.openDrawer('demoDrawer')">Open Drawer</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Demo Drawer -->
+        <div class="bm-drawer-overlay" data-drawer-overlay="demoDrawer" aria-hidden="true"></div>
+        <div id="demoDrawer" class="bm-drawer" role="dialog" aria-modal="true" aria-labelledby="demoDrawerTitle">
+          <div class="bm-drawer-header">
+            <div class="bm-flex-center-gap">
+              <i class="ph ph-info bm-text-lg-primary"></i>
+              <h2 class="bm-drawer-title" id="demoDrawerTitle">Drawer Panel</h2>
+            </div>
+            <button class="bm-btn bm-btn-ghost bm-btn-icon" onclick="App.closeDrawer('demoDrawer')" aria-label="Close drawer">
+              <i class="ph ph-x"></i>
+            </button>
+          </div>
+          <div class="bm-drawer-body">
+            <p class="bm-text-body-muted">This is a drawer panel. Use it for settings, detail views, filters, or any side content.</p>
+            <div class="bm-mt-xl">
+              <label class="bm-label">Example Field</label>
+              <input class="bm-input" type="text" placeholder="Type something..." />
+            </div>
+            <div class="bm-mt-md">
+              <label class="bm-label">Category</label>
+              <select class="bm-select">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="bm-mt-xl">
+              <button class="bm-btn bm-btn-primary" onclick="App.closeDrawer('demoDrawer');App.toast.success('Saved','Changes have been saved.')">Save Changes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Small Modal -->
+        <div class="bm-modal-backdrop" id="modalSmall" style="display:none;">
+          <div class="bm-modal modal-sm">
+            <div class="bm-modal-header">
+              <span class="bm-modal-title">Small Modal</span>
+              <button class="bm-btn-icon-xs" onclick="App.closeModal('modalSmall')"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="bm-modal-body">
+              <p class="bm-text-body-muted">This is a small-sized modal (max-width: 24rem). Good for quick confirmations or brief messages.</p>
+            </div>
+            <div class="bm-modal-footer">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.closeModal('modalSmall')">Close</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Default Modal -->
+        <div class="bm-modal-backdrop" id="modalDefault" style="display:none;">
+          <div class="bm-modal">
+            <div class="bm-modal-header">
+              <span class="bm-modal-title">Default Modal</span>
+              <button class="bm-btn-icon-xs" onclick="App.closeModal('modalDefault')"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="bm-modal-body">
+              <p class="bm-text-body-muted">This is the default-sized modal (max-width: 32rem). Suitable for standard content and forms.</p>
+              <p class="bm-text-body-muted bm-mt-md">You can add any content here — forms, tables, images, or formatted text.</p>
+            </div>
+            <div class="bm-modal-footer">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.closeModal('modalDefault')">Cancel</button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">Save Changes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Large Modal -->
+        <div class="bm-modal-backdrop" id="modalLarge" style="display:none;">
+          <div class="bm-modal modal-lg">
+            <div class="bm-modal-header">
+              <span class="bm-modal-title">Large Modal</span>
+              <button class="bm-btn-icon-xs" onclick="App.closeModal('modalLarge')"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="bm-modal-body">
+              <p class="bm-text-body-muted">This is a large modal (max-width: 48rem). Ideal for complex forms, data tables, or detailed content.</p>
+              <div class="bm-grid-2col-narrow bm-mt-lg">
+                <div>
+                  <label class="bm-label">First Name</label>
+                  <input class="bm-input" placeholder="John" />
+                </div>
+                <div>
+                  <label class="bm-label">Last Name</label>
+                  <input class="bm-input" placeholder="Doe" />
+                </div>
+                <div class="bm-grid-span-2">
+                  <label class="bm-label">Email</label>
+                  <input class="bm-input" type="email" placeholder="john@example.com" />
+                </div>
+              </div>
+            </div>
+            <div class="bm-modal-footer">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.closeModal('modalLarge')">Cancel</button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">Submit</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirm Delete Modal -->
+        <div class="bm-modal-backdrop" id="modalConfirmDelete" style="display:none;">
+          <div class="bm-modal modal-sm">
+            <div class="bm-modal-body modal-confirm-body">
+              <div class="modal-confirm-icon bm-bg-danger-subtle">
+                <i class="ph ph-trash bm-text-danger"></i>
+              </div>
+              <h3 class="bm-text-lg-semibold-fg bm-mt-md">Delete Item?</h3>
+              <p class="bm-text-sm-muted bm-mt-sm">This action cannot be undone. The item and all associated data will be permanently removed.</p>
+              <div class="bm-flex-center-gap-sm bm-mt-lg">
+                <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.closeModal('modalConfirmDelete')">Cancel</button>
+                <button class="bm-btn bm-btn-danger bm-btn-sm">
+                  <i class="ph ph-trash bm-text-md"></i> Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confirm Action Modal -->
+        <div class="bm-modal-backdrop" id="modalConfirmAction" style="display:none;">
+          <div class="bm-modal modal-sm">
+            <div class="bm-modal-body modal-confirm-body">
+              <div class="modal-confirm-icon bm-bg-warning-subtle">
+                <i class="ph ph-warning bm-text-warning"></i>
+              </div>
+              <h3 class="bm-text-lg-semibold-fg bm-mt-md">Confirm Action</h3>
+              <p class="bm-text-sm-muted bm-mt-sm">Are you sure you want to proceed? This will deactivate the user account and revoke all active sessions.</p>
+              <div class="bm-flex-center-gap-sm bm-mt-lg">
+                <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.closeModal('modalConfirmAction')">Cancel</button>
+                <button class="bm-btn bm-btn-warning bm-btn-sm">
+                  <i class="ph ph-check bm-text-md"></i> Proceed
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div class="bm-modal-backdrop" id="modalSuccess" style="display:none;">
+          <div class="bm-modal modal-sm">
+            <div class="bm-modal-body modal-confirm-body">
+              <div class="modal-confirm-icon bm-bg-success-subtle">
+                <i class="ph ph-check-circle bm-text-success"></i>
+              </div>
+              <h3 class="bm-text-lg-semibold-fg bm-mt-md">Success!</h3>
+              <p class="bm-text-sm-muted bm-mt-sm">The operation was completed successfully. Your changes have been saved.</p>
+              <div class="bm-flex-center-gap-sm bm-mt-lg">
+                <button class="bm-btn bm-btn-success bm-btn-sm" onclick="App.closeModal('modalSuccess')">
+                  <i class="ph ph-check bm-text-md"></i> Done
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Modal -->
+        <div class="bm-modal-backdrop" id="modalForm" style="display:none;">
+          <div class="bm-modal">
+            <div class="bm-modal-header">
+              <span class="bm-modal-title">Create New User</span>
+              <button class="bm-btn-icon-xs" onclick="App.closeModal('modalForm')"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="bm-modal-body">
+              <div class="bm-grid-2col-narrow">
+                <div>
+                  <label class="bm-label">First Name <span class="bm-text-danger">*</span></label>
+                  <input class="bm-input" type="text" placeholder="First name" />
+                </div>
+                <div>
+                  <label class="bm-label">Last Name <span class="bm-text-danger">*</span></label>
+                  <input class="bm-input" type="text" placeholder="Last name" />
+                </div>
+                <div class="bm-grid-span-2">
+                  <label class="bm-label">Email <span class="bm-text-danger">*</span></label>
+                  <input class="bm-input" type="email" placeholder="user@company.com" />
+                </div>
+                <div>
+                  <label class="bm-label">Role</label>
+                  <select class="bm-select">
+                    <option>Select role</option>
+                    <option>Administrator</option>
+                    <option>Editor</option>
+                    <option>Viewer</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="bm-label">Department</label>
+                  <select class="bm-select">
+                    <option>Select department</option>
+                    <option>Engineering</option>
+                    <option>Design</option>
+                    <option>Marketing</option>
+                    <option>Sales</option>
+                  </select>
+                </div>
+              </div>
+              <div class="bm-mt-md">
+                <label class="bm-flex-center-gap-xs">
+                  <input type="checkbox" class="bm-checkbox" />
+                  <span class="bm-text-sm-muted">Send welcome email to the new user</span>
+                </label>
+              </div>
+            </div>
+            <div class="bm-modal-footer">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.closeModal('modalForm')">Cancel</button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">Create User</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form With Scrolling Modal -->
+        <div class="bm-modal-backdrop" id="modalFormLong" style="display:none;">
+          <div class="bm-modal">
+            <div class="bm-modal-header">
+              <span class="bm-modal-title">Terms of Service</span>
+              <button class="bm-btn-icon-xs" onclick="App.closeModal('modalFormLong')"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="bm-modal-body modal-body-scroll">
+              <p class="bm-text-body-muted bm-mb-md">Please read and accept the following terms and conditions.</p>
+              <div class="modal-terms-content">
+                <h4 class="bm-text-sm-semibold-fg bm-mb-sm">1. Introduction</h4>
+                <p class="bm-text-sm-muted bm-mb-md">These terms of service govern your use of this application. By accessing or using our service, you agree to be bound by these terms.</p>
+                <h4 class="bm-text-sm-semibold-fg bm-mb-sm">2. User Accounts</h4>
+                <p class="bm-text-sm-muted bm-mb-md">You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
+                <h4 class="bm-text-sm-semibold-fg bm-mb-sm">3. Acceptable Use</h4>
+                <p class="bm-text-sm-muted bm-mb-md">You agree not to use the service for any unlawful purpose or in violation of any applicable regulations. You must not transmit any malicious code.</p>
+                <h4 class="bm-text-sm-semibold-fg bm-mb-sm">4. Privacy</h4>
+                <p class="bm-text-sm-muted bm-mb-md">We collect and process personal data in accordance with our privacy policy. Your data is stored securely and will not be shared without consent.</p>
+                <h4 class="bm-text-sm-semibold-fg bm-mb-sm">5. Limitation of Liability</h4>
+                <p class="bm-text-sm-muted bm-mb-md">The service is provided on an "as is" basis. We make no warranties and shall not be liable for any indirect or consequential damages.</p>
+                <h4 class="bm-text-sm-semibold-fg bm-mb-sm">6. Termination</h4>
+                <p class="bm-text-sm-muted bm-mb-md">We reserve the right to suspend or terminate your account if you violate these terms. Upon termination, your access will be revoked immediately.</p>
+                <h4 class="bm-text-sm-semibold-fg bm-mb-sm">7. Changes to Terms</h4>
+                <p class="bm-text-sm-muted">We may update these terms from time to time. Continued use of the service constitutes acceptance of the revised terms.</p>
+              </div>
+            </div>
+            <div class="bm-modal-footer">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.closeModal('modalFormLong')">Decline</button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.closeModal('modalFormLong')">Accept</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full-Screen Modal -->
+        <div class="bm-modal-backdrop" id="modalFullScreen" style="display:none;">
+          <div class="bm-modal modal-fullscreen">
+            <div class="bm-modal-header">
+              <span class="bm-modal-title">Full-Screen Preview</span>
+              <button class="bm-btn-icon-xs" onclick="App.closeModal('modalFullScreen')"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="bm-modal-body">
+              <div class="modal-fullscreen-content">
+                <i class="ph ph-image bm-text-5xl-muted2"></i>
+                <h3 class="bm-text-lg-semibold-fg bm-mt-md">Full-Screen Content Area</h3>
+                <p class="bm-text-body-muted bm-mt-sm">This modal takes up the entire viewport. Ideal for image galleries, document previews, or immersive editing experiences.</p>
+                <p class="bm-text-sm-muted bm-mt-lg">Press <kbd class="bm-badge-muted">Esc</kbd> or click the backdrop to close.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nested Modal - Level 1 -->
+        <div class="bm-modal-backdrop" id="modalNested1" style="display:none;">
+          <div class="bm-modal">
+            <div class="bm-modal-header">
+              <span class="bm-modal-title">Parent Modal</span>
+              <button class="bm-btn-icon-xs" onclick="App.closeModal('modalNested1')"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="bm-modal-body">
+              <p class="bm-text-body-muted bm-mb-md">This is the first-level modal. Click the button below to open a nested modal on top of this one.</p>
+              <div class="bm-card">
+                <div class="bm-card-body">
+                  <div class="bm-flex-center-gap-sm">
+                    <i class="ph ph-stack bm-text-xl bm-text-info"></i>
+                    <div>
+                      <div class="bm-text-sm-semibold-fg">Multi-Level Modals</div>
+                      <div class="bm-text-xs-muted">Useful for confirmations within forms</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bm-modal-footer">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.closeModal('modalNested1')">Close</button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.openModal('modalNested2')">
+                <i class="ph ph-arrow-square-out bm-text-md"></i> Open Child Modal
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nested Modal - Level 2 -->
+        <div class="bm-modal-backdrop modal-nested-level2" id="modalNested2" style="display:none;">
+          <div class="bm-modal modal-sm">
+            <div class="bm-modal-body modal-confirm-body">
+              <div class="modal-confirm-icon bm-bg-info-subtle">
+                <i class="ph ph-info bm-text-info"></i>
+              </div>
+              <h3 class="bm-text-lg-semibold-fg bm-mt-md">Child Modal</h3>
+              <p class="bm-text-sm-muted bm-mt-sm">This is a nested (child) modal displayed on top of the parent modal. Each level has its own backdrop.</p>
+              <div class="bm-flex-center-gap-sm bm-mt-lg">
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.closeModal('modalNested2')">Got it</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}

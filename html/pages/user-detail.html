@@ -1,0 +1,553 @@
+{% extends "layouts/base.html" %}
+{% set title = "User Detail" %}
+{% set activeMenu = "user-detail" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/user-manage.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Breadcrumb -->
+          <nav class="bm-breadcrumb" style="margin-bottom:1.25rem">
+            <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+            <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="users.html">User Management</a><span class="bm-breadcrumb-separator">/</span></div>
+            <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">User Detail</span></div>
+          </nav>
+
+          <!-- ═══ Profile Hero Card ═══ -->
+          <div class="bm-card bm-overflow-hidden-mb" style="margin-bottom:1.5rem">
+            <div class="profile-banner"></div>
+            <div class="profile-info">
+              <div class="profile-avatar">JD</div>
+              <div class="profile-details">
+                <div class="profile-name" style="display:flex;align-items:center;gap:0.5rem">
+                  Max Smith
+                  <i class="ph ph-seal-check"></i>
+                </div>
+                <div class="profile-role" style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;margin-top:0.375rem">
+                  <span style="display:flex;align-items:center;gap:0.375rem">
+                    <i class="ph ph-seal"></i>
+                    Administrator
+                  </span>
+                  <span style="display:flex;align-items:center;gap:0.375rem">
+                    <i class="ph ph-map-pin"></i>
+                    San Francisco, CA
+                  </span>
+                  <span style="display:flex;align-items:center;gap:0.375rem">
+                    <i class="ph ph-envelope"></i>
+                    max.smith@company.com
+                  </span>
+                </div>
+              </div>
+              <div class="profile-stats">
+                <div class="usr-stat-box">
+                  <div class="usr-stat-number">
+                    <i class="ph ph-trend-up"></i>
+                    $4,500
+                  </div>
+                  <div class="profile-stat-label">Earnings</div>
+                </div>
+                <div class="usr-stat-box">
+                  <div class="usr-stat-number">
+                    <i class="ph ph-trend-up"></i>
+                    80
+                  </div>
+                  <div class="profile-stat-label">Projects</div>
+                </div>
+                <div class="usr-stat-box">
+                  <div class="usr-stat-number">
+                    <i class="ph ph-trend-up"></i>
+                    60%
+                  </div>
+                  <div class="profile-stat-label">Success Rate</div>
+                </div>
+              </div>
+            </div>
+            <!-- Tabs inside card -->
+            <div class="profile-tabs">
+              <button class="profile-tab active" data-usrtab="overview">Overview</button>
+              <button class="profile-tab" data-usrtab="settings">Settings</button>
+              <button class="profile-tab" data-usrtab="security">Security</button>
+              <button class="profile-tab" data-usrtab="activity">Activity</button>
+              <button class="profile-tab" data-usrtab="sessions">Sessions</button>
+            </div>
+          </div>
+
+          <!-- ═══ TAB: Overview ═══ -->
+          <div class="usr-tab-content active" id="usrtab-overview">
+
+            <!-- Profile Details Card -->
+            <div class="bm-card" style="margin-bottom:1.5rem">
+              <div class="usr-card-header">
+                <h3 class="usr-card-title">Profile Details</h3>
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="document.querySelector('[data-usrtab=settings]').click()">
+                  <i class="ph ph-pencil bm-text-md"></i>Edit Profile
+                </button>
+              </div>
+              <div class="usr-card-body">
+                <div class="usr-detail-row">
+                  <label class="usr-detail-label">Full Name</label>
+                  <div class="usr-detail-value">Max Smith</div>
+                </div>
+                <div class="usr-detail-row">
+                  <label class="usr-detail-label">Company</label>
+                  <div class="usr-detail-value">Acme Corporation</div>
+                </div>
+                <div class="usr-detail-row">
+                  <label class="usr-detail-label">Contact Phone</label>
+                  <div class="usr-detail-value" style="display:flex;align-items:center;gap:0.5rem">
+                    +1 (555) 432-7890
+                    <span class="bm-badge bm-badge-success bm-text-micro-badge">Verified</span>
+                  </div>
+                </div>
+                <div class="usr-detail-row">
+                  <label class="usr-detail-label">Company Site</label>
+                  <div class="usr-detail-value"><a href="#" style="color:var(--primary);text-decoration:none">acmecorp.com</a></div>
+                </div>
+                <div class="usr-detail-row">
+                  <label class="usr-detail-label">Country</label>
+                  <div class="usr-detail-value">United States</div>
+                </div>
+                <div class="usr-detail-row">
+                  <label class="usr-detail-label">Communication</label>
+                  <div class="usr-detail-value">Email, Phone</div>
+                </div>
+                <div class="usr-detail-row" style="border-bottom:none">
+                  <label class="usr-detail-label">Allow Changes</label>
+                  <div class="usr-detail-value">Yes</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sign-in Method Card -->
+            <div class="bm-card" style="margin-bottom:1.5rem">
+              <div class="usr-card-header">
+                <h3 class="usr-card-title">Sign-in Method</h3>
+              </div>
+              <div class="usr-card-body">
+                <div class="usr-signin-row">
+                  <div>
+                    <div class="usr-signin-label">Email Address</div>
+                    <div class="usr-signin-value">max.smith@company.com</div>
+                  </div>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">Change Email</button>
+                </div>
+                <div class="usr-signin-row">
+                  <div>
+                    <div class="usr-signin-label">Password</div>
+                    <div class="usr-signin-value">••••••••••••</div>
+                  </div>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.info('Email Sent','Password reset link has been sent.')">Reset Password</button>
+                </div>
+                <div class="usr-signin-row" style="border-bottom:none">
+                  <div>
+                    <div class="usr-signin-label">Two-Factor Authentication</div>
+                    <div class="usr-signin-value bm-text-muted">Secure your account with 2FA</div>
+                  </div>
+                  <span class="bm-badge bm-badge-success bm-text-micro-badge">Enabled</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Connected Accounts Card -->
+            <div class="bm-card">
+              <div class="usr-card-header">
+                <h3 class="usr-card-title">Connected Accounts</h3>
+              </div>
+              <div class="usr-card-body">
+                <div class="usr-connected-row">
+                  <div class="usr-connected-icon" style="background:color-mix(in srgb, var(--primary) 12%, transparent);color:var(--primary)">
+                    <i class="ph ph-code"></i>
+                  </div>
+                  <div class="usr-connected-info">
+                    <div class="usr-signin-label">GitHub</div>
+                    <div class="usr-signin-value bm-text-muted">github.com/maxsmith</div>
+                  </div>
+                  <span class="bm-badge bm-badge-success bm-text-micro-badge">Connected</span>
+                </div>
+                <div class="usr-connected-row">
+                  <div class="usr-connected-icon" style="background:color-mix(in srgb, var(--info) 12%, transparent);color:var(--info)">
+                    <i class="ph ph-cloud"></i>
+                  </div>
+                  <div class="usr-connected-info">
+                    <div class="usr-signin-label">Google</div>
+                    <div class="usr-signin-value bm-text-muted">max.smith@gmail.com</div>
+                  </div>
+                  <span class="bm-badge bm-badge-success bm-text-micro-badge">Connected</span>
+                </div>
+                <div class="usr-connected-row" style="border-bottom:none">
+                  <div class="usr-connected-icon" style="background:color-mix(in srgb, var(--muted-foreground) 12%, transparent);color:var(--muted-foreground)">
+                    <i class="ph ph-share-network"></i>
+                  </div>
+                  <div class="usr-connected-info">
+                    <div class="usr-signin-label">Slack</div>
+                    <div class="usr-signin-value bm-text-muted">Not connected</div>
+                  </div>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm" style="font-size:0.75rem">Connect</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ TAB: Settings ═══ -->
+          <div class="usr-tab-content" id="usrtab-settings">
+            <div class="bm-card" style="margin-bottom:1.5rem">
+              <div class="usr-card-header">
+                <h3 class="usr-card-title">Profile Settings</h3>
+              </div>
+              <div class="usr-card-body">
+                <div class="usr-settings-form">
+                  <div class="usr-form-grid">
+                    <div class="bm-form-group">
+                      <label class="bm-label">First Name</label>
+                      <input class="bm-input" value="Max">
+                    </div>
+                    <div class="bm-form-group">
+                      <label class="bm-label">Last Name</label>
+                      <input class="bm-input" value="Smith">
+                    </div>
+                  </div>
+                  <div class="usr-form-grid">
+                    <div class="bm-form-group">
+                      <label class="bm-label">Phone</label>
+                      <input class="bm-input" value="+1 (555) 432-7890">
+                    </div>
+                    <div class="bm-form-group">
+                      <label class="bm-label">Company</label>
+                      <input class="bm-input" value="Acme Corporation">
+                    </div>
+                  </div>
+                  <div class="usr-form-grid">
+                    <div class="bm-form-group">
+                      <label class="bm-label">Website</label>
+                      <input class="bm-input" value="https://acmecorp.com">
+                    </div>
+                    <div class="bm-form-group">
+                      <label class="bm-label">Country</label>
+                      <select class="bm-select">
+                        <option selected>United States</option>
+                        <option>United Kingdom</option>
+                        <option>Germany</option>
+                        <option>Turkey</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="usr-form-grid">
+                    <div class="bm-form-group">
+                      <label class="bm-label">Language</label>
+                      <select class="bm-select">
+                        <option selected>English</option>
+                        <option>Turkish</option>
+                        <option>German</option>
+                      </select>
+                    </div>
+                    <div class="bm-form-group">
+                      <label class="bm-label">Timezone</label>
+                      <select class="bm-select">
+                        <option selected>UTC-8 (PST)</option>
+                        <option>UTC-5 (EST)</option>
+                        <option>UTC+0 (GMT)</option>
+                        <option>UTC+3 (Istanbul)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Communication</label>
+                    <div style="display:flex;gap:1.5rem;margin-top:0.375rem">
+                      <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:var(--foreground);cursor:pointer">
+                        <input type="checkbox" checked style="accent-color:var(--primary);width:1rem;height:1rem"> Email
+                      </label>
+                      <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:var(--foreground);cursor:pointer">
+                        <input type="checkbox" checked style="accent-color:var(--primary);width:1rem;height:1rem"> Phone
+                      </label>
+                    </div>
+                  </div>
+                  <div style="display:flex;justify-content:flex-end;gap:0.75rem;margin-top:1.25rem">
+                    <button class="bm-btn bm-btn-outline bm-btn-sm">Discard</button>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Saved','Profile settings updated.')">
+                      <i class="ph ph-floppy-disk bm-text-md"></i>Save Changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Deactivate Account -->
+            <div class="bm-card" style="border:1px solid color-mix(in srgb, var(--danger) 30%, transparent)">
+              <div class="usr-card-header">
+                <h3 class="usr-card-title" style="color:var(--danger)">Deactivate Account</h3>
+              </div>
+              <div class="usr-card-body">
+                <div style="display:flex;align-items:flex-start;gap:1rem;padding:1rem;border-radius:var(--radius);background:color-mix(in srgb, var(--warning) 8%, transparent);margin-bottom:1.25rem">
+                  <i class="ph ph-warning"></i>
+                  <div>
+                    <div style="font-size:0.875rem;font-weight:600;color:var(--foreground);margin-bottom:0.25rem">You are deactivating this account</div>
+                    <div style="font-size:0.8125rem;color:var(--muted-foreground);line-height:1.5">For extra security, this requires you to confirm via email. The user will lose access to all resources immediately.</div>
+                  </div>
+                </div>
+                <label style="display:flex;align-items:center;gap:0.5rem;font-size:0.875rem;color:var(--foreground);cursor:pointer;margin-bottom:1.25rem">
+                  <input type="checkbox" id="confirmDeactivate" style="accent-color:var(--danger);width:1rem;height:1rem">
+                  I confirm account deactivation
+                </label>
+                <button class="bm-btn bm-btn-sm" style="background:var(--danger);color:white;border:none" onclick="if(!document.getElementById('confirmDeactivate').checked){App.toast.warning('Required','Please confirm deactivation first.');return}App.confirm({title:'Deactivate Account',text:'This action cannot be undone. The user will be locked out immediately.',type:'danger'})">
+                  Deactivate Account
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ TAB: Security ═══ -->
+          <div class="usr-tab-content" id="usrtab-security">
+            <div class="bm-card" style="margin-bottom:1.5rem">
+              <div class="usr-card-header">
+                <h3 class="usr-card-title">Two-Factor Authentication</h3>
+              </div>
+              <div class="usr-card-body">
+                <div style="display:flex;align-items:flex-start;gap:1rem;padding:1rem;border-radius:var(--radius);background:color-mix(in srgb, var(--success) 8%, transparent);margin-bottom:1.25rem">
+                  <i class="ph ph-shield"></i>
+                  <div>
+                    <div style="font-size:0.875rem;font-weight:600;color:var(--foreground);margin-bottom:0.25rem">Two-factor authentication is enabled</div>
+                    <div style="font-size:0.8125rem;color:var(--muted-foreground);line-height:1.5">This account is protected with an authenticator app. A verification code is required on each login.</div>
+                  </div>
+                </div>
+                <div class="usr-security-grid">
+                  <div class="usr-security-card">
+                    <i class="ph ph-lock"></i>
+                    <div>
+                      <div style="font-weight:600;font-size:0.875rem">Authenticator App</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">Google Authenticator configured on Mar 25, 2026</div>
+                    </div>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm" style="margin-left:auto">Change</button>
+                  </div>
+                  <div class="usr-security-card">
+                    <i class="ph ph-chat-text"></i>
+                    <div>
+                      <div style="font-weight:600;font-size:0.875rem">SMS Recovery</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">Phone number ending in ****7890</div>
+                    </div>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm" style="margin-left:auto">Edit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bm-card" style="margin-bottom:1.5rem">
+              <div class="usr-card-header">
+                <h3 class="usr-card-title">Password</h3>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.info('Email Sent','Password reset email sent.')">
+                  <i class="ph ph-lock-key bm-text-md"></i>Reset Password
+                </button>
+              </div>
+              <div class="usr-card-body">
+                <div class="usr-detail-row">
+                  <label class="usr-detail-label">Password Strength</label>
+                  <div class="usr-detail-value" style="display:flex;align-items:center;gap:0.75rem">
+                    <div class="usr-strength-bar">
+                      <div class="usr-strength-fill" style="width:85%;background:var(--success)"></div>
+                    </div>
+                    <span class="bm-badge bm-badge-success bm-text-micro-badge">Strong</span>
+                  </div>
+                </div>
+                <div class="usr-detail-row">
+                  <label class="usr-detail-label">Last Changed</label>
+                  <div class="usr-detail-value">Mar 20, 2026 — 18 days ago</div>
+                </div>
+                <div class="usr-detail-row" style="border-bottom:none">
+                  <label class="usr-detail-label">Password Expiry</label>
+                  <div class="usr-detail-value">Never (no expiry policy set)</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bm-card">
+              <div class="usr-card-header">
+                <h3 class="usr-card-title">Email Notifications</h3>
+              </div>
+              <div class="usr-card-body">
+                <div class="usr-notif-list">
+                  <div class="usr-notif-item">
+                    <div>
+                      <div style="font-weight:500;font-size:0.875rem">Unusual activity alerts</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">Get notified when login from a new device or location</div>
+                    </div>
+                    <label class="usr-toggle"><input type="checkbox" checked><span class="usr-toggle-slider"></span></label>
+                  </div>
+                  <div class="usr-notif-item">
+                    <div>
+                      <div style="font-weight:500;font-size:0.875rem">Password change confirmation</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">Receive email when password is changed</div>
+                    </div>
+                    <label class="usr-toggle"><input type="checkbox" checked><span class="usr-toggle-slider"></span></label>
+                  </div>
+                  <div class="usr-notif-item" style="border-bottom:none">
+                    <div>
+                      <div style="font-weight:500;font-size:0.875rem">Weekly security digest</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">Summary of account security events</div>
+                    </div>
+                    <label class="usr-toggle"><input type="checkbox"><span class="usr-toggle-slider"></span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ TAB: Activity ═══ -->
+          <div class="usr-tab-content" id="usrtab-activity">
+            <div class="bm-card">
+              <div class="usr-card-header">
+                <h3 class="usr-card-title">Recent Activity</h3>
+                <select class="bm-select" style="width:auto;font-size:0.8125rem;padding:0.375rem 0.75rem">
+                  <option>Last 30 days</option>
+                  <option>Last 7 days</option>
+                  <option>Last 90 days</option>
+                </select>
+              </div>
+              <div class="usr-card-body">
+                <div class="usr-activity-list">
+                  <div class="usr-activity-item">
+                    <div class="usr-activity-icon" style="background:color-mix(in srgb, var(--primary) 12%, transparent);color:var(--primary)">
+                      <i class="ph ph-sign-in"></i>
+                    </div>
+                    <div class="usr-activity-content">
+                      <div style="font-size:0.875rem;font-weight:500;color:var(--foreground)">Signed in from Chrome on Windows</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">IP: 192.168.1.*** — San Francisco, US</div>
+                    </div>
+                    <div class="usr-activity-time">2 hours ago</div>
+                  </div>
+                  <div class="usr-activity-item">
+                    <div class="usr-activity-icon" style="background:color-mix(in srgb, var(--success) 12%, transparent);color:var(--success)">
+                      <i class="ph ph-gear"></i>
+                    </div>
+                    <div class="usr-activity-content">
+                      <div style="font-size:0.875rem;font-weight:500;color:var(--foreground)">Updated profile settings</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">Changed timezone from UTC-5 to UTC-8</div>
+                    </div>
+                    <div class="usr-activity-time">Yesterday, 15:42</div>
+                  </div>
+                  <div class="usr-activity-item">
+                    <div class="usr-activity-icon" style="background:color-mix(in srgb, var(--warning) 12%, transparent);color:var(--warning)">
+                      <i class="ph ph-shield"></i>
+                    </div>
+                    <div class="usr-activity-content">
+                      <div style="font-size:0.875rem;font-weight:500;color:var(--foreground)">Two-factor authentication enabled</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">Authenticator app configured successfully</div>
+                    </div>
+                    <div class="usr-activity-time">Mar 25, 10:20</div>
+                  </div>
+                  <div class="usr-activity-item">
+                    <div class="usr-activity-icon" style="background:color-mix(in srgb, var(--info) 12%, transparent);color:var(--info)">
+                      <i class="ph ph-lock"></i>
+                    </div>
+                    <div class="usr-activity-content">
+                      <div style="font-size:0.875rem;font-weight:500;color:var(--foreground)">Password changed</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">Password updated via account settings</div>
+                    </div>
+                    <div class="usr-activity-time">Mar 20, 08:30</div>
+                  </div>
+                  <div class="usr-activity-item">
+                    <div class="usr-activity-icon" style="background:color-mix(in srgb, var(--primary) 12%, transparent);color:var(--primary)">
+                      <i class="ph ph-sign-in"></i>
+                    </div>
+                    <div class="usr-activity-content">
+                      <div style="font-size:0.875rem;font-weight:500;color:var(--foreground)">Signed in from Safari on macOS</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">IP: 10.0.0.*** — New York, US</div>
+                    </div>
+                    <div class="usr-activity-time">Mar 18, 14:05</div>
+                  </div>
+                  <div class="usr-activity-item">
+                    <div class="usr-activity-icon" style="background:color-mix(in srgb, var(--danger) 12%, transparent);color:var(--danger)">
+                      <i class="ph ph-shield-slash"></i>
+                    </div>
+                    <div class="usr-activity-content">
+                      <div style="font-size:0.875rem;font-weight:500;color:var(--foreground)">Failed login attempt</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">Incorrect password — IP: 203.0.113.*** — Unknown location</div>
+                    </div>
+                    <div class="usr-activity-time">Mar 15, 03:12</div>
+                  </div>
+                  <div class="usr-activity-item">
+                    <div class="usr-activity-icon" style="background:color-mix(in srgb, var(--success) 12%, transparent);color:var(--success)">
+                      <i class="ph ph-user-plus"></i>
+                    </div>
+                    <div class="usr-activity-content">
+                      <div style="font-size:0.875rem;font-weight:500;color:var(--foreground)">Account created</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">User registered and email verified</div>
+                    </div>
+                    <div class="usr-activity-time">Jan 15, 2025</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ═══ TAB: Sessions ═══ -->
+          <div class="usr-tab-content" id="usrtab-sessions">
+            <div class="bm-card">
+              <div class="usr-card-header">
+                <h3 class="usr-card-title">Active Sessions</h3>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" style="color:var(--danger);border-color:color-mix(in srgb, var(--danger) 40%, transparent)" onclick="App.confirm({title:'Revoke All',text:'This will sign the user out of all devices except the current one.',type:'danger'})">
+                  <i class="ph ph-sign-out bm-text-md"></i>Revoke All
+                </button>
+              </div>
+              <div class="usr-card-body">
+                <div class="usr-session-table">
+                  <!-- Session 1 — current -->
+                  <div class="usr-session-row usr-session-current">
+                    <div class="usr-session-device">
+                      <i class="ph ph-monitor"></i>
+                    </div>
+                    <div class="usr-session-info">
+                      <div style="font-weight:600;font-size:0.875rem;display:flex;align-items:center;gap:0.5rem">
+                        Chrome on Windows
+                        <span class="bm-badge bm-badge-success bm-text-micro-badge">Current Session</span>
+                      </div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">192.168.1.*** — San Francisco, US</div>
+                    </div>
+                    <div class="usr-session-meta">
+                      <div style="font-size:0.8125rem;color:var(--success);font-weight:500">Active now</div>
+                    </div>
+                  </div>
+                  <!-- Session 2 -->
+                  <div class="usr-session-row">
+                    <div class="usr-session-device">
+                      <i class="ph ph-device-mobile"></i>
+                    </div>
+                    <div class="usr-session-info">
+                      <div style="font-weight:600;font-size:0.875rem">Safari on iPhone 15 Pro</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">10.0.0.*** — New York, US</div>
+                    </div>
+                    <div class="usr-session-meta">
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">2 hours ago</div>
+                      <button class="bm-btn bm-btn-outline bm-btn-sm" style="font-size:0.75rem;padding:0.25rem 0.625rem">Revoke</button>
+                    </div>
+                  </div>
+                  <!-- Session 3 -->
+                  <div class="usr-session-row">
+                    <div class="usr-session-device">
+                      <i class="ph ph-device-tablet"></i>
+                    </div>
+                    <div class="usr-session-info">
+                      <div style="font-weight:600;font-size:0.875rem">Firefox on iPad Air</div>
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">172.16.0.*** — San Francisco, US</div>
+                    </div>
+                    <div class="usr-session-meta">
+                      <div style="font-size:0.8125rem;color:var(--muted-foreground)">3 days ago</div>
+                      <button class="bm-btn bm-btn-outline bm-btn-sm" style="font-size:0.75rem;padding:0.25rem 0.625rem">Revoke</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/user-detail.js"></script>
+{% endblock %}

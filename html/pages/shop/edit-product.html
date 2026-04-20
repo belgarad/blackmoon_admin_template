@@ -1,0 +1,198 @@
+{% extends "layouts/base.html" %}
+{% set title = "Edit Product" %}
+{% set activeMenu = "shop-products" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/shop-manage.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="products.html" data-i18n="breadcrumb.products">Products</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Edit Product</span></div>
+              </nav>
+              <h1 class="bm-page-title">Edit Product</h1>
+              <p class="bm-page-subtitle">Update product details for PRD-001</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="window.location.href='products.html'">
+                <i class="ph ph-arrow-left bm-text-md"></i>Back to Products
+              </button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm bm-btn-danger" onclick="App.confirm({title:'Delete Product',text:'Are you sure you want to delete this product?',type:'danger'})">
+                <i class="ph ph-trash bm-text-md"></i>Delete
+              </button>
+            </div>
+          </div>
+
+          <div class="shop-edit-layout">
+            <!-- Main Form -->
+            <div class="shop-edit-main">
+
+              <!-- General Info -->
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">General Information</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Product Name</label>
+                  <input class="bm-input" value="Premium Wireless Headphones">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Description</label>
+                  <textarea class="bm-input" rows="4">Experience crystal-clear audio with our Premium Wireless Headphones. Featuring active noise cancellation, 30-hour battery life, and ultra-comfortable memory foam ear cushions.</textarea>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Category</label>
+                    <select class="bm-select">
+                      <option selected>Electronics</option>
+                      <option>Clothing</option>
+                      <option>Home & Garden</option>
+                      <option>Sports</option>
+                      <option>Books</option>
+                    </select>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Brand</label>
+                    <input class="bm-input" value="SoundMax">
+                  </div>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">SKU</label>
+                    <input class="bm-input" value="PRD-001">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Quantity</label>
+                    <input class="bm-input" type="number" value="142">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pricing -->
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Pricing</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Regular Price</label>
+                    <input class="bm-input" type="number" value="299.99">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Sale Price</label>
+                    <input class="bm-input" type="number" value="249.99">
+                  </div>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Tax Class</label>
+                    <select class="bm-select">
+                      <option selected>Standard</option>
+                      <option>Reduced Rate</option>
+                      <option>Zero Rate</option>
+                    </select>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Tax Rate (%)</label>
+                    <input class="bm-input" type="number" value="18">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Media -->
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Product Images</h3>
+                <div class="shop-upload-preview">
+                  <div class="shop-upload-thumb">
+                    <i class="ph ph-image"></i>
+                    <span class="bm-text-xs">headphones-front.jpg</span>
+                    <button class="bm-btn-icon-xs"><i class="ph ph-x bm-text-danger"></i></button>
+                  </div>
+                  <div class="shop-upload-thumb">
+                    <i class="ph ph-image"></i>
+                    <span class="bm-text-xs">headphones-side.jpg</span>
+                    <button class="bm-btn-icon-xs"><i class="ph ph-x bm-text-danger"></i></button>
+                  </div>
+                  <div class="shop-upload-thumb">
+                    <i class="ph ph-image"></i>
+                    <span class="bm-text-xs">headphones-box.jpg</span>
+                    <button class="bm-btn-icon-xs"><i class="ph ph-x bm-text-danger"></i></button>
+                  </div>
+                </div>
+                <div class="shop-upload-zone shop-upload-zone-sm bm-mt-md">
+                  <i class="ph ph-image-plus"></i>
+                  <span class="bm-text-sm">Add more images</span>
+                </div>
+              </div>
+
+              <!-- SEO -->
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">SEO Settings</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Meta Title</label>
+                  <input class="bm-input" value="Premium Wireless Headphones — SoundMax ANC">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Meta Description</label>
+                  <textarea class="bm-input" rows="2">Experience crystal-clear audio with active noise cancellation and 30-hour battery life.</textarea>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">URL Slug</label>
+                  <input class="bm-input" value="premium-wireless-headphones">
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="shop-edit-sidebar">
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Status</h4>
+                <select class="bm-select bm-mb-md">
+                  <option selected>Published</option>
+                  <option>Draft</option>
+                  <option>Archived</option>
+                </select>
+                <div class="bm-text-xs bm-text-muted">Last updated: Mar 28, 2026 at 14:30</div>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Product Stats</h4>
+                <div class="shop-stat-list">
+                  <div class="shop-stat-row">
+                    <span class="bm-text-sm bm-text-muted">Views</span>
+                    <span class="bm-text-sm bm-font-semibold">2,847</span>
+                  </div>
+                  <div class="shop-stat-row">
+                    <span class="bm-text-sm bm-text-muted">Orders</span>
+                    <span class="bm-text-sm bm-font-semibold">142</span>
+                  </div>
+                  <div class="shop-stat-row">
+                    <span class="bm-text-sm bm-text-muted">Revenue</span>
+                    <span class="bm-text-sm bm-font-semibold">$35,498</span>
+                  </div>
+                  <div class="shop-stat-row">
+                    <span class="bm-text-sm bm-text-muted">Rating</span>
+                    <span class="bm-text-sm bm-font-semibold">4.8 ★</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bm-flex-gap-xs" style="flex-direction:column">
+                <button class="bm-btn bm-btn-primary bm-btn-sm bm-w-full" onclick="App.toast.success('Saved','Product has been updated.')">
+                  <i class="ph ph-check bm-text-md"></i> Save Changes
+                </button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm bm-w-full">
+                  <i class="ph ph-eye bm-text-md"></i> Preview
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}

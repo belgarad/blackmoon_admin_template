@@ -1,0 +1,243 @@
+/* ================================================================
+   ADMIN TEMPLATE — Shared CSS Theme Variables
+   Palette: color_codes.md
+   ================================================================ */
+
+/* ── Palette Tokens (always available) ── */
+:root {
+  /* Blue family */
+  --color-blue:            #3598DC;
+  --color-blue-madison:    #578EBE;
+  --color-blue-chambray:   #2C3E50;
+  --color-blue-ebonyclay:  #22313F;
+  --color-blue-hoki:       #67809F;
+  --color-blue-steel:      #4B77BE;
+  --color-blue-soft:       #4C87B9;
+  --color-blue-dark:       #5E738B;
+  --color-blue-sharp:      #5C9BD1;
+  --color-blue-oleo:       #94A0B2;
+
+  /* Green family */
+  --color-green:           #32C5D2;
+  --color-green-meadow:    #1BBC9B;
+  --color-green-seagreen:  #1BA39C;
+  --color-green-turquoise: #36D7B7;
+  --color-green-haze:      #44B6AE;
+  --color-green-jungle:    #26C281;
+  --color-green-soft:      #3FABA4;
+  --color-green-dark:      #4DB3A2;
+  --color-green-sharp:     #2AB4C0;
+  --color-green-steel:     #29B4B6;
+
+  /* Grey family */
+  --color-white:           #FFFFFF;
+  --color-default:         #E1E5EC;
+  --color-dark:            #2F353B;
+  --color-grey:            #E5E5E5;
+  --color-grey-steel:      #E9EDEF;
+  --color-grey-cararra:    #FAFAFA;
+  --color-grey-gallery:    #555555;
+  --color-grey-cascade:    #95A5A6;
+  --color-grey-silver:     #BFBFBF;
+  --color-grey-salsa:      #ACB5C3;
+  --color-grey-salt:       #BFCAD1;
+  --color-grey-mint:       #525E64;
+
+  /* Red / Pink family */
+  --color-red:             #E7505A;
+  --color-red-pink:        #E08283;
+  --color-red-sunglo:      #E26A6A;
+  --color-red-intense:     #E35B5A;
+  --color-red-thunderbird: #D91E18;
+  --color-red-flamingo:    #EF4836;
+  --color-red-soft:        #D05454;
+  --color-red-haze:        #F36A5A;
+  --color-red-mint:        #E43A45;
+
+  /* Yellow / Orange family */
+  --color-yellow:          #C49F47;
+  --color-yellow-gold:     #E87E04;
+  --color-yellow-casablanca: #F2784B;
+  --color-yellow-crusta:   #F3C200;
+  --color-yellow-lemon:    #F7CA18;
+  --color-yellow-saffron:  #F4D03F;
+  --color-yellow-soft:     #C8D046;
+  --color-yellow-haze:     #C5BF66;
+  --color-yellow-mint:     #C5B96B;
+
+  /* Purple family */
+  --color-purple:          #8E44AD;
+  --color-purple-plum:     #8775A7;
+  --color-purple-medium:   #BF55EC;
+  --color-purple-studio:   #8E44AD;
+  --color-purple-wisteria: #9B59B6;
+  --color-purple-seance:   #9A12B3;
+  --color-purple-intense:  #8775A7;
+  --color-purple-sharp:    #796799;
+  --color-purple-soft:     #8877A9;
+}
+
+/* ── Light Theme (default) ── */
+:root {
+  /* Layout */
+  --sidebar-width: 280px;
+  --sidebar-width-collapse: 80px;
+  --sidebar-default-width: 280px;
+  --sidebar-transition-duration: 0.3s;
+  --sidebar-transition-timing: ease;
+  --header-height: 70px;
+
+  /* Base radius */
+  --radius: 0.5rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  /* Light theme colors — mapped from color_codes.md palette */
+  --background: #FFFFFF;               /* white             */
+  --foreground: #2F353B;               /* dark              */
+
+  --card: #FFFFFF;                     /* white             */
+  --card-foreground: #2F353B;          /* dark              */
+
+  --popover: #FFFFFF;                  /* white             */
+  --popover-foreground: #2F353B;       /* dark              */
+
+  --primary: #3598DC;                  /* blue              */
+  --primary-foreground: #FFFFFF;
+  --primary-light: rgba(53, 152, 220, 0.1);
+
+  --secondary: #E1E5EC;                /* default           */
+  --secondary-foreground: #2F353B;     /* dark              */
+
+  --muted: #E9EDEF;                    /* grey-steel        */
+  --muted-foreground: #95A5A6;         /* grey-cascade      */
+
+  --accent: #E1E5EC;                   /* default           */
+  --accent-foreground: #2F353B;        /* dark              */
+
+  --destructive: #E7505A;              /* red               */
+  --destructive-foreground: #FFFFFF;
+
+  --mono: #2F353B;                     /* dark              */
+  --mono-foreground: #FAFAFA;          /* grey-cararra      */
+
+  --border: #E1E5EC;                   /* default           */
+  --input: #E1E5EC;                    /* default           */
+  --ring: #3598DC;                     /* blue              */
+
+  /* Semantic status colors */
+  --success: #1BBC9B;                  /* green-meadow      */
+  --success-light: rgba(27, 188, 155, 0.1);
+  --warning: #E87E04;                  /* yellow-gold       */
+  --warning-light: rgba(232, 126, 4, 0.1);
+  --danger: #E7505A;                   /* red               */
+  --danger-light: rgba(231, 80, 90, 0.1);
+  --info: #4C87B9;                     /* blue-soft         */
+  --info-light: rgba(76, 135, 185, 0.1);
+
+  /* Gray scale — mapped from grey palette */
+  --gray-50:  #FAFAFA;                 /* grey-cararra      */
+  --gray-100: #E9EDEF;                 /* grey-steel        */
+  --gray-200: #E5E5E5;                 /* grey              */
+  --gray-300: #E1E5EC;                 /* default           */
+  --gray-400: #BFCAD1;                 /* grey-salt         */
+  --gray-500: #ACB5C3;                 /* grey-salsa        */
+  --gray-600: #95A5A6;                 /* grey-cascade      */
+  --gray-700: #555555;                 /* grey-gallery      */
+  --gray-800: #525E64;                 /* grey-mint         */
+  --gray-900: #2F353B;                 /* dark              */
+  --gray-950: #22313F;                 /* blue-ebonyclay    */
+}
+
+/* ── Light Grey Theme ── */
+.light-grey {
+  --background: #E9EDEF;               /* grey-steel        */
+  --foreground: #2F353B;               /* dark              */
+
+  --card: #FFFFFF;                     /* white             */
+  --card-foreground: #2F353B;          /* dark              */
+
+  --popover: #FFFFFF;                  /* white             */
+  --popover-foreground: #2F353B;       /* dark              */
+
+  --secondary: #E1E5EC;                /* default           */
+  --secondary-foreground: #2F353B;     /* dark              */
+
+  --muted: #E1E5EC;                    /* default           */
+  --muted-foreground: #95A5A6;         /* grey-cascade      */
+
+  --accent: #E1E5EC;                   /* default           */
+  --accent-foreground: #2F353B;        /* dark              */
+
+  --border: #BFCAD1;                   /* grey-salt         */
+  --input: #BFCAD1;                    /* grey-salt         */
+}
+
+/* ── Dark Theme ── */
+.dark {
+  --background: #22313F;               /* blue-ebonyclay    */
+  --foreground: #FAFAFA;               /* grey-cararra      */
+
+  --card: #2C3E50;                     /* blue-chambray     */
+  --card-foreground: #FAFAFA;          /* grey-cararra      */
+
+  --popover: #2C3E50;                  /* blue-chambray     */
+  --popover-foreground: #FAFAFA;       /* grey-cararra      */
+
+  --primary: #3598DC;                  /* blue              */
+  --primary-foreground: #FFFFFF;
+  --primary-light: rgba(53, 152, 220, 0.15);
+
+  --secondary: #2F353B;                /* dark              */
+  --secondary-foreground: #FAFAFA;     /* grey-cararra      */
+
+  --muted: #2F353B;                    /* dark              */
+  --muted-foreground: #ACB5C3;         /* grey-salsa        */
+
+  --accent: #2C3E50;                   /* blue-chambray     */
+  --accent-foreground: #FAFAFA;        /* grey-cararra      */
+
+  --destructive: #F36A5A;              /* red-haze          */
+  --destructive-foreground: #FFFFFF;
+
+  --mono: #FAFAFA;                     /* grey-cararra      */
+  --mono-foreground: #2F353B;          /* dark              */
+
+  --border: #2F353B;                   /* dark              */
+  --input: #2F353B;                    /* dark              */
+  --ring: #3598DC;                     /* blue              */
+
+  /* Semantic status colors (brighter variants for dark bg) */
+  --success: #36D7B7;                  /* green-turquoise   */
+  --success-light: rgba(54, 215, 183, 0.15);
+  --warning: #F7CA18;                  /* yellow-lemon      */
+  --warning-light: rgba(247, 202, 24, 0.15);
+  --danger: #F36A5A;                   /* red-haze          */
+  --danger-light: rgba(243, 106, 90, 0.15);
+  --info: #5C9BD1;                     /* blue-sharp        */
+  --info-light: rgba(92, 155, 209, 0.15);
+
+  /* Gray scale — inverted for dark mode */
+  --gray-50:  #22313F;                 /* blue-ebonyclay    */
+  --gray-100: #2F353B;                 /* dark              */
+  --gray-200: #525E64;                 /* grey-mint         */
+  --gray-300: #555555;                 /* grey-gallery      */
+  --gray-400: #95A5A6;                 /* grey-cascade      */
+  --gray-500: #ACB5C3;                 /* grey-salsa        */
+  --gray-600: #BFCAD1;                 /* grey-salt         */
+  --gray-700: #E1E5EC;                 /* default           */
+  --gray-800: #E5E5E5;                 /* grey              */
+  --gray-900: #E9EDEF;                 /* grey-steel        */
+  --gray-950: #FAFAFA;                 /* grey-cararra      */
+}

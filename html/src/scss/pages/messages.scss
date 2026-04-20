@@ -1,0 +1,648 @@
+/* ================================================================
+   MESSAGES PAGE — Modern 3-Panel Layout
+   ================================================================ */
+
+/* ── Main Layout Shell ── */
+.msg-layout {
+  display: flex;
+  height: calc(100vh - 140px);
+  min-height: 500px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--card);
+}
+
+/* ── Left: Folder Nav ── */
+.msg-folders {
+  width: 220px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  background: var(--card);
+}
+.msg-folders-header {
+  padding: 1rem 1rem 0.75rem;
+}
+.msg-compose-btn {
+  width: 100%;
+  justify-content: center;
+  gap: 0.375rem;
+}
+.msg-folder-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0.5rem;
+  gap: 0.125rem;
+}
+.msg-folder {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  transition: background 150ms, color 150ms;
+}
+.msg-folder:hover {
+  background: var(--accent);
+  color: var(--foreground);
+}
+.msg-folder.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+.msg-folder .ph {
+  font-size: 1.125rem;
+}
+.msg-folder-label { flex: 1; text-align: left; }
+.msg-folder-count {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  background: var(--primary);
+  color: white;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+.msg-folder-count.warn {
+  background: var(--warning);
+}
+
+/* Labels */
+.msg-folder-labels {
+  padding: 1rem 1.25rem 0.5rem;
+  margin-top: auto;
+}
+.msg-folder-labels-title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  margin-bottom: 0.5rem;
+}
+.msg-label-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+.msg-label-item:hover { color: var(--foreground); }
+.msg-label-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Storage */
+.msg-folder-storage {
+  padding: 0.75rem 1.25rem 1rem;
+}
+.msg-storage-bar {
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.375rem;
+}
+.msg-storage-fill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: width 300ms;
+}
+.msg-storage-text {
+  font-size: 0.6875rem;
+  color: var(--muted-foreground);
+}
+
+/* ── Middle: Message List Panel ── */
+.msg-list-panel {
+  width: 380px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* List Toolbar */
+.msg-list-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.msg-list-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.msg-list-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+.msg-check-all {
+  width: 0.9375rem;
+  height: 0.9375rem;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+.msg-bulk-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms;
+}
+.msg-bulk-actions.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.msg-bulk-count {
+  font-size: 0.6875rem;
+  color: var(--muted-foreground);
+  margin-left: 0.125rem;
+}
+.msg-search-wrap {
+  position: relative;
+}
+.msg-search-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  pointer-events: none;
+}
+.msg-search-input {
+  padding-left: 2rem !important;
+  width: 160px;
+  font-size: 0.75rem;
+  height: 2rem;
+}
+
+/* Folder content areas */
+.msg-folder-content {
+  display: none;
+  flex: 1;
+  overflow-y: auto;
+}
+.msg-folder-content.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Message list */
+.msg-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+.msg-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 150ms, opacity 200ms;
+}
+.msg-item:hover {
+  background: var(--accent);
+}
+.msg-item:last-child {
+  border-bottom: none;
+}
+.msg-item.msg-active {
+  background: var(--primary-light);
+}
+.msg-item.unread {
+  background: color-mix(in srgb, var(--primary) 6%, var(--card));
+}
+.msg-item.unread.msg-active {
+  background: var(--primary-light);
+}
+.msg-item.unread .msg-sender {
+  font-weight: 700;
+}
+.msg-item.unread .msg-subject {
+  font-weight: 600;
+  color: var(--foreground);
+}
+.msg-item.msg-draft {
+  border-left: 3px solid var(--warning);
+}
+.msg-check {
+  width: 0.875rem;
+  height: 0.875rem;
+  cursor: pointer;
+  accent-color: var(--primary);
+  flex-shrink: 0;
+}
+
+/* Star */
+.msg-star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+  opacity: 0.35;
+  transition: color 150ms, opacity 150ms;
+}
+.msg-star:hover {
+  opacity: 1;
+  color: var(--warning);
+}
+.msg-star.starred {
+  opacity: 1;
+  color: var(--warning);
+}
+.msg-star.starred .ph {
+}
+.msg-star .ph {
+  font-size: 1rem;
+}
+
+/* Meta */
+.msg-meta {
+  flex: 1;
+  min-width: 0;
+}
+.msg-top-row {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+.msg-sender {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.msg-subject {
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--foreground);
+  margin-top: 0.0625rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.msg-preview {
+  font-size: 0.6875rem;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.0625rem;
+}
+
+/* End column */
+.msg-end {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+.msg-time {
+  font-size: 0.625rem;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+.msg-attach-icon {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
+
+/* Empty state */
+.msg-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: var(--muted-foreground);
+  text-align: center;
+  flex: 1;
+}
+.msg-empty-state .ph {
+  font-size: 2.5rem;
+  opacity: 0.3;
+  margin-bottom: 0.5rem;
+}
+.msg-empty-state p {
+  font-size: 0.8125rem;
+}
+
+/* ── Right: Detail / Compose Panel ── */
+.msg-detail-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* Detail: Empty state */
+.msg-detail-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted-foreground);
+  text-align: center;
+  gap: 0.5rem;
+  padding: 2rem;
+}
+.msg-detail-empty .ph {
+  font-size: 3.5rem;
+  opacity: 0.15;
+}
+.msg-detail-empty h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--foreground);
+  opacity: 0.6;
+  margin: 0;
+}
+.msg-detail-empty p {
+  font-size: 0.8125rem;
+  margin: 0;
+}
+
+/* Detail: Header bar */
+.msg-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.625rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.msg-detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+/* Detail: Subject */
+.msg-detail-subject {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--foreground);
+  padding: 1.25rem 1.5rem 0.5rem;
+  line-height: 1.3;
+}
+
+/* Detail: Sender row */
+.msg-detail-sender-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.msg-detail-sender-info {
+  flex: 1;
+  min-width: 0;
+}
+.msg-detail-sender-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+.msg-detail-sender-time {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-left: 0.5rem;
+}
+
+/* Detail: Body */
+.msg-detail-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--foreground);
+}
+.msg-detail-body p {
+  margin: 0 0 0.5rem;
+}
+.msg-detail-body p:empty {
+  height: 0.75rem;
+}
+
+/* Detail: Attachments */
+.msg-detail-attachments {
+  padding: 0 1.5rem 1rem;
+  flex-shrink: 0;
+}
+.msg-detail-attach-title {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  margin-bottom: 0.5rem;
+}
+.msg-detail-attach-title .ph {
+  font-size: 1rem;
+}
+.msg-detail-attach-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.msg-detail-attach-file {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 0.75rem;
+  color: var(--foreground);
+  background: var(--accent);
+  cursor: pointer;
+  transition: border-color 150ms;
+}
+.msg-detail-attach-file:hover {
+  border-color: var(--primary);
+}
+.msg-detail-attach-file .ph {
+  font-size: 1rem;
+  color: var(--primary);
+}
+.msg-attach-size {
+  color: var(--muted-foreground);
+  font-size: 0.6875rem;
+}
+
+/* Detail: Reply bar */
+.msg-detail-reply-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Compose View ── */
+.msg-compose-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+.msg-compose-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.msg-compose-field {
+  display: flex;
+  align-items: center;
+  padding: 0 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.msg-compose-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  width: 52px;
+  flex-shrink: 0;
+}
+.msg-compose-field .bm-input {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 0.8125rem;
+  padding: 0.625rem 0;
+  background: transparent;
+}
+.msg-compose-field .bm-input:focus {
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+.msg-compose-editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.msg-compose-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0.375rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.msg-toolbar-divider {
+  width: 1px;
+  height: 1.125rem;
+  background: var(--border);
+  margin: 0 0.25rem;
+}
+.msg-compose-textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 200px;
+  resize: none;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 1rem 1.25rem !important;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  background: transparent;
+}
+.msg-compose-textarea:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+.msg-compose-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.msg-compose-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Responsive ── */
+
+/* Tablet: hide folders sidebar */
+@media (max-width: 1024px) {
+  .msg-folders { display: none; }
+  .msg-list-panel { width: 320px; }
+}
+
+/* Mobile: show list or detail, not both */
+@media (max-width: 768px) {
+  .msg-layout { height: calc(100vh - 100px); }
+  .msg-list-panel {
+    width: 100%;
+    flex-shrink: 1;
+  }
+  .msg-detail-panel {
+    display: none;
+  }
+  .msg-layout.msg-detail-open .msg-list-panel {
+    display: none;
+  }
+  .msg-layout.msg-detail-open .msg-detail-panel {
+    display: flex;
+  }
+  .msg-search-input { width: 120px; }
+
+  /* Show back button only on mobile */
+  #msgDetailBack { display: inline-flex; }
+}
+
+/* Desktop: hide back button */
+@media (min-width: 769px) {
+  #msgDetailBack { display: none; }
+}

@@ -1,0 +1,128 @@
+/* ================================================================
+   MAIL — Compose & Read
+   ================================================================ */
+
+/* Layout */
+.mail-compose-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 1023px) {
+  .mail-compose-layout {
+    grid-template-columns: 1fr;
+  }
+  .mail-sidebar {
+    display: none;
+  }
+}
+
+/* Sidebar Nav */
+.mail-sidebar {
+  position: sticky;
+  top: calc(var(--header-h, 64px) + 1rem);
+}
+
+.mail-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.mail-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.mail-nav-item:hover {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+.mail-nav-item.active {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.mail-nav-item .ph {
+  font-size: 1.125rem;
+}
+
+/* Label Dot */
+.mail-label-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Editor Toolbar */
+.mail-editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--accent);
+}
+
+.mail-toolbar-sep {
+  width: 1px;
+  height: 1.25rem;
+  background: var(--border);
+  margin: 0 0.25rem;
+}
+
+.mail-editor {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+/* Attachments */
+.mail-attachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+/* Read View */
+.mail-read-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.mail-read-body {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--foreground);
+}
+
+.mail-read-body p {
+  margin-bottom: 0.75rem;
+}
+
+.mail-read-body ul,
+.mail-read-body ol {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+}
+
+.mail-read-body li {
+  margin-bottom: 0.25rem;
+}

@@ -1,0 +1,314 @@
+{% extends "layouts/base.html" %}
+{% set title = "Create Project" %}
+{% set activeMenu = "wizard-create-project" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <!-- ── Page header ────────────────────────────────── -->
+          <div class="bm-flex-between-wrap-mb6">
+            <div>
+              <h1 class="bm-heading-xl-fg">Create Project</h1>
+              <nav class="bm-text-sm-muted-flex">
+                <a href="dashboard.html" class="bm-link-muted" data-i18n="breadcrumb.dashboard">Dashboard</a>
+                <i class="ph ph-caret-right bm-text-body"></i>
+                <span class="bm-text-default">Wizards</span>
+                <i class="ph ph-caret-right bm-text-body"></i>
+                <span class="bm-text-default">Create Project</span>
+              </nav>
+            </div>
+          </div>
+
+          <!-- ── Wizard Card ────────────────────────────────── -->
+          <div class="bm-card">
+            <div class="bm-card-body">
+
+              <div class="bm-stepper" data-stepper style="--step-count: 4">
+
+                <!-- Step Nav -->
+                <div class="bm-stepper-nav">
+                  <div class="bm-stepper-step active" data-stepper-step>
+                    <div class="bm-stepper-bullet">1</div>
+                    <span class="bm-stepper-step-label">Project Details</span>
+                    <span class="bm-stepper-step-desc">Basic info</span>
+                  </div>
+                  <div class="bm-stepper-line" data-stepper-line></div>
+                  <div class="bm-stepper-step" data-stepper-step>
+                    <div class="bm-stepper-bullet">2</div>
+                    <span class="bm-stepper-step-label">Team</span>
+                    <span class="bm-stepper-step-desc">Assign members</span>
+                  </div>
+                  <div class="bm-stepper-line" data-stepper-line></div>
+                  <div class="bm-stepper-step" data-stepper-step>
+                    <div class="bm-stepper-bullet">3</div>
+                    <span class="bm-stepper-step-label">Goals & Budget</span>
+                    <span class="bm-stepper-step-desc">Set targets</span>
+                  </div>
+                  <div class="bm-stepper-line" data-stepper-line></div>
+                  <div class="bm-stepper-step" data-stepper-step>
+                    <div class="bm-stepper-bullet">4</div>
+                    <span class="bm-stepper-step-label">Review</span>
+                    <span class="bm-stepper-step-desc">Confirm & create</span>
+                  </div>
+                </div>
+
+                <!-- Step Content -->
+                <div class="bm-stepper-content">
+
+                  <!-- ── Panel 1: Project Details ────────────── -->
+                  <div class="bm-stepper-panel active" data-stepper-panel>
+                    <h3 class="bm-text-lg-semibold-fg bm-mb-md">Project Details</h3>
+                    <p class="bm-text-sm-muted bm-mb-lg">Provide the basic information about your project.</p>
+
+                    <div class="bm-grid-2col-narrow">
+                      <div class="bm-grid-span-2">
+                        <label class="bm-label">Project Name <span class="bm-text-danger">*</span></label>
+                        <input class="bm-input" type="text" placeholder="e.g. Website Redesign" />
+                      </div>
+                      <div class="bm-grid-span-2">
+                        <label class="bm-label">Description</label>
+                        <textarea class="bm-input bm-resize-v" rows="3" placeholder="Briefly describe the project scope and objectives"></textarea>
+                      </div>
+                      <div>
+                        <label class="bm-label">Category</label>
+                        <select class="bm-select">
+                          <option value="">Select category</option>
+                          <option>Web Development</option>
+                          <option>Mobile App</option>
+                          <option>Design</option>
+                          <option>Marketing</option>
+                          <option>Infrastructure</option>
+                          <option>Data & Analytics</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="bm-label">Priority</label>
+                        <select class="bm-select">
+                          <option value="">Select priority</option>
+                          <option>Critical</option>
+                          <option>High</option>
+                          <option>Medium</option>
+                          <option>Low</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="bm-label">Start Date</label>
+                        <input class="bm-input" type="date" />
+                      </div>
+                      <div>
+                        <label class="bm-label">Deadline</label>
+                        <input class="bm-input" type="date" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ── Panel 2: Team ───────────────────────── -->
+                  <div class="bm-stepper-panel" data-stepper-panel>
+                    <h3 class="bm-text-lg-semibold-fg bm-mb-md">Team Members</h3>
+                    <p class="bm-text-sm-muted bm-mb-lg">Select the team members who will work on this project.</p>
+
+                    <div class="wizard-team-search bm-mb-lg">
+                      <i class="ph ph-magnifying-glass bm-text-md bm-text-muted"></i>
+                      <input class="bm-input" type="text" placeholder="Search team members..." />
+                    </div>
+
+                    <div class="wizard-team-list">
+                      <label class="wizard-team-member">
+                        <div class="bm-flex-center-gap-sm">
+                          <div class="bm-avatar bm-avatar-sm bm-bg-primary-subtle bm-text-primary">JD</div>
+                          <div>
+                            <div class="bm-text-sm-semibold-fg">John Doe</div>
+                            <div class="bm-text-xs-muted">Full-Stack Developer</div>
+                          </div>
+                        </div>
+                        <input type="checkbox" class="bm-checkbox" checked />
+                      </label>
+                      <label class="wizard-team-member">
+                        <div class="bm-flex-center-gap-sm">
+                          <div class="bm-avatar bm-avatar-sm bm-bg-success-subtle bm-text-success">AS</div>
+                          <div>
+                            <div class="bm-text-sm-semibold-fg">Alice Smith</div>
+                            <div class="bm-text-xs-muted">UI/UX Designer</div>
+                          </div>
+                        </div>
+                        <input type="checkbox" class="bm-checkbox" checked />
+                      </label>
+                      <label class="wizard-team-member">
+                        <div class="bm-flex-center-gap-sm">
+                          <div class="bm-avatar bm-avatar-sm bm-bg-warning-subtle bm-text-warning">BJ</div>
+                          <div>
+                            <div class="bm-text-sm-semibold-fg">Bob Johnson</div>
+                            <div class="bm-text-xs-muted">Backend Developer</div>
+                          </div>
+                        </div>
+                        <input type="checkbox" class="bm-checkbox" />
+                      </label>
+                      <label class="wizard-team-member">
+                        <div class="bm-flex-center-gap-sm">
+                          <div class="bm-avatar bm-avatar-sm bm-bg-info-subtle bm-text-info">CW</div>
+                          <div>
+                            <div class="bm-text-sm-semibold-fg">Carol Wilson</div>
+                            <div class="bm-text-xs-muted">Project Manager</div>
+                          </div>
+                        </div>
+                        <input type="checkbox" class="bm-checkbox" checked />
+                      </label>
+                      <label class="wizard-team-member">
+                        <div class="bm-flex-center-gap-sm">
+                          <div class="bm-avatar bm-avatar-sm bm-bg-danger-subtle bm-text-danger">DL</div>
+                          <div>
+                            <div class="bm-text-sm-semibold-fg">David Lee</div>
+                            <div class="bm-text-xs-muted">DevOps Engineer</div>
+                          </div>
+                        </div>
+                        <input type="checkbox" class="bm-checkbox" />
+                      </label>
+                      <label class="wizard-team-member">
+                        <div class="bm-flex-center-gap-sm">
+                          <div class="bm-avatar bm-avatar-sm bm-bg-primary-subtle bm-text-primary">EM</div>
+                          <div>
+                            <div class="bm-text-sm-semibold-fg">Emily Martinez</div>
+                            <div class="bm-text-xs-muted">QA Engineer</div>
+                          </div>
+                        </div>
+                        <input type="checkbox" class="bm-checkbox" />
+                      </label>
+                    </div>
+
+                    <div class="bm-flex-between bm-mt-md">
+                      <span class="bm-text-sm-muted"><strong>3</strong> members selected</span>
+                    </div>
+                  </div>
+
+                  <!-- ── Panel 3: Goals & Budget ─────────────── -->
+                  <div class="bm-stepper-panel" data-stepper-panel>
+                    <h3 class="bm-text-lg-semibold-fg bm-mb-md">Goals & Budget</h3>
+                    <p class="bm-text-sm-muted bm-mb-lg">Define the project targets and budget allocation.</p>
+
+                    <div class="bm-grid-2col-narrow">
+                      <div class="bm-grid-span-2">
+                        <label class="bm-label">Project Goals <span class="bm-text-danger">*</span></label>
+                        <textarea class="bm-input bm-resize-v" rows="3" placeholder="Describe the key milestones and deliverables"></textarea>
+                      </div>
+                      <div>
+                        <label class="bm-label">Estimated Budget</label>
+                        <input class="bm-input" type="text" placeholder="e.g. $50,000" />
+                      </div>
+                      <div>
+                        <label class="bm-label">Currency</label>
+                        <select class="bm-select">
+                          <option>USD ($)</option>
+                          <option>EUR (€)</option>
+                          <option>GBP (£)</option>
+                          <option>TRY (₺)</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <h4 class="bm-text-sm-semibold-fg bm-mt-xl bm-mb-md">Key Milestones</h4>
+                    <div class="wizard-milestone-list">
+                      <div class="wizard-milestone-row">
+                        <i class="ph ph-flag bm-text-md bm-text-primary"></i>
+                        <input class="bm-input bm-flex-1" type="text" placeholder="Milestone name" value="Discovery & Research" />
+                        <input class="bm-input wizard-milestone-date" type="date" />
+                      </div>
+                      <div class="wizard-milestone-row">
+                        <i class="ph ph-flag bm-text-md bm-text-primary"></i>
+                        <input class="bm-input bm-flex-1" type="text" placeholder="Milestone name" value="Design & Prototype" />
+                        <input class="bm-input wizard-milestone-date" type="date" />
+                      </div>
+                      <div class="wizard-milestone-row">
+                        <i class="ph ph-flag bm-text-md bm-text-primary"></i>
+                        <input class="bm-input bm-flex-1" type="text" placeholder="Milestone name" value="Development" />
+                        <input class="bm-input wizard-milestone-date" type="date" />
+                      </div>
+                      <div class="wizard-milestone-row">
+                        <i class="ph ph-flag bm-text-md bm-text-primary"></i>
+                        <input class="bm-input bm-flex-1" type="text" placeholder="Milestone name" value="Testing & Launch" />
+                        <input class="bm-input wizard-milestone-date" type="date" />
+                      </div>
+                    </div>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm bm-mt-md" type="button">
+                      <i class="ph ph-plus bm-text-md"></i> Add Milestone
+                    </button>
+                  </div>
+
+                  <!-- ── Panel 4: Review ─────────────────────── -->
+                  <div class="bm-stepper-panel" data-stepper-panel>
+                    <div class="wizard-confirm-wrap">
+                      <div class="wizard-confirm-icon bm-bg-primary-subtle">
+                        <i class="ph ph-rocket-launch bm-text-primary"></i>
+                      </div>
+                      <h3 class="bm-text-lg-semibold-fg bm-mb-sm">Ready to Launch!</h3>
+                      <p class="bm-text-sm-muted bm-mb-lg">Review the project details below.</p>
+
+                      <div class="wizard-summary-card">
+                          <div class="wizard-summary-grid">
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Project Name</span>
+                              <span class="wizard-summary-value">Website Redesign</span>
+                            </div>
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Category</span>
+                              <span class="wizard-summary-value">Web Development</span>
+                            </div>
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Priority</span>
+                              <span class="wizard-summary-value"><span class="bm-badge bm-badge-warning">High</span></span>
+                            </div>
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Team Members</span>
+                              <span class="wizard-summary-value">
+                                <div class="bm-avatar-group">
+                                  <div class="bm-avatar bm-avatar-xs bm-bg-primary-subtle bm-text-primary">JD</div>
+                                  <div class="bm-avatar bm-avatar-xs bm-bg-success-subtle bm-text-success">AS</div>
+                                  <div class="bm-avatar bm-avatar-xs bm-bg-info-subtle bm-text-info">CW</div>
+                                </div>
+                              </span>
+                            </div>
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Budget</span>
+                              <span class="wizard-summary-value">$50,000 USD</span>
+                            </div>
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Milestones</span>
+                              <span class="wizard-summary-value">4 milestones defined</span>
+                            </div>
+                          </div>
+                      </div>
+
+                      <label class="bm-flex-center-gap-xs bm-mt-lg">
+                        <input type="checkbox" class="bm-checkbox" />
+                        <span class="bm-text-sm-muted">I confirm these details and want to create the project</span>
+                      </label>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Step Actions -->
+                <div class="bm-stepper-actions">
+                  <button class="bm-btn bm-btn-outline" data-stepper-prev>
+                    <i class="ph ph-arrow-left bm-text-md"></i> Back
+                  </button>
+                  <div class="bm-flex-gap-xs">
+                    <button class="bm-btn bm-btn-primary" data-stepper-next>
+                      Continue <i class="ph ph-arrow-right bm-text-md"></i>
+                    </button>
+                    <button class="bm-btn bm-btn-success" data-stepper-submit>
+                      <i class="ph ph-check bm-text-md"></i> Create Project
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

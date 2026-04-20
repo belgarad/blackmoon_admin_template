@@ -1,0 +1,261 @@
+{% extends "layouts/base.html" %}
+{% set title = "Order Detail" %}
+{% set activeMenu = "shop-orders" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/shop-manage.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="orders.html">Orders</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">#ORD-1284</span></div>
+              </nav>
+              <h1 class="bm-page-title">Order #ORD-1284</h1>
+              <p class="bm-page-subtitle">Placed on Mar 28, 2026 at 14:32</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-printer bm-text-md"></i>Print
+              </button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-download-simple bm-text-md"></i>Invoice PDF
+              </button>
+            </div>
+          </div>
+
+          <div class="shop-order-layout">
+            <!-- Main content -->
+            <div class="shop-order-main">
+
+              <!-- Status Timeline -->
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Order Status</h3>
+                <div class="shop-order-status-bar">
+                  <div class="shop-status-step completed">
+                    <div class="shop-status-dot"><i class="ph ph-check"></i></div>
+                    <div class="shop-status-label">Placed</div>
+                    <div class="bm-text-xs bm-text-muted">Mar 28, 14:32</div>
+                  </div>
+                  <div class="shop-status-line completed"></div>
+                  <div class="shop-status-step completed">
+                    <div class="shop-status-dot"><i class="ph ph-check"></i></div>
+                    <div class="shop-status-label">Confirmed</div>
+                    <div class="bm-text-xs bm-text-muted">Mar 28, 14:35</div>
+                  </div>
+                  <div class="shop-status-line active"></div>
+                  <div class="shop-status-step active">
+                    <div class="shop-status-dot"><i class="ph ph-arrows-clockwise"></i></div>
+                    <div class="shop-status-label">Processing</div>
+                    <div class="bm-text-xs bm-text-muted">In progress</div>
+                  </div>
+                  <div class="shop-status-line"></div>
+                  <div class="shop-status-step">
+                    <div class="shop-status-dot"><i class="ph ph-truck"></i></div>
+                    <div class="shop-status-label">Shipped</div>
+                    <div class="bm-text-xs bm-text-muted">Pending</div>
+                  </div>
+                  <div class="shop-status-line"></div>
+                  <div class="shop-status-step">
+                    <div class="shop-status-dot"><i class="ph ph-package"></i></div>
+                    <div class="shop-status-label">Delivered</div>
+                    <div class="bm-text-xs bm-text-muted">Pending</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Order Items -->
+              <div class="bm-card bm-mb-md">
+                <div class="bm-p-lg bm-pb-0">
+                  <h3 class="bm-text-md bm-font-semibold bm-mb-md">Items (3)</h3>
+                </div>
+                <div class="bm-table-responsive">
+                  <table class="bm-table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">SKU</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="bm-flex-center-gap-xs">
+                            <div class="shop-item-thumb"><i class="ph ph-headphones"></i></div>
+                            <div>
+                              <div class="bm-font-medium">Premium Wireless Headphones</div>
+                              <div class="bm-text-xs bm-text-muted">Color: Black</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="bm-text-muted">PRD-001</td>
+                        <td>$249.99</td>
+                        <td>1</td>
+                        <td class="bm-font-semibold">$249.99</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="bm-flex-center-gap-xs">
+                            <div class="shop-item-thumb"><i class="ph ph-device-mobile"></i></div>
+                            <div>
+                              <div class="bm-font-medium">Phone Case — Ultra Slim</div>
+                              <div class="bm-text-xs bm-text-muted">Color: Navy</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="bm-text-muted">PRD-045</td>
+                        <td>$29.99</td>
+                        <td>2</td>
+                        <td class="bm-font-semibold">$59.98</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="bm-flex-center-gap-xs">
+                            <div class="shop-item-thumb"><i class="ph ph-cable"></i></div>
+                            <div>
+                              <div class="bm-font-medium">USB-C Charging Cable (2m)</div>
+                              <div class="bm-text-xs bm-text-muted">White</div>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="bm-text-muted">PRD-102</td>
+                        <td>$14.99</td>
+                        <td>1</td>
+                        <td class="bm-font-semibold">$14.99</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="bm-p-lg" style="border-top:1px solid var(--border)">
+                  <div class="shop-order-totals">
+                    <div class="shop-total-row">
+                      <span>Subtotal</span>
+                      <span>$324.96</span>
+                    </div>
+                    <div class="shop-total-row">
+                      <span>Shipping</span>
+                      <span>$12.99</span>
+                    </div>
+                    <div class="shop-total-row">
+                      <span>Tax (18%)</span>
+                      <span>$58.49</span>
+                    </div>
+                    <div class="shop-total-row">
+                      <span>Discount</span>
+                      <span class="bm-text-success">-$10.00</span>
+                    </div>
+                    <div class="shop-total-row shop-total-grand">
+                      <span>Grand Total</span>
+                      <span>$386.44</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity Log -->
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Activity Log</h3>
+                <div class="proj-timeline">
+                  <div class="proj-timeline-item">
+                    <div class="proj-timeline-dot bm-bg-warning"></div>
+                    <div>
+                      <div class="bm-text-sm bm-font-medium">Order is being processed</div>
+                      <div class="bm-text-xs bm-text-muted">Warehouse team has picked the items — Mar 28, 15:10</div>
+                    </div>
+                  </div>
+                  <div class="proj-timeline-item">
+                    <div class="proj-timeline-dot bm-bg-success"></div>
+                    <div>
+                      <div class="bm-text-sm bm-font-medium">Payment confirmed</div>
+                      <div class="bm-text-xs bm-text-muted">Visa ending in 4242 charged $386.44 — Mar 28, 14:35</div>
+                    </div>
+                  </div>
+                  <div class="proj-timeline-item">
+                    <div class="proj-timeline-dot bm-bg-primary"></div>
+                    <div>
+                      <div class="bm-text-sm bm-font-medium">Order placed</div>
+                      <div class="bm-text-xs bm-text-muted">Customer completed checkout — Mar 28, 14:32</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="shop-order-sidebar">
+              <!-- Customer Info -->
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Customer</h4>
+                <div class="bm-flex-center-gap-sm bm-mb-md">
+                  <div class="bm-avatar bm-avatar-md" style="background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary)">JD</div>
+                  <div>
+                    <div class="bm-font-medium">John Doe</div>
+                    <div class="bm-text-xs bm-text-muted">john.doe@email.com</div>
+                  </div>
+                </div>
+                <div class="shop-stat-list">
+                  <div class="shop-stat-row">
+                    <span class="bm-text-sm bm-text-muted">Phone</span>
+                    <span class="bm-text-sm">+1 555-0123</span>
+                  </div>
+                  <div class="shop-stat-row">
+                    <span class="bm-text-sm bm-text-muted">Orders</span>
+                    <span class="bm-text-sm bm-font-semibold">12</span>
+                  </div>
+                  <div class="shop-stat-row">
+                    <span class="bm-text-sm bm-text-muted">Spent</span>
+                    <span class="bm-text-sm bm-font-semibold">$3,420</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shipping -->
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-sm">Shipping Address</h4>
+                <div class="bm-text-sm bm-text-muted" style="line-height:1.6">
+                  John Doe<br>
+                  123 Main Street, Apt 4B<br>
+                  New York, NY 10001<br>
+                  United States
+                </div>
+              </div>
+
+              <!-- Payment -->
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-sm">Payment Method</h4>
+                <div class="bm-flex-center-gap-xs">
+                  <i class="ph ph-credit-card"></i>
+                  <div>
+                    <div class="bm-text-sm bm-font-medium">Visa •••• 4242</div>
+                    <div class="bm-text-xs bm-text-muted">Expires 08/2027</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Actions -->
+              <div class="bm-flex-gap-xs" style="flex-direction:column">
+                <button class="bm-btn bm-btn-primary bm-btn-sm bm-w-full" onclick="App.toast.success('Updated','Status updated to Shipped.')">
+                  <i class="ph ph-truck bm-text-md"></i> Mark as Shipped
+                </button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm bm-w-full" onclick="App.confirm({title:'Cancel Order',text:'This will restore stock and refund the customer.',type:'danger'})">
+                  <i class="ph ph-x-circle bm-text-md"></i> Cancel Order
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

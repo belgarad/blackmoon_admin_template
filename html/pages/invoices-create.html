@@ -1,0 +1,224 @@
+{% extends "layouts/base.html" %}
+{% set title = "Create Invoice" %}
+{% set activeMenu = "invoices" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/invoices.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="invoices.html" data-i18n="breadcrumb.invoices">Invoices</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Create Invoice</span></div>
+              </nav>
+              <h1 class="bm-page-title">Create Invoice</h1>
+              <p class="bm-page-subtitle">Generate a new invoice for your client</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-eye bm-text-md"></i>Preview
+              </button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Saved','Invoice saved as draft.')">
+                <i class="ph ph-floppy-disk bm-text-md"></i>Save Draft
+              </button>
+            </div>
+          </div>
+
+          <div class="inv-create-layout">
+            <!-- Main Form -->
+            <div class="inv-create-main">
+
+              <!-- Client & Invoice Info -->
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Invoice Details</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Invoice Number</label>
+                    <input class="bm-input" value="INV-2026-047" readonly>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Invoice Date</label>
+                    <input class="bm-input" type="date" value="2026-03-28">
+                  </div>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Due Date</label>
+                    <input class="bm-input" type="date" value="2026-04-27">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Payment Terms</label>
+                    <select class="bm-select">
+                      <option>Net 30</option>
+                      <option>Net 15</option>
+                      <option>Net 60</option>
+                      <option>Due on Receipt</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bill To -->
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Bill To</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Client Name <span class="bm-text-danger">*</span></label>
+                  <input class="bm-input" placeholder="Company or individual name">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Email</label>
+                  <input class="bm-input" type="email" placeholder="client@example.com">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Address</label>
+                  <textarea class="bm-input" rows="2" placeholder="Billing address"></textarea>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Tax ID</label>
+                    <input class="bm-input" placeholder="VAT / Tax number">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Phone</label>
+                    <input class="bm-input" placeholder="+1 555-0000">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Line Items -->
+              <div class="bm-card bm-mb-md">
+                <div class="bm-p-lg bm-pb-0">
+                  <div class="bm-flex-between-wrap bm-mb-md">
+                    <h3 class="bm-text-md bm-font-semibold">Line Items</h3>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="addInvRow()">
+                      <i class="ph ph-plus bm-text-md"></i>Add Item
+                    </button>
+                  </div>
+                </div>
+                <div class="bm-table-responsive">
+                  <table class="bm-table" id="invItemsTable">
+                    <thead>
+                      <tr>
+                        <th scope="col" style="min-width:200px">Description</th>
+                        <th scope="col" style="width:80px">Qty</th>
+                        <th scope="col" style="width:120px">Unit Price</th>
+                        <th scope="col" style="width:80px">Tax %</th>
+                        <th scope="col" style="width:120px">Total</th>
+                        <th scope="col" style="width:40px"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input class="bm-input bm-input-sm" placeholder="Item description" value="Web Design Services"></td>
+                        <td><input class="bm-input bm-input-sm" type="number" value="1" min="1"></td>
+                        <td><input class="bm-input bm-input-sm" type="number" value="2500.00" step="0.01"></td>
+                        <td><input class="bm-input bm-input-sm" type="number" value="18" min="0"></td>
+                        <td class="bm-font-semibold">$2,950.00</td>
+                        <td><button class="bm-btn-icon-xs" title="Remove"><i class="ph ph-x bm-text-danger"></i></button></td>
+                      </tr>
+                      <tr>
+                        <td><input class="bm-input bm-input-sm" placeholder="Item description" value="Hosting (Annual)"></td>
+                        <td><input class="bm-input bm-input-sm" type="number" value="1" min="1"></td>
+                        <td><input class="bm-input bm-input-sm" type="number" value="480.00" step="0.01"></td>
+                        <td><input class="bm-input bm-input-sm" type="number" value="18" min="0"></td>
+                        <td class="bm-font-semibold">$566.40</td>
+                        <td><button class="bm-btn-icon-xs" title="Remove"><i class="ph ph-x bm-text-danger"></i></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="bm-p-lg" style="border-top:1px solid var(--border)">
+                  <div class="shop-order-totals">
+                    <div class="shop-total-row">
+                      <span>Subtotal</span>
+                      <span>$2,980.00</span>
+                    </div>
+                    <div class="shop-total-row">
+                      <span>Tax</span>
+                      <span>$536.40</span>
+                    </div>
+                    <div class="shop-total-row">
+                      <span>Discount</span>
+                      <span class="bm-text-success">-$0.00</span>
+                    </div>
+                    <div class="shop-total-row shop-total-grand">
+                      <span>Total Due</span>
+                      <span>$3,516.40</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Notes -->
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Notes & Terms</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Notes</label>
+                  <textarea class="bm-input" rows="3" placeholder="Additional notes for the client…"></textarea>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Payment Instructions</label>
+                  <textarea class="bm-input" rows="2" placeholder="Bank details, payment links, etc.">Please transfer to IBAN: TR00 0000 0000 0000 0000 00. Reference: INV-2026-047</textarea>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <div class="inv-create-sidebar">
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Status</h4>
+                <select class="bm-select bm-mb-sm">
+                  <option selected>Draft</option>
+                  <option>Pending</option>
+                  <option>Sent</option>
+                </select>
+                <div class="bm-text-xs bm-text-muted">Auto-saved 2 min ago</div>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Currency</h4>
+                <select class="bm-select">
+                  <option selected>USD — US Dollar</option>
+                  <option>EUR — Euro</option>
+                  <option>GBP — British Pound</option>
+                  <option>TRY — Turkish Lira</option>
+                </select>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-sm">Discount</h4>
+                <div class="bm-flex-gap-xs">
+                  <input class="bm-input bm-input-sm" type="number" value="0" min="0" style="width:5rem">
+                  <select class="bm-select bm-select-sm" style="width:auto">
+                    <option>%</option>
+                    <option>$</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="bm-flex-gap-xs" style="flex-direction:column">
+                <button class="bm-btn bm-btn-primary bm-btn-sm bm-w-full" onclick="App.toast.success('Sent','Invoice emailed to client.')">
+                  <i class="ph ph-paper-plane-tilt bm-text-md"></i> Send Invoice
+                </button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm bm-w-full">
+                  <i class="ph ph-download-simple bm-text-md"></i> Download PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/invoices-create.js"></script>
+{% endblock %}

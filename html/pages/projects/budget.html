@@ -1,0 +1,176 @@
+{% extends "layouts/base.html" %}
+{% set title = "Project Budget" %}
+{% set activeMenu = "projects-list" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/projects.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="list.html">Projects</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="detail.html">Admin Dashboard Redesign</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Budget</span></div>
+              </nav>
+              <h1 class="bm-page-title">Budget Tracker</h1>
+              <p class="bm-page-subtitle">Track project expenses and budget allocation</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-download-simple bm-text-md"></i>Export Report
+              </button>
+            </div>
+          </div>
+
+          <!-- Budget KPIs -->
+          <div class="proj-kpi-row">
+            <div class="kpi-card">
+              <div class="kpi-label">Total Budget</div>
+              <div class="kpi-value">$48,500</div>
+              <div class="kpi-delta"><span class="bm-text-muted">Approved Jan 15</span></div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Spent</div>
+              <div class="kpi-value">$32,840</div>
+              <div class="kpi-delta up"><i class="ph ph-trend-up"></i> 67.7% used</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Remaining</div>
+              <div class="kpi-value">$15,660</div>
+              <div class="kpi-delta up"><i class="ph ph-check-circle"></i> Within budget</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Forecast</div>
+              <div class="kpi-value">$46,200</div>
+              <div class="kpi-delta up"><i class="ph ph-piggy-bank"></i> $2,300 under</div>
+            </div>
+          </div>
+
+          <!-- Budget Progress -->
+          <div class="bm-card bm-p-lg bm-mb-md">
+            <h3 class="bm-text-md bm-font-semibold bm-mb-md">Budget Utilization</h3>
+            <div class="bm-flex-between-wrap bm-mb-xs">
+              <span class="bm-text-sm bm-text-muted">$32,840 of $48,500</span>
+              <span class="bm-text-sm bm-font-semibold">67.7%</span>
+            </div>
+            <div class="bm-progress" style="height:10px"><div class="bm-progress-bar bm-progress-primary" style="width:67.7%"></div></div>
+          </div>
+
+          <!-- Chart Placeholder + Allocation -->
+          <div class="bm-grid-2col" style="gap:1.5rem;margin-bottom:1.5rem">
+            <div class="bm-card bm-p-lg">
+              <h3 class="bm-text-md bm-font-semibold bm-mb-md">Monthly Spending</h3>
+              <div class="proj-chart-placeholder">
+                <i class="ph ph-chart-bar"></i>
+                <span class="bm-text-sm bm-text-muted">Chart placeholder — integrate Chart.js</span>
+              </div>
+            </div>
+            <div class="bm-card bm-p-lg">
+              <h3 class="bm-text-md bm-font-semibold bm-mb-md">Budget Allocation</h3>
+              <div class="proj-allocation-list">
+                <div class="proj-allocation-item">
+                  <div class="bm-flex-between-wrap bm-mb-xs">
+                    <span class="bm-text-sm bm-font-medium">Development</span>
+                    <span class="bm-text-sm bm-font-semibold">$22,000</span>
+                  </div>
+                  <div class="bm-progress"><div class="bm-progress-bar bm-progress-primary" style="width:75%"></div></div>
+                  <div class="bm-text-xs bm-text-muted bm-mt-xs">$16,500 spent</div>
+                </div>
+                <div class="proj-allocation-item">
+                  <div class="bm-flex-between-wrap bm-mb-xs">
+                    <span class="bm-text-sm bm-font-medium">Design</span>
+                    <span class="bm-text-sm bm-font-semibold">$12,000</span>
+                  </div>
+                  <div class="bm-progress"><div class="bm-progress-bar bm-progress-success" style="width:85%"></div></div>
+                  <div class="bm-text-xs bm-text-muted bm-mt-xs">$10,200 spent</div>
+                </div>
+                <div class="proj-allocation-item">
+                  <div class="bm-flex-between-wrap bm-mb-xs">
+                    <span class="bm-text-sm bm-font-medium">Testing</span>
+                    <span class="bm-text-sm bm-font-semibold">$8,500</span>
+                  </div>
+                  <div class="bm-progress"><div class="bm-progress-bar bm-progress-warning" style="width:45%"></div></div>
+                  <div class="bm-text-xs bm-text-muted bm-mt-xs">$3,825 spent</div>
+                </div>
+                <div class="proj-allocation-item">
+                  <div class="bm-flex-between-wrap bm-mb-xs">
+                    <span class="bm-text-sm bm-font-medium">Infrastructure</span>
+                    <span class="bm-text-sm bm-font-semibold">$6,000</span>
+                  </div>
+                  <div class="bm-progress"><div class="bm-progress-bar bm-progress-info" style="width:38%"></div></div>
+                  <div class="bm-text-xs bm-text-muted bm-mt-xs">$2,315 spent</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transactions Table -->
+          <div class="bm-card bm-p-lg">
+            <div class="bm-flex-between-wrap bm-mb-md">
+              <h3 class="bm-text-md bm-font-semibold">Recent Transactions</h3>
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-plus bm-text-md"></i>Add Expense
+              </button>
+            </div>
+            <table class="bm-table">
+              <thead>
+                <tr>
+                  <th scope="col">Description</th>
+                  <th scope="col">Category</th>
+                  <th scope="col" data-i18n="table.date">Date</th>
+                  <th scope="col" data-i18n="table.amount">Amount</th>
+                  <th scope="col" data-i18n="table.status">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="bm-font-medium">UI Design - Phase 2</td>
+                  <td><span class="bm-badge bm-badge-primary bm-text-micro-badge">Design</span></td>
+                  <td>Mar 28, 2026</td>
+                  <td class="bm-font-semibold">$4,200</td>
+                  <td><span class="bm-badge bm-badge-success bm-text-micro-badge">Approved</span></td>
+                </tr>
+                <tr>
+                  <td class="bm-font-medium">AWS Hosting (Mar)</td>
+                  <td><span class="bm-badge bm-badge-info bm-text-micro-badge">Infrastructure</span></td>
+                  <td>Mar 25, 2026</td>
+                  <td class="bm-font-semibold">$890</td>
+                  <td><span class="bm-badge bm-badge-success bm-text-micro-badge">Approved</span></td>
+                </tr>
+                <tr>
+                  <td class="bm-font-medium">Frontend Development</td>
+                  <td><span class="bm-badge bm-badge-muted bm-text-micro-badge">Development</span></td>
+                  <td>Mar 20, 2026</td>
+                  <td class="bm-font-semibold">$6,800</td>
+                  <td><span class="bm-badge bm-badge-success bm-text-micro-badge">Approved</span></td>
+                </tr>
+                <tr>
+                  <td class="bm-font-medium">QA Testing - Sprint 4</td>
+                  <td><span class="bm-badge bm-badge-warning bm-text-micro-badge">Testing</span></td>
+                  <td>Mar 18, 2026</td>
+                  <td class="bm-font-semibold">$2,100</td>
+                  <td><span class="bm-badge bm-badge-warning bm-text-micro-badge">Pending</span></td>
+                </tr>
+                <tr>
+                  <td class="bm-font-medium">Third-party Licenses</td>
+                  <td><span class="bm-badge bm-badge-muted bm-text-micro-badge">Development</span></td>
+                  <td>Mar 15, 2026</td>
+                  <td class="bm-font-semibold">$1,450</td>
+                  <td><span class="bm-badge bm-badge-success bm-text-micro-badge">Approved</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+{% endblock %}

@@ -1,0 +1,316 @@
+{% extends "layouts/base.html" %}
+{% set title = "Roles" %}
+{% set activeMenu = "users" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/user-manage.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Breadcrumb -->
+          <nav class="bm-breadcrumb" style="margin-bottom:1.25rem">
+            <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+            <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="users.html">User Management</a><span class="bm-breadcrumb-separator">/</span></div>
+            <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Roles</span></div>
+          </nav>
+
+          <!-- Page Title Row -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;flex-wrap:wrap;gap:1rem">
+            <div>
+              <h1 class="bm-page-title" data-i18n="nav.roles" style="margin-bottom:0.25rem">Roles List</h1>
+              <p style="font-size:0.875rem;color:var(--muted-foreground);margin:0">Manage user roles and their permissions across the system</p>
+            </div>
+            <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="document.getElementById('addRoleModal').classList.add('open')">
+              <i class="ph ph-plus bm-text-md"></i>Add Role
+            </button>
+          </div>
+
+          <!-- ═══ Roles Grid ═══ -->
+          <div class="role-grid">
+
+            <!-- ── Administrator ── -->
+            <div class="bm-card role-card">
+              <div class="role-card-header">
+                <div class="role-card-icon" style="background:color-mix(in srgb, var(--primary) 12%, transparent);color:var(--primary)">
+                  <i class="ph ph-shield-check"></i>
+                </div>
+                <div class="role-card-meta">
+                  <h3 class="role-card-name">Administrator</h3>
+                  <span class="role-card-desc">Full system access</span>
+                </div>
+              </div>
+
+              <div class="role-card-body">
+                <div class="role-card-users">
+                  <div class="role-user-avatars">
+                    <div class="role-avatar" style="background:var(--primary);color:white">JS</div>
+                    <div class="role-avatar" style="background:var(--success);color:white">AK</div>
+                    <div class="role-avatar" style="background:var(--warning);color:white">MR</div>
+                  </div>
+                  <span class="role-user-count">3 Users</span>
+                </div>
+
+                <div class="role-perm-list">
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--primary)"></span>
+                    All Admin Controls
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--primary)"></span>
+                    User Management
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--primary)"></span>
+                    System Settings
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--primary)"></span>
+                    Billing &amp; Invoices
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--primary)"></span>
+                    <em style="color:var(--muted-foreground)">and 7 more...</em>
+                  </div>
+                </div>
+              </div>
+
+              <div class="role-card-footer">
+                <a href="permissions.html" class="bm-btn bm-btn-outline bm-btn-sm" style="flex:1">View Role</a>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" style="flex:1">Edit Role</button>
+              </div>
+            </div>
+
+            <!-- ── Manager ── -->
+            <div class="bm-card role-card">
+              <div class="role-card-header">
+                <div class="role-card-icon" style="background:color-mix(in srgb, var(--success) 12%, transparent);color:var(--success)">
+                  <i class="ph ph-users"></i>
+                </div>
+                <div class="role-card-meta">
+                  <h3 class="role-card-name">Manager</h3>
+                  <span class="role-card-desc">Team &amp; project management</span>
+                </div>
+              </div>
+
+              <div class="role-card-body">
+                <div class="role-card-users">
+                  <div class="role-user-avatars">
+                    <div class="role-avatar" style="background:#4B77BE;color:white">LW</div>
+                    <div class="role-avatar" style="background:#E08283;color:white">KP</div>
+                    <div class="role-avatar" style="background:#E87E04;color:white">TN</div>
+                    <div class="role-avatar" style="background:#1BA39C;color:white">DB</div>
+                    <div class="role-avatar role-avatar-more">+4</div>
+                  </div>
+                  <span class="role-user-count">8 Users</span>
+                </div>
+
+                <div class="role-perm-list">
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--success)"></span>
+                    View Dashboard
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--success)"></span>
+                    Manage Projects
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--success)"></span>
+                    Manage Team
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--success)"></span>
+                    View Reports
+                  </div>
+                  <div class="role-perm-row role-perm-denied">
+                    <span class="role-bullet" style="background:var(--border)"></span>
+                    System Settings
+                  </div>
+                </div>
+              </div>
+
+              <div class="role-card-footer">
+                <a href="permissions.html" class="bm-btn bm-btn-outline bm-btn-sm" style="flex:1">View Role</a>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" style="flex:1">Edit Role</button>
+              </div>
+            </div>
+
+            <!-- ── Editor ── -->
+            <div class="bm-card role-card">
+              <div class="role-card-header">
+                <div class="role-card-icon" style="background:color-mix(in srgb, var(--info) 12%, transparent);color:var(--info)">
+                  <i class="ph ph-note-pencil"></i>
+                </div>
+                <div class="role-card-meta">
+                  <h3 class="role-card-name">Editor</h3>
+                  <span class="role-card-desc">Content creation &amp; editing</span>
+                </div>
+              </div>
+
+              <div class="role-card-body">
+                <div class="role-card-users">
+                  <div class="role-user-avatars">
+                    <div class="role-avatar" style="background:#8775A7;color:white">CL</div>
+                    <div class="role-avatar" style="background:#32C5D2;color:white">SH</div>
+                    <div class="role-avatar" style="background:#F2784B;color:white">JP</div>
+                    <div class="role-avatar role-avatar-more">+9</div>
+                  </div>
+                  <span class="role-user-count">12 Users</span>
+                </div>
+
+                <div class="role-perm-list">
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--info)"></span>
+                    Create Content
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--info)"></span>
+                    Edit Content
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--info)"></span>
+                    Publish Content
+                  </div>
+                  <div class="role-perm-row role-perm-denied">
+                    <span class="role-bullet" style="background:var(--border)"></span>
+                    Delete Content
+                  </div>
+                  <div class="role-perm-row role-perm-denied">
+                    <span class="role-bullet" style="background:var(--border)"></span>
+                    User Management
+                  </div>
+                </div>
+              </div>
+
+              <div class="role-card-footer">
+                <a href="permissions.html" class="bm-btn bm-btn-outline bm-btn-sm" style="flex:1">View Role</a>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" style="flex:1">Edit Role</button>
+              </div>
+            </div>
+
+            <!-- ── Viewer ── -->
+            <div class="bm-card role-card">
+              <div class="role-card-header">
+                <div class="role-card-icon" style="background:color-mix(in srgb, var(--warning) 12%, transparent);color:var(--warning)">
+                  <i class="ph ph-eye"></i>
+                </div>
+                <div class="role-card-meta">
+                  <h3 class="role-card-name">Viewer</h3>
+                  <span class="role-card-desc">Read-only access</span>
+                </div>
+              </div>
+
+              <div class="role-card-body">
+                <div class="role-card-users">
+                  <div class="role-user-avatars">
+                    <div class="role-avatar" style="background:#67809F;color:white">RJ</div>
+                    <div class="role-avatar" style="background:#9B59B6;color:white">EW</div>
+                    <div class="role-avatar" style="background:#26C281;color:white">NM</div>
+                    <div class="role-avatar role-avatar-more">+21</div>
+                  </div>
+                  <span class="role-user-count">24 Users</span>
+                </div>
+
+                <div class="role-perm-list">
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--warning)"></span>
+                    View Dashboard
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--warning)"></span>
+                    View Reports
+                  </div>
+                  <div class="role-perm-row role-perm-denied">
+                    <span class="role-bullet" style="background:var(--border)"></span>
+                    Create / Edit
+                  </div>
+                  <div class="role-perm-row role-perm-denied">
+                    <span class="role-bullet" style="background:var(--border)"></span>
+                    Delete
+                  </div>
+                  <div class="role-perm-row role-perm-denied">
+                    <span class="role-bullet" style="background:var(--border)"></span>
+                    User Management
+                  </div>
+                </div>
+              </div>
+
+              <div class="role-card-footer">
+                <a href="permissions.html" class="bm-btn bm-btn-outline bm-btn-sm" style="flex:1">View Role</a>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" style="flex:1">Edit Role</button>
+              </div>
+            </div>
+
+            <!-- ── Support Agent ── -->
+            <div class="bm-card role-card">
+              <div class="role-card-header">
+                <div class="role-card-icon" style="background:color-mix(in srgb, var(--danger) 12%, transparent);color:var(--danger)">
+                  <i class="ph ph-headset"></i>
+                </div>
+                <div class="role-card-meta">
+                  <h3 class="role-card-name">Support Agent</h3>
+                  <span class="role-card-desc">Customer support access</span>
+                </div>
+              </div>
+
+              <div class="role-card-body">
+                <div class="role-card-users">
+                  <div class="role-user-avatars">
+                    <div class="role-avatar" style="background:#E7505A;color:white">HK</div>
+                    <div class="role-avatar" style="background:#3598DC;color:white">PL</div>
+                    <div class="role-avatar" style="background:#F3C200;color:white">SM</div>
+                    <div class="role-avatar role-avatar-more">+3</div>
+                  </div>
+                  <span class="role-user-count">6 Users</span>
+                </div>
+
+                <div class="role-perm-list">
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--danger)"></span>
+                    View Tickets
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--danger)"></span>
+                    Reply to Tickets
+                  </div>
+                  <div class="role-perm-row">
+                    <span class="role-bullet" style="background:var(--danger)"></span>
+                    View Customer Data
+                  </div>
+                  <div class="role-perm-row role-perm-denied">
+                    <span class="role-bullet" style="background:var(--border)"></span>
+                    Billing Access
+                  </div>
+                  <div class="role-perm-row role-perm-denied">
+                    <span class="role-bullet" style="background:var(--border)"></span>
+                    System Settings
+                  </div>
+                </div>
+              </div>
+
+              <div class="role-card-footer">
+                <a href="permissions.html" class="bm-btn bm-btn-outline bm-btn-sm" style="flex:1">View Role</a>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" style="flex:1">Edit Role</button>
+              </div>
+            </div>
+
+            <!-- ── Add New Role Card ── -->
+            <div class="bm-card role-card role-card-add">
+              <div class="role-add-inner" onclick="document.getElementById('addRoleModal').classList.add('open')">
+                <div class="role-add-icon">
+                  <i class="ph ph-plus-circle"></i>
+                </div>
+                <div class="role-add-title">Add New Role</div>
+                <div class="role-add-desc">Create a custom role with specific permissions</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends "layouts/base.html" %}
+{% set title = "Security" %}
+{% set activeMenu = "security" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <h1 class="bm-text-2xl-semibold-fg">Security</h1>
+
+          <!-- 2FA -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-header"><span class="bm-card-title">Two-Factor Authentication</span></div>
+            <div class="bm-card-body">
+              <div class="bm-flex-between-wrap-4">
+                <div>
+                  <div class="bm-flex-center-gap-md-mb2">
+                    <i class="ph ph-seal-check bm-text-success"></i>
+                    <span class="bm-text-fg-semibold">Enabled</span>
+                  </div>
+                  <p class="bm-text-sm-muted-max32">Two-factor authentication adds an extra layer of security to your account by requiring a code from your authenticator app.</p>
+                </div>
+                <button class="bm-btn bm-btn-outline">Configure</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Password Policy -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-header"><span class="bm-card-title">Password Policy</span></div>
+            <div class="bm-card-body">
+              <div class="bm-grid-2col-sm">
+                <div class="bm-flex-center-gap-md">
+                  <i class="ph ph-check-circle bm-text-xl-success"></i>
+                  <span class="bm-text-body">Minimum 8 characters</span>
+                </div>
+                <div class="bm-flex-center-gap-md">
+                  <i class="ph ph-check-circle bm-text-xl-success"></i>
+                  <span class="bm-text-body">Uppercase letter required</span>
+                </div>
+                <div class="bm-flex-center-gap-md">
+                  <i class="ph ph-check-circle bm-text-xl-success"></i>
+                  <span class="bm-text-body">Lowercase letter required</span>
+                </div>
+                <div class="bm-flex-center-gap-md">
+                  <i class="ph ph-check-circle bm-text-xl-success"></i>
+                  <span class="bm-text-body">Number required</span>
+                </div>
+                <div class="bm-flex-center-gap-md">
+                  <i class="ph ph-info bm-text-warning-xl"></i>
+                  <span class="bm-text-body">Special character recommended</span>
+                </div>
+                <div class="bm-flex-center-gap-md">
+                  <i class="ph ph-check-circle bm-text-xl-success"></i>
+                  <span class="bm-text-body">Expires every 90 days</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Sessions -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Active Sessions</span>
+              <button class="bm-btn bm-btn-destructive bm-btn-sm">Revoke All</button>
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead><tr><th scope="col">Device</th><th scope="col">Location</th><th scope="col">IP Address</th><th scope="col">Last Active</th><th scope="col" class="bm-text-right">Action</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <i class="ph ph-monitor bm-text-primary"></i>
+                      <div>
+                        <div class="bm-font-medium">Chrome on Windows</div>
+                        <div class="bm-text-sm-muted">Current session</div>
+                      </div>
+                    </td>
+                    <td>Istanbul, Turkey</td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">Now</td>
+                    <td class="bm-text-right"><span class="bm-badge bm-badge-success">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <i class="ph ph-device-mobile bm-text-muted"></i>
+                      <div>
+                        <div class="bm-font-medium">Safari on iPhone</div>
+                        <div class="bm-text-sm-muted">Mobile device</div>
+                      </div>
+                    </td>
+                    <td>Istanbul, Turkey</td>
+                    <td class="bm-mono-caption">10.0.0.42</td>
+                    <td class="bm-text-muted">2 hours ago</td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-outline bm-btn-sm">Revoke</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <i class="ph ph-device-tablet bm-text-muted"></i>
+                      <div>
+                        <div class="bm-font-medium">Firefox on iPad</div>
+                        <div class="bm-text-sm-muted">Tablet device</div>
+                      </div>
+                    </td>
+                    <td>Ankara, Turkey</td>
+                    <td class="bm-mono-caption">172.16.0.15</td>
+                    <td class="bm-text-muted">3 days ago</td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-outline bm-btn-sm">Revoke</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Security Log -->
+          <div class="bm-card">
+            <div class="bm-card-header"><span class="bm-card-title">Security Log</span></div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead><tr><th scope="col">Event</th><th scope="col" data-i18n="table.status">Status</th><th scope="col">IP Address</th><th scope="col" data-i18n="table.date">Date</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-sign-in bm-text-lg-success"></i> Login successful</td>
+                    <td><span class="bm-badge bm-badge-success">Success</span></td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">Today, 9:42 AM</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-key bm-text-lg-info"></i> Password changed</td>
+                    <td><span class="bm-badge bm-badge-info">Info</span></td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">Yesterday, 3:15 PM</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-shield-slash bm-text-lg-danger"></i> Login failed</td>
+                    <td><span class="bm-badge bm-badge-danger">Failed</span></td>
+                    <td class="bm-mono-caption">203.0.113.45</td>
+                    <td class="bm-text-muted">Yesterday, 1:20 PM</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-md"><i class="ph ph-shield bm-text-lg-warning"></i> 2FA enabled</td>
+                    <td><span class="bm-badge bm-badge-success">Success</span></td>
+                    <td class="bm-mono-caption">192.168.1.100</td>
+                    <td class="bm-text-muted">Mar 25, 2026</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      
+{% endblock %}

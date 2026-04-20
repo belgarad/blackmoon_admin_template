@@ -1,0 +1,221 @@
+{% extends "layouts/base.html" %}
+{% set title = "Contacts" %}
+{% set activeMenu = "contacts" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/contacts.scss">
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current" data-i18n="breadcrumb.contacts">Contacts</span></div>
+              </nav>
+              <h1 class="bm-page-title" data-i18n="page.title.contacts">Contacts</h1>
+              <p class="bm-page-subtitle" data-i18n="page.desc.contacts">Manage your business contacts and leads.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-outline bm-btn-sm"><i class="ph ph-upload-simple bm-text-md"></i> <span data-i18n="action.import">Import</span></button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm"><i class="ph ph-user-plus bm-text-md"></i> <span data-i18n="action.addContact">Add Contact</span></button>
+            </div>
+          </div>
+
+          <!-- Filter Bar -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-body cnt-filter-bar">
+              <div class="bm-flex-center-gap-sm">
+                <button class="bm-btn bm-btn-primary bm-btn-sm" data-i18n="filter.all">All</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm" data-i18n="filter.customers">Customers</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm" data-i18n="filter.leads">Leads</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm" data-i18n="filter.partners">Partners</button>
+              </div>
+              <div class="bm-flex-center-gap-sm">
+                <input class="bm-input bm-input-sm" type="text" placeholder="Search contacts…" data-i18n-placeholder="filter.searchContacts">
+                <button class="bm-btn bm-btn-ghost bm-btn-sm cnt-view-toggle active" data-view="grid" title="Grid view"><i class="ph ph-grid-four bm-text-md"></i></button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm cnt-view-toggle" data-view="list" title="List view"><i class="ph ph-list bm-text-md"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contacts Grid -->
+          <div class="cnt-grid" id="cntGrid">
+
+            <div class="bm-card cnt-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-avatar bm-avatar-xl bm-border-3 bm-mb-sm cnt-avatar-center">AS</div>
+                <div class="cnt-name-group">
+                  <div class="bm-text-body-medium-swap">Alice Smith</div>
+                  <div class="bm-text-2xs-muted bm-mb-sm">Head of Marketing</div>
+                </div>
+                <div class="bm-text-caption-muted bm-mb-md">Acme Corp.</div>
+                <div class="bm-flex-center-gap-sm bm-mb-md">
+                  <span class="bm-badge bm-badge-success">Customer</span>
+                </div>
+                <div class="bm-flex-center-gap-sm cnt-card-actions">
+                  <button class="bm-btn-icon-xs" title="Email"><i class="ph ph-envelope"></i></button>
+                  <button class="bm-btn-icon-xs" title="Call"><i class="ph ph-phone"></i></button>
+                  <a href="contact-detail.html" class="bm-btn bm-btn-outline bm-btn-sm">View</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bm-card cnt-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-avatar bm-avatar-xl bm-border-3 bm-mb-sm cnt-avatar-center">BW</div>
+                <div class="cnt-name-group">
+                  <div class="bm-text-body-medium-swap">Bob Wilson</div>
+                  <div class="bm-text-2xs-muted bm-mb-sm">CTO</div>
+                </div>
+                <div class="bm-text-caption-muted bm-mb-md">TechStart Inc.</div>
+                <div class="bm-flex-center-gap-sm bm-mb-md">
+                  <span class="bm-badge bm-badge-primary">Lead</span>
+                </div>
+                <div class="bm-flex-center-gap-sm cnt-card-actions">
+                  <button class="bm-btn-icon-xs" title="Email"><i class="ph ph-envelope"></i></button>
+                  <button class="bm-btn-icon-xs" title="Call"><i class="ph ph-phone"></i></button>
+                  <a href="contact-detail.html" class="bm-btn bm-btn-outline bm-btn-sm">View</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bm-card cnt-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-avatar bm-avatar-xl bm-border-3 bm-mb-sm cnt-avatar-center">CD</div>
+                <div class="cnt-name-group">
+                  <div class="bm-text-body-medium-swap">Clara Davis</div>
+                  <div class="bm-text-2xs-muted bm-mb-sm">Product Manager</div>
+                </div>
+                <div class="bm-text-caption-muted bm-mb-md">Digital Wave</div>
+                <div class="bm-flex-center-gap-sm bm-mb-md">
+                  <span class="bm-badge bm-badge-success">Customer</span>
+                </div>
+                <div class="bm-flex-center-gap-sm cnt-card-actions">
+                  <button class="bm-btn-icon-xs" title="Email"><i class="ph ph-envelope"></i></button>
+                  <button class="bm-btn-icon-xs" title="Call"><i class="ph ph-phone"></i></button>
+                  <a href="contact-detail.html" class="bm-btn bm-btn-outline bm-btn-sm">View</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bm-card cnt-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-avatar bm-avatar-xl bm-border-3 bm-mb-sm cnt-avatar-center">EF</div>
+                <div class="cnt-name-group">
+                  <div class="bm-text-body-medium-swap">Emma Fischer</div>
+                  <div class="bm-text-2xs-muted bm-mb-sm">VP Engineering</div>
+                </div>
+                <div class="bm-text-caption-muted bm-mb-md">CloudBase Ltd.</div>
+                <div class="bm-flex-center-gap-sm bm-mb-md">
+                  <span class="bm-badge bm-badge-info">Partner</span>
+                </div>
+                <div class="bm-flex-center-gap-sm cnt-card-actions">
+                  <button class="bm-btn-icon-xs" title="Email"><i class="ph ph-envelope"></i></button>
+                  <button class="bm-btn-icon-xs" title="Call"><i class="ph ph-phone"></i></button>
+                  <a href="contact-detail.html" class="bm-btn bm-btn-outline bm-btn-sm">View</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bm-card cnt-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-avatar bm-avatar-xl bm-border-3 bm-mb-sm cnt-avatar-center">GH</div>
+                <div class="cnt-name-group">
+                  <div class="bm-text-body-medium-swap">George Harris</div>
+                  <div class="bm-text-2xs-muted bm-mb-sm">Sales Director</div>
+                </div>
+                <div class="bm-text-caption-muted bm-mb-md">Vertex Group</div>
+                <div class="bm-flex-center-gap-sm bm-mb-md">
+                  <span class="bm-badge bm-badge-primary">Lead</span>
+                </div>
+                <div class="bm-flex-center-gap-sm cnt-card-actions">
+                  <button class="bm-btn-icon-xs" title="Email"><i class="ph ph-envelope"></i></button>
+                  <button class="bm-btn-icon-xs" title="Call"><i class="ph ph-phone"></i></button>
+                  <a href="contact-detail.html" class="bm-btn bm-btn-outline bm-btn-sm">View</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bm-card cnt-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-avatar bm-avatar-xl bm-border-3 bm-mb-sm cnt-avatar-center">LM</div>
+                <div class="cnt-name-group">
+                  <div class="bm-text-body-medium-swap">Lena Müller</div>
+                  <div class="bm-text-2xs-muted bm-mb-sm">Design Lead</div>
+                </div>
+                <div class="bm-text-caption-muted bm-mb-md">Studio Kreativ</div>
+                <div class="bm-flex-center-gap-sm bm-mb-md">
+                  <span class="bm-badge bm-badge-success">Customer</span>
+                </div>
+                <div class="bm-flex-center-gap-sm cnt-card-actions">
+                  <button class="bm-btn-icon-xs" title="Email"><i class="ph ph-envelope"></i></button>
+                  <button class="bm-btn-icon-xs" title="Call"><i class="ph ph-phone"></i></button>
+                  <a href="contact-detail.html" class="bm-btn bm-btn-outline bm-btn-sm">View</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bm-card cnt-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-avatar bm-avatar-xl bm-border-3 bm-mb-sm cnt-avatar-center">NK</div>
+                <div class="cnt-name-group">
+                  <div class="bm-text-body-medium-swap">Nathan Kim</div>
+                  <div class="bm-text-2xs-muted bm-mb-sm">CEO</div>
+                </div>
+                <div class="bm-text-caption-muted bm-mb-md">NovaTech</div>
+                <div class="bm-flex-center-gap-sm bm-mb-md">
+                  <span class="bm-badge bm-badge-primary">Lead</span>
+                </div>
+                <div class="bm-flex-center-gap-sm cnt-card-actions">
+                  <button class="bm-btn-icon-xs" title="Email"><i class="ph ph-envelope"></i></button>
+                  <button class="bm-btn-icon-xs" title="Call"><i class="ph ph-phone"></i></button>
+                  <a href="contact-detail.html" class="bm-btn bm-btn-outline bm-btn-sm">View</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="bm-card cnt-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-avatar bm-avatar-xl bm-border-3 bm-mb-sm cnt-avatar-center">SO</div>
+                <div class="cnt-name-group">
+                  <div class="bm-text-body-medium-swap">Sara Oliveira</div>
+                  <div class="bm-text-2xs-muted bm-mb-sm">Account Manager</div>
+                </div>
+                <div class="bm-text-caption-muted bm-mb-md">BrightPath Co.</div>
+                <div class="bm-flex-center-gap-sm bm-mb-md">
+                  <span class="bm-badge bm-badge-success">Customer</span>
+                </div>
+                <div class="bm-flex-center-gap-sm cnt-card-actions">
+                  <button class="bm-btn-icon-xs" title="Email"><i class="ph ph-envelope"></i></button>
+                  <button class="bm-btn-icon-xs" title="Call"><i class="ph ph-phone"></i></button>
+                  <a href="contact-detail.html" class="bm-btn bm-btn-outline bm-btn-sm">View</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Pagination -->
+          <div class="bm-flex-center-justify-gap bm-mt-lg">
+            <div class="bm-text-caption-muted">Showing 1–8 of 42 contacts</div>
+            <div class="bm-pagination">
+              <button class="bm-btn bm-btn-ghost bm-btn-sm" disabled><i class="ph ph-caret-left bm-text-md"></i></button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">1</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">2</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">3</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">4</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">5</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-caret-right bm-text-md"></i></button>
+            </div>
+          </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/contacts.js"></script>
+{% endblock %}

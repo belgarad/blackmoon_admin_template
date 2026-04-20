@@ -1,0 +1,100 @@
+{% extends "layouts/base.html" %}
+{% set title = "Calendar" %}
+{% set activeMenu = "calendar" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/calendar.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Page header -->
+          <div class="bm-flex-center-justify-wrap2">
+            <div>
+              <nav class="bm-text-sm-muted-mb3">
+                <a href="dashboard.html" class="bm-link-muted" data-i18n="breadcrumb.home">Home</a>
+                <i class="ph ph-caret-right bm-text-body"></i>
+                <span>Calendar</span>
+              </nav>
+              <h1 class="bm-text-2xl-bold-fg3">Calendar</h1>
+              <p class="bm-text-body-muted-m">Plan meetings, deadlines, and team events</p>
+            </div>
+            <button class="bm-btn bm-btn-primary" onclick="openEventModal()">
+              <i class="ph ph-plus bm-text-lg"></i> New Event
+            </button>
+          </div>
+
+          <!-- Two-column layout -->
+          <div class="cal-layout">
+
+            <!-- LEFT: mini calendar + upcoming + legend -->
+            <div class="cal-sidebar">
+
+              <!-- Mini calendar -->
+              <div class="cal-mini">
+                <div class="cal-mini-header">
+                  <span class="cal-mini-title" id="miniTitle"></span>
+                  <div class="cal-mini-nav">
+                    <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm" onclick="miniNav(-1)"><i class="ph ph-caret-left bm-text-md"></i></button>
+                    <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm" onclick="miniNav(1)"><i class="ph ph-caret-right bm-text-md"></i></button>
+                  </div>
+                </div>
+                <div class="cal-mini-grid" id="miniGrid"></div>
+              </div>
+
+              <!-- Upcoming events -->
+              <div class="upcoming-card">
+                <div class="upcoming-header">Upcoming Events</div>
+                <div class="upcoming-list" id="upcomingList"></div>
+              </div>
+
+              <!-- Category legend -->
+              <div class="cat-list">
+                <div class="bm-text-caption-bold-mb">Categories</div>
+                <div class="cat-item"><div class="cat-dot bm-bg-indigo"></div>Meetings</div>
+                <div class="cat-item"><div class="cat-dot bm-bg-success-only"></div>Deadlines</div>
+                <div class="cat-item"><div class="cat-dot bm-bg-orange-500"></div>Reminders</div>
+                <div class="cat-item"><div class="cat-dot bm-bg-purple"></div>Personal</div>
+                <div class="cat-item"><div class="cat-dot bm-bg-teal-500"></div>Team Events</div>
+              </div>
+            </div>
+
+            <!-- RIGHT: main calendar -->
+            <div class="cal-main">
+              <div class="cal-toolbar">
+                <div class="bm-flex-center-gap-md">
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm" onclick="mainNav(-1)"><i class="ph ph-caret-left bm-text-lg"></i></button>
+                  <span class="cal-title" id="mainTitle"></span>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm" onclick="mainNav(1)"><i class="ph ph-caret-right bm-text-lg"></i></button>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm bm-ml-xs" onclick="goToday()">Today</button>
+                </div>
+                <div class="cal-view-btns">
+                  <button class="cal-view-btn active" onclick="setView('month',this)">Month</button>
+                  <button class="cal-view-btn" onclick="setView('week',this)">Week</button>
+                  <button class="cal-view-btn" onclick="setView('list',this)">List</button>
+                </div>
+              </div>
+
+              <!-- Weekday headers -->
+              <div class="cal-grid-head">
+                <div class="cal-grid-head-cell">Sun</div>
+                <div class="cal-grid-head-cell">Mon</div>
+                <div class="cal-grid-head-cell">Tue</div>
+                <div class="cal-grid-head-cell">Wed</div>
+                <div class="cal-grid-head-cell">Thu</div>
+                <div class="cal-grid-head-cell">Fri</div>
+                <div class="cal-grid-head-cell">Sat</div>
+              </div>
+              <div class="cal-grid" id="mainGrid"></div>
+            </div>
+          </div>
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+  <script src="/assets/js/pages/calendar-app.js"></script>
+{% endblock %}

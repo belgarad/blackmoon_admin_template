@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3598DC">
+  {% if pageDescription %}<meta name="description" content="{{ pageDescription }}">{% endif %}
+  <title>{{ title }} — BlackMoon Admin Kit</title>
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <!-- Core styles -->
+  <link rel="stylesheet" href="/src/scss/app.scss" />
+  <link rel="stylesheet" href="/src/scss/auth.scss" />
+  {% block headExtra %}{% endblock %}
+</head>
+<body>
+
+<!-- Skip to content (accessibility) -->
+<a href="#auth-content" class="bm-skip-link">Skip to main content</a>
+
+<div class="auth-shell">
+
+  <!-- ── LEFT: Brand panel ── -->
+  <div class="auth-brand" style="background: {{ brandGradient }};">
+    <!-- Decorative circles -->
+    <div class="auth-brand-deco bm-deco-tr-lg"></div>
+    <div class="auth-brand-deco bm-deco-bl-lg"></div>
+    <div class="auth-brand-deco bm-deco-circle-sm2"></div>
+
+    <!-- Logo -->
+    <a href="/index.html" class="auth-brand-logo">
+      <div class="auth-brand-logo-icon">
+        <i class="ph ph-triangle bm-text-xl-white"></i>
+      </div>
+      <span class="auth-brand-logo-text">BlackMoon Admin Kit</span>
+    </a>
+
+    <!-- Hero content -->
+    <div class="auth-brand-body">
+      {% block brand %}{% endblock %}
+    </div>
+
+    <!-- Brand footer -->
+    <div class="auth-brand-footer">© 2025 BlackMoon Admin Kit</div>
+  </div>
+
+  <!-- ── RIGHT: Form panel ── -->
+  <div class="auth-form-panel">
+    <div class="auth-topbar">
+      <button class="bm-btn bm-btn-ghost bm-btn-icon bm-radius-full2" onclick="ThemeManager.toggle()">
+        <i class="ph ph-moon bm-text-lg"></i>
+      </button>
+    </div>
+
+    <div id="auth-content" class="auth-content">
+      <div class="auth-inner">
+        <!-- Mobile-only logo -->
+        <a href="/index.html" class="auth-mobile-logo">
+          <div class="bm-logo-icon"><i class="ph ph-triangle"></i></div>
+          <span class="bm-text-body-bold">BlackMoon Admin Kit</span>
+        </a>
+
+        {% block form %}{% endblock %}
+      </div>
+    </div>
+
+    <div class="auth-page-footer">
+      <a href="#">Privacy Policy</a> &middot; <a href="#">Terms of Service</a>
+    </div>
+  </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+
+
+<script src="/assets/js/theme.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

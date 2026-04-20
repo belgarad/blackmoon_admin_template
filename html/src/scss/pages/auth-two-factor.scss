@@ -1,0 +1,14 @@
+.otp-grid { display:flex; gap:0.625rem; justify-content:center; margin:1.75rem 0; }
+    .otp-cell {
+      width:3rem; height:3.75rem; text-align:center;
+      font-size:1.5rem; font-weight:700;
+      border:2px solid var(--border); border-radius:var(--radius-xl);
+      background:var(--card); color:var(--foreground);
+      transition:border-color 150ms, box-shadow 150ms;
+      outline:none; caret-color:var(--primary);
+    }
+    .otp-cell:focus { border-color:var(--primary); box-shadow:0 0 0 3px var(--primary-light); }
+    .otp-cell.filled { border-color:var(--primary); background:var(--primary-light); }
+    .otp-cell.error { border-color:var(--danger); background:var(--danger-light); animation:shake 300ms; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-4px)} 40%,80%{transform:translateX(4px)} }
+    @keyframes spin { to { transform:rotate(360deg); } }

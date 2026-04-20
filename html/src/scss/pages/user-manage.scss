@@ -1,0 +1,609 @@
+/* ================================================================
+   USER MANAGEMENT — Roles, Permissions, User Detail
+   ================================================================ */
+
+/* ── Roles Grid ── */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1279px) {
+  .role-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .role-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Role Card */
+.role-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.role-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1.5rem 0;
+}
+
+.role-card-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.role-card-icon .ph {
+  font-size: 1.5rem;
+}
+
+.role-card-meta {
+  flex: 1;
+}
+
+.role-card-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.125rem;
+}
+
+.role-card-desc {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+.role-card-body {
+  padding: 1.25rem 1.5rem;
+  flex: 1;
+}
+
+/* Stacked user avatars */
+.role-card-users {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.role-user-avatars {
+  display: flex;
+}
+
+.role-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.625rem;
+  font-weight: 700;
+  border: 2px solid var(--card);
+  margin-left: -0.5rem;
+}
+
+.role-avatar:first-child {
+  margin-left: 0;
+}
+
+.role-avatar-more {
+  background: var(--accent);
+  color: var(--muted-foreground);
+  font-weight: 600;
+}
+
+.role-user-count {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+
+/* Permissions bullet list */
+.role-perm-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.role-perm-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.4375rem 0;
+  font-size: 0.8125rem;
+  color: var(--foreground);
+}
+
+.role-perm-denied {
+  color: var(--muted-foreground);
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.role-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Card footer */
+.role-card-footer {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1.5rem;
+  margin-top: auto;
+}
+
+/* Add New Role card */
+.role-card-add {
+  border: 2px dashed var(--border);
+  background: transparent;
+  box-shadow: none;
+}
+
+.role-add-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  height: 100%;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: background 0.2s;
+}
+
+.role-add-inner:hover {
+  background: color-mix(in srgb, var(--primary) 4%, transparent);
+}
+
+.role-add-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.role-add-icon .ph {
+  font-size: 2rem;
+}
+
+.role-add-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.375rem;
+}
+
+.role-add-desc {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+
+/* Legacy role-perms (kept for permissions.html) */
+.role-perms {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.role-perm-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Permissions Matrix */
+.perm-matrix {
+  .perm-section-row td {
+    background: var(--accent);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: var(--foreground);
+  }
+
+  .perm-col-header {
+    text-align: center;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    min-width: 90px;
+  }
+
+  .perm-cell {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .perm-cell input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    accent-color: var(--primary);
+  }
+}
+
+/* ── User Detail Page ── */
+
+/* Tab content (outside hero card) */
+.usr-tab-content {
+  display: none;
+}
+
+.usr-tab-content.active {
+  display: block;
+}
+
+/* Stat boxes (Metronic-style dashed border) */
+.usr-stat-box {
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 0.625rem 1rem;
+  min-width: 7rem;
+  text-align: center;
+}
+
+.usr-stat-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+/* Card sections */
+.usr-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.usr-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.usr-card-body {
+  padding: 1.5rem;
+}
+
+/* Profile details (label-value rows) */
+.usr-detail-row {
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--border);
+  gap: 1rem;
+}
+
+.usr-detail-label {
+  width: 200px;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+.usr-detail-value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+/* Sign-in method rows */
+.usr-signin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.usr-signin-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.usr-signin-value {
+  font-size: 0.8125rem;
+  color: var(--foreground);
+  margin-top: 0.125rem;
+}
+
+/* Connected accounts */
+.usr-connected-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.usr-connected-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.usr-connected-icon .ph {
+  font-size: 1.25rem;
+}
+
+.usr-connected-info {
+  flex: 1;
+}
+
+/* Settings form */
+.usr-settings-form {
+  max-width: 720px;
+}
+
+.usr-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 0;
+}
+
+.usr-form-grid + .usr-form-grid {
+  margin-top: 0;
+}
+
+/* Security cards */
+.usr-security-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.usr-security-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* Password strength bar */
+.usr-strength-bar {
+  width: 120px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--accent);
+  overflow: hidden;
+}
+
+.usr-strength-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+/* Toggle switch */
+.usr-toggle {
+  position: relative;
+  width: 2.75rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.usr-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.usr-toggle-slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: var(--border);
+  transition: background 0.2s;
+}
+
+.usr-toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  background: white;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  transition: transform 0.2s;
+}
+
+.usr-toggle input:checked + .usr-toggle-slider {
+  background: var(--primary);
+}
+
+.usr-toggle input:checked + .usr-toggle-slider::before {
+  transform: translateX(1.25rem);
+}
+
+/* Notification list */
+.usr-notif-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.usr-notif-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  gap: 1rem;
+}
+
+/* Activity list */
+.usr-activity-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.usr-activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.usr-activity-item:last-child {
+  border-bottom: none;
+}
+
+.usr-activity-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.usr-activity-icon .ph {
+  font-size: 1.125rem;
+}
+
+.usr-activity-content {
+  flex: 1;
+}
+
+.usr-activity-time {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Session table */
+.usr-session-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.usr-session-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.usr-session-row:last-child {
+  border-bottom: none;
+}
+
+.usr-session-current {
+  background: color-mix(in srgb, var(--success) 4%, transparent);
+  margin: 0 -1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-radius: var(--radius);
+}
+
+.usr-session-device {
+  flex-shrink: 0;
+}
+
+.usr-session-info {
+  flex: 1;
+}
+
+.usr-session-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1023px) {
+  .profile-stats {
+    margin-left: 0;
+    padding-top: 1rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .usr-detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .usr-detail-label {
+    width: auto;
+  }
+
+  .usr-signin-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .usr-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .usr-session-row {
+    flex-wrap: wrap;
+  }
+
+  .usr-session-meta {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .usr-activity-item {
+    flex-wrap: wrap;
+  }
+
+  .usr-activity-time {
+    width: 100%;
+    padding-left: 3.5rem;
+  }
+
+  .usr-card-header {
+    padding: 1rem;
+  }
+
+  .usr-card-body {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,294 @@
+{% extends "layouts/base.html" %}
+{% set title = "Projects Dashboard" %}
+{% set activeMenu = "dashboard-projects" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Projects</span></div>
+              </nav>
+              <h1 class="bm-page-title">Projects Dashboard</h1>
+              <p class="bm-page-subtitle">Track project statuses, deadlines, and team workload.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-primary bm-btn-sm">
+                <i class="ph ph-plus bm-text-md"></i>
+                New Project
+              </button>
+            </div>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="bm-grid-auto-lg">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-folder-open bm-text-lg-primary"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Total Projects</div>
+                <div class="bm-stats-card-v2-value">24</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>3</span>
+                  <span class="bm-stats-card-v2-compared">new this month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-check-circle bm-text-lg-success"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Completed</div>
+                <div class="bm-stats-card-v2-value">16</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>2</span>
+                  <span class="bm-stats-card-v2-compared">this month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-timer bm-text-lg-warning"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">In Progress</div>
+                <div class="bm-stats-card-v2-value">6</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-text-sm-muted">2 due this week</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-danger"><i class="ph ph-warning bm-text-lg-danger"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Overdue</div>
+                <div class="bm-stats-card-v2-value">2</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend down"><i class="ph ph-arrow-down bm-text-8xs"></i>1</span>
+                  <span class="bm-stats-card-v2-compared">from last month</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="bm-grid-2-1-mb">
+            <!-- Project Status Over Time -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Project Completion</div>
+                  <div class="bm-caption-muted-top">Tasks completed vs remaining over last 6 months</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-project-completion" class="bm-chart-container"></div>
+              </div>
+            </div>
+            <!-- Task Distribution by Status -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Task Status</div>
+                  <div class="bm-caption-muted-top">Current task distribution</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-task-status" class="bm-chart-container"></div>
+                <div class="bm-flex-col-gap-md-mt">
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-green"></span>Completed</span><span class="bm-text-caption-semibold2">64%</span></div>
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-blue"></span>In Progress</span><span class="bm-text-caption-semibold2">22%</span></div>
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-amber"></span>Pending</span><span class="bm-text-caption-semibold2">10%</span></div>
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-red"></span>Overdue</span><span class="bm-text-caption-semibold2">4%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Projects -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-header">
+              <div>
+                <div class="bm-card-title">Active Projects</div>
+                <div class="bm-caption-muted-top">Currently running projects and their progress</div>
+              </div>
+              <a href="projects/list.html" class="bm-btn bm-btn-outline bm-btn-sm">View All</a>
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Project</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">Progress</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Tasks</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col" data-i18n="table.status">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="bm-text-caption-medium-swap">Website Redesign</div>
+                      <div class="bm-text-2xs-muted">UI/UX Team</div>
+                    </td>
+                    <td>
+                      <div class="bm-avatar-group bm-avatar-group-sm">
+                        <div class="bm-avatar bm-avatar-xs bm-badge-primary-light">JD</div>
+                        <div class="bm-avatar bm-avatar-xs bm-badge-success-light">AS</div>
+                        <div class="bm-avatar bm-avatar-xs bm-bg-warning-light3">MK</div>
+                        <div class="bm-avatar bm-avatar-xs bm-badge-info-light">+2</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-progress bm-progress-sm bm-flex-1"><div class="bm-progress-bar" style="width: 72%"></div></div>
+                        <span class="bm-text-caption-semibold">72%</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">Apr 20, 2026</td>
+                    <td><span class="bm-text-caption-semibold">36/50</span></td>
+                    <td><span class="bm-badge bm-badge-danger">High</span></td>
+                    <td><span class="bm-badge bm-badge-warning">In Progress</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-text-caption-medium-swap">Mobile App v2.0</div>
+                      <div class="bm-text-2xs-muted">Mobile Team</div>
+                    </td>
+                    <td>
+                      <div class="bm-avatar-group bm-avatar-group-sm">
+                        <div class="bm-avatar bm-avatar-xs bm-bg-warning-light3">RW</div>
+                        <div class="bm-avatar bm-avatar-xs bm-badge-primary-light">EJ</div>
+                        <div class="bm-avatar bm-avatar-xs bm-badge-success-light">LT</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-progress bm-progress-sm bm-flex-1"><div class="bm-progress-bar bm-progress-success" style="width: 45%"></div></div>
+                        <span class="bm-text-caption-semibold">45%</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">May 15, 2026</td>
+                    <td><span class="bm-text-caption-semibold">18/40</span></td>
+                    <td><span class="bm-badge bm-badge-warning">Medium</span></td>
+                    <td><span class="bm-badge bm-badge-warning">In Progress</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-text-caption-medium-swap">API Integration</div>
+                      <div class="bm-text-2xs-muted">Backend Team</div>
+                    </td>
+                    <td>
+                      <div class="bm-avatar-group bm-avatar-group-sm">
+                        <div class="bm-avatar bm-avatar-xs bm-badge-primary-light">KO</div>
+                        <div class="bm-avatar bm-avatar-xs bm-card-danger-soft">PA</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-progress bm-progress-sm bm-flex-1"><div class="bm-progress-bar bm-progress-danger" style="width: 88%"></div></div>
+                        <span class="bm-text-caption-semibold">88%</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-danger bm-font-semibold">Apr 5, 2026</td>
+                    <td><span class="bm-text-caption-semibold">22/25</span></td>
+                    <td><span class="bm-badge bm-badge-danger">High</span></td>
+                    <td><span class="bm-badge bm-badge-danger">Overdue</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-text-caption-medium-swap">Data Migration</div>
+                      <div class="bm-text-2xs-muted">Data Team</div>
+                    </td>
+                    <td>
+                      <div class="bm-avatar-group bm-avatar-group-sm">
+                        <div class="bm-avatar bm-avatar-xs bm-badge-success-light">SR</div>
+                        <div class="bm-avatar bm-avatar-xs bm-badge-primary-light">DL</div>
+                        <div class="bm-avatar bm-avatar-xs bm-bg-warning-light3">NK</div>
+                        <div class="bm-avatar bm-avatar-xs bm-badge-info-light">+1</div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-progress bm-progress-sm bm-flex-1"><div class="bm-progress-bar" style="width: 30%"></div></div>
+                        <span class="bm-text-caption-semibold">30%</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">Jun 30, 2026</td>
+                    <td><span class="bm-text-caption-semibold">9/30</span></td>
+                    <td><span class="bm-badge bm-badge-info">Low</span></td>
+                    <td><span class="bm-badge bm-badge-primary">Planning</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Team Workload -->
+          <div class="bm-card">
+            <div class="bm-card-header">
+              <div>
+                <div class="bm-card-title">Team Workload</div>
+                <div class="bm-caption-muted-top">Current task assignments by team member</div>
+              </div>
+            </div>
+            <div class="bm-card-body bm-flex-col-gap-lg">
+              <div>
+                <div class="bm-flex-between-mb2">
+                  <div class="bm-inline-center-gap-sm"><div class="bm-avatar bm-avatar-xs bm-badge-primary-light">JD</div><span class="bm-text-caption-medium">John Doe</span></div>
+                  <span class="bm-text-caption-semibold">14 tasks</span>
+                </div>
+                <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar bm-progress-danger" style="width: 93%"></div></div>
+                <div class="bm-text-2xs-muted bm-mt-xs">Over capacity — consider reassigning</div>
+              </div>
+              <div>
+                <div class="bm-flex-between-mb2">
+                  <div class="bm-inline-center-gap-sm"><div class="bm-avatar bm-avatar-xs bm-badge-success-light">AS</div><span class="bm-text-caption-medium">Alice Smith</span></div>
+                  <span class="bm-text-caption-semibold">10 tasks</span>
+                </div>
+                <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar bm-progress-warning" style="width: 67%"></div></div>
+              </div>
+              <div>
+                <div class="bm-flex-between-mb2">
+                  <div class="bm-inline-center-gap-sm"><div class="bm-avatar bm-avatar-xs bm-bg-warning-light3">MK</div><span class="bm-text-caption-medium">Mike Kim</span></div>
+                  <span class="bm-text-caption-semibold">8 tasks</span>
+                </div>
+                <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar" style="width: 53%"></div></div>
+              </div>
+              <div>
+                <div class="bm-flex-between-mb2">
+                  <div class="bm-inline-center-gap-sm"><div class="bm-avatar bm-avatar-xs bm-badge-info-light">EJ</div><span class="bm-text-caption-medium">Emma Johnson</span></div>
+                  <span class="bm-text-caption-semibold">5 tasks</span>
+                </div>
+                <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar bm-progress-success" style="width: 33%"></div></div>
+              </div>
+              <div>
+                <div class="bm-flex-between-mb2">
+                  <div class="bm-inline-center-gap-sm"><div class="bm-avatar bm-avatar-xs bm-card-danger-soft">RW</div><span class="bm-text-caption-medium">Robert Wilson</span></div>
+                  <span class="bm-text-caption-semibold">3 tasks</span>
+                </div>
+                <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar bm-progress-success" style="width: 20%"></div></div>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/chart-helpers.js"></script>
+<script src="/assets/js/pages/dashboard-projects.js"></script>
+{% endblock %}

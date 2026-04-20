@@ -1,0 +1,258 @@
+{% extends "layouts/base.html" %}
+{% set title = "Checkout" %}
+{% set activeMenu = "shop-checkout" %}
+{% set basePath = "../" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/checkout.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-py-nav-wide">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="products.html">Shop</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Checkout</span></div>
+              </nav>
+              <h1 class="bm-page-title">Checkout</h1>
+              <p class="bm-page-subtitle">Complete your purchase securely</p>
+            </div>
+          </div>
+
+          <div class="bm-grid-main-aside">
+
+            <!-- Stepper Form -->
+            <div class="bm-card bm-p-1750">
+
+              <!-- Step nav -->
+              <div class="co-steps" id="coSteps">
+                <div class="co-step active" id="sNav1">
+                  <div class="co-step-num" id="sNum1">1</div>
+                  <div class="co-step-label">Shipping</div>
+                </div>
+                <div class="co-step" id="sNav2">
+                  <div class="co-step-num" id="sNum2">2</div>
+                  <div class="co-step-label">Payment</div>
+                </div>
+                <div class="co-step" id="sNav3">
+                  <div class="co-step-num" id="sNum3">3</div>
+                  <div class="co-step-label">Review</div>
+                </div>
+                <div class="co-step bm-flex-0" id="sNav4">
+                  <div class="co-step-num" id="sNum4">4</div>
+                  <div class="co-step-label">Confirm</div>
+                </div>
+              </div>
+
+              <!-- Panel 1: Shipping -->
+              <div class="co-panel active" id="panel1">
+                <h3 class="bm-text-md-fg-semibold-m">Shipping Address</h3>
+                <div class="field-row two">
+                  <div><div class="field-label">First Name <sup>*</sup></div><input class="bm-input" value="John" placeholder="First name"></div>
+                  <div><div class="field-label">Last Name <sup>*</sup></div><input class="bm-input" value="Doe" placeholder="Last name"></div>
+                </div>
+                <div class="field-row">
+                  <div><div class="field-label">Email Address <sup>*</sup></div><input class="bm-input" type="email" value="john@adminkit.io" placeholder="Email"></div>
+                </div>
+                <div class="field-row">
+                  <div><div class="field-label">Address Line 1 <sup>*</sup></div><input class="bm-input" value="123 Market Street" placeholder="Street address"></div>
+                </div>
+                <div class="field-row">
+                  <div><div class="field-label">Address Line 2</div><input class="bm-input" placeholder="Apt, suite, etc. (optional)"></div>
+                </div>
+                <div class="field-row three">
+                  <div><div class="field-label">City <sup>*</sup></div><input class="bm-input" value="San Francisco" placeholder="City"></div>
+                  <div><div class="field-label">State <sup>*</sup></div><input class="bm-input" value="CA" placeholder="State"></div>
+                  <div><div class="field-label">ZIP Code <sup>*</sup></div><input class="bm-input" value="94103" placeholder="ZIP"></div>
+                </div>
+                <div class="field-row">
+                  <div>
+                    <div class="field-label">Country <sup>*</sup></div>
+                    <select class="bm-input bm-select">
+                      <option>United States</option>
+                      <option>Canada</option>
+                      <option>United Kingdom</option>
+                      <option>Germany</option>
+                      <option>France</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="bm-mt-sm-mb-xl">
+                  <div class="bm-text-body-medium-mb">Shipping Method</div>
+                  <div class="pay-opt selected" onclick="selectShip(this,'standard')">
+                    <div class="pay-dot"></div>
+                    <div class="bm-flex-1"><div class="bm-text-body-semibold">Standard Shipping</div><div class="bm-text-sm-muted">5–7 business days</div></div>
+                    <span class="bm-text-sm-semibold-success">Free</span>
+                  </div>
+                  <div class="pay-opt" onclick="selectShip(this,'express')">
+                    <div class="pay-dot"></div>
+                    <div class="bm-flex-1"><div class="bm-text-body-semibold">Express Shipping</div><div class="bm-text-sm-muted">2–3 business days</div></div>
+                    <span class="bm-text-body-semibold">$9.99</span>
+                  </div>
+                  <div class="pay-opt" onclick="selectShip(this,'overnight')">
+                    <div class="pay-dot"></div>
+                    <div class="bm-flex-1"><div class="bm-text-body-semibold">Overnight</div><div class="bm-text-sm-muted">Next business day</div></div>
+                    <span class="bm-text-body-semibold">$24.99</span>
+                  </div>
+                </div>
+
+                <div class="bm-flex-end">
+                  <button class="bm-btn bm-btn-primary" onclick="goStep(2)">Continue to Payment<i class="ph ph-arrow-right bm-ml-375"></i></button>
+                </div>
+              </div>
+
+              <!-- Panel 2: Payment -->
+              <div class="co-panel" id="panel2">
+                <h3 class="bm-text-md-fg-semibold-m">Payment Method</h3>
+
+                <div class="pay-opt selected" onclick="selectPay(this,'card')" id="payCard">
+                  <div class="pay-dot"></div>
+                  <i class="ph ph-credit-card bm-text-2xl"></i>
+                  <span class="bm-text-body-semibold">Credit / Debit Card</span>
+                </div>
+                <div class="pay-opt" onclick="selectPay(this,'paypal')" id="payPP">
+                  <div class="pay-dot"></div>
+                  <i class="ph ph-wallet bm-text-2xl"></i>
+                  <span class="bm-text-body-semibold">PayPal</span>
+                </div>
+                <div class="pay-opt" onclick="selectPay(this,'crypto')" id="payCrypto">
+                  <div class="pay-dot"></div>
+                  <i class="ph ph-currency-btc bm-text-2xl"></i>
+                  <span class="bm-text-body-semibold">Crypto (BTC / ETH)</span>
+                </div>
+
+                <div id="cardForm" class="bm-mt-1500">
+                  <div class="field-row">
+                    <div><div class="field-label">Card Number <sup>*</sup></div><input class="bm-input" value="•••• •••• •••• 4829" placeholder="1234 5678 9012 3456"></div>
+                  </div>
+                  <div class="field-row two">
+                    <div><div class="field-label">Expiry <sup>*</sup></div><input class="bm-input" value="08 / 28" placeholder="MM / YY"></div>
+                    <div><div class="field-label">CVV <sup>*</sup></div><input class="bm-input" value="•••" placeholder="CVV" type="password" maxlength="4"></div>
+                  </div>
+                  <div class="field-row">
+                    <div><div class="field-label">Name on Card <sup>*</sup></div><input class="bm-input" value="JOHN DOE" placeholder="Cardholder name"></div>
+                  </div>
+                  <div class="bm-flex-center-gap2-mt2">
+                    <input type="checkbox" id="saveCard" checked class="bm-size-4">
+                    <label for="saveCard" class="bm-text-caption-muted">Save card for future purchases</label>
+                  </div>
+                </div>
+
+                <div class="bm-flex-end-gap-mt">
+                  <button class="bm-btn bm-btn-ghost" onclick="goStep(1)"><i class="ph ph-arrow-left bm-text-md"></i>Back</button>
+                  <button class="bm-btn bm-btn-primary" onclick="goStep(3)">Review Order<i class="ph ph-arrow-right bm-ml-375"></i></button>
+                </div>
+              </div>
+
+              <!-- Panel 3: Review -->
+              <div class="co-panel" id="panel3">
+                <h3 class="bm-text-md-fg-semibold-m">Review Your Order</h3>
+
+                <div class="bm-card bm-accent-box">
+                  <div class="bm-text-caption-bold-label">Items</div>
+                  <div class="rev-row">
+                    <div class="rev-thumb"><i class="ph ph-headphones bm-text-175-muted"></i></div>
+                    <div class="bm-flex-1"><div class="bm-text-body-semibold">SoundWave Pro X Wireless Headphones</div><div class="bm-text-sm-muted">Qty: 1</div></div>
+                    <div class="bm-text-body-semibold">$89.99</div>
+                  </div>
+                  <div class="rev-row">
+                    <div class="rev-thumb"><i class="ph ph-laptop bm-text-175-muted"></i></div>
+                    <div class="bm-flex-1"><div class="bm-text-body-semibold">NexBook Pro 16</div><div class="bm-text-sm-muted">Qty: 1</div></div>
+                    <div class="bm-text-body-semibold">$1,499.00</div>
+                  </div>
+                  <div class="rev-row">
+                    <div class="rev-thumb"><i class="ph ph-coat-hanger bm-text-175-muted"></i></div>
+                    <div class="bm-flex-1"><div class="bm-text-body-semibold">Urban Classic Cotton Hoodie</div><div class="bm-text-sm-muted">Qty: 2</div></div>
+                    <div class="bm-text-body-semibold">$109.98</div>
+                  </div>
+                </div>
+
+                <div class="bm-grid-2col-gap-sm">
+                  <div class="bm-card bm-bg-accent-p">
+                    <div class="bm-text-sm-muted-mb4">Ship To</div>
+                    <div class="bm-text-body-semibold">John Doe</div>
+                    <div class="bm-text-caption-muted">123 Market Street<br>San Francisco, CA 94103<br>United States</div>
+                  </div>
+                  <div class="bm-card bm-bg-accent-p">
+                    <div class="bm-text-sm-muted-mb4">Payment</div>
+                    <div class="bm-flex-center-gap-md">
+                      <i class="ph ph-credit-card bm-text-xl"></i>
+                      <div><div class="bm-text-body-semibold">Visa •••• 4829</div><div class="bm-text-sm-muted">Exp. 08/28</div></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bm-flex-end-gap3">
+                  <button class="bm-btn bm-btn-ghost" onclick="goStep(2)"><i class="ph ph-arrow-left bm-text-md"></i>Back</button>
+                  <button class="bm-btn bm-btn-primary bm-btn-lg" onclick="placeOrder()" id="placeBtn">
+                    <i class="ph ph-lock bm-text-md"></i>
+                    Place Order — $1,737.70
+                  </button>
+                </div>
+              </div>
+
+              <!-- Panel 4: Confirmation -->
+              <div class="co-panel" id="panel4">
+                <div class="co-confirm">
+                  <div class="co-confirm-icon">
+                    <i class="ph ph-check-circle bm-icon-4xl-success"></i>
+                  </div>
+                  <h2 class="bm-text-2xl-bold-mb">Order Placed!</h2>
+                  <p class="bm-text-muted-mb-xl">Your order <strong>#ORD-28471</strong> has been confirmed. A confirmation email has been sent to <strong>john@adminkit.io</strong>.</p>
+                  <div class="bm-card bm-card-accent-p-mb">
+                    <div class="bm-grid-3col-sm">
+                      <div><div class="bm-text-sm-muted-mb">Order Number</div><div class="bm-text-base-bold">#ORD-28471</div></div>
+                      <div><div class="bm-text-sm-muted-mb">Est. Delivery</div><div class="bm-text-base-bold">Jan 9–12, 2025</div></div>
+                      <div><div class="bm-text-sm-muted-mb">Total Paid</div><div class="bm-text-base-bold">$1,737.70</div></div>
+                    </div>
+                  </div>
+                  <div class="bm-flex-wrap-center">
+                    <a href="products.html" class="bm-btn bm-btn-outline">Continue Shopping</a>
+                    <button class="bm-btn bm-btn-primary" onclick="App.toast.info('Track Order','Tracking info will be emailed to you.')">
+                      <i class="ph ph-truck bm-text-md"></i>
+                      Track Order
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Order Summary Sidebar -->
+            <div class="bm-sticky-sidebar">
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-base-semibold-m">Order Summary</h3>
+                <div class="sum-row"><span class="bm-text-muted">SoundWave Pro X</span><span>$89.99</span></div>
+                <div class="sum-row"><span class="bm-text-muted">NexBook Pro 16</span><span>$1,499.00</span></div>
+                <div class="sum-row"><span class="bm-text-muted">Urban Hoodie ×2</span><span>$109.98</span></div>
+                <div class="bm-border-top-pt">
+                  <div class="sum-row"><span class="bm-text-muted">Subtotal</span><span>$1,698.97</span></div>
+                  <div class="sum-row"><span class="bm-text-muted">Shipping</span><span class="bm-text-success">Free</span></div>
+                  <div class="sum-row"><span class="bm-text-muted">Discount</span><span class="bm-text-success">−$89.99</span></div>
+                  <div class="sum-row"><span class="bm-text-muted">Tax (8%)</span><span>$128.72</span></div>
+                </div>
+                <div class="sum-total">
+                  <span class="bm-font-bold">Total</span>
+                  <span class="bm-text-xl-bold">$1,737.70</span>
+                </div>
+              </div>
+              <div class="bm-card bm-p-flex-caption">
+                <i class="ph ph-shield-check bm-text-xl-success"></i>
+                Your payment information is encrypted and secure.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/checkout.js"></script>
+{% endblock %}

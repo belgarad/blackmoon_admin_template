@@ -1,0 +1,239 @@
+{% extends "layouts/base.html" %}
+{% set title = "Activity" %}
+{% set activeMenu = "account-activity" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/account.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="overview.html">Account</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Activity</span></div>
+              </nav>
+              <h1 class="bm-page-title">Activity</h1>
+              <p class="bm-page-subtitle">Your complete account activity history.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.info('Export','Activity log exported.')">
+                <i class="ph ph-download-simple bm-text-md"></i>
+                Export
+              </button>
+            </div>
+          </div>
+
+          <!-- Account Navigation -->
+          <div class="acct-nav bm-mb-xl">
+            <a href="overview.html" class="acct-nav-item">Overview</a>
+            <a href="../settings.html" class="acct-nav-item">Settings</a>
+            <a href="../security.html" class="acct-nav-item">Security</a>
+            <a href="billing.html" class="acct-nav-item">Billing</a>
+            <a href="statements.html" class="acct-nav-item">Statements</a>
+            <a href="referrals.html" class="acct-nav-item">Referrals</a>
+            <a href="api-keys.html" class="acct-nav-item">API Keys</a>
+            <a href="logs.html" class="acct-nav-item">Logs</a>
+            <a href="activity.html" class="acct-nav-item active">Activity</a>
+          </div>
+
+          <!-- Activity Timeline -->
+          <div class="bm-card">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Activity Timeline</span>
+              <div class="bm-flex-center-gap-md">
+                <select class="bm-select bm-w-10rem">
+                  <option>All Activities</option>
+                  <option>Login</option>
+                  <option>Profile</option>
+                  <option>Billing</option>
+                  <option>Security</option>
+                </select>
+              </div>
+            </div>
+            <div class="bm-card-body bm-pb-xl">
+
+              <!-- Today -->
+              <div class="acct-activity-group">
+                <div class="acct-activity-date">Today</div>
+                <ul class="bm-timeline">
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-icon bm-timeline-icon-success">
+                      <i class="ph ph-sign-in bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Signed in</span>
+                        <span class="bm-timeline-time">09:42 AM</span>
+                      </div>
+                      <p class="bm-timeline-text">Signed in from <strong>Chrome on Windows</strong> · Istanbul, TR</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-primary">Auth</span>
+                        <span class="bm-text-sm-muted">IP: 192.168.1.100</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-icon bm-timeline-icon-primary">
+                      <i class="ph ph-pencil bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Updated profile information</span>
+                        <span class="bm-timeline-time">10:15 AM</span>
+                      </div>
+                      <p class="bm-timeline-text">Changed phone number and updated bio.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-warning">Account</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Yesterday -->
+              <div class="acct-activity-group">
+                <div class="acct-activity-date">Yesterday</div>
+                <ul class="bm-timeline">
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-icon bm-timeline-icon-warning">
+                      <i class="ph ph-key bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Password changed</span>
+                        <span class="bm-timeline-time">03:15 PM</span>
+                      </div>
+                      <p class="bm-timeline-text">Password was updated successfully.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-success">Security</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-icon bm-timeline-icon-info">
+                      <i class="ph ph-receipt bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Invoice paid</span>
+                        <span class="bm-timeline-time">12:00 AM</span>
+                      </div>
+                      <p class="bm-timeline-text">Invoice <strong>#INV-0892</strong> for $49.00 charged to Visa ****4242.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-info">Billing</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-icon bm-timeline-icon-danger">
+                      <i class="ph ph-shield-slash bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Failed login attempt</span>
+                        <span class="bm-timeline-time">11:20 PM</span>
+                      </div>
+                      <p class="bm-timeline-text">Failed login attempt from <strong>Firefox on Linux</strong> · Unknown location</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-danger">Alert</span>
+                        <span class="bm-text-sm-muted">IP: 203.0.113.45</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Apr 5 -->
+              <div class="acct-activity-group">
+                <div class="acct-activity-date">April 5, 2026</div>
+                <ul class="bm-timeline">
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-icon bm-timeline-icon-success">
+                      <i class="ph ph-shield bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Two-factor authentication enabled</span>
+                        <span class="bm-timeline-time">09:10 AM</span>
+                      </div>
+                      <p class="bm-timeline-text">Configured authenticator app for enhanced security.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-success">Security</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-icon bm-timeline-icon-primary">
+                      <i class="ph ph-user-plus bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Invited Alice Smith</span>
+                        <span class="bm-timeline-time">02:30 PM</span>
+                      </div>
+                      <p class="bm-timeline-text">Sent referral invitation to <strong>alice@example.com</strong>.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-primary">Referral</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Apr 2 -->
+              <div class="acct-activity-group">
+                <div class="acct-activity-date">April 2, 2026</div>
+                <ul class="bm-timeline">
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-icon bm-timeline-icon-info">
+                      <i class="ph ph-key bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">API key created</span>
+                        <span class="bm-timeline-time">03:15 PM</span>
+                      </div>
+                      <p class="bm-timeline-text">Created new API key <strong>"CI/CD Pipeline"</strong> for automated deployments.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-info">API</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-icon bm-timeline-icon-success">
+                      <i class="ph ph-sign-in bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Signed in from new device</span>
+                        <span class="bm-timeline-time">08:22 AM</span>
+                      </div>
+                      <p class="bm-timeline-text">First login from <strong>Safari on iPhone</strong> · Istanbul, TR</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-primary">Auth</span>
+                        <span class="bm-text-sm-muted">IP: 10.0.0.42</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Load More -->
+              <div class="bm-text-center bm-mt-xl">
+                <button class="bm-btn bm-btn-outline bm-btn-sm">Load More Activity</button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

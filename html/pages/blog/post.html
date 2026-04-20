@@ -1,0 +1,282 @@
+{% extends "layouts/base.html" %}
+{% set title = "Blog Post" %}
+{% set activeMenu = "blog-listing" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/blog.scss">
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="listing.html">Blog</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Post</span></div>
+              </nav>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-pencil bm-text-md"></i> Edit</button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm"><i class="ph ph-share bm-text-md"></i> Share</button>
+            </div>
+          </div>
+
+          <!-- Article Layout: Content + Sidebar -->
+          <div class="blog-post-layout">
+
+            <!-- Main Content -->
+            <article class="blog-post-main">
+              <div class="bm-card">
+                <div class="bm-card-body blog-post-body">
+                  <!-- Post Header -->
+                  <div class="bm-flex-center-gap-sm bm-mb-md">
+                    <span class="bm-badge bm-badge-primary">Tutorials</span>
+                    <span class="bm-badge bm-badge-muted">CSS</span>
+                    <span class="bm-badge bm-badge-muted">Design Systems</span>
+                  </div>
+                  <h1 class="blog-post-title">Building Scalable Design Systems with CSS Custom Properties</h1>
+                  <div class="blog-meta bm-mb-lg">
+                    <div class="bm-avatar bm-avatar-sm">JD</div>
+                    <div>
+                      <div class="blog-meta-author">John Doe</div>
+                      <div class="bm-text-2xs-muted">Mar 28, 2026 &middot; 8 min read</div>
+                    </div>
+                  </div>
+
+                  <!-- Post Image Placeholder -->
+                  <div class="blog-post-cover bm-mb-xl">
+                    <div class="blog-thumb-placeholder blog-thumb-placeholder-lg">
+                      <i class="ph ph-image"></i>
+                      <span>Cover Image</span>
+                    </div>
+                  </div>
+
+                  <!-- Prose Content -->
+                  <div class="bm-prose">
+                    <p>Design systems have become the backbone of modern web development. They ensure consistency, speed up development, and reduce maintenance overhead. In this tutorial, we'll explore how to build a scalable design system using CSS custom properties (a.k.a. CSS variables) and the OKLCH color space.</p>
+
+                    <h2>Why CSS Custom Properties?</h2>
+                    <p>Custom properties offer several advantages over preprocessor variables like Sass variables:</p>
+                    <ul>
+                      <li><strong>Runtime flexibility</strong> — values can be changed dynamically via JavaScript or media queries</li>
+                      <li><strong>Cascade-aware</strong> — they respect the CSS cascade, enabling contextual overrides</li>
+                      <li><strong>No build step</strong> — they work natively in all modern browsers</li>
+                      <li><strong>Theming</strong> — switching between light/dark themes becomes trivial</li>
+                    </ul>
+
+                    <h2>Setting Up the Token Layer</h2>
+                    <p>The foundation of any design system is a well-organized set of tokens. Here's a minimal token structure:</p>
+
+                    <pre><code>:root {
+  /* Colors */
+  --primary: oklch(0.55 0.2 260);
+  --success: oklch(0.65 0.18 145);
+  --warning: oklch(0.75 0.15 85);
+  --danger:  oklch(0.6 0.22 25);
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+}</code></pre>
+
+                    <h2>Building Components on Top of Tokens</h2>
+                    <p>Once your tokens are defined, components can reference them without hardcoding values. This means changing a single token automatically updates every component that uses it.</p>
+
+                    <blockquote>
+                      <p>"A design system is only as good as its adoption. Make things easy to use and hard to misuse."</p>
+                    </blockquote>
+
+                    <h3>Button Component Example</h3>
+                    <p>Here's a simple button that leverages tokens for colors, spacing, and border-radius:</p>
+
+                    <pre><code>.bm-btn {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+
+.bm-btn-primary {
+  background: var(--primary);
+  color: white;
+}</code></pre>
+
+                    <h2>The OKLCH Advantage</h2>
+                    <p>OKLCH (Oklch Lightness Chroma Hue) provides a perceptually uniform color space. Unlike HSL, colors of equal lightness values actually <em>look</em> the same brightness. This is critical for accessible, consistent design systems.</p>
+
+                    <p>By adjusting only the <strong>lightness</strong> parameter, you can generate an entire shade scale from a single hue — and every shade will have consistent visual weight.</p>
+
+                    <h2>Theming with CSS Custom Properties</h2>
+                    <p>With custom properties, theming is as simple as overriding values in a different scope:</p>
+
+                    <pre><code>[data-theme="dark"] {
+  --bg: oklch(0.15 0.01 260);
+  --fg: oklch(0.95 0.01 260);
+  --primary: oklch(0.65 0.2 260);
+  --card-bg: oklch(0.2 0.01 260);
+}</code></pre>
+
+                    <h2>Conclusion</h2>
+                    <p>CSS custom properties are the right foundation for modern design systems. Combined with OKLCH colors, they give you the power to build themeable, consistent, and accessible interfaces with minimal overhead. Start small, think in tokens, and let the language do the work.</p>
+                  </div>
+
+                  <!-- Tags -->
+                  <div class="blog-post-tags">
+                    <span class="bm-badge bm-badge-muted">CSS</span>
+                    <span class="bm-badge bm-badge-muted">Design Systems</span>
+                    <span class="bm-badge bm-badge-muted">Theming</span>
+                    <span class="bm-badge bm-badge-muted">OKLCH</span>
+                    <span class="bm-badge bm-badge-muted">Custom Properties</span>
+                  </div>
+
+                  <!-- Author Card -->
+                  <div class="blog-author-card">
+                    <div class="bm-avatar bm-avatar-lg bm-border-3">JD</div>
+                    <div>
+                      <div class="bm-text-body-medium-swap">John Doe</div>
+                      <div class="bm-text-caption-muted">Senior Frontend Engineer at BlackMoon. Writes about CSS architecture, design systems, and developer tooling.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Comments Section -->
+              <div class="bm-card">
+                <div class="bm-card-header">
+                  <div class="bm-card-title">Comments</div>
+                  <span class="bm-badge bm-badge-muted">3</span>
+                </div>
+                <div class="bm-card-body">
+                  <div class="blog-comments-list">
+                    <!-- Comment 1 -->
+                    <div class="blog-comment">
+                      <div class="bm-avatar bm-avatar-sm bm-flex-shrink-0">AS</div>
+                      <div class="blog-comment-body">
+                        <div class="blog-comment-meta">
+                          <span class="bm-text-caption-medium">Alice Smith</span>
+                          <span class="bm-text-2xs-muted">2 days ago</span>
+                        </div>
+                        <p class="blog-comment-text">Great article! I've been using OKLCH in my projects and the perceptual uniformity really makes a difference. Would love to see a follow-up on generating color palettes programmatically.</p>
+                        <div class="blog-comment-actions">
+                          <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-thumbs-up bm-text-md"></i> 4</button>
+                          <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-arrow-bend-up-left bm-text-md"></i> Reply</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Comment 2 -->
+                    <div class="blog-comment">
+                      <div class="bm-avatar bm-avatar-sm bm-flex-shrink-0">BW</div>
+                      <div class="blog-comment-body">
+                        <div class="blog-comment-meta">
+                          <span class="bm-text-caption-medium">Bob Wilson</span>
+                          <span class="bm-text-2xs-muted">1 day ago</span>
+                        </div>
+                        <p class="blog-comment-text">The token layer approach is exactly what we needed for our multi-brand project. Thank you for the clear explanation of how cascade-aware properties help with contextual theming.</p>
+                        <div class="blog-comment-actions">
+                          <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-thumbs-up bm-text-md"></i> 2</button>
+                          <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-arrow-bend-up-left bm-text-md"></i> Reply</button>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Comment 3 -->
+                    <div class="blog-comment">
+                      <div class="bm-avatar bm-avatar-sm bm-flex-shrink-0">CD</div>
+                      <div class="blog-comment-body">
+                        <div class="blog-comment-meta">
+                          <span class="bm-text-caption-medium">Clara Davis</span>
+                          <span class="bm-text-2xs-muted">5 hours ago</span>
+                        </div>
+                        <p class="blog-comment-text">Any plans to cover how to handle fallback colors for browsers that don't support OKLCH yet? Currently using @supports but it feels verbose.</p>
+                        <div class="blog-comment-actions">
+                          <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-thumbs-up bm-text-md"></i> 1</button>
+                          <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-arrow-bend-up-left bm-text-md"></i> Reply</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Add Comment Form -->
+                  <div class="blog-comment-form">
+                    <div class="bm-flex-center-gap-sm bm-mb-md">
+                      <div class="bm-avatar bm-avatar-sm bm-flex-shrink-0">You</div>
+                      <span class="bm-text-caption-medium">Leave a comment</span>
+                    </div>
+                    <textarea class="bm-input" rows="4" placeholder="Share your thoughts…"></textarea>
+                    <div class="blog-comment-form-footer">
+                      <span class="bm-text-2xs-muted">Be respectful and constructive.</span>
+                      <button class="bm-btn bm-btn-primary bm-btn-sm">Post Comment</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="blog-post-sidebar">
+              <!-- Recent Posts -->
+              <div class="bm-card bm-mb-lg">
+                <div class="bm-card-header"><div class="bm-card-title">Recent Posts</div></div>
+                <div class="bm-card-body bm-flex-col-gap-lg">
+                  <a href="post.html" class="blog-sidebar-link">
+                    <div class="bm-text-caption-medium">Migrating to Vite 6: Lessons Learned</div>
+                    <div class="bm-text-2xs-muted">Mar 22, 2026</div>
+                  </a>
+                  <a href="post.html" class="blog-sidebar-link">
+                    <div class="bm-text-caption-medium">Introducing Dark Mode &amp; Auto Theme Switching</div>
+                    <div class="bm-text-2xs-muted">Mar 15, 2026</div>
+                  </a>
+                  <a href="post.html" class="blog-sidebar-link">
+                    <div class="bm-text-caption-medium">Q1 2026 Retrospective: Growing the Team</div>
+                    <div class="bm-text-2xs-muted">Mar 10, 2026</div>
+                  </a>
+                  <a href="post.html" class="blog-sidebar-link">
+                    <div class="bm-text-caption-medium">Advanced Table Patterns for Admin UIs</div>
+                    <div class="bm-text-2xs-muted">Mar 5, 2026</div>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Tags Cloud -->
+              <div class="bm-card bm-mb-lg">
+                <div class="bm-card-header"><div class="bm-card-title">Tags</div></div>
+                <div class="bm-card-body">
+                  <div class="blog-tags-cloud">
+                    <span class="bm-badge bm-badge-muted">CSS</span>
+                    <span class="bm-badge bm-badge-muted">JavaScript</span>
+                    <span class="bm-badge bm-badge-muted">Vite</span>
+                    <span class="bm-badge bm-badge-muted">Design Systems</span>
+                    <span class="bm-badge bm-badge-muted">OKLCH</span>
+                    <span class="bm-badge bm-badge-muted">Theming</span>
+                    <span class="bm-badge bm-badge-muted">Admin UI</span>
+                    <span class="bm-badge bm-badge-muted">Components</span>
+                    <span class="bm-badge bm-badge-muted">Performance</span>
+                    <span class="bm-badge bm-badge-muted">Accessibility</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Newsletter -->
+              <div class="bm-card">
+                <div class="bm-card-header"><div class="bm-card-title">Newsletter</div></div>
+                <div class="bm-card-body">
+                  <p class="bm-text-caption-muted bm-mb-md">Get the latest articles delivered to your inbox. No spam, unsubscribe anytime.</p>
+                  <input class="bm-input bm-mb-sm" type="email" placeholder="you@example.com">
+                  <button class="bm-btn bm-btn-primary bm-btn-sm bm-w-full">Subscribe</button>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+/* ================================================================
+   BLACKMOON — Subscriptions Pages
+   ================================================================ */
+
+/* ── Filter Bar ── */
+.sub-filter-bar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; }
+
+/* ── Detail Layout ── */
+.sub-detail-layout { display:grid; grid-template-columns:1fr 340px; gap:2rem; }
+.sub-detail-main { min-width:0; }
+.sub-detail-sidebar { display:flex; flex-direction:column; gap:0; }
+
+/* ── Plan Banner ── */
+.sub-plan-banner { display:flex; align-items:flex-start; justify-content:space-between; gap:2rem; }
+.sub-plan-info { flex:1; min-width:0; }
+.sub-plan-price { text-align:right; flex-shrink:0; }
+
+/* ── Feature Rows ── */
+.sub-feature-row { display:flex; align-items:center; gap:0.5rem; }
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .sub-detail-layout { grid-template-columns:1fr; }
+  .sub-detail-sidebar { order:-1; }
+}
+@media(max-width:640px){
+  .sub-plan-banner { flex-direction:column; gap:1rem; }
+  .sub-plan-price { text-align:left; }
+}

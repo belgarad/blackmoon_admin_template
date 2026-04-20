@@ -1,0 +1,20 @@
+{% macro emptyState(icon, title, description, actionText, actionHref, actionClass) %}
+<div class="bm-empty">
+  {% if icon %}
+  <div class="bm-empty-icon">
+    <i class="ph ph-{{ icon }}"></i>
+  </div>
+  {% endif %}
+  {% if title %}
+  <div class="bm-empty-title">{{ title }}</div>
+  {% endif %}
+  {% if description %}
+  <div class="bm-empty-description">{{ description }}</div>
+  {% endif %}
+  {% if actionText %}
+  <div class="bm-empty-action">
+    <a href="{{ actionHref | default('#') }}" class="{{ actionClass | default('bm-btn bm-btn-primary') }}">{{ actionText }}</a>
+  </div>
+  {% endif %}
+</div>
+{% endmacro %}

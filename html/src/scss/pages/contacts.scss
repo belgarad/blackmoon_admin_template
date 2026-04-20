@@ -1,0 +1,65 @@
+/* ================================================================
+   BLACKMOON — Contacts Pages
+   ================================================================ */
+
+/* ── Filter Bar ── */
+.cnt-filter-bar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; }
+.cnt-view-toggle.active { background:var(--primary-light); color:var(--primary); }
+
+/* ── Card Grid ── */
+.cnt-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
+.cnt-card { transition:box-shadow 200ms, transform 200ms; }
+.cnt-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.cnt-avatar-center { margin-left:auto; margin-right:auto; }
+.cnt-card-actions { justify-content:center; }
+
+/* ── List View ── */
+.cnt-grid.cnt-list { display:flex; flex-direction:column; gap:0.5rem; }
+.cnt-grid.cnt-list .cnt-card { transform:none !important; }
+.cnt-grid.cnt-list .bm-card-body {
+  display:flex; align-items:center; gap:1.25rem; text-align:left; padding:0.875rem 1.25rem;
+}
+.cnt-grid.cnt-list .cnt-avatar-center { flex-shrink:0; margin:0; width:2.5rem; height:2.5rem; font-size:0.8125rem; }
+.cnt-grid.cnt-list .bm-text-body-medium-swap { margin-bottom:0.125rem; white-space:nowrap; }
+.cnt-grid.cnt-list .bm-text-2xs-muted:first-of-type { margin:0; }
+.cnt-grid.cnt-list .bm-text-caption-muted { display:none; }
+.cnt-grid.cnt-list .cnt-name-group { flex:1; min-width:0; }
+.cnt-grid.cnt-list .bm-flex-center-gap-sm.bm-mb-md { margin:0; }
+.cnt-grid.cnt-list .cnt-card-actions { margin-left:auto; justify-content:flex-end; flex-shrink:0; }
+
+/* ── Detail Layout ── */
+.cnt-detail-layout { display:grid; grid-template-columns:1fr 340px; gap:2rem; }
+.cnt-detail-main { min-width:0; }
+.cnt-detail-sidebar { display:flex; flex-direction:column; gap:0; }
+
+/* ── Profile Row ── */
+.cnt-profile-row { display:flex; align-items:center; gap:1.25rem; }
+.cnt-profile-info { flex:1; min-width:0; }
+
+/* ── Tabs ── */
+.cnt-tabs { display:flex; gap:0; border-bottom:2px solid var(--border); }
+.cnt-tab { padding:0.625rem 1.25rem; font-size:0.875rem; font-weight:500; color:var(--muted-foreground); background:none; border:none; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; transition:color 150ms, border-color 150ms; }
+.cnt-tab:hover { color:var(--foreground); }
+.cnt-tab.active { color:var(--primary); border-bottom-color:var(--primary); }
+
+/* ── Info Rows ── */
+.cnt-info-row { display:flex; align-items:flex-start; gap:0.75rem; }
+
+/* ── Activity ── */
+.cnt-activity-item { display:flex; align-items:flex-start; gap:0.75rem; }
+.cnt-activity-icon { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.cnt-activity-icon-primary { background:var(--primary-light); color:var(--primary); }
+.cnt-activity-icon-success { background:oklch(0.90 0.08 155); color:var(--success); }
+.cnt-activity-icon-info    { background:oklch(0.90 0.08 250); color:var(--info); }
+.cnt-activity-icon-warning { background:oklch(0.92 0.08 85); color:var(--warning); }
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .cnt-grid { grid-template-columns:repeat(2,1fr); }
+  .cnt-detail-layout { grid-template-columns:1fr; }
+  .cnt-detail-sidebar { order:-1; }
+}
+@media(max-width:640px){
+  .cnt-grid { grid-template-columns:1fr; }
+  .cnt-profile-row { flex-direction:column; text-align:center; }
+}

@@ -1,0 +1,319 @@
+{% extends "layouts/base.html" %}
+{% set title = "Pricing" %}
+{% set activeMenu = "pricing" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Pricing</span></div>
+              </nav>
+              <h1 class="bm-page-title">Plans &amp; Pricing</h1>
+              <p class="bm-page-subtitle">Choose the plan that's right for your business. Scale up or down anytime.</p>
+            </div>
+          </div>
+
+          <!-- Billing Toggle -->
+          <div class="bm-flex-center-justify-center bm-mb-2xl">
+            <div class="pricing-pill-toggle">
+              <button id="btnMonthly" class="pricing-pill-btn active" onclick="setBilling('monthly')">Monthly</button>
+              <button id="btnAnnual" class="pricing-pill-btn" onclick="setBilling('annual')">
+                Annual <span class="bm-badge bm-badge-success bm-text-2xs-ml">-20%</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Pricing Cards -->
+          <div class="pricing-grid bm-mb-2xl">
+
+            <!-- Starter -->
+            <div class="bm-card bm-pricing-card bm-p-0">
+              <div class="bm-p-2xl-top">
+                <div class="bm-flex-center-gap-lg-mb">
+                  <div class="bm-icon-box-muted">
+                    <i class="ph ph-user bm-text-xl-muted"></i>
+                  </div>
+                  <div>
+                    <div class="bm-text-md-bold-mb2">Starter</div>
+                    <div class="bm-text-sm-muted">For individuals &amp; freelancers</div>
+                  </div>
+                </div>
+                <div class="bm-mb-xl">
+                  <div class="bm-flex-baseline-gap">
+                    <span class="price-val bm-text-2xl-800" data-monthly="$0" data-annual="$0">$0</span>
+                    <span class="price-period bm-text-body-muted">/month</span>
+                  </div>
+                  <p class="bm-text-caption-muted-mt2">Free forever — no credit card</p>
+                </div>
+                <button class="bm-btn bm-btn-outline bm-w-full" onclick="App.toast.info('Plan selected','You are already on the Free plan.')">Get Started Free</button>
+              </div>
+              <div class="bm-p-section-border-top">
+                <p class="bm-text-sm-semibold-label2">What's included</p>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> 1 user seat</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> 3 projects</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> 5 GB storage</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Basic analytics</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Community support</div>
+                <div class="bm-pricing-feature unavailable"><i class="ph ph-minus"></i> Priority support</div>
+                <div class="bm-pricing-feature unavailable"><i class="ph ph-minus"></i> API access</div>
+                <div class="bm-pricing-feature unavailable"><i class="ph ph-minus"></i> Custom domain</div>
+              </div>
+            </div>
+
+            <!-- Pro (Featured) -->
+            <div class="bm-card bm-pricing-card featured bm-p-0-rel">
+              <div class="bm-pricing-label">Most Popular</div>
+              <div class="bm-p-2xl-top-extra">
+                <div class="bm-flex-center-gap-lg-mb">
+                  <div class="bm-icon-box-primary">
+                    <i class="ph ph-rocket-launch bm-text-lg-primary"></i>
+                  </div>
+                  <div>
+                    <div class="bm-text-md-bold-mb2">Pro</div>
+                    <div class="bm-text-sm-muted">For growing teams</div>
+                  </div>
+                </div>
+                <div class="bm-mb-xl">
+                  <div class="bm-flex-baseline-gap">
+                    <span class="price-val bm-text-4xl-800-primary" data-monthly="$29" data-annual="$23">$29</span>
+                    <span class="price-period bm-text-body-muted">/month</span>
+                  </div>
+                  <p class="bm-text-caption-muted-mt2" id="proBillingNote">Billed monthly</p>
+                </div>
+                <button class="bm-btn bm-btn-primary bm-w-full" onclick="App.toast.success('Upgrading to Pro','Redirecting to checkout...')">Upgrade to Pro</button>
+              </div>
+              <div class="bm-p-section-border-top">
+                <p class="bm-text-sm-semibold-label2">Everything in Starter, plus</p>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Up to 10 users</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Unlimited projects</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> 100 GB storage</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Advanced analytics &amp; reports</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Priority email support</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Full API access</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Custom integrations</div>
+                <div class="bm-pricing-feature unavailable"><i class="ph ph-minus"></i> White-labeling &amp; SSO</div>
+              </div>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="bm-card bm-pricing-card bm-p-0">
+              <div class="bm-p-2xl-top">
+                <div class="bm-flex-center-gap-lg-mb">
+                  <div class="bm-icon-box-purple">
+                    <i class="ph ph-building bm-icon-lg-purple"></i>
+                  </div>
+                  <div>
+                    <div class="bm-text-md-bold-mb2">Enterprise</div>
+                    <div class="bm-text-sm-muted">For large organizations</div>
+                  </div>
+                </div>
+                <div class="bm-mb-xl">
+                  <div class="bm-flex-baseline-gap">
+                    <span class="price-val bm-text-2xl-800" data-monthly="$99" data-annual="$79">$99</span>
+                    <span class="price-period bm-text-body-muted">/month per user</span>
+                  </div>
+                  <p class="bm-text-caption-muted-mt2">Volume discounts available</p>
+                </div>
+                <button class="bm-btn bm-btn-secondary bm-w-full" onclick="App.toast.info('Contact Sales','Our team will reach out within 24 hours.')">Contact Sales</button>
+              </div>
+              <div class="bm-p-section-border-top">
+                <p class="bm-text-sm-semibold-label2">Everything in Pro, plus</p>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Unlimited users</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Unlimited storage</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Custom analytics &amp; dashboards</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> 24/7 dedicated support + SLA</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Custom domain &amp; branding</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> White-labeling</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> SSO / SAML / SCIM</div>
+                <div class="bm-pricing-feature"><i class="ph ph-check"></i> Dedicated account manager</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="pricing-trust-strip bm-mb-2xl">
+            <div class="pricing-trust-item">
+              <i class="ph ph-shield-check bm-text-lg-success"></i>
+              <span>30-day money-back guarantee</span>
+            </div>
+            <div class="pricing-trust-item">
+              <i class="ph ph-lock bm-text-lg-primary"></i>
+              <span>256-bit SSL encryption</span>
+            </div>
+            <div class="pricing-trust-item">
+              <i class="ph ph-headset bm-text-lg-warning"></i>
+              <span>Cancel anytime, no lock-in</span>
+            </div>
+            <div class="pricing-trust-item">
+              <i class="ph ph-gauge bm-text-lg-info"></i>
+              <span>99.9% uptime SLA</span>
+            </div>
+          </div>
+
+          <!-- Feature Comparison Table -->
+          <div class="bm-card bm-mb-2xl">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Feature Comparison</span>
+            </div>
+            <div class="bm-table-responsive">
+              <table class="bm-table pricing-compare-table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="bm-text-left-w40">Feature</th>
+                    <th scope="col" class="bm-text-center">Starter</th>
+                    <th scope="col" class="bm-text-center pricing-col-featured">Pro</th>
+                    <th scope="col" class="bm-text-center">Enterprise</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="pricing-compare-section"><td colspan="4">Workspace</td></tr>
+                  <tr>
+                    <td class="bm-font-medium">Users</td>
+                    <td class="bm-text-center-muted">1</td>
+                    <td class="bm-text-center">Up to 10</td>
+                    <td class="bm-text-center">Unlimited</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">Projects</td>
+                    <td class="bm-text-center-muted">3</td>
+                    <td class="bm-text-center">Unlimited</td>
+                    <td class="bm-text-center">Unlimited</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">Storage</td>
+                    <td class="bm-text-center-muted">5 GB</td>
+                    <td class="bm-text-center">100 GB</td>
+                    <td class="bm-text-center">Unlimited</td>
+                  </tr>
+                  <tr class="pricing-compare-section"><td colspan="4">Features</td></tr>
+                  <tr>
+                    <td class="bm-font-medium">Analytics</td>
+                    <td class="bm-text-center-muted">Basic</td>
+                    <td class="bm-text-center">Advanced</td>
+                    <td class="bm-text-center">Custom</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">API Access</td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-check-circle bm-text-xl-success2"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-check-circle bm-text-xl-success2"></i></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">Custom Integrations</td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-check-circle bm-text-xl-success2"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-check-circle bm-text-xl-success2"></i></td>
+                  </tr>
+                  <tr class="pricing-compare-section"><td colspan="4">Security &amp; Compliance</td></tr>
+                  <tr>
+                    <td class="bm-font-medium">Custom Domain</td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-check-circle bm-text-xl-success2"></i></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">SSO / SAML</td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-check-circle bm-text-xl-success2"></i></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">White-labeling</td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-check-circle bm-text-xl-success2"></i></td>
+                  </tr>
+                  <tr class="pricing-compare-section"><td colspan="4">Support</td></tr>
+                  <tr>
+                    <td class="bm-font-medium">Support Level</td>
+                    <td class="bm-text-center-muted">Community</td>
+                    <td class="bm-text-center">Priority Email</td>
+                    <td class="bm-text-center">24/7 Dedicated</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">SLA</td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-check-circle bm-text-xl-success2"></i></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">Account Manager</td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-x bm-text-lg-muted"></i></td>
+                    <td class="bm-text-center"><i class="ph ph-check-circle bm-text-xl-success2"></i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- FAQ Section -->
+          <div class="bm-card bm-mb-2xl">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Frequently Asked Questions</span>
+            </div>
+            <div class="bm-card-body">
+              <div class="bm-accordion" id="pricingFaq">
+                <div class="bm-accordion-item open">
+                  <button class="bm-accordion-trigger" onclick="this.parentElement.classList.toggle('open')">
+                    Can I switch plans later?
+                    <i class="ph ph-caret-down bm-accordion-icon"></i>
+                  </button>
+                  <div class="bm-accordion-content"><div class="bm-accordion-body">Yes! You can upgrade or downgrade your plan at any time from your account settings. When upgrading, the new plan takes effect immediately and you'll be charged the prorated difference. Downgrading takes effect at the end of your current billing cycle.</div></div>
+                </div>
+                <div class="bm-accordion-item">
+                  <button class="bm-accordion-trigger" onclick="this.parentElement.classList.toggle('open')">
+                    What payment methods do you accept?
+                    <i class="ph ph-caret-down bm-accordion-icon"></i>
+                  </button>
+                  <div class="bm-accordion-content"><div class="bm-accordion-body">We accept all major credit cards (Visa, MasterCard, American Express), debit cards, and PayPal. Enterprise customers can also pay via bank transfer or purchase order.</div></div>
+                </div>
+                <div class="bm-accordion-item">
+                  <button class="bm-accordion-trigger" onclick="this.parentElement.classList.toggle('open')">
+                    Is there a free trial for Pro?
+                    <i class="ph ph-caret-down bm-accordion-icon"></i>
+                  </button>
+                  <div class="bm-accordion-content"><div class="bm-accordion-body">Yes, the Pro plan comes with a 14-day free trial. No credit card required to start. If you decide not to upgrade, your account will automatically revert to the Starter plan.</div></div>
+                </div>
+                <div class="bm-accordion-item">
+                  <button class="bm-accordion-trigger" onclick="this.parentElement.classList.toggle('open')">
+                    What happens when I cancel?
+                    <i class="ph ph-caret-down bm-accordion-icon"></i>
+                  </button>
+                  <div class="bm-accordion-content"><div class="bm-accordion-body">When you cancel, you retain access to your current plan until the end of your billing cycle. Your data is preserved for 30 days after cancellation. You can export all data at any time from your settings.</div></div>
+                </div>
+                <div class="bm-accordion-item">
+                  <button class="bm-accordion-trigger" onclick="this.parentElement.classList.toggle('open')">
+                    Do you offer discounts for nonprofits or education?
+                    <i class="ph ph-caret-down bm-accordion-icon"></i>
+                  </button>
+                  <div class="bm-accordion-content"><div class="bm-accordion-body">Yes! We offer a 50% discount for verified nonprofit organizations and educational institutions. Contact our sales team with your organization details to get started.</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA Section -->
+          <div class="bm-card bm-card-body bm-empty-center">
+            <i class="ph ph-lifebuoy bm-text-4xl-primary-mb"></i>
+            <h3 class="bm-text-lg-semibold-mb">Need a custom plan?</h3>
+            <p class="bm-text-sm-muted-mb6">Talk to our sales team for volume pricing, custom features, and enterprise agreements.</p>
+            <div class="bm-flex-wrap-center">
+              <button class="bm-btn bm-btn-primary" onclick="App.toast.info('Sales Team','sales@example.com — We reply within 24 hours.')">
+                <i class="ph ph-envelope bm-text-md"></i>
+                Contact Sales
+              </button>
+              <a href="faq.html" class="bm-btn bm-btn-outline">View Full FAQ</a>
+            </div>
+          </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/pricing.js"></script>
+{% endblock %}

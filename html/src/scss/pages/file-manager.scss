@@ -1,0 +1,436 @@
+/* ================================================================
+   FILE MANAGER
+   ================================================================ */
+
+/* Layout */
+.fm-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1023px) {
+  .fm-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .fm-sidebar {
+    order: -1;
+  }
+}
+
+/* Sidebar Nav */
+.fm-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.fm-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.fm-nav-item:hover {
+  background: var(--accent);
+  color: var(--foreground);
+}
+
+.fm-nav-item.active {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary);
+}
+
+.fm-nav-item .ph {
+  font-size: 1.25rem;
+}
+
+.fm-nav-item .bm-badge {
+  margin-left: auto;
+}
+
+.fm-nav-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.75rem 0;
+}
+
+/* Storage info */
+.fm-storage-info .bm-progress {
+  height: 6px;
+  background: var(--accent);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.fm-storage-info .bm-progress-bar {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s;
+}
+
+.bm-progress-bar.bm-progress-primary {
+  background: var(--primary);
+}
+
+/* File Types */
+.fm-file-types {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.fm-type-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fm-type-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fm-type-icon .ph {
+  font-size: 1.125rem;
+}
+
+.fm-type-image {
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+  color: var(--primary);
+}
+
+.fm-type-document {
+  background: color-mix(in srgb, var(--success) 14%, transparent);
+  color: var(--success);
+}
+
+.fm-type-video {
+  background: color-mix(in srgb, var(--warning) 14%, transparent);
+  color: var(--warning);
+}
+
+.fm-type-audio {
+  background: color-mix(in srgb, var(--info, #4C87B9) 14%, transparent);
+  color: var(--info, #4C87B9);
+}
+
+.fm-type-other {
+  background: color-mix(in srgb, var(--muted-foreground) 14%, transparent);
+  color: var(--muted-foreground);
+}
+
+.fm-type-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Folder Grid */
+.fm-folder-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 1023px) {
+  .fm-folder-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .fm-folder-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fm-folder-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  text-align: center;
+}
+
+.fm-folder-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.fm-folder-icon {
+  font-size: 2.5rem;
+  color: var(--warning);
+  margin-bottom: 0.5rem;
+}
+
+.fm-folder-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+
+.fm-folder-meta {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+/* Folder Grid Large (folders page) */
+.fm-folder-grid-lg {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1023px) {
+  .fm-folder-grid-lg {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fm-folder-card-lg {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.fm-folder-card-lg:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.fm-folder-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.fm-folder-icon-lg {
+  font-size: 2.5rem;
+  color: var(--warning);
+}
+
+.fm-folder-date {
+  font-size: 0.6875rem;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+}
+
+/* File Grid */
+.fm-file-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 1279px) {
+  .fm-file-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1023px) {
+  .fm-file-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .fm-file-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* File List View */
+.fm-file-grid.fm-file-list-view {
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.fm-file-grid.fm-file-list-view .fm-file-card {
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fm-file-grid.fm-file-list-view .fm-file-preview {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+}
+
+.fm-file-grid.fm-file-list-view .fm-file-preview .ph {
+  font-size: 1.25rem;
+}
+
+.fm-file-grid.fm-file-list-view .fm-file-info {
+  flex: 1;
+}
+
+.fm-file-grid.fm-file-list-view .fm-file-actions {
+  opacity: 1;
+}
+
+/* File Card */
+.fm-file-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  position: relative;
+}
+
+.fm-file-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.fm-file-card:hover .fm-file-actions {
+  opacity: 1;
+}
+
+.fm-file-preview {
+  width: 100%;
+  height: 6rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fm-file-preview .ph {
+  font-size: 2rem;
+}
+
+.fm-preview-image {
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--primary);
+}
+
+.fm-preview-document {
+  background: color-mix(in srgb, var(--success) 10%, transparent);
+  color: var(--success);
+}
+
+.fm-preview-spreadsheet {
+  background: color-mix(in srgb, var(--success) 10%, transparent);
+  color: var(--success);
+}
+
+.fm-preview-video {
+  background: color-mix(in srgb, var(--warning) 10%, transparent);
+  color: var(--warning);
+}
+
+.fm-preview-audio {
+  background: color-mix(in srgb, var(--info, #4C87B9) 10%, transparent);
+  color: var(--info, #4C87B9);
+}
+
+.fm-preview-code {
+  background: color-mix(in srgb, var(--muted-foreground) 10%, transparent);
+  color: var(--muted-foreground);
+}
+
+.fm-file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.fm-file-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fm-file-meta {
+  font-size: 0.6875rem;
+  color: var(--muted-foreground);
+}
+
+.fm-file-actions {
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+/* Tree View */
+.fm-tree {
+  font-size: 0.875rem;
+}
+
+.fm-tree-item {
+  margin-left: 0.5rem;
+}
+
+.fm-tree-item > .fm-tree-children {
+  display: none;
+  margin-left: 1rem;
+  border-left: 1px solid var(--border);
+  padding-left: 0.5rem;
+}
+
+.fm-tree-item.open > .fm-tree-children {
+  display: block;
+}
+
+.fm-tree-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.25rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+}
+
+.fm-tree-toggle:hover {
+  background: var(--accent);
+}
+
+.fm-tree-arrow {
+  font-size: 1rem;
+  color: var(--muted-foreground);
+  transition: transform 0.15s;
+}
+
+.fm-tree-item.open > .fm-tree-toggle .fm-tree-arrow {
+  transform: rotate(90deg);
+}
+
+.fm-tree-folder-icon {
+  font-size: 1.125rem;
+  color: var(--warning);
+}
+
+.fm-tree-label {
+  font-weight: 500;
+  color: var(--foreground);
+}

@@ -1,0 +1,259 @@
+{% extends "layouts/base.html" %}
+{% set title = "Folders" %}
+{% set activeMenu = "file-manager-folders" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/file-manager.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="files.html">File Manager</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Folders</span></div>
+              </nav>
+              <h1 class="bm-page-title">Folders</h1>
+              <p class="bm-page-subtitle">Organize your files into folders</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Folder Created','New folder has been created.')">
+                <i class="ph ph-folder-plus bm-text-md"></i>New Folder
+              </button>
+            </div>
+          </div>
+
+          <!-- Layout: Sidebar + Main -->
+          <div class="fm-layout">
+
+            <!-- Sidebar -->
+            <div class="fm-sidebar">
+              <div class="bm-card bm-p-lg">
+                <div class="fm-storage-info bm-mb-md">
+                  <div class="bm-flex-between-wrap bm-mb-xs">
+                    <span class="bm-text-sm bm-text-muted">Storage Used</span>
+                    <span class="bm-text-sm bm-font-semibold">24.5 GB / 50 GB</span>
+                  </div>
+                  <div class="bm-progress">
+                    <div class="bm-progress-bar bm-progress-primary" style="width: 49%"></div>
+                  </div>
+                </div>
+
+                <nav class="fm-nav">
+                  <a href="files.html" class="fm-nav-item">
+                    <i class="ph ph-folder"></i>
+                    <span>All Files</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge">248</span>
+                  </a>
+                  <a href="folders.html" class="fm-nav-item active">
+                    <i class="ph ph-folder-simple"></i>
+                    <span>Folders</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge">12</span>
+                  </a>
+                  <a href="#" class="fm-nav-item">
+                    <i class="ph ph-star"></i>
+                    <span>Starred</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge">8</span>
+                  </a>
+                  <a href="#" class="fm-nav-item">
+                    <i class="ph ph-clock"></i>
+                    <span>Recent</span>
+                  </a>
+                  <a href="#" class="fm-nav-item">
+                    <i class="ph ph-trash"></i>
+                    <span>Trash</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge">3</span>
+                  </a>
+                </nav>
+              </div>
+            </div>
+
+            <!-- Main -->
+            <div class="fm-main">
+
+              <!-- Toolbar -->
+              <div class="bm-card bm-mb-lg bm-overflow-visible">
+                <div class="bm-card-body bm-px-lg">
+                  <div class="bm-flex-gap-wrap">
+                    <input class="bm-input bm-w-max-300" type="text" placeholder="Search folders…" id="folderSearch" oninput="filterFolders(this.value)" />
+                    <select class="bm-select bm-w-max-160" onchange="sortFolders(this.value)">
+                      <option value="name">Sort by Name</option>
+                      <option value="date">Last Modified</option>
+                      <option value="size">Size</option>
+                      <option value="files">File Count</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Folder Tree -->
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-sm bm-font-semibold bm-text-muted bm-text-uppercase bm-mb-md">Folder Tree</h3>
+                <div class="fm-tree">
+                  <div class="fm-tree-item open">
+                    <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                      <i class="ph ph-caret-right fm-tree-arrow"></i>
+                      <i class="ph ph-folder-open fm-tree-folder-icon"></i>
+                      <span class="fm-tree-label">Root</span>
+                    </div>
+                    <div class="fm-tree-children">
+                      <div class="fm-tree-item open">
+                        <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                          <i class="ph ph-caret-right fm-tree-arrow"></i>
+                          <i class="ph ph-folder-open fm-tree-folder-icon"></i>
+                          <span class="fm-tree-label">Documents</span>
+                        </div>
+                        <div class="fm-tree-children">
+                          <div class="fm-tree-item">
+                            <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                              <i class="ph ph-caret-right fm-tree-arrow"></i>
+                              <i class="ph ph-folder fm-tree-folder-icon"></i>
+                              <span class="fm-tree-label">Contracts</span>
+                            </div>
+                          </div>
+                          <div class="fm-tree-item">
+                            <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                              <i class="ph ph-caret-right fm-tree-arrow"></i>
+                              <i class="ph ph-folder fm-tree-folder-icon"></i>
+                              <span class="fm-tree-label">Reports</span>
+                            </div>
+                          </div>
+                          <div class="fm-tree-item">
+                            <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                              <i class="ph ph-caret-right fm-tree-arrow"></i>
+                              <i class="ph ph-folder fm-tree-folder-icon"></i>
+                              <span class="fm-tree-label">Invoices</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="fm-tree-item">
+                        <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                          <i class="ph ph-caret-right fm-tree-arrow"></i>
+                          <i class="ph ph-folder fm-tree-folder-icon"></i>
+                          <span class="fm-tree-label">Images</span>
+                        </div>
+                      </div>
+                      <div class="fm-tree-item">
+                        <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                          <i class="ph ph-caret-right fm-tree-arrow"></i>
+                          <i class="ph ph-folder fm-tree-folder-icon"></i>
+                          <span class="fm-tree-label">Videos</span>
+                        </div>
+                      </div>
+                      <div class="fm-tree-item">
+                        <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                          <i class="ph ph-caret-right fm-tree-arrow"></i>
+                          <i class="ph ph-folder fm-tree-folder-icon"></i>
+                          <span class="fm-tree-label">Projects</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Folder Grid -->
+              <div>
+                <h3 class="bm-text-sm bm-font-semibold bm-text-muted bm-text-uppercase bm-mb-sm">All Folders</h3>
+                <div class="fm-folder-grid fm-folder-grid-lg" id="folderGrid">
+
+                  <div class="fm-folder-card-lg">
+                    <div class="fm-folder-card-header">
+                      <i class="ph ph-folder fm-folder-icon-lg"></i>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                    <div class="fm-folder-name">Documents</div>
+                    <div class="fm-folder-meta">248 files · 6.2 GB</div>
+                    <div class="fm-folder-date">Modified Mar 28, 2026</div>
+                  </div>
+
+                  <div class="fm-folder-card-lg">
+                    <div class="fm-folder-card-header">
+                      <i class="ph ph-folder fm-folder-icon-lg"></i>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                    <div class="fm-folder-name">Images</div>
+                    <div class="fm-folder-meta">1,240 files · 8.4 GB</div>
+                    <div class="fm-folder-date">Modified Mar 26, 2026</div>
+                  </div>
+
+                  <div class="fm-folder-card-lg">
+                    <div class="fm-folder-card-header">
+                      <i class="ph ph-folder fm-folder-icon-lg"></i>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                    <div class="fm-folder-name">Videos</div>
+                    <div class="fm-folder-meta">56 files · 5.8 GB</div>
+                    <div class="fm-folder-date">Modified Mar 22, 2026</div>
+                  </div>
+
+                  <div class="fm-folder-card-lg">
+                    <div class="fm-folder-card-header">
+                      <i class="ph ph-folder fm-folder-icon-lg"></i>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                    <div class="fm-folder-name">Projects</div>
+                    <div class="fm-folder-meta">86 files · 1.8 GB</div>
+                    <div class="fm-folder-date">Modified Mar 20, 2026</div>
+                  </div>
+
+                  <div class="fm-folder-card-lg">
+                    <div class="fm-folder-card-header">
+                      <i class="ph ph-folder fm-folder-icon-lg"></i>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                    <div class="fm-folder-name">Downloads</div>
+                    <div class="fm-folder-meta">124 files · 3.2 GB</div>
+                    <div class="fm-folder-date">Modified Mar 18, 2026</div>
+                  </div>
+
+                  <div class="fm-folder-card-lg">
+                    <div class="fm-folder-card-header">
+                      <i class="ph ph-folder fm-folder-icon-lg"></i>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                    <div class="fm-folder-name">Audio</div>
+                    <div class="fm-folder-meta">310 files · 2.1 GB</div>
+                    <div class="fm-folder-date">Modified Mar 15, 2026</div>
+                  </div>
+
+                  <div class="fm-folder-card-lg">
+                    <div class="fm-folder-card-header">
+                      <i class="ph ph-folder fm-folder-icon-lg"></i>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                    <div class="fm-folder-name">Backups</div>
+                    <div class="fm-folder-meta">18 files · 4.2 GB</div>
+                    <div class="fm-folder-date">Modified Mar 12, 2026</div>
+                  </div>
+
+                  <div class="fm-folder-card-lg">
+                    <div class="fm-folder-card-header">
+                      <i class="ph ph-folder fm-folder-icon-lg"></i>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                    <div class="fm-folder-name">Templates</div>
+                    <div class="fm-folder-meta">32 files · 540 MB</div>
+                    <div class="fm-folder-date">Modified Mar 8, 2026</div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/folders.js"></script>
+{% endblock %}

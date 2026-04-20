@@ -1,0 +1,262 @@
+{% extends "layouts/base.html" %}
+{% set title = "Subscriptions" %}
+{% set activeMenu = "subscriptions" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/subscriptions.scss">
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Subscriptions</span></div>
+              </nav>
+              <h1 class="bm-page-title">Subscriptions</h1>
+              <p class="bm-page-subtitle">Manage customer subscriptions and plans.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-outline bm-btn-sm"><i class="ph ph-download-simple bm-text-md"></i> <span data-i18n="action.export">Export</span></button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm"><i class="ph ph-plus bm-text-md"></i> New Subscription</button>
+            </div>
+          </div>
+
+          <!-- Stats Row -->
+          <div class="bm-grid-auto-lg bm-mb-lg">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-stack bm-text-lg-primary"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Total Subscriptions</div>
+                <div class="bm-stats-card-v2-value">1,248</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-check-circle bm-text-lg-success"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Active</div>
+                <div class="bm-stats-card-v2-value">1,102</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-clock bm-text-lg-warning"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Expiring Soon</div>
+                <div class="bm-stats-card-v2-value">38</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-danger"><i class="ph ph-x-circle bm-text-lg-danger"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Cancelled</div>
+                <div class="bm-stats-card-v2-value">108</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Bar -->
+          <div class="bm-card bm-mb-lg bm-overflow-visible">
+            <div class="bm-card-body sub-filter-bar">
+              <div class="bm-flex-center-gap-sm">
+                <button class="bm-btn bm-btn-primary bm-btn-sm">All</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Active</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Expiring</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Cancelled</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Trial</button>
+              </div>
+              <div class="bm-flex-center-gap-sm">
+                <select class="bm-select bm-select-sm">
+                  <option>All Plans</option>
+                  <option>Starter</option>
+                  <option>Professional</option>
+                  <option>Enterprise</option>
+                </select>
+                <input class="bm-input bm-input-sm" type="text" placeholder="Search subscriptions…">
+              </div>
+            </div>
+          </div>
+
+          <!-- Subscriptions Table -->
+          <div class="bm-card">
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col" data-i18n="table.customer">Customer</th>
+                    <th scope="col">Plan</th>
+                    <th scope="col" data-i18n="table.status">Status</th>
+                    <th scope="col">Billing Cycle</th>
+                    <th scope="col" class="bm-text-right">MRR</th>
+                    <th scope="col">Renewal Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">AC</div>
+                        <div>
+                          <div class="bm-text-caption-medium">Acme Corp.</div>
+                          <div class="bm-text-2xs-muted">alice.smith@acmecorp.com</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-primary">Enterprise</span></td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-caption-muted">Annual</td>
+                    <td class="bm-text-right bm-font-semibold">$2,000</td>
+                    <td class="bm-text-caption-muted">Feb 10, 2027</td>
+                    <td><a href="subscription-detail.html" class="bm-btn-icon-xs"><i class="ph ph-caret-right"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">TS</div>
+                        <div>
+                          <div class="bm-text-caption-medium">TechStart Inc.</div>
+                          <div class="bm-text-2xs-muted">bob@techstart.io</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-info">Professional</span></td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-caption-muted">Monthly</td>
+                    <td class="bm-text-right bm-font-semibold">$299</td>
+                    <td class="bm-text-caption-muted">May 1, 2026</td>
+                    <td><a href="subscription-detail.html" class="bm-btn-icon-xs"><i class="ph ph-caret-right"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">DW</div>
+                        <div>
+                          <div class="bm-text-caption-medium">Digital Wave</div>
+                          <div class="bm-text-2xs-muted">clara@digitalwave.co</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-info">Professional</span></td>
+                    <td><span class="bm-badge bm-badge-warning">Expiring</span></td>
+                    <td class="bm-text-caption-muted">Annual</td>
+                    <td class="bm-text-right bm-font-semibold">$249</td>
+                    <td class="bm-text-caption-muted">Apr 22, 2026</td>
+                    <td><a href="subscription-detail.html" class="bm-btn-icon-xs"><i class="ph ph-caret-right"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">CB</div>
+                        <div>
+                          <div class="bm-text-caption-medium">CloudBase Ltd.</div>
+                          <div class="bm-text-2xs-muted">emma@cloudbase.dev</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-primary">Enterprise</span></td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-caption-muted">Annual</td>
+                    <td class="bm-text-right bm-font-semibold">$2,000</td>
+                    <td class="bm-text-caption-muted">Nov 15, 2026</td>
+                    <td><a href="subscription-detail.html" class="bm-btn-icon-xs"><i class="ph ph-caret-right"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">VG</div>
+                        <div>
+                          <div class="bm-text-caption-medium">Vertex Group</div>
+                          <div class="bm-text-2xs-muted">george@vertexgroup.com</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-muted">Starter</span></td>
+                    <td><span class="bm-badge bm-badge-danger">Cancelled</span></td>
+                    <td class="bm-text-caption-muted">Monthly</td>
+                    <td class="bm-text-right bm-font-semibold bm-text-muted">$49</td>
+                    <td class="bm-text-caption-muted">—</td>
+                    <td><a href="subscription-detail.html" class="bm-btn-icon-xs"><i class="ph ph-caret-right"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">SK</div>
+                        <div>
+                          <div class="bm-text-caption-medium">Studio Kreativ</div>
+                          <div class="bm-text-2xs-muted">lena@studiokreativ.de</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-muted">Starter</span></td>
+                    <td><span class="bm-badge bm-badge-info">Trial</span></td>
+                    <td class="bm-text-caption-muted">—</td>
+                    <td class="bm-text-right bm-font-semibold bm-text-muted">$0</td>
+                    <td class="bm-text-caption-muted">Apr 28, 2026</td>
+                    <td><a href="subscription-detail.html" class="bm-btn-icon-xs"><i class="ph ph-caret-right"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">NT</div>
+                        <div>
+                          <div class="bm-text-caption-medium">NovaTech</div>
+                          <div class="bm-text-2xs-muted">nathan@novatech.ai</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-info">Professional</span></td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-caption-muted">Monthly</td>
+                    <td class="bm-text-right bm-font-semibold">$299</td>
+                    <td class="bm-text-caption-muted">May 7, 2026</td>
+                    <td><a href="subscription-detail.html" class="bm-btn-icon-xs"><i class="ph ph-caret-right"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">BP</div>
+                        <div>
+                          <div class="bm-text-caption-medium">BrightPath Co.</div>
+                          <div class="bm-text-2xs-muted">sara@brightpath.co</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-primary">Enterprise</span></td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-caption-muted">Annual</td>
+                    <td class="bm-text-right bm-font-semibold">$2,000</td>
+                    <td class="bm-text-caption-muted">Aug 20, 2026</td>
+                    <td><a href="subscription-detail.html" class="bm-btn-icon-xs"><i class="ph ph-caret-right"></i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="bm-flex-center-justify bm-mt-lg">
+            <div class="bm-text-caption-muted">Showing 1–8 of 1,248 subscriptions</div>
+            <div class="bm-pagination">
+              <button class="bm-btn bm-btn-ghost bm-btn-sm" disabled><i class="ph ph-caret-left bm-text-md"></i></button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">1</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">2</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">3</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">…</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">156</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-caret-right bm-text-md"></i></button>
+            </div>
+          </div>
+
+{% endblock %}

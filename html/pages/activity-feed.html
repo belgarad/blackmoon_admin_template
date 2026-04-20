@@ -1,0 +1,453 @@
+{% extends "layouts/base.html" %}
+{% set title = "Activity Feed" %}
+{% set activeMenu = "activity-feed" %}
+{% set basePath = "" %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Activity Feed</span></div>
+              </nav>
+              <h1 class="bm-page-title">Activity Feed</h1>
+              <p class="bm-page-subtitle">Real-time audit log of all platform actions across users and systems.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.info('Exporting...','Activity log export started.')">
+                <i class="ph ph-download-simple bm-text-md"></i>
+                Export Log
+              </button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.openDrawer('filterDrawer')">
+                <i class="ph ph-funnel bm-text-md"></i>
+                Filter
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Strip -->
+          <div class="stats-strip">
+            <div class="stats-strip-card">
+              <div class="stats-strip-icon bm-bg-indigo-light">
+                <i class="ph ph-lightning"></i>
+              </div>
+              <div>
+                <div class="bm-text-1375-bold-fg">1,284</div>
+                <div class="bm-text-sm-muted">Events today</div>
+              </div>
+            </div>
+            <div class="stats-strip-card">
+              <div class="stats-strip-icon bm-bg-success-light2">
+                <i class="ph ph-user-plus"></i>
+              </div>
+              <div>
+                <div class="bm-text-1375-bold-fg">47</div>
+                <div class="bm-text-sm-muted">User signups</div>
+              </div>
+            </div>
+            <div class="stats-strip-card">
+              <div class="stats-strip-icon bm-bg-warning-light2">
+                <i class="ph ph-note-pencil"></i>
+              </div>
+              <div>
+                <div class="bm-text-1375-bold-fg">386</div>
+                <div class="bm-text-sm-muted">Content edits</div>
+              </div>
+            </div>
+            <div class="stats-strip-card">
+              <div class="stats-strip-icon bm-bg-danger-light2">
+                <i class="ph ph-shield"></i>
+              </div>
+              <div>
+                <div class="bm-text-1375-bold-fg">3</div>
+                <div class="bm-text-sm-muted">Security alerts</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main layout: Feed + Sidebar -->
+          <div class="bm-grid-main-aside">
+
+            <!-- ── Feed Column ── -->
+            <div>
+              <!-- Filter chips -->
+              <div class="bm-flex-between-wrap-mb3">
+                <div class="bm-chip-group" id="filterChips">
+                  <span class="bm-chip active" data-filter="all">All</span>
+                  <span class="bm-chip" data-filter="user"><i class="ph ph-user bm-text-body"></i>Users</span>
+                  <span class="bm-chip" data-filter="content"><i class="ph ph-file-text bm-text-body"></i>Content</span>
+                  <span class="bm-chip" data-filter="system"><i class="ph ph-gear bm-text-body"></i>System</span>
+                  <span class="bm-chip" data-filter="security"><i class="ph ph-shield bm-text-body"></i>Security</span>
+                  <span class="bm-chip" data-filter="billing"><i class="ph ph-credit-card bm-text-body"></i>Billing</span>
+                </div>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm" onclick="location.reload()">
+                  <i class="ph ph-arrow-clockwise bm-text-body"></i>
+                  Refresh
+                </button>
+              </div>
+
+              <!-- Feed card -->
+              <div class="bm-card bm-p-xl">
+
+                <!-- ── TODAY ── -->
+                <div class="bm-timeline-date-divider">Today — Apr 2, 2026</div>
+
+                <div class="bm-timeline">
+
+                  <!-- 1. User signup -->
+                  <div class="bm-timeline-item" data-type="user">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-bg-success-custom">
+                      <i class="ph ph-user-plus bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">Sarah Chen</span>
+                        <span class="bm-timeline-action">signed up and started a</span>
+                        <span class="bm-timeline-target">Pro trial</span>
+                        <span class="bm-timeline-time">2 min ago</span>
+                      </div>
+                      <div class="bm-timeline-content">Referred from Google Ads · Campaign: Spring 2026 · Country: Singapore</div>
+                    </div>
+                  </div>
+
+                  <!-- 2. Plan upgrade -->
+                  <div class="bm-timeline-item" data-type="billing">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-bg-indigo-light2">
+                      <i class="ph ph-arrow-circle-up bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">Spark.io</span>
+                        <span class="bm-timeline-action">upgraded plan from</span>
+                        <span class="bm-timeline-target">Pro → Enterprise</span>
+                        <span class="bm-timeline-time">18 min ago</span>
+                      </div>
+                      <div class="bm-timeline-content">New MRR: +$1,460/mo · Seats added: 95 → 200 · Billing updated automatically.</div>
+                    </div>
+                  </div>
+
+                  <!-- 3. Content published -->
+                  <div class="bm-timeline-item" data-type="content">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-bg-warning-light2">
+                      <i class="ph ph-upload-simple bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">Mark Rivera</span>
+                        <span class="bm-timeline-action">published</span>
+                        <span class="bm-timeline-target">"Q2 Platform Roadmap"</span>
+                        <span class="bm-timeline-time">41 min ago</span>
+                      </div>
+                      <div class="bm-timeline-content">Category: Updates · 1,240 words · Scheduled distribution to 3,400 subscribers.</div>
+                      <div class="bm-timeline-attachment">
+                        <i class="ph ph-file-text bm-text-lg-primary"></i>
+                        <div>
+                          <div class="bm-text-caption-medium">Q2 Platform Roadmap.pdf</div>
+                          <div class="bm-text-sm-muted">284 KB · PDF</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 4. Security alert -->
+                  <div class="bm-timeline-item" data-type="security">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-bg-danger-light2">
+                      <i class="ph ph-shield-slash bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">System</span>
+                        <span class="bm-timeline-action">detected</span>
+                        <span class="bm-timeline-target bm-text-danger">5 failed login attempts</span>
+                        <span class="bm-timeline-time">1h 05min ago</span>
+                      </div>
+                      <div class="bm-timeline-content">Account: <strong>james.wilson@example.com</strong> · IP: 185.220.xx.xx · Account temporarily locked. Verification email sent.</div>
+                      <div class="bm-mt-sm-flex-gap">
+                        <button class="bm-btn bm-btn-outline bm-btn-sm bm-border-danger-text" onclick="App.toast.warning('Account reviewed','Security team notified.')">Review</button>
+                        <button class="bm-btn bm-btn-ghost bm-btn-sm" onclick="App.toast.success('Unlocked','Account has been unlocked.')">Unlock</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 5. Role change -->
+                  <div class="bm-timeline-item" data-type="user">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-badge-cyan-soft">
+                      <i class="ph ph-user-gear bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">Admin (John Doe)</span>
+                        <span class="bm-timeline-action">changed role of</span>
+                        <span class="bm-timeline-target">Emily Park</span>
+                        <span class="bm-timeline-time">2h 14min ago</span>
+                      </div>
+                      <div class="bm-timeline-content">Role changed: <strong>Viewer → Editor</strong> · Access to content management and publishing tools granted.</div>
+                    </div>
+                  </div>
+
+                  <!-- 6. System update -->
+                  <div class="bm-timeline-item" data-type="system">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-bg-indigo-light">
+                      <i class="ph ph-arrows-clockwise bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">System</span>
+                        <span class="bm-timeline-action">completed</span>
+                        <span class="bm-timeline-target">scheduled maintenance</span>
+                        <span class="bm-timeline-time">3h 00min ago</span>
+                      </div>
+                      <div class="bm-timeline-content">Database backup completed successfully. All services running normally. Downtime: 0 minutes.</div>
+                    </div>
+                  </div>
+
+                  <!-- 7. Comment action -->
+                  <div class="bm-timeline-item" data-type="content">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-bg-purple-light">
+                      <i class="ph ph-chat-square bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">Diana Müller</span>
+                        <span class="bm-timeline-action">left a review on</span>
+                        <span class="bm-timeline-target">"Getting Started Guide"</span>
+                        <span class="bm-timeline-time">4h 30min ago</span>
+                      </div>
+                      <div class="bm-timeline-content">"This guide is incredibly clear and well-structured. Would love to see a video version too!"</div>
+                      <div class="bm-comment-box">
+                        <div class="bm-avatar bm-avatar-sm bm-flex-shrink0-plain">JD</div>
+                        <textarea class="bm-comment-input" placeholder="Reply to Diana…" rows="1"></textarea>
+                        <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Reply sent','Your reply has been posted.')">Send</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div><!-- /bm-timeline today -->
+
+                <!-- ── YESTERDAY ── -->
+                <div class="bm-timeline-date-divider">Yesterday — Apr 1, 2026</div>
+
+                <div class="bm-timeline">
+
+                  <div class="bm-timeline-item" data-type="billing">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-bg-danger-light2">
+                      <i class="ph ph-x-circle bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">DataStream Inc</span>
+                        <span class="bm-timeline-action">cancelled their</span>
+                        <span class="bm-timeline-target bm-text-danger">Starter subscription</span>
+                        <span class="bm-timeline-time">Yesterday 14:22</span>
+                      </div>
+                      <div class="bm-timeline-content">Reason: "Too expensive for our current stage." MRR impact: −$49/mo. Exit survey sent.</div>
+                    </div>
+                  </div>
+
+                  <div class="bm-timeline-item" data-type="user">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-bg-success-custom">
+                      <i class="ph ph-shield-check bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">James Park</span>
+                        <span class="bm-timeline-action">verified their email and</span>
+                        <span class="bm-timeline-target">completed onboarding</span>
+                        <span class="bm-timeline-time">Yesterday 11:05</span>
+                      </div>
+                      <div class="bm-timeline-content">Onboarding score: 100% · All 6 steps completed · Feature adoption: Dashboards, Reports, Exports.</div>
+                    </div>
+                  </div>
+
+                  <div class="bm-timeline-item" data-type="content">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-bg-warning-light2">
+                      <i class="ph ph-pencil bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">Nina Torres</span>
+                        <span class="bm-timeline-action">edited</span>
+                        <span class="bm-timeline-target">"Privacy Policy"</span>
+                        <span class="bm-timeline-time">Yesterday 09:48</span>
+                      </div>
+                      <div class="bm-timeline-content">Changed 3 sections · Added GDPR compliance clause · Pending legal review.</div>
+                    </div>
+                  </div>
+
+                  <div class="bm-timeline-item" data-type="system">
+                    <div class="bm-timeline-line"></div>
+                    <div class="bm-timeline-icon bm-bg-indigo-light">
+                      <i class="ph ph-code bm-text-md"></i>
+                    </div>
+                    <div class="bm-timeline-body">
+                      <div class="bm-timeline-meta">
+                        <span class="bm-timeline-actor">System</span>
+                        <span class="bm-timeline-action">deployed</span>
+                        <span class="bm-timeline-target">v2.14.0</span>
+                        <span class="bm-timeline-time">Yesterday 02:00</span>
+                      </div>
+                      <div class="bm-timeline-content">15 features · 8 bug fixes · Performance improvements: 23% faster dashboard load. Zero-downtime deploy.</div>
+                      <div class="bm-timeline-attachment">
+                        <i class="ph ph-receipt bm-text-lg-indigo"></i>
+                        <div>
+                          <div class="bm-text-caption-medium">Changelog v2.14.0</div>
+                          <div class="bm-text-sm-muted">23 changes</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div><!-- /bm-timeline yesterday -->
+
+                <!-- Load more -->
+                <div class="bm-text-center-sep-top">
+                  <button class="bm-btn bm-btn-outline" onclick="App.toast.info('Loading...','Fetching older activity.')">
+                    <i class="ph ph-caret-down bm-text-md"></i>
+                    Load older events
+                  </button>
+                </div>
+              </div><!-- /bm-card -->
+            </div>
+
+            <!-- ── Sidebar Column ── -->
+            <div class="bm-flex-col-gap-lg">
+
+              <!-- Active Users Now -->
+              <div class="bm-card bm-p-lg">
+                <div class="bm-flex-between-mb4">
+                  <h3 class="bm-text-base-semibold-0">Active Now</h3>
+                  <span class="bm-badge bm-badge-success-xs">● Live</span>
+                </div>
+                <div class="bm-flex-col-gap-sm">
+                  <div class="bm-flex-center-gap">
+                    <div class="bm-avatar bm-avatar-sm bm-pos-relative">SR
+                      <span class="bm-status-dot"></span>
+                    </div>
+                    <div class="bm-flex-min0">
+                      <div class="bm-text-caption-medium-fg">Sarah R.</div>
+                      <div class="bm-text-2xs-muted">Viewing — Reports</div>
+                    </div>
+                  </div>
+                  <div class="bm-flex-center-gap">
+                    <div class="bm-avatar bm-avatar-sm bm-card-gradient-amber">MR
+                      <span class="bm-status-dot"></span>
+                    </div>
+                    <div class="bm-flex-min0">
+                      <div class="bm-text-caption-medium-fg">Mark R.</div>
+                      <div class="bm-text-2xs-muted">Editing — Content</div>
+                    </div>
+                  </div>
+                  <div class="bm-flex-center-gap">
+                    <div class="bm-avatar bm-avatar-sm bm-card-gradient-cyan">DP
+                      <span class="bm-status-dot"></span>
+                    </div>
+                    <div class="bm-flex-min0">
+                      <div class="bm-text-caption-medium-fg">David P.</div>
+                      <div class="bm-text-2xs-muted">Dashboard</div>
+                    </div>
+                  </div>
+                  <div class="bm-flex-center-gap">
+                    <div class="bm-avatar bm-avatar-sm bm-card-purple-grad">NT
+                      <span class="bm-status-dot-warning"></span>
+                    </div>
+                    <div class="bm-flex-min0">
+                      <div class="bm-text-caption-medium-fg">Nina T.</div>
+                      <div class="bm-text-2xs-muted">Away · 8 min</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bm-flex-between-sep-top">
+                  <span class="bm-text-sm-muted">18 users online total</span>
+                  <a href="users.html" class="bm-text-sm-primary-plain">View all</a>
+                </div>
+              </div>
+
+              <!-- Event types breakdown -->
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-base-semibold-m">Event Breakdown</h3>
+                <div class="bm-flex-col-gap-sm">
+                  <div>
+                    <div class="bm-flex-between-mb3">
+                      <span class="bm-text-caption-fg">User actions</span>
+                      <span class="bm-caption-semibold-fg">42%</span>
+                    </div>
+                    <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar bm-bar-42-indigo"></div></div>
+                  </div>
+                  <div>
+                    <div class="bm-flex-between-mb3">
+                      <span class="bm-text-caption-fg">Content</span>
+                      <span class="bm-caption-semibold-fg">30%</span>
+                    </div>
+                    <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar bm-bar-30-warning"></div></div>
+                  </div>
+                  <div>
+                    <div class="bm-flex-between-mb3">
+                      <span class="bm-text-caption-fg">System</span>
+                      <span class="bm-caption-semibold-fg">18%</span>
+                    </div>
+                    <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar bm-progress-18-purple"></div></div>
+                  </div>
+                  <div>
+                    <div class="bm-flex-between-mb3">
+                      <span class="bm-text-caption-fg">Security</span>
+                      <span class="bm-caption-semibold-fg">6%</span>
+                    </div>
+                    <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar bm-progress-6-danger"></div></div>
+                  </div>
+                  <div>
+                    <div class="bm-flex-between-mb3">
+                      <span class="bm-text-caption-fg">Billing</span>
+                      <span class="bm-caption-semibold-fg">4%</span>
+                    </div>
+                    <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar bm-bar-4-success"></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick filters -->
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-card-title">Quick Filters</h3>
+                <div class="bm-flex-col-gap-md">
+                  <label class="bm-flex-action-caption">
+                    <div class="bm-switch active" onclick="this.classList.toggle('active')"></div>
+                    <span class="bm-text-default">Show user events</span>
+                  </label>
+                  <label class="bm-flex-action-caption">
+                    <div class="bm-switch active" onclick="this.classList.toggle('active')"></div>
+                    <span class="bm-text-default">Show system events</span>
+                  </label>
+                  <label class="bm-flex-action-caption">
+                    <div class="bm-switch" onclick="this.classList.toggle('active')"></div>
+                    <span class="bm-text-default">Alerts only</span>
+                  </label>
+                  <label class="bm-flex-action-caption">
+                    <div class="bm-switch" onclick="this.classList.toggle('active')"></div>
+                    <span class="bm-text-default">Group by user</span>
+                  </label>
+                </div>
+              </div>
+
+            </div><!-- /sidebar column -->
+          </div><!-- /grid -->
+
+        </div><!-- /bm-container-fixed -->
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/activity-feed.js"></script>
+{% endblock %}

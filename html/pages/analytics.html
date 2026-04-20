@@ -1,0 +1,305 @@
+{% extends "layouts/base.html" %}
+{% set title = "Analytics" %}
+{% set pageDescription = "Traffic analytics, conversion funnels, and visitor demographics for your application." %}
+{% set activeMenu = "analytics" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-chart-matrix@1/dist/chartjs-chart-matrix.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="bm-container-fixed bm-pt-175-pb-250">
+
+  <!-- Page Header -->
+  <div class="bm-page-header">
+    <div>
+      <nav class="bm-breadcrumb bm-mb-xs">
+        <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span
+            class="bm-breadcrumb-separator">/</span></div>
+        <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current" data-i18n="breadcrumb.analytics">Analytics</span></div>
+      </nav>
+      <h1 class="bm-page-title" data-i18n="page.title.analytics">Analytics</h1>
+      <p class="bm-page-subtitle" data-i18n="page.desc.analytics">Track traffic, conversions, and engagement across your platform.</p>
+    </div>
+    <div class="bm-page-actions">
+      <div id="periodGroup" class="bm-tab-bar">
+        <button class="bm-btn bm-btn-primary bm-btn-sm" data-period="7d" onclick="setPeriod(this,'7d')">7d</button>
+        <button class="bm-btn bm-btn-ghost bm-btn-sm" data-period="30d" onclick="setPeriod(this,'30d')">30d</button>
+        <button class="bm-btn bm-btn-ghost bm-btn-sm" data-period="90d" onclick="setPeriod(this,'90d')">90d</button>
+        <button class="bm-btn bm-btn-ghost bm-btn-sm" data-period="1y" onclick="setPeriod(this,'1y')">1y</button>
+      </div>
+      <button class="bm-btn bm-btn-outline bm-btn-sm"
+        onclick="App.toast.info('Exporting…','CSV download will start shortly.')">
+        <i class="ph ph-download-simple bm-text-md"></i><span data-i18n="action.export">Export</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="bm-grid-4col">
+    <div class="bm-card bm-px-xl">
+      <div class="bm-flex-between-start">
+        <div>
+          <div class="bm-text-sm-semibold-label" data-i18n="analytics.pageViews">Page Views</div>
+          <div class="bm-text-175-bold-fg">89,204</div>
+          <div class="bm-text-sm-success-medium">↑ 24.7% <span data-i18n="analytics.vsLastPeriod">vs last period</span></div>
+        </div>
+        <div class="bm-icon-box-indigo">
+          <i class="ph ph-eye bm-text-lg-indigo"></i>
+        </div>
+      </div>
+      <div id="kpi-views" class="bm-mt-875"></div>
+    </div>
+    <div class="bm-card bm-px-xl">
+      <div class="bm-flex-between-start">
+        <div>
+          <div class="bm-text-sm-semibold-label" data-i18n="analytics.uniqueVisitors">Unique Visitors</div>
+          <div class="bm-text-175-bold-fg">34,891</div>
+          <div class="bm-text-sm-success-medium">↑ 12.3% <span data-i18n="analytics.vsLastPeriod">vs last period</span></div>
+        </div>
+        <div class="bm-icon-box-success-sm">
+          <i class="ph ph-users bm-text-lg-success"></i>
+        </div>
+      </div>
+      <div id="kpi-visitors" class="bm-mt-875"></div>
+    </div>
+    <div class="bm-card bm-px-xl">
+      <div class="bm-flex-between-start">
+        <div>
+          <div class="bm-text-sm-semibold-label" data-i18n="analytics.avgSession">Avg. Session</div>
+          <div class="bm-text-175-bold-fg">4m 32s</div>
+          <div class="bm-text-sm-danger">↓ 2.1% <span data-i18n="analytics.vsLastPeriod">vs last period</span></div>
+        </div>
+        <div class="bm-icon-box-amber">
+          <i class="ph ph-timer bm-text-lg-warning"></i>
+        </div>
+      </div>
+      <div id="kpi-session" class="bm-mt-875"></div>
+    </div>
+    <div class="bm-card bm-px-xl">
+      <div class="bm-flex-between-start">
+        <div>
+          <div class="bm-text-sm-semibold-label" data-i18n="analytics.convRate">Conv. Rate</div>
+          <div class="bm-text-175-bold-fg">3.84%</div>
+          <div class="bm-text-sm-success-medium">↑ 0.6% <span data-i18n="analytics.vsLastPeriod">vs last period</span></div>
+        </div>
+        <div class="bm-icon-box-cyan">
+          <i class="ph ph-trend-up bm-text-lg-cyan"></i>
+        </div>
+      </div>
+      <div id="kpi-conv" class="bm-mt-875"></div>
+    </div>
+  </div>
+
+  <!-- Main charts row -->
+  <div class="bm-grid-main-aside-sm">
+
+    <!-- Traffic Overview area chart -->
+    <div class="bm-card">
+      <div class="bm-flex-card-header-open">
+        <div>
+          <div class="bm-text-md-fg-semibold" data-i18n="analytics.trafficOverview">Traffic Overview</div>
+          <div class="bm-text-sm-muted" data-i18n="analytics.trafficDesc">Sessions vs Unique Visitors — past 30 days</div>
+        </div>
+        <div class="bm-flex-gap4-xs">
+          <span class="bm-flex-center-gap-sm"><span class="bm-dot-indigo-noshrink"></span><span data-i18n="chart.sessions">Sessions</span></span>
+          <span class="bm-flex-center-gap-sm"><span class="bm-dot-success-flex"></span><span data-i18n="chart.visitors">Visitors</span></span>
+        </div>
+      </div>
+      <div id="chart-traffic" class="bm-p-h-xs"></div>
+    </div>
+
+    <!-- Devices donut -->
+    <div class="bm-card">
+      <div class="bm-px-xl-0">
+        <div class="bm-text-md-fg-semibold" data-i18n="analytics.devices">Devices</div>
+        <div class="bm-text-sm-muted" data-i18n="analytics.devicesDesc">Breakdown by device type</div>
+      </div>
+      <div id="chart-devices" class="bm-p-h-xs"></div>
+      <div class="bm-p-0-flex-col">
+        <div class="bm-flex-between-plain">
+          <span class="bm-flex-center-gap-md-body"><span class="bm-dot-indigo"></span><span data-i18n="analytics.desktop">Desktop</span></span>
+          <span class="bm-text-body-semibold-fg">58.4%</span>
+        </div>
+        <div class="bm-flex-between-plain">
+          <span class="bm-flex-center-gap-md-body"><span class="bm-dot-green"></span><span data-i18n="analytics.mobile">Mobile</span></span>
+          <span class="bm-text-body-semibold-fg">31.2%</span>
+        </div>
+        <div class="bm-flex-between-plain">
+          <span class="bm-flex-center-gap-md-body"><span class="bm-dot-amber"></span><span data-i18n="analytics.tablet">Tablet</span></span>
+          <span class="bm-text-body-semibold-fg">10.4%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second row: Conversions bar + Funnel -->
+  <div class="bm-grid-2col-mb5">
+
+    <!-- Monthly conversions bar chart -->
+    <div class="bm-card">
+      <div class="bm-px-xl-0">
+        <div class="bm-text-md-fg-semibold" data-i18n="analytics.monthlyConv">Monthly Conversions</div>
+        <div class="bm-text-sm-muted" data-i18n="analytics.monthlyConvDesc">Goal completions per month — last 6 months</div>
+      </div>
+      <div id="chart-conversions" class="bm-p-h-xs"></div>
+    </div>
+
+    <!-- Conversion funnel column chart -->
+    <div class="bm-card">
+      <div class="bm-px-xl-0">
+        <div class="bm-text-md-fg-semibold" data-i18n="analytics.convFunnel">Conversion Funnel</div>
+        <div class="bm-text-sm-muted" data-i18n="analytics.convFunnelDesc">Visitors through each funnel stage</div>
+      </div>
+      <div id="chart-funnel" class="bm-p-h-xs"></div>
+    </div>
+  </div>
+
+  <!-- Heatmap -->
+  <div class="bm-card bm-mb-lg">
+    <div class="bm-flex-card-header-open">
+      <div>
+        <div class="bm-text-md-fg-semibold" data-i18n="analytics.heatmap">Activity Heatmap</div>
+        <div class="bm-text-sm-muted" data-i18n="analytics.heatmapDesc">Page views by hour and day of week</div>
+      </div>
+      <span class="bm-badge bm-badge-indigo" data-i18n="analytics.last30days">Last 30 days</span>
+    </div>
+    <div id="chart-heatmap" class="bm-p-h-xs"></div>
+  </div>
+
+  <!-- Traffic Sources table -->
+  <div class="bm-card">
+    <div class="bm-flex-card-header">
+      <span class="bm-text-md-fg-semibold" data-i18n="analytics.topSources">Top Traffic Sources</span>
+      <button class="bm-btn bm-btn-outline bm-btn-sm" data-i18n="action.viewFullReport">View full report</button>
+    </div>
+    <div class="bm-table-responsive">
+      <table class="bm-table">
+        <thead>
+          <tr>
+            <th scope="col" data-i18n="table.source">Source</th>
+            <th scope="col" data-i18n="table.visitors">Visitors</th>
+            <th scope="col" data-i18n="table.percentTotal">% of total</th>
+            <th scope="col" data-i18n="table.bounceRate">Bounce Rate</th>
+            <th scope="col" data-i18n="table.avgDuration">Avg. Duration</th>
+            <th scope="col" data-i18n="table.convRate">Conv. Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="bm-flex-center-gap-lg">
+                <div class="bm-icon-box-indigo-sm"><i class="ph ph-magnifying-glass bm-text-md-indigo"></i></div><span
+                  class="bm-font-medium">Google Search</span>
+              </div>
+            </td>
+            <td class="bm-font-medium">34,521</td>
+            <td>
+              <div class="bm-flex-center-gap-md">
+                <div class="bm-progress bm-progress-sm bm-w-80">
+                  <div class="bm-progress-bar bm-progress-44-indigo"></div>
+                </div>
+                <span class="bm-text-caption-muted">44%</span>
+              </div>
+            </td>
+            <td><span class="bm-text-warning-plain">42.3%</span></td>
+            <td>5m 12s</td>
+            <td><span class="bm-badge bm-badge-success">4.8%</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="bm-flex-center-gap-lg">
+                <div class="bm-icon-box-cyan-sm"><i class="ph ph-link bm-text-md-cyan"></i>
+                </div><span class="bm-font-medium">Direct</span>
+              </div>
+            </td>
+            <td class="bm-font-medium">18,204</td>
+            <td>
+              <div class="bm-flex-center-gap-md">
+                <div class="bm-progress bm-progress-sm bm-w-80">
+                  <div class="bm-progress-bar bm-bar-23-cyan"></div>
+                </div>
+                <span class="bm-text-caption-muted">23%</span>
+              </div>
+            </td>
+            <td><span class="bm-text-success">35.1%</span></td>
+            <td>6m 45s</td>
+            <td><span class="bm-badge bm-badge-success">6.2%</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="bm-flex-center-gap-lg">
+                <div class="bm-icon-box-amber-sm"><i class="ph ph-share bm-text-md-warning"></i></div><span
+                  class="bm-font-medium">Social Media</span>
+              </div>
+            </td>
+            <td class="bm-font-medium">12,893</td>
+            <td>
+              <div class="bm-flex-center-gap-md">
+                <div class="bm-progress bm-progress-sm bm-w-80">
+                  <div class="bm-progress-bar bm-bar-16-warning"></div>
+                </div>
+                <span class="bm-text-caption-muted">16%</span>
+              </div>
+            </td>
+            <td><span class="bm-text-danger">58.7%</span></td>
+            <td>2m 30s</td>
+            <td><span class="bm-badge bm-badge-warning">2.1%</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="bm-flex-center-gap-lg">
+                <div class="bm-icon-box-green-sm2"><i class="ph ph-envelope bm-text-md-success"></i></div><span
+                  class="bm-font-medium">Email Campaign</span>
+              </div>
+            </td>
+            <td class="bm-font-medium">8,740</td>
+            <td>
+              <div class="bm-flex-center-gap-md">
+                <div class="bm-progress bm-progress-sm bm-w-80">
+                  <div class="bm-progress-bar bm-progress-11-success"></div>
+                </div>
+                <span class="bm-text-caption-muted">11%</span>
+              </div>
+            </td>
+            <td><span class="bm-text-success">28.4%</span></td>
+            <td>7m 18s</td>
+            <td><span class="bm-badge bm-badge-success">8.5%</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="bm-flex-center-gap-lg">
+                <div class="bm-icon-box-sm-accent"><i class="ph ph-globe bm-text-md-muted"></i></div><span
+                  class="bm-font-medium">Referral</span>
+              </div>
+            </td>
+            <td class="bm-font-medium">5,102</td>
+            <td>
+              <div class="bm-flex-center-gap-md">
+                <div class="bm-progress bm-progress-sm bm-w-80">
+                  <div class="bm-progress-bar bm-w-6pct"></div>
+                </div>
+                <span class="bm-text-caption-muted">6%</span>
+              </div>
+            </td>
+            <td>45.9%</td>
+            <td>3m 55s</td>
+            <td><span class="bm-badge bm-badge-warning">3.4%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/chart-helpers.js"></script>
+<script src="/assets/js/pages/analytics.js"></script>
+{% endblock %}

@@ -1,0 +1,41 @@
+/* ── Board layout ── */
+  body.bm-sidebar-fixed .bm-wrapper { overflow:hidden; }
+  #content { overflow:hidden; }
+  .kanban-wrap { overflow-x:auto;padding-bottom:1.5rem; }
+  .kanban-board { display:flex;gap:1.25rem;align-items:flex-start;min-width:max-content;padding:0.25rem 0.125rem; }
+  /* ── Column ── */
+  .kb-col { width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:0.75rem; }
+  .kb-col-header { display:flex;align-items:center;justify-content:space-between;padding:0.625rem 0.875rem;background:var(--accent);border-radius:var(--radius);border-left:3px solid var(--col-color,var(--primary)); }
+  .kb-col-title { font-size:0.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--foreground); }
+  .kb-col-count { font-size:0.75rem;font-weight:600;padding:0.125rem 0.5rem;border-radius:9999px;background:var(--background);color:var(--muted-foreground);border:1px solid var(--border); }
+  .kb-cards { display:flex;flex-direction:column;gap:0.625rem;min-height:6rem;padding:0.25rem 0; }
+  .kb-cards.drag-over { outline:2px dashed var(--primary);outline-offset:2px;border-radius:var(--radius); }
+  /* ── Card ── */
+  .kb-card { background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:0.875rem;cursor:grab;transition:box-shadow 0.15s,transform 0.15s;user-select:none;position:relative; }
+  .kb-card:hover { box-shadow:0 4px 16px rgba(0,0,0,0.08);transform:translateY(-1px); }
+  .kb-card:active { cursor:grabbing; }
+  .kb-card.dragging { opacity:0.45;transform:rotate(1.5deg);box-shadow:0 8px 24px rgba(0,0,0,0.14); }
+  .kb-card-labels { display:flex;flex-wrap:wrap;gap:0.25rem;margin-bottom:0.5rem; }
+  .kb-label { font-size:0.6125rem;font-weight:700;padding:0.125rem 0.5rem;border-radius:9999px;text-transform:uppercase;letter-spacing:0.04em; }
+  .kb-card-title { font-size:0.875rem;font-weight:600;color:var(--foreground);line-height:1.4;margin-bottom:0.5rem; }
+  .kb-card-desc { font-size:0.75rem;color:var(--muted-foreground);line-height:1.5;margin-bottom:0.625rem; }
+  .kb-card-footer { display:flex;align-items:center;justify-content:space-between; }
+  .kb-priority { display:flex;align-items:center;gap:0.25rem;font-size:0.6875rem;font-weight:600; }
+  .kb-priority-dot { width:7px;height:7px;border-radius:50%;flex-shrink:0; }
+  .kb-assignees { display:flex; }
+  .kb-assignees .bm-avatar { width:1.5rem;height:1.5rem;font-size:0.5625rem;border:2px solid var(--card);margin-inline-start:-5px;flex-shrink:0; }
+  .kb-assignees .bm-avatar:first-child { margin-inline-start:0; }
+  .kb-meta { display:flex;align-items:center;gap:0.75rem;font-size:0.6875rem;color:var(--muted-foreground);margin-top:0.5rem; }
+  .kb-meta-item { display:flex;align-items:center;gap:0.2rem; }
+  .kb-card-img { width:100%;height:6rem;object-fit:cover;border-radius:calc(var(--radius) - 2px);margin-bottom:0.625rem;background:linear-gradient(135deg,var(--accent),var(--muted));display:flex;align-items:center;justify-content:center; }
+  /* ── Add card ── */
+  .kb-add { display:flex;align-items:center;gap:0.375rem;padding:0.5rem 0.75rem;border-radius:var(--radius);color:var(--muted-foreground);cursor:pointer;font-size:0.8125rem;font-weight:500;border:1.5px dashed var(--border);background:transparent;width:100%;transition:color 0.15s,border-color 0.15s; }
+  .kb-add:hover { color:var(--primary);border-color:var(--primary); }
+  /* ── Filter bar ── */
+  .kb-filter { display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap; }
+  .kb-search { position:relative;min-width:200px; }
+  .kb-search-icon { position:absolute;left:0.625rem;top:50%;transform:translateY(-50%);font-size:1.05rem;color:var(--muted-foreground);pointer-events:none; }
+  .kb-search input { padding:0.4375rem 0.75rem 0.4375rem 2rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--background);color:var(--foreground);font-size:0.875rem;outline:none;width:100%; }
+  .kb-search input:focus { border-color:var(--primary); }
+  /* ── Priority indicator on card ── */
+  .kb-card::before { content:'';display:block;height:3px;background:var(--card-accent,transparent);border-radius:var(--radius) var(--radius) 0 0;position:absolute;top:0;left:0;right:0; }

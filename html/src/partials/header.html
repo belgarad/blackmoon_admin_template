@@ -1,0 +1,28 @@
+      <header class="bm-header">
+        <div class="bm-container-fixed bm-flex-between-full">
+          <div class="bm-flex-center-gap-lg">
+            <button class="bm-btn bm-btn-ghost bm-btn-icon bm-d-none" id="mobileToggle" aria-label="Open menu" aria-expanded="false">
+              <i class="ph ph-list"></i>
+            </button>
+            <nav class="bm-flex-center-gap-xs" aria-label="Quick navigation">
+              <a class="bm-btn bm-btn-ghost {{ 'bm-stat-primary-medium' if activeMenu == 'dashboard' else 'bm-text-body-medium' }}" href="{{ basePath }}dashboard.html" {{ 'aria-current=page' if activeMenu == 'dashboard' }}><span data-i18n="nav.dashboard">Dashboard</span></a>
+              <a class="bm-btn bm-btn-ghost {{ 'bm-stat-primary-medium' if activeMenu == 'analytics' else 'bm-text-body-medium' }}" href="{{ basePath }}analytics.html" {{ 'aria-current=page' if activeMenu == 'analytics' }}><span data-i18n="nav.analytics">Analytics</span></a>
+              <a class="bm-btn bm-btn-ghost {{ 'bm-stat-primary-medium' if activeMenu == 'users' else 'bm-text-body-medium' }}" href="{{ basePath }}users.html" {{ 'aria-current=page' if activeMenu == 'users' }}><span data-i18n="nav.users">Users</span></a>
+              <a class="bm-btn bm-btn-ghost {{ 'bm-stat-primary-medium' if activeMenu in ['crm', 'calendar', 'kanban', 'mail', 'chat'] else 'bm-text-body-medium' }}" href="{{ basePath }}crm.html"><span data-i18n="nav.apps">Apps</span></a>
+            </nav>
+          </div>
+          <div class="bm-flex-center-gap-sm">
+            <button class="bm-btn bm-btn-ghost bm-btn-icon bm-radius" id="searchBtn" aria-label="Search (Ctrl+K)"><i class="ph ph-magnifying-glass bm-text-lg"></i></button>
+            <button class="bm-btn bm-btn-ghost bm-btn-icon bm-radius" onclick="ThemeManager.toggle()" aria-label="Toggle theme"><i class="ph ph-moon bm-text-lg" data-theme-icon></i></button>
+            <button class="bm-btn bm-btn-ghost bm-btn-icon bm-radius" onclick="App.LayoutManager.toggle()" aria-label="Toggle layout"><i class="ph ph-arrows-out-simple bm-text-lg"></i></button>
+            <button class="bm-btn bm-btn-ghost bm-btn-icon bm-radius" id="settingsTrigger" aria-label="App settings" aria-haspopup="dialog" aria-expanded="false"><i class="ph ph-sliders-horizontal bm-text-lg"></i></button>
+            <div class="bm-pos-relative"><button class="bm-btn bm-btn-ghost bm-btn-icon bm-radius" id="notifTrigger" aria-label="Notifications" aria-haspopup="true" aria-expanded="false"><i class="ph ph-bell bm-text-lg"></i><span class="bm-notif-count" aria-hidden="true">4</span></button></div>
+            <div class="bm-divider-v"></div>
+            <button id="userMenuTrigger" class="bm-dropdown-item" aria-haspopup="true" aria-expanded="false" aria-label="User menu, John Doe">
+              <div class="bm-avatar bm-avatar-sm bm-border-success-shrink">JD</div>
+              <div class="bm-flex-col-tight"><span class="bm-caption-semibold-fg">John Doe</span><span class="bm-text-2xs-muted">Admin</span></div>
+              <i class="ph ph-caret-down bm-text-md-muted"></i>
+            </button>
+          </div>
+        </div>
+      </header>

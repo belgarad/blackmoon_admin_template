@@ -1,0 +1,386 @@
+{% extends "layouts/base.html" %}
+{% set title = "Forms Advanced" %}
+{% set activeMenu = "forms-advanced" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+          <h1 class="bm-text-2xl-bold-fg-mb">Forms Advanced</h1>
+          <p class="bm-text-body-muted-mb">Advanced form components: Tags, Image Input, Password Meter, Rating, Clipboard, Stepper, Dropzone</p>
+
+          <!-- Tags Input -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Tags Input</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Press <kbd class="bm-badge-muted">Enter</kbd> or <kbd class="bm-badge-muted">,</kbd> to add a tag. Use suggestions with <code class="bm-badge-muted">data-suggestions</code>.</p>
+              <div class="bm-grid-2col-max">
+                <div>
+                  <label class="bm-label">Technologies</label>
+                  <input type="hidden" id="tagsDemo1" data-bm-tags data-suggestions="JavaScript,TypeScript,Python,Go,Rust,Java,C#,PHP,Ruby" placeholder="Add technology..." />
+                </div>
+                <div>
+                  <label class="bm-label">Categories (max 3)</label>
+                  <input type="hidden" id="tagsDemo2" data-bm-tags data-max="3" placeholder="Add category..." />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image Input -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Image Input (Avatar Upload)</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Click the preview area or the edit button to select an image. The remove button appears after an image is selected.</p>
+              <div class="bm-flex-wrap-start">
+                <!-- Round avatar -->
+                <div>
+                  <p class="bm-text-sm-semibold-label">Round Avatar</p>
+                  <div class="bm-image-input">
+                    <div class="bm-image-input-preview">
+                      <img src="" alt="Avatar preview" />
+                      <i class="ph ph-user bm-image-input-placeholder"></i>
+                    </div>
+                    <div class="bm-image-input-actions">
+                      <label class="bm-image-input-btn bm-image-input-btn-edit" title="Change photo">
+                        <i class="ph ph-pencil bm-text-body"></i>
+                        <input type="file" accept="image/*" class="bm-d-none" />
+                      </label>
+                      <button type="button" class="bm-image-input-btn bm-image-input-btn-remove" title="Remove photo">
+                        <i class="ph ph-x bm-text-body"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Square avatar -->
+                <div>
+                  <p class="bm-text-sm-semibold-label">Square (Logo)</p>
+                  <div class="bm-image-input">
+                    <div class="bm-image-input-preview bm-avatar-xl">
+                      <img src="" alt="Logo preview" />
+                      <i class="ph ph-image bm-image-input-placeholder"></i>
+                    </div>
+                    <div class="bm-image-input-actions">
+                      <label class="bm-image-input-btn bm-image-input-btn-edit" title="Change image">
+                        <i class="ph ph-pencil bm-text-body"></i>
+                        <input type="file" accept="image/*" class="bm-d-none" />
+                      </label>
+                      <button type="button" class="bm-image-input-btn bm-image-input-btn-remove" title="Remove image">
+                        <i class="ph ph-x bm-text-body"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Password Meter -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Password Strength Meter</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">The meter updates in real-time as you type. Strength is calculated based on length, character variety, and special characters.</p>
+              <div class="bm-w-max-400">
+                <label class="bm-label">New Password</label>
+                <div class="bm-password-wrap">
+                  <input type="password" class="bm-input" id="pwInput" placeholder="Enter password..." data-bm-password-meter="pwMeter" />
+                  <button type="button" class="bm-password-toggle" aria-label="Toggle visibility">
+                    <i class="ph ph-eye bm-text-lg"></i>
+                  </button>
+                </div>
+                <div class="bm-password-meter" id="pwMeter">
+                  <div class="bm-password-meter-bars">
+                    <div class="bm-password-meter-bar"></div>
+                    <div class="bm-password-meter-bar"></div>
+                    <div class="bm-password-meter-bar"></div>
+                    <div class="bm-password-meter-bar"></div>
+                  </div>
+                  <div class="bm-password-meter-text">Enter a password</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rating -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Star Rating</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Interactive and read-only rating components.</p>
+              <div class="bm-flex-wrap-gap8">
+                <div>
+                  <p class="bm-text-sm-semibold-label">Interactive</p>
+                  <div class="bm-rating" id="ratingDemo" data-value="3">
+                    <i class="ph ph-star bm-rating-star filled"></i>
+                    <i class="ph ph-star bm-rating-star filled"></i>
+                    <i class="ph ph-star bm-rating-star filled"></i>
+                    <i class="ph ph-star bm-rating-star"></i>
+                    <i class="ph ph-star bm-rating-star"></i>
+                  </div>
+                  <input type="hidden" name="rating" value="3" />
+                </div>
+                <div>
+                  <p class="bm-text-sm-semibold-label">Read-only (4.5 stars)</p>
+                  <div class="bm-rating" data-readonly>
+                    <i class="ph ph-star bm-rating-star filled"></i>
+                    <i class="ph ph-star bm-rating-star filled"></i>
+                    <i class="ph ph-star bm-rating-star filled"></i>
+                    <i class="ph ph-star bm-rating-star filled"></i>
+                    <i class="ph ph-star-half bm-rating-star bm-color-warning-border-mix"></i>
+                  </div>
+                </div>
+                <div>
+                  <p class="bm-text-sm-semibold-label">Large</p>
+                  <div class="bm-rating bm-rating-lg" data-value="0">
+                    <i class="ph ph-star bm-rating-star"></i>
+                    <i class="ph ph-star bm-rating-star"></i>
+                    <i class="ph ph-star bm-rating-star"></i>
+                    <i class="ph ph-star bm-rating-star"></i>
+                    <i class="ph ph-star bm-rating-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clipboard -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Clipboard Copy</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Use <code class="bm-badge-muted">data-clipboard-target</code> or <code class="bm-badge-muted">data-clipboard-text</code>.</p>
+              <div class="bm-flex-col-gap-lg-max">
+                <div>
+                  <label class="bm-label">API Key</label>
+                  <div class="bm-flex-gap-xs">
+                    <input class="bm-input bm-mono-caption" type="text" id="apiKeyInput" value="sk-live-abc123xyz789def456ghi" readonly />
+                    <button class="bm-btn bm-btn-outline bm-btn-icon" data-clipboard-target="#apiKeyInput" title="Copy to clipboard">
+                      <i class="ph ph-copy bm-text-lg"></i>
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <label class="bm-label">Share Link</label>
+                  <div class="bm-flex-gap-xs">
+                    <input class="bm-input" type="text" id="shareLinkInput" value="https://app.example.com/share/ref=abc123" readonly />
+                    <button class="bm-btn bm-btn-primary" data-clipboard-target="#shareLinkInput">
+                      <i class="ph ph-link bm-text-md"></i>
+                      Copy Link
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <button class="bm-btn bm-btn-secondary" data-clipboard-text="Hello from BlackMoon Admin Kit!">
+                    <i class="ph ph-copy bm-text-md"></i>
+                    Copy Text Directly
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Popover + Tooltip -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Tooltips &amp; Popovers</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Tooltips use <code class="bm-badge-muted">data-bm-tooltip</code>. Popovers use <code class="bm-badge-muted">data-bm-popover</code> (click-triggered).</p>
+              <div class="bm-flex-wrap-mb-2xl">
+                <button class="bm-btn bm-btn-outline" data-bm-tooltip="Tooltip on top" data-bm-placement="top">Top Tooltip</button>
+                <button class="bm-btn bm-btn-outline" data-bm-tooltip="Tooltip on bottom" data-bm-placement="bottom">Bottom Tooltip</button>
+                <button class="bm-btn bm-btn-outline" data-bm-tooltip="Tooltip on right" data-bm-placement="right">Right Tooltip</button>
+                <button class="bm-btn bm-btn-outline" data-bm-tooltip="This is a longer tooltip with more information" data-bm-placement="top">Long Tooltip</button>
+              </div>
+              <div class="bm-flex-wrap-center-4">
+                <div class="bm-pos-relative-inline">
+                  <button class="bm-btn bm-btn-primary" data-bm-popover="Click the button to dismiss this popover." data-bm-popover-title="Popover Title" data-bm-placement="bottom">
+                    Popover (Bottom)
+                  </button>
+                </div>
+                <div class="bm-pos-relative-inline">
+                  <button class="bm-btn bm-btn-secondary" data-bm-popover="You can put <strong>HTML content</strong> inside popovers." data-bm-popover-title="Rich Content" data-bm-placement="top">
+                    Popover (Top)
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pulse & Ribbon -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Pulse &amp; Ribbon</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Animated pulse rings and corner ribbons for highlighting important elements.</p>
+              <div class="bm-flex-wrap-mb8">
+                <div>
+                  <p class="bm-text-sm-semibold-label2">Pulse Variants</p>
+                  <div class="bm-flex-gap-1500">
+                    <span class="bm-pulse"><span class="bm-avatar bm-avatar-sm bm-bg-primary-white">JD</span></span>
+                    <span class="bm-pulse bm-pulse-success"><span class="bm-avatar bm-avatar-sm bm-bg-success-solid">OK</span></span>
+                    <span class="bm-pulse bm-pulse-warning"><span class="bm-avatar bm-avatar-sm bm-bg-warning-solid">!</span></span>
+                    <span class="bm-pulse bm-pulse-danger"><span class="bm-avatar bm-avatar-sm bm-bg-danger-solid">X</span></span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="bm-text-sm-semibold-label2">Card Ribbons</p>
+                <div class="bm-flex-wrap-gap-lg">
+                  <div class="bm-card bm-w-px-md">
+                    <div class="bm-ribbon bm-ribbon-top-end">New</div>
+                    <div class="bm-card-body bm-p-md">
+                      <h4 class="bm-text-body-semibold-mb">Pro Plan</h4>
+                      <p class="bm-text-caption-muted">$29/month</p>
+                    </div>
+                  </div>
+                  <div class="bm-card bm-w-px-md">
+                    <div class="bm-ribbon bm-ribbon-top-end bm-ribbon-success">Sale</div>
+                    <div class="bm-card-body bm-p-md">
+                      <h4 class="bm-text-body-semibold-mb">Business Plan</h4>
+                      <p class="bm-text-caption-muted">$79/month</p>
+                    </div>
+                  </div>
+                  <div class="bm-card bm-w-px-md">
+                    <div class="bm-ribbon bm-ribbon-top-end bm-ribbon-danger">Hot</div>
+                    <div class="bm-card-body bm-p-md">
+                      <h4 class="bm-text-body-semibold-mb">Enterprise</h4>
+                      <p class="bm-text-caption-muted">Custom pricing</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overlay / BlockUI -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Overlay / Block UI</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Block any element while loading. Call <code class="bm-badge-muted">App.overlay.show(element, 'Loading...')</code> and <code class="bm-badge-muted">App.overlay.hide(element)</code>.</p>
+              <div class="bm-flex-wrap-gap-md">
+                <button class="bm-btn bm-btn-primary" onclick="blockDemo()">Block Card</button>
+                <button class="bm-btn bm-btn-outline" onclick="unblockDemo()">Unblock Card</button>
+              </div>
+              <div id="overlayDemoCard" class="bm-card bm-mt-4-rel">
+                <div class="bm-card-body bm-min-h-flex">
+                  <p class="bm-text-body-muted">This card can be blocked while performing async operations. Click "Block Card" to see the overlay.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Confirm Dialog -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Confirm Dialog</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">A lightweight built-in confirmation dialog. No external dependencies.</p>
+              <div class="bm-flex-wrap-gap-md">
+                <button class="bm-btn bm-btn-danger" onclick="showDeleteConfirm()"><i class="ph ph-trash bm-text-md"></i> Delete Item</button>
+                <button class="bm-btn bm-btn-warning" onclick="showWarningConfirm()"><i class="ph ph-warning bm-text-md"></i> Dangerous Action</button>
+                <button class="bm-btn bm-btn-primary" onclick="showInfoConfirm()"><i class="ph ph-info bm-text-md"></i> Information</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Validation -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Form Validation</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Real-time validation using <code class="bm-badge-muted">App.validate(form, rules)</code>.</p>
+              <form id="advValidationForm" class="bm-w-max-480" novalidate>
+                <div class="bm-grid-gap4">
+                  <div class="bm-field">
+                    <label class="bm-field-label">Full Name <span class="bm-text-danger-nosemi">*</span></label>
+                    <input class="bm-input" type="text" name="full_name" placeholder="Jane Doe" required />
+                    <span class="bm-field-error"></span>
+                  </div>
+                  <div class="bm-field">
+                    <label class="bm-field-label">Email Address <span class="bm-text-danger-nosemi">*</span></label>
+                    <input class="bm-input" type="email" name="email" placeholder="jane@example.com" required />
+                    <span class="bm-field-error"></span>
+                  </div>
+                  <div class="bm-field">
+                    <label class="bm-field-label">Password <span class="bm-text-danger-nosemi">*</span></label>
+                    <div class="bm-password-wrap">
+                      <input class="bm-input" type="password" name="password" placeholder="Min. 8 characters" data-bm-password-meter="valPwMeter" required minlength="8" />
+                      <button type="button" class="bm-password-toggle">
+                        <i class="ph ph-eye bm-text-lg"></i>
+                      </button>
+                    </div>
+                    <div class="bm-password-meter" id="valPwMeter">
+                      <div class="bm-password-meter-bars">
+                        <div class="bm-password-meter-bar"></div>
+                        <div class="bm-password-meter-bar"></div>
+                        <div class="bm-password-meter-bar"></div>
+                        <div class="bm-password-meter-bar"></div>
+                      </div>
+                      <div class="bm-password-meter-text"></div>
+                    </div>
+                    <span class="bm-field-error"></span>
+                  </div>
+                  <div class="bm-field">
+                    <label class="bm-field-label">Confirm Password <span class="bm-text-danger-nosemi">*</span></label>
+                    <input class="bm-input" type="password" name="confirm_password" placeholder="Repeat password" required data-rule-match="password" data-match-msg="Passwords do not match." />
+                    <span class="bm-field-error"></span>
+                  </div>
+                  <div class="bm-flex-gap-750">
+                    <button type="submit" class="bm-btn bm-btn-primary">Submit</button>
+                    <button type="reset" class="bm-btn bm-btn-outline">Reset</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Datepicker -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Datepicker</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Date picker using <code class="bm-badge-muted">data-datepicker</code> — supports format, min/max date</p>
+              <div class="bm-grid-2col-max">
+                <div>
+                  <label class="bm-label">Default datepicker</label>
+                  <input type="text" class="bm-input" data-datepicker placeholder="Select date..." />
+                </div>
+                <div>
+                  <label class="bm-label">With format &amp; range</label>
+                  <input type="text" class="bm-input" data-datepicker data-format="DD/MM/YYYY" data-min-date="2024-01-01" data-max-date="2026-12-31" placeholder="DD/MM/YYYY" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom Select -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Custom Select</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Enhanced select dropdowns — any <code class="bm-badge-muted">&lt;select class="bm-select"&gt;</code> is auto-enhanced on page load</p>
+              <div class="bm-grid-2col-max">
+                <div>
+                  <label class="bm-label">Role</label>
+                  <select class="bm-select">
+                    <option value="">Select role...</option>
+                    <option>Admin</option>
+                    <option>Editor</option>
+                    <option>Viewer</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="bm-label">Country</label>
+                  <select class="bm-select">
+                    <option value="">Select country...</option>
+                    <option>United States</option>
+                    <option>United Kingdom</option>
+                    <option>Germany</option>
+                    <option>Turkey</option>
+                    <option>Japan</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/forms-advanced.js"></script>
+{% endblock %}

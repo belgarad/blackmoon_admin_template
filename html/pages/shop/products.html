@@ -1,0 +1,330 @@
+{% extends "layouts/base.html" %}
+{% set title = "Products" %}
+{% set activeMenu = "shop-products" %}
+{% set basePath = "../" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/products.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Breadcrumb + title -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current" data-i18n="breadcrumb.products">Products</span></div>
+              </nav>
+              <h1 class="bm-page-title" data-i18n="page.title.products">Product Catalog</h1>
+              <p class="bm-page-subtitle" data-i18n="page.desc.products">Browse 248 products across 12 categories.</p>
+            </div>
+            <div class="bm-page-actions">
+              <a href="cart.html" class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-shopping-cart bm-text-md"></i>
+                <span data-i18n="action.viewCart">View Cart (3)</span>
+              </a>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Product added','New product created successfully.')">
+                <i class="ph ph-plus bm-text-md"></i>
+                <span data-i18n="action.addProduct">Add Product</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Main layout: Filters + Grid -->
+          <div class="bm-grid-sidebar-sm">
+
+            <!-- ── Filter Sidebar ── -->
+            <div class="bm-card bm-p-lg">
+
+              <!-- Search -->
+              <div class="bm-mb-md">
+                <input class="bm-input" placeholder="Search products…" oninput="filterProducts(this.value)">
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-group-title">Category</div>
+                <label class="filter-option"><input type="checkbox" checked> All (248)</label>
+                <label class="filter-option"><input type="checkbox"> Electronics (84)</label>
+                <label class="filter-option"><input type="checkbox"> Clothing (62)</label>
+                <label class="filter-option"><input type="checkbox"> Home & Garden (41)</label>
+                <label class="filter-option"><input type="checkbox"> Sports (30)</label>
+                <label class="filter-option"><input type="checkbox"> Books (31)</label>
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-group-title">Price Range</div>
+                <div class="bm-mb-sm">
+                  <div class="bm-flex-between-caption-mb">
+                    <span id="priceMin">$0</span>
+                    <span id="priceMax">$500</span>
+                  </div>
+                  <div class="bm-range-wrap">
+                    <input type="range" class="bm-range bm-w-full" min="0" max="500" value="500" data-suffix="$" oninput="document.getElementById('priceMax').textContent='$'+this.value">
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-group-title">Rating</div>
+                <label class="filter-option"><input type="radio" name="rating"> ★★★★★ (4.5+)</label>
+                <label class="filter-option"><input type="radio" name="rating"> ★★★★ (4.0+)</label>
+                <label class="filter-option"><input type="radio" name="rating"> ★★★ (3.0+)</label>
+                <label class="filter-option"><input type="radio" name="rating" checked> Any rating</label>
+              </div>
+
+              <div class="filter-group">
+                <div class="filter-group-title">Color</div>
+                <div class="bm-flex-wrap-gap-sm-mt">
+                  <div class="filter-color-swatch active bm-bg-dark" title="Black"></div>
+                  <div class="filter-color-swatch bm-bg-slate-50" title="White"></div>
+                  <div class="filter-color-swatch bm-bg-indigo" title="Indigo"></div>
+                  <div class="filter-color-swatch bm-bg-green" title="Green"></div>
+                  <div class="filter-color-swatch bm-bg-red" title="Red"></div>
+                  <div class="filter-color-swatch bm-bg-orange" title="Yellow"></div>
+                </div>
+              </div>
+
+              <div class="filter-group bm-mb-0">
+                <div class="filter-group-title">Availability</div>
+                <label class="filter-option"><input type="checkbox" checked> In Stock</label>
+                <label class="filter-option"><input type="checkbox"> On Sale</label>
+                <label class="filter-option"><input type="checkbox"> New Arrivals</label>
+              </div>
+
+              <button class="bm-btn bm-btn-outline bm-btn-sm bm-w-full-mt" onclick="App.toast.info('Filters reset','Showing all products.')" data-i18n="action.resetFilters">Reset Filters</button>
+            </div>
+
+            <!-- ── Product Grid ── -->
+            <div>
+
+              <!-- Sort toolbar -->
+              <div class="bm-flex-between-wrap-mb3">
+                <span class="bm-text-body-muted"><strong class="bm-text-default">248</strong> products</span>
+                <div class="bm-flex-center-gap-lg">
+                  <select class="bm-input bm-w-auto-pr" onchange="App.toast.info('Sorted','Products sorted by selected criteria.')">
+                    <option>Sort: Featured</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Best Rating</option>
+                    <option>Newest</option>
+                  </select>
+                  <div class="bm-flex-gap-250">
+                    <button id="gridViewBtn" class="bm-btn bm-btn-primary bm-btn-sm bm-btn-icon" onclick="setView('grid',this)"><i class="ph ph-grid-four bm-text-md"></i></button>
+                    <button id="listViewBtn" class="bm-btn bm-btn-ghost bm-btn-sm bm-btn-icon" onclick="setView('list',this)"><i class="ph ph-list bm-text-md"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Grid -->
+              <div id="productGrid" class="bm-grid-3col">
+
+                <!-- Product 1 -->
+                <div class="product-card bm-pos-relative">
+                  <div class="product-img"><i class="ph ph-headphones bm-text-4xl-muted"></i></div>
+                  <div class="product-badge bm-bg-success-custom">New</div>
+                  <div class="product-wish" onclick="toggleWish(this)"><i class="ph ph-heart bm-text-md"></i></div>
+                  <div class="product-info">
+                    <div class="product-category">Electronics</div>
+                    <div class="product-name">SoundWave Pro X Wireless Headphones</div>
+                    <div class="product-stars">
+                      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                      <span>(248)</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <div><span class="product-price">$89.99</span><span class="product-price-old">$129.99</span></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="addToCart('SoundWave Pro X')">
+                      <i class="ph ph-shopping-cart bm-text-body"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bm-pos-relative">
+                  <div class="product-img"><i class="ph ph-watch bm-text-4xl-muted"></i></div>
+                  <div class="product-badge bm-bg-danger-light2">Sale</div>
+                  <div class="product-wish" onclick="toggleWish(this)"><i class="ph ph-heart bm-text-md"></i></div>
+                  <div class="product-info">
+                    <div class="product-category">Electronics</div>
+                    <div class="product-name">Apex Smartwatch Series 5</div>
+                    <div class="product-stars">
+                      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                      <span class="bm-text-border">★</span><span>(183)</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <div><span class="product-price">$199.00</span><span class="product-price-old">$249.00</span></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="addToCart('Apex Smartwatch')">
+                      <i class="ph ph-shopping-cart bm-text-body"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bm-pos-relative">
+                  <div class="product-img"><i class="ph ph-coat-hanger bm-text-4xl-muted"></i></div>
+                  <div class="product-wish" onclick="toggleWish(this)"><i class="ph ph-heart bm-text-md"></i></div>
+                  <div class="product-info">
+                    <div class="product-category">Clothing</div>
+                    <div class="product-name">Urban Classic Cotton Hoodie</div>
+                    <div class="product-stars">
+                      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                      <span>(421)</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <div><span class="product-price">$54.99</span></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="addToCart('Urban Hoodie')">
+                      <i class="ph ph-shopping-cart bm-text-body"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card bm-pos-relative">
+                  <div class="product-img"><i class="ph ph-laptop bm-text-4xl-muted"></i></div>
+                  <div class="product-badge bm-bg-indigo-light">Hot</div>
+                  <div class="product-wish" onclick="toggleWish(this)"><i class="ph ph-heart bm-text-md"></i></div>
+                  <div class="product-info">
+                    <div class="product-category">Electronics</div>
+                    <div class="product-name">NexBook Pro 16 — M3 Ultra</div>
+                    <div class="product-stars">
+                      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                      <span>(94)</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <div><span class="product-price">$1,499.00</span></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="addToCart('NexBook Pro 16')">
+                      <i class="ph ph-shopping-cart bm-text-body"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card bm-pos-relative">
+                  <div class="product-img"><i class="ph ph-armchair bm-text-4xl-muted"></i></div>
+                  <div class="product-wish" onclick="toggleWish(this)"><i class="ph ph-heart bm-text-md"></i></div>
+                  <div class="product-info">
+                    <div class="product-category">Home & Garden</div>
+                    <div class="product-name">Ergonomic Mesh Office Chair</div>
+                    <div class="product-stars">
+                      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                      <span class="bm-text-border">★</span><span>(312)</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <div><span class="product-price">$329.00</span><span class="product-price-old">$399.00</span></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="addToCart('Ergonomic Chair')">
+                      <i class="ph ph-shopping-cart bm-text-body"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card bm-pos-relative">
+                  <div class="product-img"><i class="ph ph-barbell bm-text-4xl-muted"></i></div>
+                  <div class="product-badge bm-bg-success-custom">New</div>
+                  <div class="product-wish" onclick="toggleWish(this)"><i class="ph ph-heart bm-text-md"></i></div>
+                  <div class="product-info">
+                    <div class="product-category">Sports</div>
+                    <div class="product-name">HydroStride Smart Water Bottle</div>
+                    <div class="product-stars">
+                      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                      <span>(876)</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <div><span class="product-price">$34.99</span></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="addToCart('HydroStride Bottle')">
+                      <i class="ph ph-shopping-cart bm-text-body"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card bm-pos-relative">
+                  <div class="product-img"><i class="ph ph-camera bm-text-4xl-muted"></i></div>
+                  <div class="product-badge bm-bg-danger-light2">Sale</div>
+                  <div class="product-wish" onclick="toggleWish(this)"><i class="ph ph-heart bm-text-md"></i></div>
+                  <div class="product-info">
+                    <div class="product-category">Electronics</div>
+                    <div class="product-name">VisionPro 4K Mirrorless Camera</div>
+                    <div class="product-stars">
+                      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                      <span>(67)</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <div><span class="product-price">$879.00</span><span class="product-price-old">$1,099.00</span></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="addToCart('VisionPro Camera')">
+                      <i class="ph ph-shopping-cart bm-text-body"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card bm-pos-relative">
+                  <div class="product-img"><i class="ph ph-book bm-text-4xl-muted"></i></div>
+                  <div class="product-wish" onclick="toggleWish(this)"><i class="ph ph-heart bm-text-md"></i></div>
+                  <div class="product-info">
+                    <div class="product-category">Books</div>
+                    <div class="product-name">The Art of Systems Thinking — 2nd Ed.</div>
+                    <div class="product-stars">
+                      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                      <span class="bm-text-border">★</span><span>(1,204)</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <div><span class="product-price">$24.99</span></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="addToCart('Systems Thinking Book')">
+                      <i class="ph ph-shopping-cart bm-text-body"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card bm-pos-relative">
+                  <div class="product-img"><i class="ph ph-speaker-high bm-text-4xl-muted"></i></div>
+                  <div class="product-wish" onclick="toggleWish(this)"><i class="ph ph-heart bm-text-md"></i></div>
+                  <div class="product-info">
+                    <div class="product-category">Electronics</div>
+                    <div class="product-name">BoomBar Portable BT Speaker</div>
+                    <div class="product-stars">
+                      <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                      <span>(534)</span>
+                    </div>
+                  </div>
+                  <div class="product-footer">
+                    <div><span class="product-price">$69.99</span><span class="product-price-old">$89.99</span></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="addToCart('BoomBar Speaker')">
+                      <i class="ph ph-shopping-cart bm-text-body"></i>
+                    </button>
+                  </div>
+                </div>
+
+              </div><!-- /productGrid -->
+
+              <!-- Pagination -->
+              <div class="bm-pagination bm-mt8-center">
+                <button class="bm-page-btn" disabled><i class="ph ph-caret-left bm-text-md"></i></button>
+                <button class="bm-page-btn active">1</button>
+                <button class="bm-page-btn">2</button>
+                <button class="bm-page-btn">3</button>
+                <span class="bm-p-0x-caption-muted">…</span>
+                <button class="bm-page-btn">28</button>
+                <button class="bm-page-btn"><i class="ph ph-caret-right bm-text-md"></i></button>
+              </div>
+            </div>
+
+          </div><!-- /grid layout -->
+        </div><!-- /container -->
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/products.js"></script>
+{% endblock %}

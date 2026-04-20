@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "partials/head.html" %}
+  <title>{{ title }} — BlackMoon Admin Kit</title>
+  {% block headExtra %}{% endblock %}
+</head>
+<body class="bm-sidebar-fixed bm-header-fixed">
+
+  <!-- Skip to content (accessibility) -->
+  <a href="#content" class="bm-skip-link">Skip to main content</a>
+
+  <!-- Sidebar Backdrop (mobile) -->
+  <div id="sidebarBackdrop" class="bm-drawer-backdrop bm-d-none"></div>
+
+  <div class="bm-flex-grow">
+
+    {% include "partials/sidebar.html" %}
+
+    <div class="bm-wrapper">
+
+      {% include "partials/header.html" %}
+
+      <!-- CONTENT -->
+      <main id="content">
+        <div class="bm-container-fixed bm-py-nav">
+          {% block content %}{% endblock %}
+        </div>
+      </main>
+
+      {% include "partials/footer.html" %}
+
+    </div>
+  </div>
+
+  {% include "partials/overlays.html" %}
+
+  <!-- Screen reader live region for dynamic announcements -->
+  <div id="bm-live" aria-live="polite" class="sr-only"></div>
+
+  {% include "partials/scripts.html" %}
+  {% block scripts %}{% endblock %}
+
+</body>
+</html>

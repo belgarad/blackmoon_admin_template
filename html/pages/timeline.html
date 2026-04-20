@@ -1,0 +1,339 @@
+{% extends "layouts/base.html" %}
+{% set title = "Timeline" %}
+{% set activeMenu = "timeline" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/timeline.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <!-- Page header -->
+          <div class="bm-flex-wrap-between-mb">
+            <div>
+              <h1 class="bm-text-2xl-800-mb">Activity Timeline</h1>
+              <p class="bm-text-body-muted">Chronological audit log of user and system events.</p>
+            </div>
+            <div class="bm-flex-wrap-gap25">
+              <div id="timelineFilterBtns" class="bm-flex-wrap-sm-gap">
+                <button class="bm-btn bm-btn-primary bm-btn-sm" data-tl-filter="all" onclick="filterTimeline('all')">All</button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" data-tl-filter="user" onclick="filterTimeline('user')">User Actions</button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" data-tl-filter="system" onclick="filterTimeline('system')">System</button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm" data-tl-filter="error" onclick="filterTimeline('error')">Errors</button>
+              </div>
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.success('Export','Audit log exported.')">
+                <i class="ph ph-download-simple bm-text-base"></i> Export
+              </button>
+            </div>
+          </div>
+
+          <div class="bm-grid-responsive-single bm-grid-2col">
+
+            <!-- Left: Icon Timeline -->
+            <div>
+              <div class="bm-card bm-card-body bm-pb-xl">
+                <h3 class="bm-text-base-bold2">
+                  <i class="ph ph-clock bm-text-lg-primary"></i>
+                  Recent Activity
+                </h3>
+                <ul class="bm-timeline" id="iconTimeline">
+
+                  <li class="bm-timeline-item" data-tl-type="user">
+                    <div class="bm-timeline-icon bm-timeline-icon-primary">
+                      <i class="ph ph-user-plus bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">New user registered</span>
+                        <span class="bm-timeline-time">Just now</span>
+                      </div>
+                      <p class="bm-timeline-text"><strong>Sarah Johnson</strong> created a new account via Google OAuth.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-primary">User</span>
+                        <span class="bm-text-sm-muted">IP: 192.168.1.42</span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item" data-tl-type="system">
+                    <div class="bm-timeline-icon bm-timeline-icon-success">
+                      <i class="ph ph-cloud-upload bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Backup completed</span>
+                        <span class="bm-timeline-time">5 min ago</span>
+                      </div>
+                      <p class="bm-timeline-text">Scheduled database backup completed successfully. Size: <strong>2.4 GB</strong>.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-success">System</span>
+                        <span class="bm-text-sm-muted">Duration: 38s</span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item" data-tl-type="error">
+                    <div class="bm-timeline-icon bm-timeline-icon-danger">
+                      <i class="ph ph-x-circle bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Login failed — 5 attempts</span>
+                        <span class="bm-timeline-time">12 min ago</span>
+                      </div>
+                      <p class="bm-timeline-text">Account <strong>mark@example.com</strong> locked after 5 failed login attempts.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-danger">Error</span>
+                        <span class="bm-text-sm-muted">IP: 10.0.0.99</span>
+                        <button class="bm-btn bm-btn-ghost bm-btn-xs bm-badge-thin" onclick="App.toast.info('Account','Account unlocked.')">Unlock</button>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item" data-tl-type="user">
+                    <div class="bm-timeline-icon bm-timeline-icon-warning">
+                      <i class="ph ph-pencil bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Profile updated</span>
+                        <span class="bm-timeline-time">28 min ago</span>
+                      </div>
+                      <p class="bm-timeline-text"><strong>John Doe</strong> updated avatar and billing address.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-warning">User</span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item" data-tl-type="system">
+                    <div class="bm-timeline-icon bm-timeline-icon-info">
+                      <i class="ph ph-arrow-counter-clockwise bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">System update deployed</span>
+                        <span class="bm-timeline-time">1 hour ago</span>
+                      </div>
+                      <p class="bm-timeline-text">Version <strong>3.2.1</strong> deployed to production. 12 bug fixes, 3 new features.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-info">System</span>
+                        <a href="#" class="bm-text-sm-primary-link">View changelog</a>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item" data-tl-type="user">
+                    <div class="bm-timeline-icon bm-timeline-icon-success">
+                      <i class="ph ph-shopping-cart bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">New order #ORD-4821</span>
+                        <span class="bm-timeline-time">2 hours ago</span>
+                      </div>
+                      <p class="bm-timeline-text"><strong>Emily Chen</strong> placed order #ORD-4821 for <strong>$249.00</strong>. Payment confirmed.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-success">Billing</span>
+                        <a href="invoices.html" class="bm-text-sm-primary-link">View invoice</a>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item" data-tl-type="error">
+                    <div class="bm-timeline-icon bm-timeline-icon-danger">
+                      <i class="ph ph-warning bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">High memory usage</span>
+                        <span class="bm-timeline-time">3 hours ago</span>
+                      </div>
+                      <p class="bm-timeline-text">Server memory usage peaked at <strong>92%</strong>. Auto-scaling triggered.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-danger">Error</span>
+                        <span class="bm-text-sm-muted">Resolved in 4 min</span>
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item" data-tl-type="system">
+                    <div class="bm-timeline-icon bm-timeline-icon-muted">
+                      <i class="ph ph-envelope bm-text-body"></i>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Email campaign sent</span>
+                        <span class="bm-timeline-time">Yesterday</span>
+                      </div>
+                      <p class="bm-timeline-text">Weekly newsletter sent to <strong>12,430</strong> subscribers. Open rate: 34.2%.</p>
+                      <div class="bm-timeline-meta">
+                        <span class="bm-badge bm-badge-kbd-muted">System</span>
+                      </div>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+
+            <!-- Right: Avatar Timeline + Compact Timeline -->
+            <div class="bm-flex-col-gap-xl">
+
+              <!-- Avatar timeline -->
+              <div class="bm-card bm-card-body bm-pb-xl">
+                <h3 class="bm-text-base-bold2">
+                  <i class="ph ph-users bm-text-lg-success"></i>
+                  Team Activity
+                </h3>
+                <ul class="bm-timeline">
+
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-avatar">
+                      <div class="bm-avatar bm-avatar-md bm-avatar-ring2">JD</div>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">John Doe</span>
+                        <span class="bm-timeline-time">10m ago</span>
+                      </div>
+                      <p class="bm-timeline-text">Approved pull request <strong>#142</strong> — "Add dark mode support"</p>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-avatar">
+                      <div class="bm-avatar bm-avatar-md bm-badge-success-ring">SJ</div>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Sarah Johnson</span>
+                        <span class="bm-timeline-time">45m ago</span>
+                      </div>
+                      <p class="bm-timeline-text">Created <strong>3 new tasks</strong> in the Kanban board under "Design Review"</p>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-avatar">
+                      <div class="bm-avatar bm-avatar-md bm-avatar-ring-warning">MK</div>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Mark Kim</span>
+                        <span class="bm-timeline-time">2h ago</span>
+                      </div>
+                      <p class="bm-timeline-text">Closed <strong>7 support tickets</strong> — average response time 8 min.</p>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-avatar">
+                      <div class="bm-avatar bm-avatar-md bm-badge-info-ring">EC</div>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Emily Chen</span>
+                        <span class="bm-timeline-time">4h ago</span>
+                      </div>
+                      <p class="bm-timeline-text">Published <strong>new blog post</strong>: "10 UX patterns for 2025"</p>
+                    </div>
+                  </li>
+
+                  <li class="bm-timeline-item">
+                    <div class="bm-timeline-avatar">
+                      <div class="bm-avatar bm-avatar-md bm-avatar-ring-destructive">AT</div>
+                    </div>
+                    <div class="bm-timeline-content">
+                      <div class="bm-timeline-header">
+                        <span class="bm-timeline-title">Alex Torres</span>
+                        <span class="bm-timeline-time">Yesterday</span>
+                      </div>
+                      <p class="bm-timeline-text">Deployed <strong>hotfix v3.2.1</strong> — Fixed critical payment processing bug.</p>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+
+              <!-- Compact audit log -->
+              <div class="bm-card">
+                <div class="bm-card-header bm-border-bottom">
+                  <span class="bm-card-title bm-flex-center-gap-md">
+                    <i class="ph ph-shield bm-text-lg-warning"></i>
+                    Security Audit Log
+                  </span>
+                </div>
+                <div class="bm-card-body bm-p-0">
+                  <div class="bm-table-responsive">
+                    <table class="bm-table bm-table-compact">
+                      <thead>
+                        <tr class="bm-border-bottom">
+                          <th scope="col" class="bm-th-muted-nowrap">Time</th>
+                          <th scope="col" class="bm-text-sm-bold-fg">Event</th>
+                          <th scope="col" class="bm-text-sm-bold-fg">User</th>
+                          <th scope="col" class="bm-text-sm-bold-fg">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="auditTable">
+                        <tr class="bm-border-bottom">
+                          <td class="bm-p-list-muted">09:42 AM</td>
+                          <td class="bm-p-list">Login</td>
+                          <td class="bm-p-list-medium">john@example.com</td>
+                          <td class="bm-p-list"><span class="bm-badge bm-badge-success">OK</span></td>
+                        </tr>
+                        <tr class="bm-border-bottom">
+                          <td class="bm-p-list-muted">09:38 AM</td>
+                          <td class="bm-p-list">Password change</td>
+                          <td class="bm-p-list-medium">sarah@example.com</td>
+                          <td class="bm-p-list"><span class="bm-badge bm-badge-success">OK</span></td>
+                        </tr>
+                        <tr class="bm-border-bottom">
+                          <td class="bm-p-list-muted">09:15 AM</td>
+                          <td class="bm-p-list">Login failed</td>
+                          <td class="bm-p-list-medium">mark@example.com</td>
+                          <td class="bm-p-list"><span class="bm-badge bm-badge-danger">Fail</span></td>
+                        </tr>
+                        <tr class="bm-border-bottom">
+                          <td class="bm-p-list-muted">08:59 AM</td>
+                          <td class="bm-p-list">2FA enabled</td>
+                          <td class="bm-p-list-medium">emily@example.com</td>
+                          <td class="bm-p-list"><span class="bm-badge bm-badge-success">OK</span></td>
+                        </tr>
+                        <tr class="bm-border-bottom">
+                          <td class="bm-p-list-muted">08:44 AM</td>
+                          <td class="bm-p-list">API key created</td>
+                          <td class="bm-p-list-medium">john@example.com</td>
+                          <td class="bm-p-list"><span class="bm-badge bm-badge-info">Info</span></td>
+                        </tr>
+                        <tr>
+                          <td class="bm-p-list-muted">08:30 AM</td>
+                          <td class="bm-p-list">Role changed</td>
+                          <td class="bm-p-list-medium">alex@example.com</td>
+                          <td class="bm-p-list"><span class="bm-badge bm-badge-warning">Changed</span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="bm-card-footer bm-card-foot">
+                  <span class="bm-text-caption-muted">Showing last 6 events</span>
+                  <button class="bm-btn bm-btn-ghost bm-btn-sm" onclick="App.toast.info('Export','Downloading full audit log...')">
+                    <i class="ph ph-download-simple bm-text-body"></i> Full Log
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/timeline.js"></script>
+{% endblock %}

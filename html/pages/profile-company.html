@@ -1,0 +1,176 @@
+{% extends "layouts/base.html" %}
+{% set title = "Company Profile" %}
+{% set activeMenu = "profile-company" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-0-pb-250">
+
+          <!-- Cover -->
+          <div class="bm-card bm-overflow-hidden-mb">
+            <div class="cover-company">
+              <div class="cover-pattern"></div>
+              <div class="bm-pos-abs-br">
+                <button class="bm-btn bm-btn-sm bm-glass-dark">
+                  <i class="ph ph-pencil bm-text-md"></i>Edit Cover
+                </button>
+              </div>
+            </div>
+
+            <div class="bm-p-0-rel">
+              <div class="bm-profile-cover-actions">
+                <div class="bm-flex-start-gap-xl">
+                  <div class="company-logo">AK</div>
+                  <div class="bm-pt-2750">
+                    <div class="bm-flex-wrap-gap-sm2">
+                      <span class="bm-text-1375-bold-fg">BlackMoon Admin Kit Co.</span>
+                      <span class="bm-badge-success-pill">
+                        <i class="ph ph-seal-check bm-text-sm"></i>Verified
+                      </span>
+                    </div>
+                    <div class="bm-text-sm-muted-body">Software / SaaS · Admin Dashboard Solutions</div>
+                    <div class="bm-meta-tags">
+                      <span class="bm-flex-center-gap-xs"><i class="ph ph-map-pin bm-text-md"></i>San Francisco, CA</span>
+                      <span class="bm-flex-center-gap-xs"><i class="ph ph-users bm-text-md"></i>120–150 employees</span>
+                      <span class="bm-flex-center-gap-xs"><i class="ph ph-calendar bm-text-md"></i>Founded 2018</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bm-flex-gap-625-pb">
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">
+                    <i class="ph ph-share bm-text-md"></i>Share
+                  </button>
+                  <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Following','You are now following BlackMoon Admin Kit Co.')">
+                    <i class="ph ph-plus bm-text-md"></i>Follow
+                  </button>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm"><i class="ph ph-dots-three bm-text-md"></i></button>
+                </div>
+              </div>
+
+              <!-- Quick stats -->
+              <div class="bm-flex-gap-xl-sep">
+                <div><div class="bm-text-xl-bold">18.4K</div><div class="bm-text-sm-muted">Followers</div></div>
+                <div><div class="bm-text-xl-bold">$4.2M</div><div class="bm-text-sm-muted">ARR</div></div>
+                <div><div class="bm-text-xl-bold">1,840</div><div class="bm-text-sm-muted">Customers</div></div>
+                <div><div class="bm-text-xl-bold">98.7%</div><div class="bm-text-sm-muted">Uptime SLA</div></div>
+                <div><div class="bm-text-xl-bold">4.9★</div><div class="bm-text-sm-muted">G2 Rating</div></div>
+                <div class="bm-ml-auto-flex-gap3">
+                  <a href="#" class="bm-text-muted"><i class="ph ph-globe"></i></a>
+                  <a href="#" class="bm-text-muted"><i class="ph ph-tag"></i></a>
+                  <a href="#" class="bm-text-muted"><i class="ph ph-briefcase"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bm-grid-main-aside">
+
+            <!-- Main column -->
+            <div class="bm-flex-col-gap-xl">
+
+              <!-- About -->
+              <div class="bm-card bm-p-xl">
+                <h3 class="bm-text-md-fg-semibold-m">About BlackMoon Admin Kit Co.</h3>
+                <p class="bm-text-sm-muted-lh175">
+                  BlackMoon Admin Kit Co. builds premium admin dashboard templates and design systems for modern web applications. Our products are trusted by over 1,800 companies in 70+ countries, from early-stage startups to Fortune 500 enterprises.
+                </p>
+                <p class="bm-text-sm-muted-lh">
+                  We specialize in React, Angular, Vue, and vanilla HTML frameworks with deep support for accessibility, dark mode, and design token theming.
+                </p>
+                <div class="bm-flex-wrap-mt-0gap">
+                  <span class="tag-chip">SaaS</span><span class="tag-chip">Design Systems</span><span class="tag-chip">Admin Dashboards</span>
+                  <span class="tag-chip">React</span><span class="tag-chip">Angular</span><span class="tag-chip">Vue</span>
+                  <span class="tag-chip">TypeScript</span><span class="tag-chip">Tailwind CSS</span>
+                </div>
+              </div>
+
+              <!-- Team -->
+              <div class="bm-card bm-p-xl">
+                <h3 class="bm-text-md-fg-semibold-m">Leadership Team</h3>
+                <div class="bm-grid-3col-sm">
+                  <div class="team-card"><div class="team-card-avatar bm-bg-indigo">JD</div><div class="bm-text-body-semibold">John Doe</div><div class="bm-text-sm-muted">CEO & Founder</div></div>
+                  <div class="team-card"><div class="team-card-avatar bm-bg-green">SR</div><div class="bm-text-body-semibold">Sara Roberts</div><div class="bm-text-sm-muted">CTO</div></div>
+                  <div class="team-card"><div class="team-card-avatar bm-bg-orange">MK</div><div class="bm-text-body-semibold">Mark Kim</div><div class="bm-text-sm-muted">Head of Design</div></div>
+                  <div class="team-card"><div class="team-card-avatar bm-bg-pink">AL</div><div class="bm-text-body-semibold">Amy Lee</div><div class="bm-text-sm-muted">VP Engineering</div></div>
+                  <div class="team-card"><div class="team-card-avatar bm-bg-cyan">TW</div><div class="bm-text-body-semibold">Tom Walsh</div><div class="bm-text-sm-muted">VP Sales</div></div>
+                  <div class="team-card"><div class="team-card-avatar bm-bg-purple">BC</div><div class="bm-text-body-semibold">Beth Chen</div><div class="bm-text-sm-muted">Head of Customer Success</div></div>
+                </div>
+              </div>
+
+              <!-- Open Positions -->
+              <div class="bm-card bm-p-xl">
+                <div class="bm-flex-between-mb3">
+                  <h3 class="bm-text-md-semibold-0">Open Positions</h3>
+                  <span class="bm-badge-primary-pill">8 Open</span>
+                </div>
+                <div class="bm-flex-col-gap-sm">
+                  <div class="bm-flex-card-row">
+                    <div><div class="bm-text-body-semibold">Senior React Engineer</div><div class="bm-text-sm-muted">Engineering · Remote · Full-time</div></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.info('Applied!','Your application has been submitted.')">Apply</button>
+                  </div>
+                  <div class="bm-flex-card-row">
+                    <div><div class="bm-text-body-semibold">Product Designer</div><div class="bm-text-sm-muted">Design · San Francisco · Full-time</div></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.info('Applied!','Your application has been submitted.')">Apply</button>
+                  </div>
+                  <div class="bm-flex-card-row">
+                    <div><div class="bm-text-body-semibold">Developer Advocate</div><div class="bm-text-sm-muted">Marketing · Remote · Full-time</div></div>
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.info('Applied!','Your application has been submitted.')">Apply</button>
+                  </div>
+                  <a href="#" class="bm-text-caption-primary-center">View all 8 open positions →</a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <div class="bm-flex-col-gap-xl">
+
+              <!-- Key Metrics -->
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-caption-muted-mb">Key Metrics</h4>
+                <div class="metric-row"><span class="bm-text-caption-muted">Monthly Active Users</span><span class="bm-text-body-bold2">94,200</span></div>
+                <div class="metric-row"><span class="bm-text-caption-muted">NPS Score</span><span class="bm-text-md-success-semibold">+72</span></div>
+                <div class="metric-row"><span class="bm-text-caption-muted">Avg. Response Time</span><span class="bm-text-body-bold2">&lt;2 hrs</span></div>
+                <div class="metric-row"><span class="bm-text-caption-muted">Churn Rate</span><span class="bm-text-md-success-semibold">1.8%</span></div>
+                <div class="metric-row"><span class="bm-text-caption-muted">YoY Growth</span><span class="bm-text-md-success-semibold">+48%</span></div>
+              </div>
+
+              <!-- Recent Posts -->
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-caption-muted-mb">Recent Updates</h4>
+                <div class="bm-flex-col-gap-lg">
+                  <div class="bm-flex-gap-start">
+                    <div class="bm-icon-box-primary-lg"><i class="ph ph-sparkle bm-text-md-primary"></i></div>
+                    <div><div class="bm-text-caption-semibold">BlackMoon Admin Kit v3.2 Released</div><div class="bm-text-sm-muted">New data grid, stepper, OTP components.</div><div class="bm-text-2xs-muted-mt">2 days ago</div></div>
+                  </div>
+                  <div class="bm-flex-gap-start">
+                    <div class="bm-icon-box-success"><i class="ph ph-trophy bm-text-md-success"></i></div>
+                    <div><div class="bm-text-caption-semibold">G2 Leader Winter 2025</div><div class="bm-text-sm-muted">Ranked #1 BlackMoon Admin Kit on G2.</div><div class="bm-text-2xs-muted-mt">1 week ago</div></div>
+                  </div>
+                  <div class="bm-flex-gap-start">
+                    <div class="bm-icon-box-accent"><i class="ph ph-file-text bm-text-md-muted"></i></div>
+                    <div><div class="bm-text-caption-semibold">Design Tokens Deep Dive</div><div class="bm-text-sm-muted">New blog post on our token system.</div><div class="bm-text-2xs-muted-mt">2 weeks ago</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Contact -->
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-caption-muted-mb">Contact</h4>
+                <div class="bm-flex-col-gap-625">
+                  <div class="bm-flex-caption-gap"><i class="ph ph-globe bm-text-md-muted"></i><a href="#" class="bm-text-primary">adminkit.io</a></div>
+                  <div class="bm-flex-caption-gap"><i class="ph ph-envelope bm-text-md-muted"></i><a href="mailto:hello@adminkit.io" class="bm-text-primary">hello@adminkit.io</a></div>
+                  <div class="bm-flex-caption-gap"><i class="ph ph-phone bm-text-md-muted"></i>+1 (415) 555-0192</div>
+                  <div class="bm-flex-caption-gap"><i class="ph ph-map-pin bm-text-md-muted"></i>548 Market St, San Francisco, CA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

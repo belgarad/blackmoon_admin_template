@@ -1,0 +1,25 @@
+/* ================================================================
+   BLACKMOON ADMIN KIT — Main SCSS Entry Point
+   All core styles are imported here. Page-specific SCSS is loaded
+   via opt-in <link> tags in individual page templates.
+   ================================================================ */
+
+/* Abstracts (mixins, functions — no output on their own) */
+@use 'abstracts/mixins';
+
+/* Core styles */
+@use 'theme';
+@use 'layout';
+@use 'utilities';
+@use 'components';
+
+/* Base enhancements */
+@use 'base/print';
+
+/* Theme extensions */
+@use 'themes/rtl';
+
+/* Vendor: flag icons (self-hosted, MIT) */
+@use 'flag-icons/sass/flag-icons' with (
+  $flag-icons-path: '/flags'
+);

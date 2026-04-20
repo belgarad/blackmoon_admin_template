@@ -1,0 +1,68 @@
+{% extends "layouts/base.html" %}
+{% set title = "Blank Page" %}
+{% set activeMenu = "blank" %}
+{% set basePath = "" %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-py-section">
+
+          <!-- ── Page header ────────────────────────────────── -->
+          <div class="bm-flex-between-wrap-mb6">
+            <div>
+              <h1 class="bm-heading-xl-fg">Page Title</h1>
+              <nav class="bm-text-sm-muted-flex">
+                <a href="dashboard.html" class="bm-link-muted" data-i18n="breadcrumb.dashboard">Dashboard</a>
+                <i class="ph ph-caret-right bm-text-body"></i>
+                <span class="bm-text-default">Page Title</span>
+              </nav>
+            </div>
+            <!-- Optional action buttons -->
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-funnel bm-text-md"></i>Filter
+              </button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">
+                <i class="ph ph-plus bm-text-md"></i>New Item
+              </button>
+            </div>
+          </div>
+          <!-- ── END page header ────────────────────────────── -->
+
+          <!-- ╔═════════════════════════════════════════════════╗
+               ║  YOUR CONTENT STARTS HERE                      ║
+               ║                                                 ║
+               ║  Useful layout helpers:                         ║
+               ║  • .bm-card              — card container       ║
+               ║  • .bm-card-header       — card header bar      ║
+               ║  • .bm-card-body         — card body padding    ║
+               ║  • .bm-card-footer       — card footer bar      ║
+               ║  • .bm-card-title        — title text style     ║
+               ║                                                 ║
+               ║  Grid example:                                  ║
+               ║  <div style="display:grid;                      ║
+               ║    grid-template-columns:repeat(3,1fr);         ║
+               ║    gap:1.5rem;">                                 ║
+               ║    ...cards...                                   ║
+               ║  </div>                                         ║
+               ╚═════════════════════════════════════════════════╝ -->
+
+          <div class="bm-card bm-card-body bm-empty-dropzone">
+            <i class="ph ph-squares-four bm-text-5xl-muted2"></i>
+            <p class="bm-text-base-muted-0">Your content goes here</p>
+            <p class="bm-text-caption-muted-faded">Delete this placeholder and start building.</p>
+          </div>
+
+          <!-- ── END YOUR CONTENT ───────────────────────────── -->
+
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+  <script>
+
+    // your code
+  
+  </script>
+{% endblock %}

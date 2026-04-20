@@ -1,0 +1,191 @@
+﻿/* ================================================================
+   BLACKMOON ADMIN KIT  Shared CSS Theme Variables
+   Palette: color_codes.md
+   ================================================================ */
+
+/*  Light Theme (default)  */
+:root {
+  /* Layout */
+  --sidebar-width: 280px;
+  --sidebar-width-collapse: 80px;
+  --sidebar-default-width: 280px;
+  --sidebar-transition-duration: 0.3s;
+  --sidebar-transition-timing: ease;
+  --header-height: 70px;
+
+  /* Motion tokens */
+  --duration-fast:   100ms;
+  --duration-normal: 200ms;
+  --duration-slow:   350ms;
+  --easing-standard: cubic-bezier(0.32, 0.72, 0, 1);
+  --easing-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --easing-ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+  /* Base radius */
+  --radius: 0.5rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  /* Light theme colors  mapped from color_codes.md palette */
+  --background: #FFFFFF;               /* white             */
+  --foreground: #2F353B;               /* dark              */
+
+  --card: #FFFFFF;                     /* white             */
+  --card-foreground: #2F353B;          /* dark              */
+
+  --popover: #FFFFFF;                  /* white             */
+  --popover-foreground: #2F353B;       /* dark              */
+
+  --primary: #3598DC;                  /* blue              */
+  --primary-foreground: #FFFFFF;
+  --primary-light: rgba(53, 152, 220, 0.1);
+
+  --secondary: #E1E5EC;                /* default           */
+  --secondary-foreground: #2F353B;     /* dark              */
+
+  --muted: #E9EDEF;                    /* grey-steel        */
+  --muted-foreground: #95A5A6;         /* grey-cascade      */
+
+  --accent: #E1E5EC;                   /* default           */
+  --accent-foreground: #2F353B;        /* dark              */
+
+  --destructive: #E7505A;              /* red               */
+  --destructive-foreground: #FFFFFF;
+
+  --mono: #2F353B;                     /* dark              */
+  --mono-foreground: #FAFAFA;          /* grey-cararra      */
+
+  --border: #E1E5EC;                   /* default           */
+  --input: #E1E5EC;                    /* default           */
+  --ring: #3598DC;                     /* blue              */
+
+  /* Semantic status colors */
+  --success: #1BBC9B;                  /* green-meadow      */
+  --success-light: rgba(27, 188, 155, 0.1);
+  --warning: #E87E04;                  /* yellow-gold       */
+  --warning-light: rgba(232, 126, 4, 0.1);
+  --danger: #E7505A;                   /* red               */
+  --danger-light: rgba(231, 80, 90, 0.1);
+  --info: #4C87B9;                     /* blue-soft         */
+  --info-light: rgba(76, 135, 185, 0.1);
+
+  /* Table tokens */
+  --table-header-bg: transparent;
+  --table-stripe-bg: rgba(0, 0, 0, 0.02);
+  --table-hover-bg: var(--accent);
+  --table-selected-bg: var(--primary-light);
+  --table-border: var(--border);
+
+  /* Gray scale  mapped from grey palette */
+  --gray-50:  #FAFAFA;                 /* grey-cararra      */
+  --gray-100: #E9EDEF;                 /* grey-steel        */
+  --gray-200: #E5E5E5;                 /* grey              */
+  --gray-300: #E1E5EC;                 /* default           */
+  --gray-400: #BFCAD1;                 /* grey-salt         */
+  --gray-500: #ACB5C3;                 /* grey-salsa        */
+  --gray-600: #95A5A6;                 /* grey-cascade      */
+  --gray-700: #555555;                 /* grey-gallery      */
+  --gray-800: #525E64;                 /* grey-mint         */
+  --gray-900: #2F353B;                 /* dark              */
+  --gray-950: #22313F;                 /* blue-ebonyclay    */
+}
+
+/*  Light Grey Theme  */
+.light-grey {
+  --background: #E9EDEF;               /* grey-steel        */
+  --foreground: #2F353B;               /* dark              */
+
+  --card: #FFFFFF;                     /* white             */
+  --card-foreground: #2F353B;          /* dark              */
+
+  --popover: #FFFFFF;                  /* white             */
+  --popover-foreground: #2F353B;       /* dark              */
+
+  --secondary: #E1E5EC;                /* default           */
+  --secondary-foreground: #2F353B;     /* dark              */
+
+  --muted: #E1E5EC;                    /* default           */
+  --muted-foreground: #95A5A6;         /* grey-cascade      */
+
+  --accent: #E1E5EC;                   /* default           */
+  --accent-foreground: #2F353B;        /* dark              */
+
+  --border: #BFCAD1;                   /* grey-salt         */
+  --input: #BFCAD1;                    /* grey-salt         */
+}
+
+/*  Dark Theme  */
+.dark {
+  --background: #22313F;               /* blue-ebonyclay    */
+  --foreground: #FAFAFA;               /* grey-cararra      */
+
+  --card: #2C3E50;                     /* blue-chambray     */
+  --card-foreground: #FAFAFA;          /* grey-cararra      */
+
+  --popover: #2C3E50;                  /* blue-chambray     */
+  --popover-foreground: #FAFAFA;       /* grey-cararra      */
+
+  --primary: #5C9BD1;                  /* blue-sharp        */
+  --primary-foreground: #FFFFFF;
+  --primary-light: rgba(92, 155, 209, 0.15);
+
+  --secondary: #2F353B;                /* dark              */
+  --secondary-foreground: #FAFAFA;     /* grey-cararra      */
+
+  --muted: #2F353B;                    /* dark              */
+  --muted-foreground: #ACB5C3;         /* grey-salsa        */
+
+  --accent: #2C3E50;                   /* blue-chambray     */
+  --accent-foreground: #FAFAFA;        /* grey-cararra      */
+
+  --destructive: #F36A5A;              /* red-haze          */
+  --destructive-foreground: #FFFFFF;
+
+  --mono: #FAFAFA;                     /* grey-cararra      */
+  --mono-foreground: #2F353B;          /* dark              */
+
+  --border: #2F353B;                   /* dark              */
+  --input: #2F353B;                    /* dark              */
+  --ring: #5C9BD1;                     /* blue-sharp        */
+
+  /* Semantic status colors (brighter variants for dark bg) */
+  --success: #36D7B7;                  /* green-turquoise   */
+  --success-light: rgba(54, 215, 183, 0.15);
+  --warning: #F7CA18;                  /* yellow-lemon      */
+  --warning-light: rgba(247, 202, 24, 0.15);
+  --danger: #F36A5A;                   /* red-haze          */
+  --danger-light: rgba(243, 106, 90, 0.15);
+  --info: #5C9BD1;                     /* blue-sharp        */
+  --info-light: rgba(92, 155, 209, 0.15);
+
+  /* Gray scale  inverted for dark mode */
+  --gray-50:  #22313F;                 /* blue-ebonyclay    */
+  --gray-100: #2F353B;                 /* dark              */
+  --gray-200: #525E64;                 /* grey-mint         */
+  --gray-300: #555555;                 /* grey-gallery      */
+  --gray-400: #95A5A6;                 /* grey-cascade      */
+  --gray-500: #ACB5C3;                 /* grey-salsa        */
+  --gray-600: #BFCAD1;                 /* grey-salt         */
+  --gray-700: #E1E5EC;                 /* default           */
+  --gray-800: #E5E5E5;                 /* grey              */
+  --gray-900: #E9EDEF;                 /* grey-steel        */
+  --gray-950: #FAFAFA;                 /* grey-cararra      */
+
+  /* Table tokens (dark) */
+  --table-header-bg: rgba(255, 255, 255, 0.03);
+  --table-stripe-bg: rgba(255, 255, 255, 0.02);
+  --table-hover-bg: rgba(255, 255, 255, 0.05);
+  --table-selected-bg: var(--primary-light);
+  --table-border: var(--border);
+}

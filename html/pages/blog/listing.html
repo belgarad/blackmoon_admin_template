@@ -1,0 +1,229 @@
+{% extends "layouts/base.html" %}
+{% set title = "Blog" %}
+{% set activeMenu = "blog-listing" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/blog.scss">
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Blog</span></div>
+              </nav>
+              <h1 class="bm-page-title">Blog</h1>
+              <p class="bm-page-subtitle">Latest articles, tutorials, and company news.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-primary bm-btn-sm">
+                <i class="ph ph-note-pencil bm-text-md"></i>
+                New Post
+              </button>
+            </div>
+          </div>
+
+          <!-- Filter Bar -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-body blog-filter-bar">
+              <div class="bm-flex-center-gap-sm">
+                <button class="bm-btn bm-btn-primary bm-btn-sm">All</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Tutorials</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Engineering</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Product</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Company</button>
+              </div>
+              <div class="blog-search-wrap">
+                <i class="ph ph-magnifying-glass blog-search-icon"></i>
+                <input class="bm-input blog-search-input" type="text" placeholder="Search articles…">
+              </div>
+            </div>
+          </div>
+
+          <!-- Featured Post -->
+          <div class="bm-card bm-mb-lg blog-featured">
+            <div class="bm-card-body">
+              <div class="blog-featured-grid">
+                <div class="blog-featured-thumb">
+                  <div class="blog-thumb-placeholder">
+                    <i class="ph ph-image"></i>
+                  </div>
+                </div>
+                <div class="blog-featured-content">
+                  <div class="bm-flex-center-gap-sm bm-mb-sm">
+                    <span class="bm-badge bm-badge-primary">Featured</span>
+                    <span class="bm-badge bm-badge-muted">Tutorials</span>
+                  </div>
+                  <h2 class="blog-featured-title">
+                    <a href="post.html">Building Scalable Design Systems with CSS Custom Properties</a>
+                  </h2>
+                  <p class="blog-featured-excerpt">Learn how to leverage CSS custom properties, OKLCH color spaces, and modern architecture patterns to build a maintainable, themeable design system from scratch. We'll cover tokens, utilities, and component layers.</p>
+                  <div class="blog-meta">
+                    <div class="bm-avatar bm-avatar-xs">JD</div>
+                    <span class="blog-meta-author">John Doe</span>
+                    <span class="blog-meta-sep">&middot;</span>
+                    <span class="blog-meta-date">Mar 28, 2026</span>
+                    <span class="blog-meta-sep">&middot;</span>
+                    <span class="blog-meta-read">8 min read</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post Grid -->
+          <div class="blog-grid">
+
+            <!-- Post 1 -->
+            <div class="bm-card blog-card">
+              <div class="blog-card-thumb">
+                <div class="blog-thumb-placeholder"><i class="ph ph-image"></i></div>
+              </div>
+              <div class="bm-card-body">
+                <div class="bm-flex-center-gap-sm bm-mb-sm">
+                  <span class="bm-badge bm-badge-info">Engineering</span>
+                </div>
+                <h3 class="blog-card-title"><a href="post.html">Migrating to Vite 6: Lessons Learned</a></h3>
+                <p class="blog-card-excerpt">Our team recently migrated the entire build pipeline from Webpack to Vite 6. Here are the key takeaways and gotchas we encountered.</p>
+                <div class="blog-meta">
+                  <div class="bm-avatar bm-avatar-xs">AS</div>
+                  <span class="blog-meta-author">Alice Smith</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-date">Mar 22, 2026</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-read">6 min read</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 2 -->
+            <div class="bm-card blog-card">
+              <div class="blog-card-thumb">
+                <div class="blog-thumb-placeholder"><i class="ph ph-image"></i></div>
+              </div>
+              <div class="bm-card-body">
+                <div class="bm-flex-center-gap-sm bm-mb-sm">
+                  <span class="bm-badge bm-badge-success">Product</span>
+                </div>
+                <h3 class="blog-card-title"><a href="post.html">Introducing Dark Mode &amp; Auto Theme Switching</a></h3>
+                <p class="blog-card-excerpt">We've shipped a fully automatic dark mode that respects your OS preference while allowing manual override. Here's how we built it.</p>
+                <div class="blog-meta">
+                  <div class="bm-avatar bm-avatar-xs">BW</div>
+                  <span class="blog-meta-author">Bob Wilson</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-date">Mar 15, 2026</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-read">4 min read</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 3 -->
+            <div class="bm-card blog-card">
+              <div class="blog-card-thumb">
+                <div class="blog-thumb-placeholder"><i class="ph ph-image"></i></div>
+              </div>
+              <div class="bm-card-body">
+                <div class="bm-flex-center-gap-sm bm-mb-sm">
+                  <span class="bm-badge bm-badge-warning">Company</span>
+                </div>
+                <h3 class="blog-card-title"><a href="post.html">Q1 2026 Retrospective: Growing the Team</a></h3>
+                <p class="blog-card-excerpt">A look back at our first quarter — new hires, product milestones, and what's coming next for the company and the product roadmap.</p>
+                <div class="blog-meta">
+                  <div class="bm-avatar bm-avatar-xs">CD</div>
+                  <span class="blog-meta-author">Clara Davis</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-date">Mar 10, 2026</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-read">5 min read</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 4 -->
+            <div class="bm-card blog-card">
+              <div class="blog-card-thumb">
+                <div class="blog-thumb-placeholder"><i class="ph ph-image"></i></div>
+              </div>
+              <div class="bm-card-body">
+                <div class="bm-flex-center-gap-sm bm-mb-sm">
+                  <span class="bm-badge bm-badge-info">Engineering</span>
+                </div>
+                <h3 class="blog-card-title"><a href="post.html">Advanced Table Patterns for Admin UIs</a></h3>
+                <p class="blog-card-excerpt">Sticky headers, column resizing, virtual scrolling, and inline editing — a deep dive into building enterprise-grade data tables.</p>
+                <div class="blog-meta">
+                  <div class="bm-avatar bm-avatar-xs">EF</div>
+                  <span class="blog-meta-author">Emma Fischer</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-date">Mar 5, 2026</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-read">10 min read</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 5 -->
+            <div class="bm-card blog-card">
+              <div class="blog-card-thumb">
+                <div class="blog-thumb-placeholder"><i class="ph ph-image"></i></div>
+              </div>
+              <div class="bm-card-body">
+                <div class="bm-flex-center-gap-sm bm-mb-sm">
+                  <span class="bm-badge bm-badge-primary">Tutorials</span>
+                </div>
+                <h3 class="blog-card-title"><a href="post.html">Getting Started with OKLCH Colors in CSS</a></h3>
+                <p class="blog-card-excerpt">OKLCH offers a perceptually uniform color space that makes theming effortless. We walk through the syntax, browser support, and practical examples.</p>
+                <div class="blog-meta">
+                  <div class="bm-avatar bm-avatar-xs">JD</div>
+                  <span class="blog-meta-author">John Doe</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-date">Feb 28, 2026</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-read">7 min read</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Post 6 -->
+            <div class="bm-card blog-card">
+              <div class="blog-card-thumb">
+                <div class="blog-thumb-placeholder"><i class="ph ph-image"></i></div>
+              </div>
+              <div class="bm-card-body">
+                <div class="bm-flex-center-gap-sm bm-mb-sm">
+                  <span class="bm-badge bm-badge-success">Product</span>
+                </div>
+                <h3 class="blog-card-title"><a href="post.html">New: Calendar App with Drag-and-Drop Events</a></h3>
+                <p class="blog-card-excerpt">The calendar module now supports drag-and-drop event creation, resizing, and cross-day moves. Built entirely with vanilla JS.</p>
+                <div class="blog-meta">
+                  <div class="bm-avatar bm-avatar-xs">AS</div>
+                  <span class="blog-meta-author">Alice Smith</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-date">Feb 20, 2026</span>
+                  <span class="blog-meta-sep">&middot;</span>
+                  <span class="blog-meta-read">3 min read</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Pagination -->
+          <div class="bm-flex-center-justify bm-mt-xl">
+            <div class="bm-text-caption-muted">Showing 1–6 of 24 articles</div>
+            <div class="bm-pagination">
+              <button class="bm-btn bm-btn-ghost bm-btn-sm" disabled><i class="ph ph-caret-left bm-text-md"></i></button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">1</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">2</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">3</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">4</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-caret-right bm-text-md"></i></button>
+            </div>
+          </div>
+
+{% endblock %}

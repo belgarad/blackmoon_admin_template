@@ -1,0 +1,231 @@
+{% extends "layouts/base.html" %}
+{% set title = "Orders" %}
+{% set activeMenu = "shop-orders" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/shop-manage.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="products.html">Shop</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Orders</span></div>
+              </nav>
+              <h1 class="bm-page-title">Orders</h1>
+              <p class="bm-page-subtitle">Manage and track all customer orders</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-download-simple bm-text-md"></i><span data-i18n="action.export">Export</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- KPIs -->
+          <div class="proj-kpi-row">
+            <div class="kpi-card">
+              <div class="kpi-label">Total Orders</div>
+              <div class="kpi-value">1,284</div>
+              <div class="kpi-delta positive">
+                <i class="ph ph-trend-up"></i> +12.5%
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Processing</div>
+              <div class="kpi-value">38</div>
+              <div class="kpi-delta">
+                <i class="ph ph-clock"></i> Active
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Shipped</div>
+              <div class="kpi-value">156</div>
+              <div class="kpi-delta positive">
+                <i class="ph ph-truck"></i> In transit
+              </div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">Revenue</div>
+              <div class="kpi-value">$142,580</div>
+              <div class="kpi-delta positive">
+                <i class="ph ph-trend-up"></i> +8.3%
+              </div>
+            </div>
+          </div>
+
+          <!-- Filters -->
+          <div class="bm-card bm-mb-lg bm-overflow-visible">
+            <div class="bm-card-body bm-px-lg">
+              <div class="bm-flex-gap-wrap">
+                <input class="bm-input bm-w-max-300" type="text" placeholder="Search orders…" />
+                <select class="bm-select bm-w-max-160">
+                  <option value="" data-i18n="filter.filterByStatus">All Status</option>
+                  <option data-i18n="status.pending">Pending</option>
+                  <option data-i18n="status.processing">Processing</option>
+                  <option>Shipped</option>
+                  <option>Delivered</option>
+                  <option>Cancelled</option>
+                  <option>Refunded</option>
+                </select>
+                <input type="date" class="bm-input bm-w-max-160" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Orders Table -->
+          <div class="bm-card">
+            <div class="bm-table-responsive">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col"><input type="checkbox"></th>
+                    <th scope="col">Order ID</th>
+                    <th scope="col" data-i18n="table.customer">Customer</th>
+                    <th scope="col">Items</th>
+                    <th scope="col">Total</th>
+                    <th scope="col" data-i18n="table.status">Status</th>
+                    <th scope="col">Payment</th>
+                    <th scope="col" data-i18n="table.date">Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a class="bm-link-primary bm-font-medium" href="order-detail.html">#ORD-1284</a></td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <div class="bm-avatar bm-avatar-sm" style="background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary)">JD</div>
+                        <span>John Doe</span>
+                      </div>
+                    </td>
+                    <td>3 items</td>
+                    <td class="bm-font-semibold">$459.97</td>
+                    <td><span class="bm-badge bm-badge-warning bm-text-micro-badge">Processing</span></td>
+                    <td><span class="bm-text-xs bm-text-muted">Credit Card</span></td>
+                    <td class="bm-text-muted">Mar 28, 2026</td>
+                    <td>
+                      <a href="order-detail.html" class="bm-btn-icon-xs" title="View"><i class="ph ph-eye"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a class="bm-link-primary bm-font-medium" href="order-detail.html">#ORD-1283</a></td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <div class="bm-avatar bm-avatar-sm" style="background:color-mix(in srgb,var(--success) 14%,transparent);color:var(--success)">SA</div>
+                        <span>Sarah Adams</span>
+                      </div>
+                    </td>
+                    <td>1 item</td>
+                    <td class="bm-font-semibold">$249.99</td>
+                    <td><span class="bm-badge bm-badge-info bm-text-micro-badge">Shipped</span></td>
+                    <td><span class="bm-text-xs bm-text-muted">PayPal</span></td>
+                    <td class="bm-text-muted">Mar 27, 2026</td>
+                    <td>
+                      <a href="order-detail.html" class="bm-btn-icon-xs" title="View"><i class="ph ph-eye"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a class="bm-link-primary bm-font-medium" href="order-detail.html">#ORD-1282</a></td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <div class="bm-avatar bm-avatar-sm" style="background:color-mix(in srgb,var(--warning) 14%,transparent);color:var(--warning)">MK</div>
+                        <span>Mike Kim</span>
+                      </div>
+                    </td>
+                    <td>5 items</td>
+                    <td class="bm-font-semibold">$1,124.50</td>
+                    <td><span class="bm-badge bm-badge-success bm-text-micro-badge">Delivered</span></td>
+                    <td><span class="bm-text-xs bm-text-muted">Credit Card</span></td>
+                    <td class="bm-text-muted">Mar 26, 2026</td>
+                    <td>
+                      <a href="order-detail.html" class="bm-btn-icon-xs" title="View"><i class="ph ph-eye"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a class="bm-link-primary bm-font-medium" href="order-detail.html">#ORD-1281</a></td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <div class="bm-avatar bm-avatar-sm" style="background:color-mix(in srgb,var(--danger) 14%,transparent);color:var(--danger)">EJ</div>
+                        <span>Emily Jones</span>
+                      </div>
+                    </td>
+                    <td>2 items</td>
+                    <td class="bm-font-semibold">$89.98</td>
+                    <td><span class="bm-badge bm-badge-danger bm-text-micro-badge">Cancelled</span></td>
+                    <td><span class="bm-text-xs bm-text-muted">Debit Card</span></td>
+                    <td class="bm-text-muted">Mar 25, 2026</td>
+                    <td>
+                      <a href="order-detail.html" class="bm-btn-icon-xs" title="View"><i class="ph ph-eye"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a class="bm-link-primary bm-font-medium" href="order-detail.html">#ORD-1280</a></td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <div class="bm-avatar bm-avatar-sm" style="background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary)">RW</div>
+                        <span>Robert Wilson</span>
+                      </div>
+                    </td>
+                    <td>1 item</td>
+                    <td class="bm-font-semibold">$299.99</td>
+                    <td><span class="bm-badge bm-badge-success bm-text-micro-badge">Delivered</span></td>
+                    <td><span class="bm-text-xs bm-text-muted">Bank Transfer</span></td>
+                    <td class="bm-text-muted">Mar 24, 2026</td>
+                    <td>
+                      <a href="order-detail.html" class="bm-btn-icon-xs" title="View"><i class="ph ph-eye"></i></a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td><a class="bm-link-primary bm-font-medium" href="order-detail.html">#ORD-1279</a></td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <div class="bm-avatar bm-avatar-sm" style="background:color-mix(in srgb,var(--success) 14%,transparent);color:var(--success)">LM</div>
+                        <span>Laura Martin</span>
+                      </div>
+                    </td>
+                    <td>4 items</td>
+                    <td class="bm-font-semibold">$762.00</td>
+                    <td><span class="bm-badge bm-badge-info bm-text-micro-badge">Shipped</span></td>
+                    <td><span class="bm-text-xs bm-text-muted">PayPal</span></td>
+                    <td class="bm-text-muted">Mar 23, 2026</td>
+                    <td>
+                      <a href="order-detail.html" class="bm-btn-icon-xs" title="View"><i class="ph ph-eye"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="bm-flex-between-wrap bm-p-md" style="border-top:1px solid var(--border)">
+              <span class="bm-text-sm bm-text-muted">Showing 1-6 of 1,284 orders</span>
+              <div class="bm-pagination">
+                <button class="bm-btn-icon-xs" disabled><i class="ph ph-caret-left"></i></button>
+                <button class="bm-btn bm-btn-sm bm-btn-primary" style="min-width:2rem;padding:0.25rem">1</button>
+                <button class="bm-btn bm-btn-sm bm-btn-ghost" style="min-width:2rem;padding:0.25rem">2</button>
+                <button class="bm-btn bm-btn-sm bm-btn-ghost" style="min-width:2rem;padding:0.25rem">3</button>
+                <span class="bm-text-muted">…</span>
+                <button class="bm-btn bm-btn-sm bm-btn-ghost" style="min-width:2rem;padding:0.25rem">214</button>
+                <button class="bm-btn-icon-xs"><i class="ph ph-caret-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

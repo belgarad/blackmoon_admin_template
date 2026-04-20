@@ -1,0 +1,266 @@
+{% extends "layouts/base.html" %}
+{% set title = "Permissions" %}
+{% set activeMenu = "users" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/user-manage.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="users.html">Users</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Permissions</span></div>
+              </nav>
+              <h1 class="bm-page-title">Permissions Matrix</h1>
+              <p class="bm-page-subtitle">Configure role-based access control</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Saved','Permissions updated.')">
+                <i class="ph ph-floppy-disk bm-text-md"></i>Save Changes
+              </button>
+            </div>
+          </div>
+
+          <!-- Permissions Matrix -->
+          <div class="bm-card">
+            <div class="bm-table-responsive">
+              <table class="bm-table perm-matrix">
+                <thead>
+                  <tr>
+                    <th scope="col" style="min-width:200px">Permission</th>
+                    <th scope="col" class="perm-col-header">Administrator</th>
+                    <th scope="col" class="perm-col-header">Manager</th>
+                    <th scope="col" class="perm-col-header">Editor</th>
+                    <th scope="col" class="perm-col-header">Viewer</th>
+                    <th scope="col" class="perm-col-header">Support</th>
+                    <th scope="col" class="perm-col-header">Guest</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Dashboard Section -->
+                  <tr class="perm-section-row">
+                    <td colspan="7"><i class="ph ph-squares-four"></i> Dashboard</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">View Dashboard</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">View Analytics</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Export Reports</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+
+                  <!-- Users Section -->
+                  <tr class="perm-section-row">
+                    <td colspan="7"><i class="ph ph-users"></i> Users</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">View Users</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Create Users</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Edit Users</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Delete Users</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Manage Roles</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+
+                  <!-- Content Section -->
+                  <tr class="perm-section-row">
+                    <td colspan="7"><i class="ph ph-file-text"></i> Content</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">View Content</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Create Content</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Edit Content</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Delete Content</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Publish Content</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+
+                  <!-- E-Commerce Section -->
+                  <tr class="perm-section-row">
+                    <td colspan="7"><i class="ph ph-shopping-cart"></i> E-Commerce</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">View Products</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Manage Products</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Process Orders</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Manage Invoices</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+
+                  <!-- System Section -->
+                  <tr class="perm-section-row">
+                    <td colspan="7"><i class="ph ph-gear"></i> System</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">General Settings</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">Security Settings</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-sm">View Audit Logs</td>
+                    <td class="perm-cell"><input type="checkbox" checked disabled></td>
+                    <td class="perm-cell"><input type="checkbox" checked></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                    <td class="perm-cell"><input type="checkbox"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="bm-flex-end bm-p-md" style="border-top:1px solid var(--border)">
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Saved','Permissions saved.')">
+                <i class="ph ph-floppy-disk bm-text-md"></i>Save Changes
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

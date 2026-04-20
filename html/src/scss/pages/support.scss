@@ -1,0 +1,63 @@
+/* ================================================================
+   BLACKMOON — Support Center Pages
+   ================================================================ */
+
+/* ── Hero / Search ── */
+.sup-hero { text-align:center; padding:2rem 0 2.5rem; }
+.sup-hero-title { font-size:1.625rem; font-weight:700; color:var(--foreground); margin-bottom:0.375rem; }
+.sup-hero-sub { font-size:0.9375rem; color:var(--muted-foreground); margin:0; }
+.sup-search-wrap { max-width:520px; margin:1.25rem auto 0; position:relative; }
+.sup-search-wrap .bm-input { padding-left:2.75rem; }
+.sup-search-wrap .ph { position:absolute; left:0.75rem; top:50%; transform:translateY(-50%); color:var(--muted-foreground); font-size:1.25rem; pointer-events:none; }
+
+/* ── Category Cards ── */
+.sup-cat-card { transition:box-shadow 200ms, transform 200ms; cursor:pointer; }
+.sup-cat-card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.sup-cat-icon { width:48px; height:48px; border-radius:var(--radius-md); background:var(--accent); display:flex; align-items:center; justify-content:center; margin:0 auto 0.75rem; flex-shrink:0; }
+.sup-cat-title { font-size:0.9375rem; font-weight:600; color:var(--foreground); margin:0 0 0.375rem; }
+.sup-cat-icon-success { background:oklch(0.90 0.08 155); color:var(--success); }
+.sup-cat-icon-warning { background:oklch(0.92 0.08 85); color:var(--warning); }
+.sup-cat-icon-info    { background:oklch(0.90 0.08 250); color:var(--info); }
+.sup-cat-icon-danger  { background:oklch(0.90 0.08 25); color:var(--destructive); }
+.sup-cat-icon-primary { background:var(--primary-light); color:var(--primary); }
+
+/* ── Article List ── */
+.sup-article-list { display:flex; flex-direction:column; }
+.sup-article-item { display:flex; align-items:center; gap:0.75rem; padding:0.875rem 1.5rem; border-bottom:1px solid var(--border); color:var(--foreground); text-decoration:none; transition:color 150ms; }
+.sup-article-item:last-child { border-bottom:none; }
+.sup-article-item:hover { color:var(--primary); }
+
+/* ── Contact Options ── */
+.sup-contact-item { display:flex; align-items:center; gap:0.875rem; padding:0.875rem 0; border-bottom:1px solid var(--border); color:var(--foreground); text-decoration:none; transition:color 150ms; }
+.sup-contact-item:last-child { border-bottom:none; }
+.sup-contact-item > div:nth-child(2) { flex:1; min-width:0; }
+.sup-contact-item:hover { color:var(--primary); }
+
+/* ── Filter Bar (tickets) ── */
+.sup-filter-bar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.75rem; }
+
+/* ── Ticket Detail Layout ── */
+.sup-ticket-layout { display:grid; grid-template-columns:1fr 340px; gap:2rem; }
+.sup-ticket-main { min-width:0; }
+.sup-ticket-sidebar { display:flex; flex-direction:column; gap:0; }
+
+/* ── Message Bubbles ── */
+.sup-msg { display:flex; gap:0.75rem; }
+.sup-msg-body { flex:1; min-width:0; }
+.sup-msg-agent { border-left:3px solid var(--primary); }
+
+/* ── Attachments ── */
+.sup-attachments { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.sup-attachment { display:inline-flex; align-items:center; gap:0.375rem; padding:0.375rem 0.75rem; border-radius:var(--radius-md); border:1px solid var(--border); background:var(--accent); font-size:0.75rem; }
+
+/* ── Status Note ── */
+.sup-status-note { display:flex; align-items:center; gap:0.5rem; padding:0.625rem 1rem; border-radius:var(--radius-md); background:var(--accent); }
+
+/* ── Activity ── */
+.sup-activity-item { display:flex; align-items:flex-start; gap:0.5rem; }
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .sup-ticket-layout { grid-template-columns:1fr; }
+  .sup-ticket-sidebar { order:-1; }
+}

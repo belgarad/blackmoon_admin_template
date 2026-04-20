@@ -1,0 +1,94 @@
+﻿{% extends "layouts/error.html" %}
+{% set title = "Maintenance — BlackMoon Admin Kit" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/error.scss">
+{% endblock %}
+
+{% block content %}
+  <div class="maint-wrap">
+    <div class="maint-icon-ring">
+      <i class="ph ph-hard-hat bm-icon-4xl-primary"></i>
+    </div>
+
+    <h1 class="bm-hero-title">Under Maintenance</h1>
+    <p class="bm-text-md-muted-lh">We're upgrading BlackMoon Admin Kit to bring you a better experience.</p>
+    <p class="bm-text-sm-muted-mb5">Scheduled maintenance window: <strong class="bm-text-default">Jan 5, 2025 · 02:00–06:00 UTC</strong></p>
+
+    <!-- Progress -->
+    <div class="bm-mb-2xl">
+      <div class="bm-flex-between-caption-mb">
+        <span class="bm-text-fg-semibold">Upgrade Progress</span>
+        <span class="bm-text-primary-bold" id="progressPct">65%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill bm-w-65" id="progressFill"></div>
+      </div>
+      <div class="bm-text-sm-muted" id="progressLabel">Step 3 of 5 · Migrating database schemas…</div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-row">
+      <div class="countdown-unit"><span class="countdown-num" id="cdH">02</span><span class="countdown-label">Hours</span></div>
+      <div class="countdown-unit bm-pt-sm"><span class="bm-text-2rem-light-muted">:</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cdM">47</span><span class="countdown-label">Minutes</span></div>
+      <div class="countdown-unit bm-pt-sm"><span class="bm-text-2rem-light-muted">:</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cdS">33</span><span class="countdown-label">Seconds</span></div>
+    </div>
+
+    <!-- Status steps -->
+    <div class="bm-infobox">
+      <div class="bm-label-bold-sm">Maintenance Checklist</div>
+      <div class="bm-flex-col-gap-sm">
+        <div class="bm-flex-center-gap-lg-body">
+          <i class="ph ph-check-circle bm-text-lg-success"></i>
+          <span class="bm-text-muted-strikethrough">Backup current data</span>
+        </div>
+        <div class="bm-flex-center-gap-lg-body">
+          <i class="ph ph-check-circle bm-text-lg-success"></i>
+          <span class="bm-text-muted-strikethrough">Deploy new containers</span>
+        </div>
+        <div class="bm-flex-center-gap-lg-body">
+          <i class="ph ph-spinner bm-spinner-icon"></i>
+          <span class="bm-text-fg-semibold">Migrate database schemas</span>
+        </div>
+        <div class="bm-flex-center-gap-opacity">
+          <i class="ph ph-circle bm-text-lg-muted"></i>
+          <span>Run integration tests</span>
+        </div>
+        <div class="bm-flex-center-gap-opacity">
+          <i class="ph ph-circle bm-text-lg-muted"></i>
+          <span>Switch back to production traffic</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notify form -->
+    <div class="bm-card-accent-mb">
+      <div class="bm-text-sm-semibold-mb-fg">Notify me when it's back</div>
+      <div class="bm-flex-gap-xs">
+        <input class="bm-input bm-flex-1" type="email" placeholder="your@email.com">
+        <button class="bm-btn bm-btn-primary" onclick="notifyMe()">Notify Me</button>
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="bm-flex-wrap-center">
+      <a href="#" class="bm-btn bm-btn-ghost bm-btn-sm">
+        <i class="ph ph-activity bm-text-md"></i>
+        Status Page
+      </a>
+      <a href="#" class="bm-btn bm-btn-ghost bm-btn-sm">
+        <i class="ph ph-chat-circle bm-text-md"></i>
+        Support Chat
+      </a>
+    </div>
+
+    <p class="bm-footnote">© 2025 BlackMoon Admin Kit</p>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/pages/maintenance.js"></script>
+{% endblock %}

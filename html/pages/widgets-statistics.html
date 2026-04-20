@@ -1,0 +1,311 @@
+{% extends "layouts/base.html" %}
+{% set title = "Statistics Widgets" %}
+{% set activeMenu = "widgets-statistics" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="components.html">UI Showcase</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Statistics Widgets</span></div>
+              </nav>
+              <h1 class="bm-page-title">Statistics Widgets</h1>
+              <p class="bm-page-subtitle">KPI cards, stat counters, sparklines, and trend indicators.</p>
+            </div>
+          </div>
+
+          <!-- Section: Stats Card v1 -->
+          <h3 class="bm-section-title bm-mb-md">Stats Cards — Variant 1</h3>
+          <div class="bm-grid-auto-lg bm-mb-xl">
+            <div class="bm-stats-card">
+              <div class="bm-stats-card-icon"><i class="ph ph-users bm-text-lg-primary"></i></div>
+              <div>
+                <div class="bm-stats-card-value">24,580</div>
+                <div class="bm-stats-card-label">Total Users</div>
+                <div class="bm-stats-card-trend up">
+                  <i class="ph ph-arrow-up bm-text-8xs"></i>12.4% vs last month
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card">
+              <div class="bm-stats-card-icon"><i class="ph ph-shopping-cart bm-text-lg-success"></i></div>
+              <div>
+                <div class="bm-stats-card-value">1,842</div>
+                <div class="bm-stats-card-label">Orders</div>
+                <div class="bm-stats-card-trend up">
+                  <i class="ph ph-arrow-up bm-text-8xs"></i>8.1% vs last month
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card">
+              <div class="bm-stats-card-icon"><i class="ph ph-credit-card bm-text-lg-warning"></i></div>
+              <div>
+                <div class="bm-stats-card-value">$148,200</div>
+                <div class="bm-stats-card-label">Revenue</div>
+                <div class="bm-stats-card-trend down">
+                  <i class="ph ph-arrow-down bm-text-8xs"></i>3.2% vs last month
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card">
+              <div class="bm-stats-card-icon"><i class="ph ph-bug bm-text-lg-danger"></i></div>
+              <div>
+                <div class="bm-stats-card-value">12</div>
+                <div class="bm-stats-card-label">Open Bugs</div>
+                <div class="bm-stats-card-trend down">
+                  <i class="ph ph-arrow-down bm-text-8xs"></i>26% vs last week
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Stats Card v2 -->
+          <h3 class="bm-section-title bm-mb-md">Stats Cards — Variant 2</h3>
+          <div class="bm-grid-auto-lg bm-mb-xl">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-trend-up bm-text-lg-primary"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Conversion Rate</div>
+                <div class="bm-stats-card-v2-value">3.42%</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>0.5%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-currency-dollar bm-text-lg-success"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Avg. Order Value</div>
+                <div class="bm-stats-card-v2-value">$86.40</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>$4.20</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-timer bm-text-lg-warning"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Avg. Session Duration</div>
+                <div class="bm-stats-card-v2-value">4m 32s</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend down"><i class="ph ph-arrow-down bm-text-8xs"></i>18s</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-danger"><i class="ph ph-user-x bm-text-lg-danger"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Churn Rate</div>
+                <div class="bm-stats-card-v2-value">2.1%</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend down"><i class="ph ph-arrow-down bm-text-8xs"></i>0.3%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Stats Cards with Sparklines -->
+          <h3 class="bm-section-title bm-mb-md">Stats Cards with Sparklines</h3>
+          <div class="bm-grid-auto-lg bm-mb-xl">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-stats-card-v2-label">Daily Active Users</div>
+                <div class="bm-stats-card-v2-value">6,248</div>
+                <div class="bm-sparkline" id="spark-dau"></div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>5.4%</span>
+                  <span class="bm-stats-card-v2-compared">vs last week</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-stats-card-v2-label">Page Views</div>
+                <div class="bm-stats-card-v2-value">38,420</div>
+                <div class="bm-sparkline" id="spark-views"></div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>12%</span>
+                  <span class="bm-stats-card-v2-compared">vs last week</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-stats-card-v2-label">Bounce Rate</div>
+                <div class="bm-stats-card-v2-value">34.2%</div>
+                <div class="bm-sparkline" id="spark-bounce"></div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend down"><i class="ph ph-arrow-down bm-text-8xs"></i>1.8%</span>
+                  <span class="bm-stats-card-v2-compared">vs last week</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-stats-card-v2-label">New Signups</div>
+                <div class="bm-stats-card-v2-value">412</div>
+                <div class="bm-sparkline" id="spark-signups"></div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>22%</span>
+                  <span class="bm-stats-card-v2-compared">vs last week</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Trend Indicator Badges -->
+          <h3 class="bm-section-title bm-mb-md">Trend Indicators</h3>
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Standalone trend pills — <code class="bm-badge-muted">.bm-trend-up</code> / <code class="bm-badge-muted">.bm-trend-down</code></p>
+              <div class="bm-flex-wrap-gap-xl">
+                <div class="bm-flex-col-gap-xs" style="text-align:center;">
+                  <span class="bm-text-caption-muted">Revenue</span>
+                  <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>12.5%</span>
+                </div>
+                <div class="bm-flex-col-gap-xs" style="text-align:center;">
+                  <span class="bm-text-caption-muted">Expenses</span>
+                  <span class="bm-trend-down"><i class="ph ph-arrow-down"></i>3.8%</span>
+                </div>
+                <div class="bm-flex-col-gap-xs" style="text-align:center;">
+                  <span class="bm-text-caption-muted">Users</span>
+                  <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>1,240</span>
+                </div>
+                <div class="bm-flex-col-gap-xs" style="text-align:center;">
+                  <span class="bm-text-caption-muted">Churn</span>
+                  <span class="bm-trend-down"><i class="ph ph-arrow-down"></i>0.4%</span>
+                </div>
+                <div class="bm-flex-col-gap-xs" style="text-align:center;">
+                  <span class="bm-text-caption-muted">Net Profit</span>
+                  <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>$24,800</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Progress Stats -->
+          <h3 class="bm-section-title bm-mb-md">Progress Stats</h3>
+          <div class="bm-grid-auto-lg bm-mb-xl">
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-between-center bm-mb-sm">
+                  <span class="bm-text-body-medium">Storage Used</span>
+                  <span class="bm-text-caption-muted">68 / 100 GB</span>
+                </div>
+                <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar" style="width: 68%"></div></div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-between-center bm-mb-sm">
+                  <span class="bm-text-body-medium">Tasks Done</span>
+                  <span class="bm-text-caption-muted">43 / 50</span>
+                </div>
+                <div class="bm-progress bm-progress-sm bm-progress-success"><div class="bm-progress-bar" style="width: 86%"></div></div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-between-center bm-mb-sm">
+                  <span class="bm-text-body-medium">CPU Usage</span>
+                  <span class="bm-text-caption-muted">94%</span>
+                </div>
+                <div class="bm-progress bm-progress-sm bm-progress-danger"><div class="bm-progress-bar" style="width: 94%"></div></div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-body">
+                <div class="bm-flex-between-center bm-mb-sm">
+                  <span class="bm-text-body-medium">Budget</span>
+                  <span class="bm-text-caption-muted">$12,400 / $20,000</span>
+                </div>
+                <div class="bm-progress bm-progress-sm bm-progress-warning"><div class="bm-progress-bar" style="width: 62%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Mini KPI Row -->
+          <h3 class="bm-section-title bm-mb-md">Mini KPI Row</h3>
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-body">
+              <div class="bm-grid-auto-lg">
+                <div class="bm-flex-col-gap-xs" style="text-align:center;">
+                  <span class="bm-text-2xl-bold">98.7%</span>
+                  <span class="bm-text-caption-muted">Uptime</span>
+                  <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>0.2%</span>
+                </div>
+                <div class="bm-flex-col-gap-xs" style="text-align:center;">
+                  <span class="bm-text-2xl-bold">42ms</span>
+                  <span class="bm-text-caption-muted">Avg. Latency</span>
+                  <span class="bm-trend-down"><i class="ph ph-arrow-down"></i>8ms</span>
+                </div>
+                <div class="bm-flex-col-gap-xs" style="text-align:center;">
+                  <span class="bm-text-2xl-bold">14.2k</span>
+                  <span class="bm-text-caption-muted">Requests/min</span>
+                  <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>2.1k</span>
+                </div>
+                <div class="bm-flex-col-gap-xs" style="text-align:center;">
+                  <span class="bm-text-2xl-bold">0.02%</span>
+                  <span class="bm-text-caption-muted">Error Rate</span>
+                  <span class="bm-trend-down"><i class="ph ph-arrow-down"></i>0.01%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Counter Animation -->
+          <h2 class="bm-section-title bm-mb-md">Counter Animation</h2>
+          <p class="bm-text-body-muted-mb">Animated number counting using <code class="bm-badge-muted">data-counter</code> with optional prefix/suffix</p>
+          <div class="bm-grid-4col bm-mb-xl">
+            <div class="bm-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-text-2xl-bold-fg" data-counter="84290" data-counter-prefix="$">$84,290</div>
+                <div class="bm-text-caption-muted">Revenue</div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-text-2xl-bold-fg" data-counter="12847">12,847</div>
+                <div class="bm-text-caption-muted">Users</div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-text-2xl-bold-fg" data-counter="4.73" data-counter-suffix="%">4.73%</div>
+                <div class="bm-text-caption-muted">Conversion</div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="bm-text-2xl-bold-fg" data-counter="1423" data-counter-suffix="+">1,423+</div>
+                <div class="bm-text-caption-muted">Orders</div>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/chart-helpers.js"></script>
+<script src="/assets/js/pages/widgets-statistics.js"></script>
+{% endblock %}

@@ -1,0 +1,309 @@
+{% extends "layouts/base.html" %}
+{% set title = "File Manager" %}
+{% set activeMenu = "file-manager-files" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/file-manager.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">File Manager</span></div>
+              </nav>
+              <h1 class="bm-page-title" data-i18n="nav.fileManager">File Manager</h1>
+              <p class="bm-page-subtitle">Browse, upload and manage your files</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="toggleFileView()">
+                <i class="ph ph-grid-four bm-text-md"></i>
+              </button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Upload started','Your files are being uploaded.')">
+                <i class="ph ph-upload-simple bm-text-md"></i>Upload Files
+              </button>
+            </div>
+          </div>
+
+          <!-- Layout: Sidebar + Main -->
+          <div class="fm-layout">
+
+            <!-- Sidebar -->
+            <div class="fm-sidebar">
+              <div class="bm-card bm-p-lg">
+                <div class="fm-storage-info bm-mb-md">
+                  <div class="bm-flex-between-wrap bm-mb-xs">
+                    <span class="bm-text-sm bm-text-muted">Storage Used</span>
+                    <span class="bm-text-sm bm-font-semibold">24.5 GB / 50 GB</span>
+                  </div>
+                  <div class="bm-progress">
+                    <div class="bm-progress-bar bm-progress-primary" style="width: 49%"></div>
+                  </div>
+                </div>
+
+                <nav class="fm-nav">
+                  <a href="files.html" class="fm-nav-item active">
+                    <i class="ph ph-folder"></i>
+                    <span>All Files</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge">248</span>
+                  </a>
+                  <a href="folders.html" class="fm-nav-item">
+                    <i class="ph ph-folder-simple"></i>
+                    <span>Folders</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge">12</span>
+                  </a>
+                  <a href="#" class="fm-nav-item">
+                    <i class="ph ph-star"></i>
+                    <span>Starred</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge">8</span>
+                  </a>
+                  <a href="#" class="fm-nav-item">
+                    <i class="ph ph-clock"></i>
+                    <span>Recent</span>
+                  </a>
+                  <a href="#" class="fm-nav-item">
+                    <i class="ph ph-trash"></i>
+                    <span>Trash</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge">3</span>
+                  </a>
+                </nav>
+
+                <div class="fm-nav-divider"></div>
+
+                <div class="fm-file-types">
+                  <div class="bm-text-xs bm-text-muted bm-font-semibold bm-text-uppercase bm-mb-sm">File Types</div>
+                  <div class="fm-type-item">
+                    <span class="fm-type-icon fm-type-image"><i class="ph ph-image"></i></span>
+                    <div class="fm-type-info">
+                      <span class="bm-text-sm bm-font-medium">Images</span>
+                      <span class="bm-text-xs bm-text-muted">8.4 GB · 1,240 files</span>
+                    </div>
+                  </div>
+                  <div class="fm-type-item">
+                    <span class="fm-type-icon fm-type-document"><i class="ph ph-file-text"></i></span>
+                    <div class="fm-type-info">
+                      <span class="bm-text-sm bm-font-medium">Documents</span>
+                      <span class="bm-text-xs bm-text-muted">6.2 GB · 842 files</span>
+                    </div>
+                  </div>
+                  <div class="fm-type-item">
+                    <span class="fm-type-icon fm-type-video"><i class="ph ph-film-strip"></i></span>
+                    <div class="fm-type-info">
+                      <span class="bm-text-sm bm-font-medium">Videos</span>
+                      <span class="bm-text-xs bm-text-muted">5.8 GB · 56 files</span>
+                    </div>
+                  </div>
+                  <div class="fm-type-item">
+                    <span class="fm-type-icon fm-type-audio"><i class="ph ph-file-audio"></i></span>
+                    <div class="fm-type-info">
+                      <span class="bm-text-sm bm-font-medium">Audio</span>
+                      <span class="bm-text-xs bm-text-muted">2.1 GB · 310 files</span>
+                    </div>
+                  </div>
+                  <div class="fm-type-item">
+                    <span class="fm-type-icon fm-type-other"><i class="ph ph-note"></i></span>
+                    <div class="fm-type-info">
+                      <span class="bm-text-sm bm-font-medium">Other</span>
+                      <span class="bm-text-xs bm-text-muted">2.0 GB · 148 files</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main -->
+            <div class="fm-main">
+
+              <!-- Toolbar -->
+              <div class="bm-card bm-mb-lg bm-overflow-visible">
+                <div class="bm-card-body bm-px-lg">
+                  <div class="bm-flex-gap-wrap">
+                    <input class="bm-input bm-w-max-300" type="text" placeholder="Search files…" id="fileSearch" oninput="filterFiles(this.value)" />
+                    <select class="bm-select bm-w-max-160" onchange="filterByType(this.value)">
+                      <option value="">All Types</option>
+                      <option value="image">Images</option>
+                      <option value="document">Documents</option>
+                      <option value="video">Videos</option>
+                      <option value="audio">Audio</option>
+                    </select>
+                    <select class="bm-select bm-w-max-160" onchange="sortFiles(this.value)">
+                      <option value="name">Name</option>
+                      <option value="date">Date Modified</option>
+                      <option value="size">Size</option>
+                      <option value="type">Type</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Access Folders -->
+              <div class="bm-mb-md">
+                <h3 class="bm-text-sm bm-font-semibold bm-text-muted bm-text-uppercase bm-mb-sm">Quick Access</h3>
+                <div class="fm-folder-grid">
+                  <div class="fm-folder-card" onclick="App.toast.info('Folder','Opening Documents folder…')">
+                    <i class="ph ph-folder fm-folder-icon"></i>
+                    <div class="fm-folder-name">Documents</div>
+                    <div class="fm-folder-meta">248 files · 6.2 GB</div>
+                  </div>
+                  <div class="fm-folder-card" onclick="App.toast.info('Folder','Opening Images folder…')">
+                    <i class="ph ph-folder fm-folder-icon"></i>
+                    <div class="fm-folder-name">Images</div>
+                    <div class="fm-folder-meta">1,240 files · 8.4 GB</div>
+                  </div>
+                  <div class="fm-folder-card" onclick="App.toast.info('Folder','Opening Projects folder…')">
+                    <i class="ph ph-folder fm-folder-icon"></i>
+                    <div class="fm-folder-name">Projects</div>
+                    <div class="fm-folder-meta">86 files · 1.8 GB</div>
+                  </div>
+                  <div class="fm-folder-card" onclick="App.toast.info('Folder','Opening Downloads folder…')">
+                    <i class="ph ph-folder fm-folder-icon"></i>
+                    <div class="fm-folder-name">Downloads</div>
+                    <div class="fm-folder-meta">124 files · 3.2 GB</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Files Grid/List -->
+              <div>
+                <h3 class="bm-text-sm bm-font-semibold bm-text-muted bm-text-uppercase bm-mb-sm">All Files</h3>
+                <div class="fm-file-grid" id="fileGrid">
+
+                  <div class="fm-file-card" data-type="image">
+                    <div class="fm-file-preview fm-preview-image">
+                      <i class="ph ph-image"></i>
+                    </div>
+                    <div class="fm-file-info">
+                      <div class="fm-file-name">hero-banner.png</div>
+                      <div class="fm-file-meta">2.4 MB · Mar 28, 2026</div>
+                    </div>
+                    <div class="fm-file-actions">
+                      <button class="bm-btn-icon-xs" title="Star"><i class="ph ph-star"></i></button>
+                      <button class="bm-btn-icon-xs" title="Download"><i class="ph ph-download-simple"></i></button>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="fm-file-card" data-type="document">
+                    <div class="fm-file-preview fm-preview-document">
+                      <i class="ph ph-file-text"></i>
+                    </div>
+                    <div class="fm-file-info">
+                      <div class="fm-file-name">Q1-Report-2026.pdf</div>
+                      <div class="fm-file-meta">4.8 MB · Mar 25, 2026</div>
+                    </div>
+                    <div class="fm-file-actions">
+                      <button class="bm-btn-icon-xs" title="Star"><i class="ph ph-star"></i></button>
+                      <button class="bm-btn-icon-xs" title="Download"><i class="ph ph-download-simple"></i></button>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="fm-file-card" data-type="document">
+                    <div class="fm-file-preview fm-preview-spreadsheet">
+                      <i class="ph ph-table"></i>
+                    </div>
+                    <div class="fm-file-info">
+                      <div class="fm-file-name">budget-2026.xlsx</div>
+                      <div class="fm-file-meta">1.2 MB · Mar 22, 2026</div>
+                    </div>
+                    <div class="fm-file-actions">
+                      <button class="bm-btn-icon-xs" title="Star"><i class="ph ph-star"></i></button>
+                      <button class="bm-btn-icon-xs" title="Download"><i class="ph ph-download-simple"></i></button>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="fm-file-card" data-type="video">
+                    <div class="fm-file-preview fm-preview-video">
+                      <i class="ph ph-film-strip"></i>
+                    </div>
+                    <div class="fm-file-info">
+                      <div class="fm-file-name">product-demo.mp4</div>
+                      <div class="fm-file-meta">148 MB · Mar 20, 2026</div>
+                    </div>
+                    <div class="fm-file-actions">
+                      <button class="bm-btn-icon-xs" title="Star"><i class="ph ph-star"></i></button>
+                      <button class="bm-btn-icon-xs" title="Download"><i class="ph ph-download-simple"></i></button>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="fm-file-card" data-type="image">
+                    <div class="fm-file-preview fm-preview-image">
+                      <i class="ph ph-image"></i>
+                    </div>
+                    <div class="fm-file-info">
+                      <div class="fm-file-name">team-photo.jpg</div>
+                      <div class="fm-file-meta">3.1 MB · Mar 18, 2026</div>
+                    </div>
+                    <div class="fm-file-actions">
+                      <button class="bm-btn-icon-xs" title="Star"><i class="ph ph-star"></i></button>
+                      <button class="bm-btn-icon-xs" title="Download"><i class="ph ph-download-simple"></i></button>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="fm-file-card" data-type="document">
+                    <div class="fm-file-preview fm-preview-document">
+                      <i class="ph ph-file-text"></i>
+                    </div>
+                    <div class="fm-file-info">
+                      <div class="fm-file-name">contract-draft.pdf</div>
+                      <div class="fm-file-meta">890 KB · Mar 15, 2026</div>
+                    </div>
+                    <div class="fm-file-actions">
+                      <button class="bm-btn-icon-xs" title="Star"><i class="ph ph-star"></i></button>
+                      <button class="bm-btn-icon-xs" title="Download"><i class="ph ph-download-simple"></i></button>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="fm-file-card" data-type="audio">
+                    <div class="fm-file-preview fm-preview-audio">
+                      <i class="ph ph-file-audio"></i>
+                    </div>
+                    <div class="fm-file-info">
+                      <div class="fm-file-name">podcast-ep12.mp3</div>
+                      <div class="fm-file-meta">42 MB · Mar 12, 2026</div>
+                    </div>
+                    <div class="fm-file-actions">
+                      <button class="bm-btn-icon-xs" title="Star"><i class="ph ph-star"></i></button>
+                      <button class="bm-btn-icon-xs" title="Download"><i class="ph ph-download-simple"></i></button>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                  </div>
+
+                  <div class="fm-file-card" data-type="document">
+                    <div class="fm-file-preview fm-preview-code">
+                      <i class="ph ph-code"></i>
+                    </div>
+                    <div class="fm-file-info">
+                      <div class="fm-file-name">app-config.json</div>
+                      <div class="fm-file-meta">12 KB · Mar 10, 2026</div>
+                    </div>
+                    <div class="fm-file-actions">
+                      <button class="bm-btn-icon-xs" title="Star"><i class="ph ph-star"></i></button>
+                      <button class="bm-btn-icon-xs" title="Download"><i class="ph ph-download-simple"></i></button>
+                      <button class="bm-btn-icon-xs" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/files.js"></script>
+{% endblock %}

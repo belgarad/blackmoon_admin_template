@@ -1,0 +1,214 @@
+{% extends "layouts/base.html" %}
+{% set title = "Add Product" %}
+{% set activeMenu = "shop-products" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/shop-manage.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="products.html" data-i18n="breadcrumb.products">Products</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Add Product</span></div>
+              </nav>
+              <h1 class="bm-page-title">Add Product</h1>
+              <p class="bm-page-subtitle">Create a new product listing</p>
+            </div>
+          </div>
+
+          <!-- Stepper -->
+          <div class="bm-stepper" id="productStepper">
+            <div class="bm-stepper-nav">
+              <div class="bm-stepper-item active" data-step="1">
+                <div class="bm-stepper-number">1</div>
+                <div class="bm-stepper-label">General Info</div>
+              </div>
+              <div class="bm-stepper-line"></div>
+              <div class="bm-stepper-item" data-step="2">
+                <div class="bm-stepper-number">2</div>
+                <div class="bm-stepper-label">Pricing</div>
+              </div>
+              <div class="bm-stepper-line"></div>
+              <div class="bm-stepper-item" data-step="3">
+                <div class="bm-stepper-number">3</div>
+                <div class="bm-stepper-label">Media</div>
+              </div>
+              <div class="bm-stepper-line"></div>
+              <div class="bm-stepper-item" data-step="4">
+                <div class="bm-stepper-number">4</div>
+                <div class="bm-stepper-label">SEO</div>
+              </div>
+            </div>
+
+            <!-- Step 1: General Info -->
+            <div class="bm-stepper-content active" data-step="1">
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">General Information</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Product Name <span class="bm-text-danger">*</span></label>
+                  <input class="bm-input" placeholder="Enter product name" id="prodName">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Description</label>
+                  <textarea class="bm-input" rows="4" placeholder="Write a detailed product description…"></textarea>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Category <span class="bm-text-danger">*</span></label>
+                    <select class="bm-select">
+                      <option value="">Select category</option>
+                      <option>Electronics</option>
+                      <option>Clothing</option>
+                      <option>Home & Garden</option>
+                      <option>Sports</option>
+                      <option>Books</option>
+                    </select>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Brand</label>
+                    <input class="bm-input" placeholder="Brand name">
+                  </div>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">SKU</label>
+                    <input class="bm-input" placeholder="e.g. PRD-001">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Quantity</label>
+                    <input class="bm-input" type="number" placeholder="0" min="0">
+                  </div>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Tags</label>
+                  <input class="bm-input" placeholder="Enter tags separated by commas">
+                </div>
+                <div class="bm-flex-end">
+                  <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="stepTo(2)">Continue <i class="ph ph-arrow-right bm-text-md"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Pricing -->
+            <div class="bm-stepper-content" data-step="2">
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Pricing & Inventory</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Regular Price <span class="bm-text-danger">*</span></label>
+                    <input class="bm-input" type="number" placeholder="0.00" min="0" step="0.01">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Sale Price</label>
+                    <input class="bm-input" type="number" placeholder="0.00" min="0" step="0.01">
+                  </div>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Tax Class</label>
+                    <select class="bm-select">
+                      <option>Standard</option>
+                      <option>Reduced Rate</option>
+                      <option>Zero Rate</option>
+                      <option>Tax Exempt</option>
+                    </select>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Tax Rate (%)</label>
+                    <input class="bm-input" type="number" value="18" min="0" step="0.01">
+                  </div>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Shipping Weight (kg)</label>
+                  <input class="bm-input" type="number" placeholder="0.00" min="0" step="0.01">
+                </div>
+                <div class="bm-flex-between-wrap">
+                  <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="stepTo(1)"><i class="ph ph-arrow-left bm-text-md"></i> Back</button>
+                  <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="stepTo(3)">Continue <i class="ph ph-arrow-right bm-text-md"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Media -->
+            <div class="bm-stepper-content" data-step="3">
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Media & Images</h3>
+                <div class="shop-upload-zone" id="uploadZone">
+                  <i class="ph ph-cloud-upload shop-upload-icon"></i>
+                  <div class="bm-text-sm bm-font-medium">Drag & drop images here</div>
+                  <div class="bm-text-xs bm-text-muted">or click to browse files (PNG, JPG, max 5MB each)</div>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm bm-mt-sm">Browse Files</button>
+                </div>
+                <div class="shop-upload-preview bm-mt-md">
+                  <div class="shop-upload-thumb">
+                    <i class="ph ph-image"></i>
+                    <span class="bm-text-xs">product-front.jpg</span>
+                    <button class="bm-btn-icon-xs" title="Remove"><i class="ph ph-x bm-text-danger"></i></button>
+                  </div>
+                  <div class="shop-upload-thumb">
+                    <i class="ph ph-image"></i>
+                    <span class="bm-text-xs">product-back.jpg</span>
+                    <button class="bm-btn-icon-xs" title="Remove"><i class="ph ph-x bm-text-danger"></i></button>
+                  </div>
+                </div>
+                <div class="bm-flex-between-wrap bm-mt-md">
+                  <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="stepTo(2)"><i class="ph ph-arrow-left bm-text-md"></i> Back</button>
+                  <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="stepTo(4)">Continue <i class="ph ph-arrow-right bm-text-md"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: SEO -->
+            <div class="bm-stepper-content" data-step="4">
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">SEO Settings</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Meta Title</label>
+                  <input class="bm-input" placeholder="SEO-friendly product title">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Meta Description</label>
+                  <textarea class="bm-input" rows="3" placeholder="Brief description for search engines (max 160 characters)"></textarea>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">URL Slug</label>
+                  <input class="bm-input" placeholder="product-name-here">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Meta Keywords</label>
+                  <input class="bm-input" placeholder="keyword1, keyword2, keyword3">
+                </div>
+
+                <!-- SEO Preview -->
+                <div class="shop-seo-preview">
+                  <div class="bm-text-xs bm-text-muted bm-text-uppercase bm-mb-sm">Search Engine Preview</div>
+                  <div class="shop-seo-title">Product Name — Your Store</div>
+                  <div class="shop-seo-url">https://yourstore.com/products/product-name-here</div>
+                  <div class="shop-seo-desc">Brief description for search engines will appear here…</div>
+                </div>
+
+                <div class="bm-flex-between-wrap bm-mt-md">
+                  <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="stepTo(3)"><i class="ph ph-arrow-left bm-text-md"></i> Back</button>
+                  <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Product Created','Your product has been published.')">
+                    <i class="ph ph-check bm-text-md"></i> Publish Product
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/add-product.js"></script>
+{% endblock %}

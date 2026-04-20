@@ -1,0 +1,320 @@
+{% extends "layouts/base.html" %}
+{% set title = "Tables" %}
+{% set activeMenu = "tables" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <h1 class="bm-text-2xl-bold-fg-mb">Tables</h1>
+          <p class="bm-text-body-muted-mb">Table variations and data display patterns</p>
+
+          <!-- ====== BASIC TABLE ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Basic Table</h2>
+          <div class="bm-card bm-mb-2xl">
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table" aria-label="Basic data table">
+                <thead><tr><th scope="col">#</th><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Role</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>John Doe</td><td>john@example.com</td><td>Admin</td></tr>
+                  <tr><td>2</td><td>Alice Smith</td><td>alice@example.com</td><td>Editor</td></tr>
+                  <tr><td>3</td><td>Bob Wilson</td><td>bob@example.com</td><td>User</td></tr>
+                  <tr><td>4</td><td>Emma Johnson</td><td>emma@example.com</td><td>User</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ====== TABLE WITH AVATARS & BADGES ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Table with Avatars & Badges</h2>
+          <div class="bm-card bm-mb-2xl">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Team Members</span>
+              <button class="bm-btn bm-btn-primary bm-btn-sm"><i class="ph ph-plus bm-text-md"></i> Add</button>
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead><tr><th scope="col">Member</th><th scope="col">Role</th><th scope="col">Status</th><th scope="col">Joined</th><th scope="col" class="bm-text-right">Actions</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-avatar bm-avatar-sm">JD</div>
+                      <div><div class="bm-font-medium">John Doe</div><div class="bm-text-sm-muted">john@example.com</div></div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-primary">Admin</span></td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-muted">Jan 15, 2025</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-avatar bm-avatar-sm">AS</div>
+                      <div><div class="bm-font-medium">Alice Smith</div><div class="bm-text-sm-muted">alice@example.com</div></div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-info">Editor</span></td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-muted">Feb 22, 2025</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-avatar bm-avatar-sm">BW</div>
+                      <div><div class="bm-font-medium">Bob Wilson</div><div class="bm-text-sm-muted">bob@example.com</div></div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-warning">User</span></td>
+                    <td><span class="bm-badge bm-badge-warning">Pending</span></td>
+                    <td class="bm-text-muted">Mar 10, 2025</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-avatar bm-avatar-sm">EJ</div>
+                      <div><div class="bm-font-medium">Emma Johnson</div><div class="bm-text-sm-muted">emma@example.com</div></div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-warning">User</span></td>
+                    <td><span class="bm-badge bm-badge-danger">Inactive</span></td>
+                    <td class="bm-text-muted">Apr 5, 2025</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ====== TABLE WITH FILTERS & PAGINATION ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Table with Filters & Pagination</h2>
+          <div class="bm-card bm-mb-2xl">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Orders</span>
+              <button class="bm-btn bm-btn-outline bm-btn-sm"><i class="ph ph-download-simple bm-text-md"></i> Export</button>
+            </div>
+            <!-- Filters -->
+            <div class="bm-table-toolbar">
+              <input class="bm-input bm-w-max-250" type="text" placeholder="Search orders..." />
+              <select class="bm-select bm-max-w-140"><option value="">All Status</option><option>Paid</option><option>Pending</option><option>Failed</option><option>Refunded</option></select>
+              <input class="bm-input bm-max-w-180" type="date" />
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead><tr><th scope="col">Order ID</th><th scope="col">Customer</th><th scope="col">Product</th><th scope="col">Amount</th><th scope="col">Status</th><th scope="col">Date</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="bm-font-mono-medium">#ORD-1001</td>
+                    <td>John Doe</td>
+                    <td>Pro Plan (Annual)</td>
+                    <td class="bm-font-semibold">$299.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-muted">Mar 30, 2026</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono-medium">#ORD-1002</td>
+                    <td>Alice Smith</td>
+                    <td>Team Plan (Monthly)</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-muted">Mar 29, 2026</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono-medium">#ORD-1003</td>
+                    <td>Bob Wilson</td>
+                    <td>Starter Plan</td>
+                    <td class="bm-font-semibold">$19.00</td>
+                    <td><span class="bm-badge bm-badge-warning">Pending</span></td>
+                    <td class="bm-text-muted">Mar 28, 2026</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono-medium">#ORD-1004</td>
+                    <td>Emma Johnson</td>
+                    <td>Pro Plan (Monthly)</td>
+                    <td class="bm-font-semibold">$29.00</td>
+                    <td><span class="bm-badge bm-badge-danger">Failed</span></td>
+                    <td class="bm-text-muted">Mar 27, 2026</td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono-medium">#ORD-1005</td>
+                    <td>David Miller</td>
+                    <td>Team Plan (Annual)</td>
+                    <td class="bm-font-semibold">$468.00</td>
+                    <td><span class="bm-badge bm-badge-info">Refunded</span></td>
+                    <td class="bm-text-muted">Mar 25, 2026</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="bm-table-footer">
+              <span class="bm-text-caption-muted">Showing 1-5 of 1,423 orders</span>
+              <div class="bm-pagination">
+                <button class="bm-page-btn" disabled>‹</button>
+                <button class="bm-page-btn active">1</button>
+                <button class="bm-page-btn">2</button>
+                <button class="bm-page-btn">3</button>
+                <button class="bm-page-btn">…</button>
+                <button class="bm-page-btn">285</button>
+                <button class="bm-page-btn">›</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== DATA TABLE WITH CHECKBOX ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Selectable Table</h2>
+          <div class="bm-card bm-mb-2xl">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Products</span>
+              <div class="bm-flex-gap-xs">
+                <button class="bm-btn bm-btn-outline bm-btn-sm">Bulk Actions</button>
+                <button class="bm-btn bm-btn-primary bm-btn-sm">Add Product</button>
+              </div>
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="bm-w-40"><input type="checkbox" class="bm-checkbox" /></th>
+                    <th scope="col">Product</th>
+                    <th scope="col">SKU</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox" class="bm-checkbox" /></td>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-icon-box-md-primary">
+                        <i class="ph ph-laptop bm-text-lg-primary"></i>
+                      </div>
+                      <div><div class="bm-font-medium">MacBook Pro 16"</div><div class="bm-text-sm-muted">Electronics</div></div>
+                    </td>
+                    <td class="bm-mono-caption">MBP-16-M3</td>
+                    <td class="bm-font-semibold">$2,499</td>
+                    <td>124</td>
+                    <td><span class="bm-badge bm-badge-success">In Stock</span></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" class="bm-checkbox" /></td>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-icon-box-success-40">
+                        <i class="ph ph-headphones bm-text-xl-success"></i>
+                      </div>
+                      <div><div class="bm-font-medium">AirPods Max</div><div class="bm-text-sm-muted">Audio</div></div>
+                    </td>
+                    <td class="bm-mono-caption">APM-001</td>
+                    <td class="bm-font-semibold">$549</td>
+                    <td>56</td>
+                    <td><span class="bm-badge bm-badge-success">In Stock</span></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" class="bm-checkbox" /></td>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-icon-box-warning-40">
+                        <i class="ph ph-keyboard bm-text-xl-warning"></i>
+                      </div>
+                      <div><div class="bm-font-medium">Magic Keyboard</div><div class="bm-text-sm-muted">Accessories</div></div>
+                    </td>
+                    <td class="bm-mono-caption">MK-BT-02</td>
+                    <td class="bm-font-semibold">$129</td>
+                    <td class="bm-text-warning-semibold">8</td>
+                    <td><span class="bm-badge bm-badge-warning">Low Stock</span></td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox" class="bm-checkbox" /></td>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-icon-box-danger-md">
+                        <i class="ph ph-watch bm-icon-lg-danger"></i>
+                      </div>
+                      <div><div class="bm-font-medium">Apple Watch Ultra</div><div class="bm-text-sm-muted">Wearables</div></div>
+                    </td>
+                    <td class="bm-mono-caption">AWU-S9</td>
+                    <td class="bm-font-semibold">$799</td>
+                    <td class="bm-text-danger-semibold">0</td>
+                    <td><span class="bm-badge bm-badge-danger">Out of Stock</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ====== STRIPED TABLE ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Striped Table</h2>
+          <div class="bm-card bm-mb-2xl">
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table bm-table-striped">
+                <thead>
+                  <tr><th scope="col">#</th><th scope="col">Server</th><th scope="col">Region</th><th scope="col">CPU</th><th scope="col">Memory</th><th scope="col">Status</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>1</td><td class="bm-font-medium">web-prod-01</td><td>US East</td><td>24%</td><td>4.2 GB</td><td><span class="bm-badge bm-badge-success">Healthy</span></td></tr>
+                  <tr><td>2</td><td class="bm-font-medium">web-prod-02</td><td>US West</td><td>67%</td><td>6.8 GB</td><td><span class="bm-badge bm-badge-warning">Warning</span></td></tr>
+                  <tr><td>3</td><td class="bm-font-medium">api-prod-01</td><td>EU Central</td><td>12%</td><td>2.1 GB</td><td><span class="bm-badge bm-badge-success">Healthy</span></td></tr>
+                  <tr><td>4</td><td class="bm-font-medium">db-prod-01</td><td>US East</td><td>89%</td><td>14.2 GB</td><td><span class="bm-badge bm-badge-danger">Critical</span></td></tr>
+                  <tr><td>5</td><td class="bm-font-medium">cache-01</td><td>US East</td><td>5%</td><td>1.8 GB</td><td><span class="bm-badge bm-badge-success">Healthy</span></td></tr>
+                  <tr><td>6</td><td class="bm-font-medium">worker-01</td><td>EU West</td><td>41%</td><td>3.5 GB</td><td><span class="bm-badge bm-badge-success">Healthy</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ====== COMPACT TABLE ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Compact Table</h2>
+          <div class="bm-card bm-mb-2xl">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Recent Activity</span>
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table bm-table-compact">
+                <thead>
+                  <tr><th scope="col">Event</th><th scope="col">User</th><th scope="col">Status</th><th scope="col">Time</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="bm-flex-center-gap-md"><i class="ph ph-sign-in bm-text-lg-success"></i> Login</td><td>john@example.com</td><td><span class="bm-badge bm-badge-success">OK</span></td><td class="bm-text-muted">09:42 AM</td></tr>
+                  <tr><td class="bm-flex-center-gap-md"><i class="ph ph-key bm-text-lg-info"></i> Password change</td><td>alice@example.com</td><td><span class="bm-badge bm-badge-info">Info</span></td><td class="bm-text-muted">09:38 AM</td></tr>
+                  <tr><td class="bm-flex-center-gap-md"><i class="ph ph-shield-slash bm-text-lg-danger"></i> Login failed</td><td>unknown@attacker.com</td><td><span class="bm-badge bm-badge-danger">Failed</span></td><td class="bm-text-muted">09:15 AM</td></tr>
+                  <tr><td class="bm-flex-center-gap-md"><i class="ph ph-shield bm-text-lg-warning"></i> 2FA enabled</td><td>bob@example.com</td><td><span class="bm-badge bm-badge-success">OK</span></td><td class="bm-text-muted">08:55 AM</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ====== BORDERED TABLE ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Bordered Table</h2>
+          <div class="bm-card bm-mb-2xl">
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table bm-table-bordered">
+                <thead>
+                  <tr><th scope="col">Plan</th><th scope="col" class="bm-text-center">Users</th><th scope="col" class="bm-text-center">Storage</th><th scope="col" class="bm-text-center">Price</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td class="bm-font-medium">Starter</td><td class="bm-text-center">1</td><td class="bm-text-center">5 GB</td><td class="bm-text-center bm-font-semibold">$9/mo</td></tr>
+                  <tr><td class="bm-font-medium">Pro</td><td class="bm-text-center">10</td><td class="bm-text-center">100 GB</td><td class="bm-text-center bm-font-semibold">$29/mo</td></tr>
+                  <tr><td class="bm-font-medium">Enterprise</td><td class="bm-text-center">Unlimited</td><td class="bm-text-center">Unlimited</td><td class="bm-text-center bm-font-semibold">$99/mo</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      
+{% endblock %}

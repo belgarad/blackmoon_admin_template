@@ -1,0 +1,171 @@
+{% extends "layouts/base.html" %}
+{% set title = "Profile" %}
+{% set activeMenu = "profile" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <!-- Profile Card -->
+          <div class="bm-card bm-overflow-hidden-mb">
+            <div class="profile-banner"></div>
+            <div class="profile-info">
+              <div class="profile-avatar">JD</div>
+              <div class="profile-details">
+                <div class="profile-name">John Doe</div>
+                <div class="profile-role">Full-Stack Developer · Istanbul, TR</div>
+              </div>
+              <div class="profile-stats">
+                <div><div class="profile-stat-value">128</div><div class="profile-stat-label">Projects</div></div>
+                <div><div class="profile-stat-value">1.2K</div><div class="profile-stat-label">Followers</div></div>
+                <div><div class="profile-stat-value">348</div><div class="profile-stat-label">Following</div></div>
+              </div>
+            </div>
+            <div class="profile-tabs">
+              <button class="profile-tab active" data-profile-tab="overview">Overview</button>
+              <button class="profile-tab" data-profile-tab="projects">Projects</button>
+              <button class="profile-tab" data-profile-tab="activity">Activity</button>
+              <button class="profile-tab" data-profile-tab="settings">Settings</button>
+            </div>
+
+            <!-- Overview Tab -->
+            <div class="profile-tab-content active" id="tab-overview">
+              <div class="bm-grid-2col">
+                <div>
+                  <h3 class="bm-text-md-fg-semibold-mb">About</h3>
+                  <p class="bm-text-sm-muted-lh16">Full-stack developer with 8+ years of experience building modern web applications. Passionate about clean code, scalable architecture, and great user experiences.</p>
+                  <div class="bm-mt-lg-flex-col">
+                    <div class="bm-flex-center-gap-lg-body"><i class="ph ph-envelope bm-text-lg-muted"></i> john.doe@example.com</div>
+                    <div class="bm-flex-center-gap-lg-body"><i class="ph ph-phone bm-text-lg-muted"></i> +90 555 123 4567</div>
+                    <div class="bm-flex-center-gap-lg-body"><i class="ph ph-map-pin bm-text-lg-muted"></i> Istanbul, Turkey</div>
+                    <div class="bm-flex-center-gap-lg-body"><i class="ph ph-calendar bm-text-lg-muted"></i> Joined March 2022</div>
+                  </div>
+                </div>
+                <div>
+                  <h3 class="bm-text-md-fg-semibold-mb">Skills</h3>
+                  <div class="bm-flex-wrap-gap-sm">
+                    <span class="bm-badge bm-badge-primary">TypeScript</span>
+                    <span class="bm-badge bm-badge-primary">React</span>
+                    <span class="bm-badge bm-badge-primary">Angular</span>
+                    <span class="bm-badge bm-badge-primary">Vue.js</span>
+                    <span class="bm-badge bm-badge-info">Node.js</span>
+                    <span class="bm-badge bm-badge-info">PostgreSQL</span>
+                    <span class="bm-badge bm-badge-success">Docker</span>
+                    <span class="bm-badge bm-badge-success">AWS</span>
+                    <span class="bm-badge bm-badge-warning">Figma</span>
+                  </div>
+                  <h3 class="bm-text-md-semibold-m2">Social</h3>
+                  <div class="bm-flex-col-gap-625">
+                    <a href="#" class="bm-flex-center-gap-lg-fg"><i class="ph ph-globe bm-text-lg-muted"></i> github.com/johndoe</a>
+                    <a href="#" class="bm-flex-center-gap-lg-fg"><i class="ph ph-globe bm-text-lg-muted"></i> linkedin.com/in/johndoe</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div class="profile-tab-content" id="tab-projects">
+              <div class="bm-grid-auto-md">
+                <div class="bm-card bm-border">
+                  <div class="bm-card-body">
+                    <div class="bm-flex-between-start">
+                      <h4 class="bm-text-base-semibold2">Admin Dashboard</h4>
+                      <span class="bm-badge bm-badge-success">Active</span>
+                    </div>
+                    <p class="bm-text-caption-muted-info">Modern admin template with multiple framework support.</p>
+                    <div class="bm-flex-group">
+                      <span class="bm-badge bm-badge-primary">React</span><span class="bm-badge bm-badge-info">TypeScript</span>
+                    </div>
+                    <div class="bm-flex-center-between-mt">
+                      <span>Updated 2 days ago</span><span>⭐ 234</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bm-card bm-border">
+                  <div class="bm-card-body">
+                    <div class="bm-flex-between-start">
+                      <h4 class="bm-text-base-semibold2">E-Commerce API</h4>
+                      <span class="bm-badge bm-badge-success">Active</span>
+                    </div>
+                    <p class="bm-text-caption-muted-info">RESTful API for e-commerce platform with payment integration.</p>
+                    <div class="bm-flex-group">
+                      <span class="bm-badge bm-badge-info">Node.js</span><span class="bm-badge bm-badge-warning">MongoDB</span>
+                    </div>
+                    <div class="bm-flex-center-between-mt">
+                      <span>Updated 1 week ago</span><span>⭐ 89</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="bm-card bm-border">
+                  <div class="bm-card-body">
+                    <div class="bm-flex-between-start">
+                      <h4 class="bm-text-base-semibold2">Design System</h4>
+                      <span class="bm-badge bm-badge-warning">In Progress</span>
+                    </div>
+                    <p class="bm-text-caption-muted-info">Component library with theming support and accessibility.</p>
+                    <div class="bm-flex-group">
+                      <span class="bm-badge bm-badge-primary">CSS</span><span class="bm-badge bm-badge-info">Storybook</span>
+                    </div>
+                    <div class="bm-flex-center-between-mt">
+                      <span>Updated 3 days ago</span><span>⭐ 156</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity Tab -->
+            <div class="profile-tab-content" id="tab-activity">
+              <div class="profile-activity-list">
+                <div class="profile-activity-item">
+                  <div class="bm-w-36px-circle-primary"><i class="ph ph-git-commit bm-text-lg-primary"></i></div>
+                  <div><div class="bm-text-body"><strong>Pushed 3 commits</strong> to admin-dashboard</div><div class="bm-text-sm-muted">2 hours ago</div></div>
+                </div>
+                <div class="profile-activity-item">
+                  <div class="bm-icon-circle-success-md"><i class="ph ph-git-merge bm-text-lg-success"></i></div>
+                  <div><div class="bm-text-body"><strong>Merged PR #42</strong> — Fix responsive sidebar</div><div class="bm-text-sm-muted">5 hours ago</div></div>
+                </div>
+                <div class="profile-activity-item">
+                  <div class="bm-avatar-warning-sm"><i class="ph ph-bug bm-text-lg-warning"></i></div>
+                  <div><div class="bm-text-body"><strong>Opened issue #67</strong> — Dark mode contrast</div><div class="bm-text-sm-muted">1 day ago</div></div>
+                </div>
+                <div class="profile-activity-item">
+                  <div class="bm-icon-circle-info"><i class="ph ph-chat-square bm-text-lg-info"></i></div>
+                  <div><div class="bm-text-body"><strong>Commented</strong> on issue #55</div><div class="bm-text-sm-muted">2 days ago</div></div>
+                </div>
+                <div class="profile-activity-item">
+                  <div class="bm-w-36px-circle-primary"><i class="ph ph-rocket-launch bm-text-lg-primary"></i></div>
+                  <div><div class="bm-text-body"><strong>Deployed v2.1.0</strong> to production</div><div class="bm-text-sm-muted">3 days ago</div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="profile-tab-content" id="tab-settings">
+              <div class="bm-w-max-600">
+                <h3 class="bm-text-md-semibold-mb2">Edit Profile</h3>
+                <div class="bm-grid-2col-gap-sm2">
+                  <div><label class="bm-label" data-i18n="form.firstName">First Name</label><input class="bm-input" type="text" value="John" /></div>
+                  <div><label class="bm-label" data-i18n="form.lastName">Last Name</label><input class="bm-input" type="text" value="Doe" /></div>
+                </div>
+                <div class="bm-mt-md"><label class="bm-label">Email</label><input class="bm-input" type="email" value="john.doe@example.com" /></div>
+                <div class="bm-mt-md"><label class="bm-label">Phone</label><input class="bm-input" type="tel" value="+90 555 123 4567" /></div>
+                <div class="bm-mt-md"><label class="bm-label">Location</label><input class="bm-input" type="text" value="Istanbul, Turkey" /></div>
+                <div class="bm-mt-md"><label class="bm-label" data-i18n="form.bio">Bio</label><textarea class="bm-input bm-resize-v" rows="3">Full-stack developer with 8+ years of experience building modern web applications.</textarea></div>
+                <div class="bm-mt-xl-flex">
+                  <button class="bm-btn bm-btn-primary" data-i18n="action.saveChanges">Save Changes</button>
+                  <button class="bm-btn bm-btn-outline" data-i18n="action.cancel">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/profile.js"></script>
+{% endblock %}

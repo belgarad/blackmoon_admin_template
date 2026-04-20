@@ -1,0 +1,124 @@
+{% extends "layouts/base.html" %}
+{% set title = "Users" %}
+{% set activeMenu = "users" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <!-- Page Header -->
+          <div class="bm-flex-between-wrap-mb2">
+            <div>
+              <h1 class="bm-text-2xl-bold-fg" data-i18n="page.title.users">Users</h1>
+              <p class="bm-text-sm-muted-body" data-i18n="page.desc.users">Manage all registered users</p>
+            </div>
+            <button class="bm-btn bm-btn-primary" onclick="App.openModal('addUserModal')">
+              <i class="ph ph-plus bm-text-lg"></i>
+              <span data-i18n="action.addUser">Add User</span>
+            </button>
+          </div>
+
+          <!-- Filters -->
+          <div class="bm-card bm-mb-lg bm-overflow-visible">
+            <div class="bm-card-body bm-px-lg">
+              <div class="bm-flex-gap-wrap">
+                <input class="bm-input bm-w-max-300" type="text" data-i18n-placeholder="filter.searchUsers" placeholder="Search users..." />
+                <select class="bm-select bm-w-max-160">
+                  <option value="" data-i18n="filter.allRoles">All Roles</option>
+                  <option data-i18n="role.admin">Admin</option>
+                  <option data-i18n="role.editor">Editor</option>
+                  <option data-i18n="role.user">User</option>
+                </select>
+                <select class="bm-select bm-w-max-160">
+                  <option value="" data-i18n="filter.allStatus">All Status</option>
+                  <option data-i18n="status.active">Active</option>
+                  <option data-i18n="status.inactive">Inactive</option>
+                  <option data-i18n="status.pending">Pending</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Users Table -->
+          <div class="bm-card">
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead><tr><th scope="col" data-i18n="table.user">User</th><th scope="col" data-i18n="table.role">Role</th><th scope="col" data-i18n="table.status">Status</th><th scope="col" data-i18n="table.lastActive">Last Active</th><th scope="col" class="bm-text-right" data-i18n="table.actions">Actions</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-avatar bm-avatar-sm">JD</div>
+                      <div><div class="bm-font-medium">John Doe</div><div class="bm-text-sm-muted">john@example.com</div></div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-primary">Admin</span></td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-muted">Just now</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-avatar bm-avatar-sm">AS</div>
+                      <div><div class="bm-font-medium">Alice Smith</div><div class="bm-text-sm-muted">alice@example.com</div></div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-info">Editor</span></td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-muted">5 min ago</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-avatar bm-avatar-sm">BW</div>
+                      <div><div class="bm-font-medium">Bob Wilson</div><div class="bm-text-sm-muted">bob@example.com</div></div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-warning">User</span></td>
+                    <td><span class="bm-badge bm-badge-warning">Pending</span></td>
+                    <td class="bm-text-muted">2 days ago</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bm-flex-center-gap-lg">
+                      <div class="bm-avatar bm-avatar-sm">EJ</div>
+                      <div><div class="bm-font-medium">Emma Johnson</div><div class="bm-text-sm-muted">emma@example.com</div></div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-warning">User</span></td>
+                    <td><span class="bm-badge bm-badge-danger">Inactive</span></td>
+                    <td class="bm-text-muted">1 week ago</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="bm-card-footer">
+              <span class="bm-text-caption-muted">Showing 1-4 of 4 users</span>
+              <div class="bm-pagination">
+                <button class="bm-page-btn" disabled>‹</button>
+                <button class="bm-page-btn active">1</button>
+                <button class="bm-page-btn" disabled>›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+{% endblock %}

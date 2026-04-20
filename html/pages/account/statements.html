@@ -1,0 +1,186 @@
+{% extends "layouts/base.html" %}
+{% set title = "Statements" %}
+{% set activeMenu = "account-statements" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/account.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="overview.html">Account</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Statements</span></div>
+              </nav>
+              <h1 class="bm-page-title">Statements</h1>
+              <p class="bm-page-subtitle">View and download your monthly account statements.</p>
+            </div>
+          </div>
+
+          <!-- Account Navigation -->
+          <div class="acct-nav bm-mb-xl">
+            <a href="overview.html" class="acct-nav-item">Overview</a>
+            <a href="../settings.html" class="acct-nav-item">Settings</a>
+            <a href="../security.html" class="acct-nav-item">Security</a>
+            <a href="billing.html" class="acct-nav-item">Billing</a>
+            <a href="statements.html" class="acct-nav-item active">Statements</a>
+            <a href="referrals.html" class="acct-nav-item">Referrals</a>
+            <a href="api-keys.html" class="acct-nav-item">API Keys</a>
+            <a href="logs.html" class="acct-nav-item">Logs</a>
+            <a href="activity.html" class="acct-nav-item">Activity</a>
+          </div>
+
+          <!-- Summary Cards -->
+          <div class="bm-grid-auto-lg bm-mb-lg">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-credit-card bm-text-lg-success"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Total Paid (YTD)</div>
+                <div class="bm-stats-card-v2-value">$588.00</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-receipt bm-text-lg-primary"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Statements</div>
+                <div class="bm-stats-card-v2-value">12</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-clock bm-text-lg-warning"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Next Statement</div>
+                <div class="bm-stats-card-v2-value">May 1</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Statements Table -->
+          <div class="bm-card">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Monthly Statements</span>
+              <div class="bm-flex-center-gap-md">
+                <select class="bm-select bm-w-8rem">
+                  <option>2026</option>
+                  <option>2025</option>
+                </select>
+              </div>
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Period</th>
+                    <th scope="col">Statement ID</th>
+                    <th scope="col" data-i18n="table.amount">Amount</th>
+                    <th scope="col" data-i18n="table.status">Status</th>
+                    <th scope="col" class="bm-text-right">Download</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="bm-font-medium">April 2026</td>
+                    <td class="bm-mono-caption">STM-2026-04</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-info">Pending</span></td>
+                    <td class="bm-text-right"><span class="bm-text-sm-muted">Not available yet</span></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">March 2026</td>
+                    <td class="bm-mono-caption">STM-2026-03</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">February 2026</td>
+                    <td class="bm-mono-caption">STM-2026-02</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">January 2026</td>
+                    <td class="bm-mono-caption">STM-2026-01</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">December 2025</td>
+                    <td class="bm-mono-caption">STM-2025-12</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">November 2025</td>
+                    <td class="bm-mono-caption">STM-2025-11</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">October 2025</td>
+                    <td class="bm-mono-caption">STM-2025-10</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">September 2025</td>
+                    <td class="bm-mono-caption">STM-2025-09</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">August 2025</td>
+                    <td class="bm-mono-caption">STM-2025-08</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">July 2025</td>
+                    <td class="bm-mono-caption">STM-2025-07</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">June 2025</td>
+                    <td class="bm-mono-caption">STM-2025-06</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">May 2025</td>
+                    <td class="bm-mono-caption">STM-2025-05</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm"><i class="ph ph-download-simple bm-text-md"></i> PDF</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

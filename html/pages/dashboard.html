@@ -1,0 +1,225 @@
+{% extends "layouts/base.html" %}
+{% set title = "Dashboard" %}
+{% set pageDescription = "Overview of key metrics, recent activity, and quick insights for your admin panel." %}
+{% set activeMenu = "dashboard" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="#" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current" data-i18n="breadcrumb.dashboard">Dashboard</span></div>
+              </nav>
+              <h1 class="bm-page-title" data-i18n="page.overview">Overview</h1>
+              <p class="bm-page-subtitle" data-i18n="page.welcome">Welcome back, John! Here's what's happening with your platform today.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.info('Generating report...', 'Your report will be ready shortly.')">
+                <i class="ph ph-download-simple bm-text-md"></i>
+                <span data-i18n="action.export">Export</span>
+              </button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">
+                <i class="ph ph-plus bm-text-md"></i>
+                <span data-i18n="action.newReport">New Report</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- STATS CARDS -->
+          <div class="bm-grid-auto-lg">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-credit-card bm-text-lg-primary"></i></div>
+                  <div class="bm-dropdown"><button class="bm-btn bm-btn-ghost bm-btn-icon bm-w-175rem" data-dropdown-trigger><i class="ph ph-dots-three bm-text-md"></i></button><div class="bm-dropdown-menu"><a href="#" class="bm-dropdown-item" data-i18n="action.viewDetails">View details</a><a href="#" class="bm-dropdown-item" data-i18n="action.exportData">Export data</a></div></div>
+                </div>
+                <div class="bm-stats-card-v2-label" data-i18n="dashboard.revenue">Total Revenue</div>
+                <div class="bm-stats-card-v2-value" data-counter="84290" data-counter-prefix="$">$84,290</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>12.5%</span>
+                  <span class="bm-stats-card-v2-compared" data-i18n="dashboard.vsLastMonth">vs last month</span>
+                </div>
+              </div>
+              <div id="spark-revenue" class="bm-mt-750"></div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-user bm-text-lg-success"></i></div>
+                  <div class="bm-dropdown"><button class="bm-btn bm-btn-ghost bm-btn-icon bm-w-175rem" data-dropdown-trigger><i class="ph ph-dots-three bm-text-md"></i></button><div class="bm-dropdown-menu"><a href="#" class="bm-dropdown-item" data-i18n="action.viewDetails">View details</a><a href="#" class="bm-dropdown-item" data-i18n="action.exportData">Export data</a></div></div>
+                </div>
+                <div class="bm-stats-card-v2-label" data-i18n="dashboard.users">Active Users</div>
+                <div class="bm-stats-card-v2-value" data-counter="12847">12,847</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>8.2%</span>
+                  <span class="bm-stats-card-v2-compared" data-i18n="dashboard.vsLastMonth">vs last month</span>
+                </div>
+              </div>
+              <div id="spark-users" class="bm-mt-750"></div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-shopping-bag bm-text-lg-warning"></i></div>
+                  <div class="bm-dropdown"><button class="bm-btn bm-btn-ghost bm-btn-icon bm-w-175rem" data-dropdown-trigger><i class="ph ph-dots-three bm-text-md"></i></button><div class="bm-dropdown-menu"><a href="#" class="bm-dropdown-item" data-i18n="action.viewDetails">View details</a><a href="#" class="bm-dropdown-item" data-i18n="action.exportData">Export data</a></div></div>
+                </div>
+                <div class="bm-stats-card-v2-label" data-i18n="dashboard.orders">New Orders</div>
+                <div class="bm-stats-card-v2-value" data-counter="3249">3,249</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend down"><i class="ph ph-arrow-down bm-text-8xs"></i>3.1%</span>
+                  <span class="bm-stats-card-v2-compared" data-i18n="dashboard.vsLastMonth">vs last month</span>
+                </div>
+              </div>
+              <div id="spark-orders" class="bm-mt-750"></div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-info-h"><i class="ph ph-arrows-merge bm-text-lg-info"></i></div>
+                  <div class="bm-dropdown"><button class="bm-btn bm-btn-ghost bm-btn-icon bm-w-175rem" data-dropdown-trigger><i class="ph ph-dots-three bm-text-md"></i></button><div class="bm-dropdown-menu"><a href="#" class="bm-dropdown-item" data-i18n="action.viewDetails">View details</a><a href="#" class="bm-dropdown-item" data-i18n="action.exportData">Export data</a></div></div>
+                </div>
+                <div class="bm-stats-card-v2-label" data-i18n="dashboard.growth">Conversion Rate</div>
+                <div class="bm-stats-card-v2-value" data-counter="4.73" data-counter-suffix="%">4.73%</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>1.4%</span>
+                  <span class="bm-stats-card-v2-compared" data-i18n="dashboard.vsLastMonth">vs last month</span>
+                </div>
+              </div>
+              <div id="spark-conv" class="bm-mt-750"></div>
+            </div>
+          </div>
+
+          <!-- MAIN CHARTS -->
+          <div class="bm-grid-2-1-mb">
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title" data-i18n="dashboard.revenueOverview">Revenue Overview</div>
+                  <div class="bm-caption-muted-top" data-i18n="dashboard.revenueDesc">Monthly revenue &amp; expenses</div>
+                </div>
+                <div class="bm-flex-center-gap-md">
+                  <div class="bm-flex-center-gap-md-mr">
+                    <span class="bm-flex-center-gap-sm-body"><span class="bm-legend-dot-blue"></span><span data-i18n="chart.revenue">Revenue</span></span>
+                    <span class="bm-flex-center-gap-sm-body"><span class="bm-legend-dot-green"></span><span data-i18n="chart.expenses">Expenses</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-revenue" class="bm-chart-container"></div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title" data-i18n="dashboard.salesByCategory">Sales by Category</div>
+                  <div class="bm-caption-muted-top" data-i18n="dashboard.categoryBreak">This month breakdown</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-donut" class="bm-chart-container"></div>
+                <div class="bm-flex-col-gap-md-mt">
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-blue"></span><span data-i18n="category.electronics">Electronics</span></span><span class="bm-text-caption-semibold2">38%</span></div>
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-green"></span><span data-i18n="category.clothing">Clothing</span></span><span class="bm-text-caption-semibold2">25%</span></div>
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-amber"></span><span data-i18n="category.homeGarden">Home &amp; Garden</span></span><span class="bm-text-caption-semibold2">21%</span></div>
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-purple"></span><span data-i18n="category.other">Other</span></span><span class="bm-text-caption-semibold2">16%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BOTTOM ROW -->
+          <div class="bm-grid-3-2-mb6">
+            <!-- Recent Orders -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title" data-i18n="dashboard.recentOrders">Recent Orders</div>
+                  <div class="bm-caption-muted-top" data-i18n="dashboard.lastOrders">Last 5 orders placed</div>
+                </div>
+                <div class="bm-flex-center-gap-md">
+                  <div class="bm-dropdown">
+                    <button class="bm-btn bm-btn-ghost bm-btn-icon bm-w-2rem" data-dropdown-trigger><i class="ph ph-funnel bm-text-md"></i></button>
+                    <div class="bm-dropdown-menu bm-pos-right-0"><div class="bm-dropdown-label" data-i18n="filter.filterByStatus">Filter by status</div><button class="bm-dropdown-item" data-i18n="filter.allOrders">All orders</button><button class="bm-dropdown-item" data-i18n="status.completed">Completed</button><button class="bm-dropdown-item" data-i18n="status.pending">Pending</button><div class="bm-dropdown-separator"></div><button class="bm-dropdown-item destructive" data-i18n="status.cancelled">Cancelled</button></div>
+                  </div>
+                  <a href="tables.html" class="bm-btn bm-btn-outline bm-btn-sm" data-i18n="action.seeAll">View All</a>
+                </div>
+              </div>
+              <div class="bm-card-body bm-p-0">
+                <table class="bm-table">
+                  <thead><tr><th scope="col" data-i18n="table.order">Order</th><th scope="col" data-i18n="table.customer">Customer</th><th scope="col" data-i18n="table.amount">Amount</th><th scope="col" data-i18n="table.status">Status</th><th scope="col" class="bm-text-right" data-i18n="table.date">Date</th></tr></thead>
+                  <tbody>
+                    <tr><td class="bm-text-primary-semibold">#ORD-8912</td><td><div class="bm-flex-center-gap"><div class="bm-avatar bm-avatar-sm bm-badge-primary-light">JD</div><div><div class="bm-text-caption-medium">John Doe</div><div class="bm-text-2xs-muted">john@example.com</div></div></div></td><td class="bm-font-semibold">$249.00</td><td><span class="bm-badge bm-badge-success">Completed</span></td><td class="bm-text-right-muted-caption">Today, 09:41</td></tr>
+                    <tr><td class="bm-text-primary-semibold">#ORD-8911</td><td><div class="bm-flex-center-gap"><div class="bm-avatar bm-avatar-sm bm-badge-success-light">AS</div><div><div class="bm-text-caption-medium">Alice Smith</div><div class="bm-text-2xs-muted">alice@example.com</div></div></div></td><td class="bm-font-semibold">$89.99</td><td><span class="bm-badge bm-badge-warning">Processing</span></td><td class="bm-text-right-muted-caption">Today, 08:15</td></tr>
+                    <tr><td class="bm-text-primary-semibold">#ORD-8910</td><td><div class="bm-flex-center-gap"><div class="bm-avatar bm-avatar-sm bm-bg-warning-light">BW</div><div><div class="bm-text-caption-medium">Bob Wilson</div><div class="bm-text-2xs-muted">bob@example.com</div></div></div></td><td class="bm-font-semibold">$1,200.00</td><td><span class="bm-badge bm-badge-info">Pending</span></td><td class="bm-text-right-muted-caption">Yesterday</td></tr>
+                    <tr><td class="bm-text-primary-semibold">#ORD-8909</td><td><div class="bm-flex-center-gap"><div class="bm-avatar bm-avatar-sm bm-badge-danger-light">EJ</div><div><div class="bm-text-caption-medium">Emma Johnson</div><div class="bm-text-2xs-muted">emma@example.com</div></div></div></td><td class="bm-font-semibold">$549.00</td><td><span class="bm-badge bm-badge-danger">Cancelled</span></td><td class="bm-text-right-muted-caption">Yesterday</td></tr>
+                    <tr><td class="bm-text-primary-semibold">#ORD-8908</td><td><div class="bm-flex-center-gap"><div class="bm-avatar bm-avatar-sm">MK</div><div><div class="bm-text-caption-medium">Michael Kim</div><div class="bm-text-2xs-muted">mkim@example.com</div></div></div></td><td class="bm-font-semibold">$79.99</td><td><span class="bm-badge bm-badge-success">Completed</span></td><td class="bm-text-right-muted-caption">2 days ago</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="bm-card-footer bm-justify-between">
+                <span class="bm-text-sm-muted" data-i18n="dashboard.showingOrders">Showing 5 of 248 orders</span>
+                <div class="bm-pagination">
+                  <button class="bm-page-btn" disabled><i class="ph ph-caret-left bm-text-body"></i></button>
+                  <button class="bm-page-btn active">1</button><button class="bm-page-btn">2</button><button class="bm-page-btn">3</button>
+                  <button class="bm-page-btn"><i class="ph ph-caret-right bm-text-body"></i></button>
+                </div>
+              </div>
+            </div>
+            <!-- Right column -->
+            <div class="bm-flex-col-gap-xl">
+              <div class="bm-card">
+                <div class="bm-card-header"><div class="bm-card-title" data-i18n="dashboard.trafficSources">Traffic Sources</div><span class="bm-badge bm-badge-info" data-i18n="dashboard.thisMonth">This month</span></div>
+                <div class="bm-card-body bm-flex-col-gap-lg">
+                  <div><div class="bm-flex-between-mb2"><div class="bm-flex-caption-medium"><i class="ph ph-globe bm-text-md-primary"></i><span data-i18n="dashboard.organicSearch">Organic Search</span></div><div class="bm-text-caption-semibold">42.3%</div></div><div class="bm-progress"><div class="bm-progress-bar bm-w-42p3"></div></div></div>
+                  <div><div class="bm-flex-between-mb2"><div class="bm-flex-caption-medium"><i class="ph ph-share bm-text-md-info"></i><span data-i18n="dashboard.socialMedia">Social Media</span></div><div class="bm-text-caption-semibold">28.1%</div></div><div class="bm-progress bm-progress-success"><div class="bm-progress-bar bm-w-281pct"></div></div></div>
+                  <div><div class="bm-flex-between-mb2"><div class="bm-flex-caption-medium"><i class="ph ph-envelope bm-text-md-warning"></i><span data-i18n="dashboard.emailCampaigns">Email Campaigns</span></div><div class="bm-text-caption-semibold">17.5%</div></div><div class="bm-progress bm-progress-warning"><div class="bm-progress-bar bm-w-17p5"></div></div></div>
+                  <div><div class="bm-flex-between-mb2"><div class="bm-flex-caption-medium"><i class="ph ph-cursor-click bm-text-md-danger"></i><span data-i18n="dashboard.paidAds">Paid Ads</span></div><div class="bm-text-caption-semibold">12.1%</div></div><div class="bm-progress bm-progress-danger"><div class="bm-progress-bar bm-w-121pct"></div></div></div>
+                </div>
+              </div>
+              <div class="bm-card">
+                <div class="bm-card-header"><div class="bm-card-title" data-i18n="dashboard.activeTeam">Active Team</div><a href="users.html" class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm" data-i18n="action.seeAll">See all</a></div>
+                <div class="bm-card-body bm-flex-col-gap-sm">
+                  <div class="bm-flex-center-gap-lg"><div class="bm-avatar bm-avatar-sm bm-bg-primary-light-rel">JD<span class="bm-status-dot-lg"></span></div><div class="bm-flex-min0"><div class="bm-text-caption-medium-swap">John Doe</div><div class="bm-text-2xs-muted">Lead Developer</div></div><span class="bm-badge bm-badge-success" data-i18n="status.online">Online</span></div>
+                  <div class="bm-flex-center-gap-lg"><div class="bm-avatar bm-avatar-sm bm-badge-success-rel">AS<span class="bm-status-dot-lg"></span></div><div class="bm-flex-min0"><div class="bm-text-caption-medium-swap">Alice Smith</div><div class="bm-text-2xs-muted">UI Designer</div></div><span class="bm-badge bm-badge-success" data-i18n="status.online">Online</span></div>
+                  <div class="bm-flex-center-gap-lg"><div class="bm-avatar bm-avatar-sm bm-bg-warning-light3">BW<span class="bm-status-dot-warning"></span></div><div class="bm-flex-min0"><div class="bm-text-caption-medium-swap">Bob Wilson</div><div class="bm-text-2xs-muted">Product Manager</div></div><span class="bm-badge bm-badge-warning" data-i18n="status.away">Away</span></div>
+                  <div class="bm-flex-center-gap-lg"><div class="bm-avatar bm-avatar-sm bm-card-danger-soft">EJ<span class="bm-status-dot-muted"></span></div><div class="bm-flex-min0"><div class="bm-text-caption-medium-swap">Emma Johnson</div><div class="bm-text-2xs-muted">QA Engineer</div></div><span class="bm-badge bm-muted-chip" data-i18n="status.offline">Offline</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- QUICK ACTIONS + GOALS -->
+          <div class="bm-grid-2-1">
+            <div class="bm-card">
+              <div class="bm-card-header"><div class="bm-card-title" data-i18n="dashboard.quickActions">Quick Actions</div></div>
+              <div class="bm-card-body">
+                <div class="bm-grid-4col-sm">
+                  <button class="bm-btn bm-btn-outline bm-flex-col-otp" onclick="App.toast.success('Report generated!', 'Your weekly report is ready.')"><i class="ph ph-chart-bar bm-text-2xl-primary-icon"></i><span class="bm-text-sm" data-i18n="action.newReport">New Report</span></button>
+                  <button class="bm-btn bm-btn-outline bm-flex-col-otp" data-open-drawer="addUserDrawer"><i class="ph ph-user-plus bm-text-2xl-success"></i><span class="bm-text-sm" data-i18n="action.addUser">Add User</span></button>
+                  <button class="bm-btn bm-btn-outline bm-flex-col-otp" onclick="App.openModal('exportModal')"><i class="ph ph-upload-simple bm-icon-2xl-warning"></i><span class="bm-text-sm" data-i18n="action.exportCSV">Export CSV</span></button>
+                  <button class="bm-btn bm-btn-outline bm-flex-col-otp" onclick="App.openCommand()"><i class="ph ph-magnifying-glass bm-icon-2xl-info"></i><span class="bm-text-sm" data-i18n="nav.search">Search</span></button>
+                </div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-header"><div class="bm-card-title" data-i18n="dashboard.monthlyGoals">Monthly Goals</div><span class="bm-badge bm-badge-warning">3 / 5</span></div>
+              <div class="bm-card-body bm-flex-col-gap-lg">
+                <div><div class="bm-flex-between-mb"><span class="bm-flex-caption-medium-row"><i class="ph ph-check-circle bm-text-sm-success-plain"></i><span data-i18n="dashboard.revenueTarget">Revenue Target</span></span><span class="bm-text-sm-bold-success">84%</span></div><div class="bm-progress bm-progress-success"><div class="bm-progress-bar bm-w-84pct"></div></div></div>
+                <div><div class="bm-flex-between-mb"><span class="bm-flex-caption-medium-row"><i class="ph ph-check-circle bm-text-sm-success-plain"></i><span data-i18n="dashboard.newUsers">New Users</span></span><span class="bm-text-sm-bold-success">110%</span></div><div class="bm-progress bm-progress-success"><div class="bm-progress-bar bm-w-full"></div></div></div>
+                <div><div class="bm-flex-between-mb"><span class="bm-flex-caption-medium-row"><i class="ph ph-clock bm-text-sm-warning"></i><span data-i18n="dashboard.supportTickets">Support Tickets</span></span><span class="bm-text-xs-warning-bold">62%</span></div><div class="bm-progress bm-progress-warning"><div class="bm-progress-bar bm-w-62"></div></div></div>
+                <div><div class="bm-flex-between-mb"><span class="bm-flex-caption-medium-row"><i class="ph ph-x-circle bm-text-sm-danger"></i><span data-i18n="dashboard.churnRate">Churn Rate</span></span><span class="bm-text-xs-danger-bold">38%</span></div><div class="bm-progress bm-progress-danger"><div class="bm-progress-bar bm-w-38pct"></div></div></div>
+              </div>
+            </div>
+          </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/assets/js/chart-helpers.js"></script>
+  <script src="/assets/js/pages/dashboard.js"></script>
+{% endblock %}

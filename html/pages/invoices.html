@@ -1,0 +1,146 @@
+{% extends "layouts/base.html" %}
+{% set title = "Invoices" %}
+{% set activeMenu = "invoices" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/invoices.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current" data-i18n="breadcrumb.invoices">Invoices</span></div>
+              </nav>
+              <h1 class="bm-page-title" data-i18n="page.title.invoices">Invoices</h1>
+              <p class="bm-page-subtitle" data-i18n="page.desc.invoices">Manage and track all billing documents</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-download-simple bm-text-md"></i><span data-i18n="action.exportCSV">Export CSV</span>
+              </button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Invoice Created','New invoice draft created.')">
+                <i class="ph ph-plus bm-text-md"></i><span data-i18n="action.newInvoice">New Invoice</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- KPI row -->
+          <div class="bm-grid-4col">
+            <div class="bm-card bm-p-lg">
+              <div class="bm-flex-between-start">
+                <div class="kpi-mini">
+                  <div class="kpi-mini-label">Total Invoiced</div>
+                  <div class="kpi-mini-value">$84,320</div>
+                  <div class="kpi-mini-change up">+12.4% vs last month</div>
+                </div>
+                <div class="bm-icon-box-primary-md2"><i class="ph ph-receipt bm-icon-xl-primary"></i></div>
+              </div>
+            </div>
+            <div class="bm-card bm-p-lg">
+              <div class="bm-flex-between-start">
+                <div class="kpi-mini">
+                  <div class="kpi-mini-label">Paid</div>
+                  <div class="kpi-mini-value">$61,480</div>
+                  <div class="kpi-mini-change up">18 invoices</div>
+                </div>
+                <div class="bm-icon-box-success-lg"><i class="ph ph-check-circle bm-text-125rs-success"></i></div>
+              </div>
+            </div>
+            <div class="bm-card bm-p-lg">
+              <div class="bm-flex-between-start">
+                <div class="kpi-mini">
+                  <div class="kpi-mini-label">Pending</div>
+                  <div class="kpi-mini-value">$18,640</div>
+                  <div class="kpi-mini-change bm-color-warning">7 invoices</div>
+                </div>
+                <div class="bm-icon-box-warning2"><i class="ph ph-clock bm-text-125rs-warning"></i></div>
+              </div>
+            </div>
+            <div class="bm-card bm-p-lg">
+              <div class="bm-flex-between-start">
+                <div class="kpi-mini">
+                  <div class="kpi-mini-label">Overdue</div>
+                  <div class="kpi-mini-value">$4,200</div>
+                  <div class="kpi-mini-change down">2 invoices</div>
+                </div>
+                <div class="bm-icon-box-danger"><i class="ph ph-warning bm-icon-xl-danger"></i></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filters -->
+          <div class="bm-card bm-mb-lg bm-overflow-visible">
+            <div class="bm-card-body bm-px-lg">
+              <div class="bm-flex-gap-wrap">
+                <input class="bm-input bm-w-max-300" type="text" placeholder="Search invoices…" oninput="filterInvoices(this.value)" />
+                <select class="bm-select bm-w-max-160" id="statusFilter" onchange="filterInvoices()">
+                  <option value="" data-i18n="filter.filterByStatus">All Status</option>
+                  <option value="paid" data-i18n="status.paid">Paid</option>
+                  <option value="pending" data-i18n="status.pending">Pending</option>
+                  <option value="overdue" data-i18n="status.overdue">Overdue</option>
+                  <option value="draft" data-i18n="status.draft">Draft</option>
+                </select>
+                <select class="bm-select bm-w-max-160">
+                  <option value="">All Clients</option>
+                  <option>Acme Corp</option>
+                  <option>NexTech Solutions</option>
+                  <option>Blue Ocean Labs</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="bm-card">
+
+            <div class="bm-table-responsive">
+              <table class="bm-table" id="invoiceTable">
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <input type="checkbox" id="selectAll" onchange="toggleAll(this)">
+                    </th>
+                    <th scope="col">Invoice #</th>
+                    <th scope="col" data-i18n="table.customer">Client</th>
+                    <th scope="col">Issue Date</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col" class="bm-text-right" data-i18n="table.amount">Amount</th>
+                    <th scope="col" class="bm-text-center" data-i18n="table.status">Status</th>
+                    <th scope="col" class="bm-text-right" data-i18n="table.actions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="invoiceBody">
+                  <!-- rows injected by JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="bm-table-footer">
+              <span class="bm-text-caption-muted">Showing 1–10 of 27 invoices</span>
+              <div class="bm-pagination">
+                <button class="bm-pagination-btn" disabled>‹</button>
+                <button class="bm-pagination-btn active">1</button>
+                <button class="bm-pagination-btn">2</button>
+                <button class="bm-pagination-btn">3</button>
+                <span class="bm-pagination-ellipsis">…</span>
+                <button class="bm-pagination-btn">↑</button>
+                <button class="bm-pagination-btn">›</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/invoices.js"></script>
+{% endblock %}

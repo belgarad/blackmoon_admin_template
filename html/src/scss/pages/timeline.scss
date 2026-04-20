@@ -1,0 +1,27 @@
+/* ── Timeline page variant — overrides base component in components.css ── */
+  .bm-timeline { list-style:none; padding:0; margin:0; position:relative; }
+  .bm-timeline::before {
+  content:''; position:absolute; top:0; bottom:0; left:1.25rem;
+  width:2px; background:var(--border);
+  }
+  .bm-timeline-item { position:relative; padding:0 0 1.75rem 3.5rem; }
+  .bm-timeline-item:last-child { padding-bottom:0; }
+  .bm-timeline-icon {
+  position:absolute; left:0; top:0;
+  width:2.5rem; height:2.5rem;
+  border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:1rem; z-index:1; border:2px solid var(--card);
+  box-shadow:0 0 0 3px var(--border);
+  }
+  .bm-timeline-content { background:var(--card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:0.875rem 1rem; }
+  .bm-timeline-meta { margin-top:0.5rem; display:flex; flex-wrap:wrap; align-items:center; gap:0.5rem; }
+  /* Centered variant */
+  .bm-timeline-center { padding:0 0 2rem 0; }
+  .bm-timeline-center::before { left:50%; transform:translateX(-50%); }
+  @media (max-width:600px) {
+  .bm-timeline-center::before { left:1.25rem; transform:none; }
+  }
+  /* Avatar timeline variant */
+  .bm-timeline-avatar .bm-avatar { border:2px solid var(--card); box-shadow:0 0 0 3px var(--border); }
+  /* hidden by filter */
+  .bm-timeline-item[data-hidden="true"] { display:none; }

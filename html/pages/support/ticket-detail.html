@@ -1,0 +1,251 @@
+{% extends "layouts/base.html" %}
+{% set title = "Ticket Detail" %}
+{% set activeMenu = "support-tickets" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/support.scss">
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="overview.html">Support</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="tickets.html">Tickets</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">#1024</span></div>
+              </nav>
+              <h1 class="bm-page-title">Unable to export CSV from analytics page</h1>
+            </div>
+            <div class="bm-page-actions">
+              <select class="bm-select bm-select-sm">
+                <option>Open</option>
+                <option>In Progress</option>
+                <option>Resolved</option>
+                <option>Closed</option>
+              </select>
+              <button class="bm-btn bm-btn-outline bm-btn-sm"><i class="ph ph-pencil bm-text-md"></i> Edit</button>
+            </div>
+          </div>
+
+          <!-- Ticket Layout: Thread + Sidebar -->
+          <div class="sup-ticket-layout">
+
+            <!-- Conversation Thread -->
+            <div class="sup-ticket-main">
+              <!-- Original Message -->
+              <div class="bm-card bm-mb-md">
+                <div class="bm-card-body">
+                  <div class="sup-msg">
+                    <div class="bm-avatar bm-avatar-sm">JD</div>
+                    <div class="sup-msg-body">
+                      <div class="bm-flex-between-plain bm-mb-xs">
+                        <div>
+                          <span class="bm-text-caption-medium">John Doe</span>
+                          <span class="bm-text-2xs-muted bm-ml-sm">2 hours ago</span>
+                        </div>
+                        <span class="bm-badge bm-badge-muted">Reporter</span>
+                      </div>
+                      <div class="bm-text-body-muted">
+                        <p>When I click the "Export CSV" button on the Analytics page, nothing happens. The button appears clickable but no download is initiated. I've tested in both Chrome 124 and Firefox 130.</p>
+                        <p class="bm-mt-sm"><strong>Steps to reproduce:</strong></p>
+                        <ol>
+                          <li>Navigate to Analytics page</li>
+                          <li>Set date range to last 30 days</li>
+                          <li>Click "Export CSV" in the top-right actions</li>
+                          <li>Nothing happens — no download, no error</li>
+                        </ol>
+                        <p class="bm-mt-sm"><strong>Expected:</strong> A CSV file should download.</p>
+                        <p><strong>Browser:</strong> Chrome 124, Firefox 130 on macOS</p>
+                      </div>
+                      <div class="sup-attachments bm-mt-md">
+                        <div class="sup-attachment">
+                          <i class="ph ph-image bm-text-md-muted"></i>
+                          <span class="bm-text-caption-muted">screenshot-analytics.png</span>
+                          <span class="bm-text-2xs-muted">248 KB</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Agent Reply -->
+              <div class="bm-card bm-mb-md sup-msg-agent">
+                <div class="bm-card-body">
+                  <div class="sup-msg">
+                    <div class="bm-avatar bm-avatar-sm bm-avatar-primary">AS</div>
+                    <div class="sup-msg-body">
+                      <div class="bm-flex-between-plain bm-mb-xs">
+                        <div>
+                          <span class="bm-text-caption-medium">Alice Smith</span>
+                          <span class="bm-text-2xs-muted bm-ml-sm">1 hour ago</span>
+                        </div>
+                        <span class="bm-badge bm-badge-primary">Support Agent</span>
+                      </div>
+                      <div class="bm-text-body-muted">
+                        <p>Hi John, thank you for reporting this. I can reproduce the issue on my end.</p>
+                        <p class="bm-mt-sm">It looks like the export handler is failing silently when the dataset exceeds 10,000 rows. Our engineering team is working on a fix that will stream the CSV instead of building the entire file in memory.</p>
+                        <p class="bm-mt-sm">As a workaround, you can try: <strong>narrowing the date range to 7 days</strong> — the export should work for smaller datasets.</p>
+                        <p class="bm-mt-sm">I'll update this ticket once the fix is deployed. ETA is within 48 hours.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Status Change Note -->
+              <div class="sup-status-note bm-mb-md">
+                <i class="ph ph-info bm-text-md-info"></i>
+                <span class="bm-text-caption-muted"><strong>Alice Smith</strong> changed status from <span class="bm-badge bm-badge-warning bm-text-2xs">Open</span> to <span class="bm-badge bm-badge-info bm-text-2xs">In Progress</span> &middot; 1 hour ago</span>
+              </div>
+
+              <!-- Reporter Follow-up -->
+              <div class="bm-card bm-mb-md">
+                <div class="bm-card-body">
+                  <div class="sup-msg">
+                    <div class="bm-avatar bm-avatar-sm">JD</div>
+                    <div class="sup-msg-body">
+                      <div class="bm-flex-between-plain bm-mb-xs">
+                        <div>
+                          <span class="bm-text-caption-medium">John Doe</span>
+                          <span class="bm-text-2xs-muted bm-ml-sm">45 min ago</span>
+                        </div>
+                        <span class="bm-badge bm-badge-muted">Reporter</span>
+                      </div>
+                      <div class="bm-text-body-muted">
+                        <p>Thanks Alice! The 7-day workaround works for now. I'll wait for the full fix. Appreciate the quick response.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reply Box -->
+              <div class="bm-card">
+                <div class="bm-card-body">
+                  <textarea class="bm-textarea" rows="4" placeholder="Write a reply…"></textarea>
+                  <div class="bm-flex-between-plain bm-mt-sm">
+                    <div class="bm-flex-center-gap-sm">
+                      <button class="bm-btn-icon-xs" title="Attach file"><i class="ph ph-paperclip"></i></button>
+                      <button class="bm-btn-icon-xs" title="Insert code"><i class="ph ph-code"></i></button>
+                    </div>
+                    <div class="bm-flex-center-gap-sm">
+                      <button class="bm-btn bm-btn-ghost bm-btn-sm">Add Note</button>
+                      <button class="bm-btn bm-btn-primary bm-btn-sm">Reply</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sup-ticket-sidebar">
+              <!-- Ticket Info -->
+              <div class="bm-card bm-mb-lg">
+                <div class="bm-card-header"><div class="bm-card-title">Ticket Details</div></div>
+                <div class="bm-card-body bm-flex-col-gap-lg">
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Ticket ID</div>
+                    <div class="bm-text-caption-medium bm-font-mono">#1024</div>
+                  </div>
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Status</div>
+                    <span class="bm-badge bm-badge-warning">Open</span>
+                  </div>
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Priority</div>
+                    <span class="bm-badge bm-badge-danger">Critical</span>
+                  </div>
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Category</div>
+                    <div class="bm-text-caption-medium">Bug Report</div>
+                  </div>
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Created</div>
+                    <div class="bm-text-caption-medium">Apr 7, 2026 at 10:15 AM</div>
+                  </div>
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Last Updated</div>
+                    <div class="bm-text-caption-medium">Apr 7, 2026 at 11:30 AM</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Assignee -->
+              <div class="bm-card bm-mb-lg">
+                <div class="bm-card-header"><div class="bm-card-title">Assigned To</div></div>
+                <div class="bm-card-body">
+                  <div class="bm-flex-center-gap-md">
+                    <div class="bm-avatar bm-avatar-sm bm-avatar-primary">AS</div>
+                    <div>
+                      <div class="bm-text-caption-medium">Alice Smith</div>
+                      <div class="bm-text-2xs-muted">Support Lead</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reporter -->
+              <div class="bm-card bm-mb-lg">
+                <div class="bm-card-header"><div class="bm-card-title">Reporter</div></div>
+                <div class="bm-card-body">
+                  <div class="bm-flex-center-gap-md">
+                    <div class="bm-avatar bm-avatar-sm">JD</div>
+                    <div>
+                      <div class="bm-text-caption-medium">John Doe</div>
+                      <div class="bm-text-2xs-muted">john@example.com</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity Log -->
+              <div class="bm-card">
+                <div class="bm-card-header"><div class="bm-card-title">Activity</div></div>
+                <div class="bm-card-body bm-flex-col-gap-md">
+                  <div class="sup-activity-item">
+                    <i class="ph ph-check-circle bm-text-md-success"></i>
+                    <div>
+                      <div class="bm-text-2xs-muted">John Doe confirmed workaround</div>
+                      <div class="bm-text-2xs-muted">45 min ago</div>
+                    </div>
+                  </div>
+                  <div class="sup-activity-item">
+                    <i class="ph ph-arrow-clockwise bm-text-md-info"></i>
+                    <div>
+                      <div class="bm-text-2xs-muted">Status changed to In Progress</div>
+                      <div class="bm-text-2xs-muted">1h ago</div>
+                    </div>
+                  </div>
+                  <div class="sup-activity-item">
+                    <i class="ph ph-chat-circle bm-text-md-primary"></i>
+                    <div>
+                      <div class="bm-text-2xs-muted">Alice Smith replied</div>
+                      <div class="bm-text-2xs-muted">1h ago</div>
+                    </div>
+                  </div>
+                  <div class="sup-activity-item">
+                    <i class="ph ph-user-plus bm-text-md-warning"></i>
+                    <div>
+                      <div class="bm-text-2xs-muted">Assigned to Alice Smith</div>
+                      <div class="bm-text-2xs-muted">2h ago</div>
+                    </div>
+                  </div>
+                  <div class="sup-activity-item">
+                    <i class="ph ph-plus-circle bm-text-md-muted"></i>
+                    <div>
+                      <div class="bm-text-2xs-muted">Ticket created by John Doe</div>
+                      <div class="bm-text-2xs-muted">2h ago</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "layouts/base.html" %}
+{% set title = "Settings" %}
+{% set activeMenu = "settings" %}
+{% set basePath = "" %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+          <h1 class="bm-text-2xl-semibold-fg" data-i18n="page.title.settings">Settings</h1>
+
+          <!-- Tabs -->
+          <div class="bm-tabs bm-mb-xl" data-tab-group="settings">
+            <button class="bm-tab active" data-tab="profile" data-i18n="settings.tab.profile">Profile</button>
+            <button class="bm-tab" data-tab="password" data-i18n="settings.tab.password">Password</button>
+            <button class="bm-tab" data-tab="notifications" data-i18n="settings.tab.notifications">Notifications</button>
+            <button class="bm-tab" data-tab="appearance" data-i18n="settings.tab.appearance">Appearance</button>
+          </div>
+
+          <!-- Profile Tab -->
+          <div data-tab-panel="settings" data-tab-content="profile" class="bm-display-block">
+            <div class="bm-card">
+              <div class="bm-card-header"><span class="bm-card-title" data-i18n="settings.profileInfo">Profile Information</span></div>
+              <div class="bm-card-body">
+                <div class="bm-flex-align-gap6-mb8">
+                  <div class="bm-avatar bm-avatar-xl bm-border-3">JD</div>
+                  <div>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm" data-i18n="action.changeAvatar">Change Avatar</button>
+                    <p class="bm-text-sm-muted-mt2" data-i18n="settings.avatarHint">JPG, PNG or GIF. Max 2MB.</p>
+                  </div>
+                </div>
+                <div class="bm-grid-2col-narrow">
+                  <div class="bm-field"><label class="bm-label" data-i18n="form.firstName">First Name</label><input class="bm-input" name="first_name" value="John" required /><span class="bm-field-error"></span></div>
+                  <div class="bm-field"><label class="bm-label" data-i18n="form.lastName">Last Name</label><input class="bm-input" name="last_name" value="Doe" required /><span class="bm-field-error"></span></div>
+                  <div class="bm-field bm-grid-span-2"><label class="bm-label" data-i18n="form.emailLabel">Email</label><input class="bm-input" type="email" name="email" value="john@example.com" required /><span class="bm-field-error"></span></div>
+                  <div class="bm-grid-span-2"><label class="bm-label" data-i18n="form.bio">Bio</label><textarea class="bm-input bm-resize-v" name="bio" rows="3">Full-stack developer with 10+ years of experience.</textarea></div>
+                </div>
+              </div>
+              <div class="bm-card-footer">
+                <button class="bm-btn bm-btn-outline" data-i18n="action.cancel">Cancel</button>
+                <button class="bm-btn bm-btn-primary" data-i18n="action.saveChanges">Save Changes</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Password Tab -->
+          <div data-tab-panel="settings" data-tab-content="password" class="bm-d-none">
+            <div class="bm-card">
+              <div class="bm-card-header"><span class="bm-card-title" data-i18n="settings.changePassword">Change Password</span></div>
+              <div class="bm-card-body">
+                <div class="bm-form-compact">
+                  <div class="bm-field"><label class="bm-label" data-i18n="settings.currentPassword">Current Password</label><input class="bm-input" type="password" name="current_password" data-i18n-placeholder="form.placeholderCurrentPw" placeholder="Enter current password" required /><span class="bm-field-error"></span></div>
+                  <div class="bm-field"><label class="bm-label" data-i18n="settings.newPassword">New Password</label><input class="bm-input" type="password" name="new_password" data-i18n-placeholder="form.placeholderNewPw" placeholder="Enter new password" required minlength="8" /><span class="bm-field-error"></span></div>
+                  <div class="bm-field"><label class="bm-label" data-i18n="settings.confirmPassword">Confirm New Password</label><input class="bm-input" type="password" name="confirm_new_password" data-i18n-placeholder="form.placeholderConfirmPw" placeholder="Confirm new password" required data-rule-match="new_password" data-match-msg="Passwords do not match." /><span class="bm-field-error"></span></div>
+                </div>
+              </div>
+              <div class="bm-card-footer">
+                <button class="bm-btn bm-btn-primary" data-i18n="action.updatePassword">Update Password</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications Tab -->
+          <div data-tab-panel="settings" data-tab-content="notifications" class="bm-d-none">
+            <div class="bm-card">
+              <div class="bm-card-header"><span class="bm-card-title" data-i18n="settings.notificationPrefs">Notification Preferences</span></div>
+              <div class="bm-card-body">
+                <div class="bm-flex-col-gap-xl">
+                  <div class="bm-flex-between-plain">
+                    <div><div class="bm-text-body-medium-swap" data-i18n="settings.emailNotifications">Email Notifications</div><div class="bm-text-caption-muted" data-i18n="settings.emailNotifDesc">Receive email about account activity</div></div>
+                    <label class="bm-cursor-pointer"><input type="checkbox" checked class="bm-input-accent" /></label>
+                  </div>
+                  <div class="bm-border-top"></div>
+                  <div class="bm-flex-between-plain">
+                    <div><div class="bm-text-body-medium-swap" data-i18n="settings.pushNotifications">Push Notifications</div><div class="bm-text-caption-muted" data-i18n="settings.pushNotifDesc">Receive push notifications in browser</div></div>
+                    <label class="bm-cursor-pointer"><input type="checkbox" class="bm-input-accent" /></label>
+                  </div>
+                  <div class="bm-border-top"></div>
+                  <div class="bm-flex-between-plain">
+                    <div><div class="bm-text-body-medium-swap" data-i18n="settings.marketingEmails">Marketing Emails</div><div class="bm-text-caption-muted" data-i18n="settings.marketingDesc">Receive emails about new features and updates</div></div>
+                    <label class="bm-cursor-pointer"><input type="checkbox" checked class="bm-input-accent" /></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Appearance Tab -->
+          <div data-tab-panel="settings" data-tab-content="appearance" class="bm-d-none">
+            <div class="bm-card">
+              <div class="bm-card-header"><span class="bm-card-title" data-i18n="settings.appearance">Appearance</span></div>
+              <div class="bm-card-body">
+                <div class="bm-flex-between-narrow">
+                  <div><div class="bm-text-body-medium-swap" data-i18n="settings.darkMode">Dark Mode</div><div class="bm-text-caption-muted" data-i18n="settings.darkModeDesc">Toggle dark/light theme</div></div>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="ThemeManager.toggle()">
+                    <i class="ph ph-moon bm-text-md"></i>
+                    <span data-theme-label>Toggle</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/settings.js"></script>
+{% endblock %}

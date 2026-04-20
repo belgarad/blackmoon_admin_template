@@ -1,0 +1,178 @@
+{% extends "layouts/base.html" %}
+{% set title = "Support Center" %}
+{% set activeMenu = "support-overview" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/support.scss">
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Support Center</span></div>
+              </nav>
+              <h1 class="bm-page-title">Support Center</h1>
+              <p class="bm-page-subtitle">Find answers, browse resources, or submit a ticket.</p>
+            </div>
+          </div>
+
+          <!-- Search Hero -->
+          <div class="bm-card bm-p-xl bm-mb-xl sup-hero">
+            <h2 class="sup-hero-title">How can we help you?</h2>
+            <p class="sup-hero-sub">Search our knowledge base or browse categories below.</p>
+            <div class="sup-search-wrap">
+              <i class="ph ph-magnifying-glass"></i>
+              <input class="bm-input" type="text" placeholder="Search articles, guides, and FAQs…">
+            </div>
+          </div>
+
+          <!-- Category Cards -->
+          <div class="bm-grid-3col bm-mb-xl">
+            <div class="bm-card sup-cat-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="sup-cat-icon sup-cat-icon-primary"><i class="ph ph-rocket-launch"></i></div>
+                <h3 class="sup-cat-title">Getting Started</h3>
+                <p class="bm-text-caption-muted">Installation, configuration, and first steps with the platform.</p>
+                <span class="bm-text-2xs-muted">12 articles</span>
+              </div>
+            </div>
+            <div class="bm-card sup-cat-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="sup-cat-icon sup-cat-icon-success"><i class="ph ph-user-circle"></i></div>
+                <h3 class="sup-cat-title">Account &amp; Billing</h3>
+                <p class="bm-text-caption-muted">Manage your account, subscription plans, and billing.</p>
+                <span class="bm-text-2xs-muted">8 articles</span>
+              </div>
+            </div>
+            <div class="bm-card sup-cat-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="sup-cat-icon sup-cat-icon-warning"><i class="ph ph-puzzle-piece"></i></div>
+                <h3 class="sup-cat-title">Integrations</h3>
+                <p class="bm-text-caption-muted">Connect with third-party tools, APIs, and webhooks.</p>
+                <span class="bm-text-2xs-muted">15 articles</span>
+              </div>
+            </div>
+            <div class="bm-card sup-cat-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="sup-cat-icon sup-cat-icon-info"><i class="ph ph-shield"></i></div>
+                <h3 class="sup-cat-title">Security</h3>
+                <p class="bm-text-caption-muted">Two-factor auth, SSO, passwords, and security best practices.</p>
+                <span class="bm-text-2xs-muted">6 articles</span>
+              </div>
+            </div>
+            <div class="bm-card sup-cat-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="sup-cat-icon sup-cat-icon-danger"><i class="ph ph-bug"></i></div>
+                <h3 class="sup-cat-title">Troubleshooting</h3>
+                <p class="bm-text-caption-muted">Common issues, error codes, and step-by-step fixes.</p>
+                <span class="bm-text-2xs-muted">10 articles</span>
+              </div>
+            </div>
+            <div class="bm-card sup-cat-card">
+              <div class="bm-card-body bm-text-center">
+                <div class="sup-cat-icon sup-cat-icon-primary"><i class="ph ph-code-simple"></i></div>
+                <h3 class="sup-cat-title">Developer Docs</h3>
+                <p class="bm-text-caption-muted">API reference, SDK guides, and developer resources.</p>
+                <span class="bm-text-2xs-muted">20 articles</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Popular Articles + Contact -->
+          <div class="bm-grid-2-1">
+            <!-- Popular Articles -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div class="bm-card-title">Popular Articles</div>
+                <a href="#" class="bm-btn bm-btn-ghost bm-btn-sm">View All</a>
+              </div>
+              <div class="bm-card-body bm-p-0">
+                <div class="sup-article-list">
+                  <a href="#" class="sup-article-item">
+                    <i class="ph ph-file-text bm-text-md-primary"></i>
+                    <div>
+                      <div class="bm-text-caption-medium">How to Set Up Two-Factor Authentication</div>
+                      <div class="bm-text-2xs-muted">Security &middot; 3 min read</div>
+                    </div>
+                  </a>
+                  <a href="#" class="sup-article-item">
+                    <i class="ph ph-file-text bm-text-md-primary"></i>
+                    <div>
+                      <div class="bm-text-caption-medium">Connecting Your Stripe Account</div>
+                      <div class="bm-text-2xs-muted">Integrations &middot; 5 min read</div>
+                    </div>
+                  </a>
+                  <a href="#" class="sup-article-item">
+                    <i class="ph ph-file-text bm-text-md-primary"></i>
+                    <div>
+                      <div class="bm-text-caption-medium">Understanding Your Invoice and Billing Cycle</div>
+                      <div class="bm-text-2xs-muted">Account &amp; Billing &middot; 4 min read</div>
+                    </div>
+                  </a>
+                  <a href="#" class="sup-article-item">
+                    <i class="ph ph-file-text bm-text-md-primary"></i>
+                    <div>
+                      <div class="bm-text-caption-medium">Managing Team Members and Roles</div>
+                      <div class="bm-text-2xs-muted">Getting Started &middot; 6 min read</div>
+                    </div>
+                  </a>
+                  <a href="#" class="sup-article-item">
+                    <i class="ph ph-file-text bm-text-md-primary"></i>
+                    <div>
+                      <div class="bm-text-caption-medium">Webhook Configuration and Event Types</div>
+                      <div class="bm-text-2xs-muted">Developer Docs &middot; 8 min read</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact & Ticket -->
+            <div class="bm-flex-col-gap-lg">
+              <div class="bm-card">
+                <div class="bm-card-header"><div class="bm-card-title">Need More Help?</div></div>
+                <div class="bm-card-body bm-flex-col-gap-lg">
+                  <a href="tickets.html" class="sup-contact-item">
+                    <div class="bm-icon-box-primary-sm"><i class="ph ph-ticket bm-text-lg-primary"></i></div>
+                    <div>
+                      <div class="bm-text-caption-medium">Submit a Ticket</div>
+                      <div class="bm-text-2xs-muted">Usually responded within 24 hours</div>
+                    </div>
+                    <i class="ph ph-caret-right bm-text-md-muted"></i>
+                  </a>
+                  <a href="#" class="sup-contact-item">
+                    <div class="bm-icon-box-success-2"><i class="ph ph-chat-circle bm-text-lg-success"></i></div>
+                    <div>
+                      <div class="bm-text-caption-medium">Live Chat</div>
+                      <div class="bm-text-2xs-muted">Available Mon–Fri, 9am–6pm UTC</div>
+                    </div>
+                    <i class="ph ph-caret-right bm-text-md-muted"></i>
+                  </a>
+                  <a href="#" class="sup-contact-item">
+                    <div class="bm-icon-box-info-h"><i class="ph ph-envelope bm-text-lg-info"></i></div>
+                    <div>
+                      <div class="bm-text-caption-medium">Email Support</div>
+                      <div class="bm-text-2xs-muted">support@blackmoon.dev</div>
+                    </div>
+                    <i class="ph ph-caret-right bm-text-md-muted"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="bm-card">
+                <div class="bm-card-body bm-text-center">
+                  <i class="ph ph-chat-square bm-text-4xl-muted bm-mb-sm"></i>
+                  <div class="bm-text-body-medium-swap bm-mb-xs">Community Forum</div>
+                  <p class="bm-text-caption-muted bm-mb-md">Ask questions, share tips, and connect with other users.</p>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">Visit Forum</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}

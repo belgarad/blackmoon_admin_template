@@ -1,0 +1,289 @@
+{% extends "layouts/base.html" %}
+{% set title = "CRM" %}
+{% set pageDescription = "Customer relationship management — pipeline, deals, contacts, and activity tracking." %}
+{% set activeMenu = "crm" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">CRM</span></div>
+              </nav>
+              <h1 class="bm-page-title">CRM</h1>
+              <p class="bm-page-subtitle">Manage contacts, deals, and your sales pipeline</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.info('Export started', 'Your CSV export will be ready shortly.')">
+                <i class="ph ph-download-simple bm-text-md"></i>
+                <span data-i18n="action.export">Export</span>
+              </button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="openAddDealModal()">
+                <i class="ph ph-plus bm-text-md"></i>
+                <span>Add Deal</span>
+              </button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="openAddContactModal()">
+                <i class="ph ph-user-plus bm-text-md"></i>
+                <span data-i18n="action.addContact">Add Contact</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="crm-kpi">
+            <div class="kpi-card">
+              <div class="kpi-icon-row">
+                <div class="bm-icon-box-primary-sm"><i class="ph ph-users bm-text-lg-primary"></i></div>
+              </div>
+              <div class="kpi-value">1,842</div>
+              <div class="kpi-label">Total Contacts</div>
+              <div class="kpi-delta up"><i class="ph ph-arrow-up"></i> +48 this month</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon-row">
+                <div class="bm-icon-box-warning"><i class="ph ph-handshake bm-text-lg-warning"></i></div>
+              </div>
+              <div class="kpi-value">94</div>
+              <div class="kpi-label">Active Deals</div>
+              <div class="kpi-delta up"><i class="ph ph-arrow-up"></i> +12 from last month</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon-row">
+                <div class="bm-icon-box-success-sm"><i class="ph ph-currency-dollar bm-text-lg-success"></i></div>
+              </div>
+              <div class="kpi-value">$218K</div>
+              <div class="kpi-label">Revenue MTD</div>
+              <div class="kpi-delta up"><i class="ph ph-arrow-up"></i> +9.4% vs target</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon-row">
+                <div class="bm-icon-box-info-h"><i class="ph ph-chart-line-up bm-text-lg-info"></i></div>
+              </div>
+              <div class="kpi-value">24.7%</div>
+              <div class="kpi-label">Conversion Rate</div>
+              <div class="kpi-delta down"><i class="ph ph-arrow-down"></i> −1.2% vs last month</div>
+            </div>
+          </div>
+
+          <!-- Charts row -->
+          <div class="crm-charts">
+            <div class="bm-card">
+              <div class="bm-card-header bm-flex-center-justify">
+                <span class="bm-card-title">Revenue Pipeline</span>
+                <select class="bm-select bm-select-sm">
+                  <option>Last 6 months</option>
+                  <option>Last 12 months</option>
+                  <option>This year</option>
+                </select>
+              </div>
+              <div class="bm-card-body bm-pt-xs">
+                <div id="crmRevenueChart" class="bm-chart-container" style="height:200px"></div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-header"><span class="bm-card-title">Deal Stages</span></div>
+              <div class="bm-card-body bm-flex-col-center">
+                <div id="crmDonutChart" class="bm-chart-container" style="height:180px"></div>
+                <div class="bm-field-col bm-w-full bm-mt-xs">
+                  <div class="bm-flex-caption-pb"><span class="bm-flex-center-gap-sm"><span class="bm-legend-dot-primary"></span> To Contact</span><span class="bm-font-semibold">28</span></div>
+                  <div class="bm-flex-caption-pb"><span class="bm-flex-center-gap-sm"><span class="bm-legend-dot-warning"></span> Qualified</span><span class="bm-font-semibold">34</span></div>
+                  <div class="bm-flex-caption-pb"><span class="bm-flex-center-gap-sm"><span class="bm-legend-dot-info"></span> Proposal</span><span class="bm-font-semibold">18</span></div>
+                  <div class="bm-flex-caption-pb"><span class="bm-flex-center-gap-sm"><span class="bm-legend-dot-success"></span> Closed Won</span><span class="bm-font-semibold">14</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs: Contacts | Pipeline | Activities -->
+          <div class="crm-tabs">
+            <button class="crm-tab active" onclick="switchCrmTab('contacts',this)">
+              <i class="ph ph-users bm-icon-md-inline"></i>Contacts
+            </button>
+            <button class="crm-tab" onclick="switchCrmTab('pipeline',this)">
+              <i class="ph ph-share-network bm-icon-md-inline"></i>Pipeline
+            </button>
+            <button class="crm-tab" onclick="switchCrmTab('activities',this)">
+              <i class="ph ph-activity bm-icon-md-inline"></i>Activities
+            </button>
+          </div>
+
+          <!-- ── CONTACTS panel ── -->
+          <div class="crm-panel active" id="panel-contacts">
+            <div class="bm-card">
+              <div class="bm-card-header bm-flex-wrap-center-lg">
+                <div class="crm-search bm-flex-minw-180">
+                  <i class="ph ph-magnifying-glass crm-search-icon"></i>
+                  <input id="contactSearch" type="text" placeholder="Search contacts…" oninput="filterContacts()" />
+                </div>
+                <div class="bm-flex-gap-625">
+                  <select id="statusFilter" class="bm-select bm-w-auto-caption" onchange="filterContacts()">
+                    <option value="">All statuses</option>
+                    <option value="active">Active</option>
+                    <option value="warm">Warm</option>
+                    <option value="cold">Cold</option>
+                    <option value="lost">Lost</option>
+                  </select>
+                </div>
+              </div>
+              <div class="bm-table-responsive">
+                <table class="bm-table bm-table-compact" id="contactTable">
+                  <thead>
+                    <tr>
+                      <th scope="col"><input type="checkbox" class="bm-checkbox" onchange="toggleAllContacts(this)" /></th>
+                      <th scope="col">Contact</th>
+                      <th scope="col">Company</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Phone</th>
+                      <th scope="col" data-i18n="table.status">Status</th>
+                      <th scope="col">Last Activity</th>
+                      <th scope="col">Deals</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="contactTbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── PIPELINE panel ── -->
+          <div class="crm-panel" id="panel-pipeline">
+            <div class="pipeline" id="pipelineBoard">
+              <!-- Columns injected by JS -->
+            </div>
+          </div>
+
+          <!-- ── ACTIVITIES panel ── -->
+          <div class="crm-panel" id="panel-activities">
+            <div class="bm-card">
+              <div class="bm-card-header bm-flex-center-justify">
+                <span class="bm-card-title">Recent Activities</span>
+                <select class="bm-select bm-select-sm" id="activityFilter" onchange="filterActivities()">
+                  <option value="">All types</option>
+                  <option value="contact">Contacts</option>
+                  <option value="deal">Deals</option>
+                  <option value="email">Emails</option>
+                  <option value="note">Notes</option>
+                </select>
+              </div>
+              <div class="bm-card-body">
+                <div id="activitiesList" class="crm-activity-list"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      <!-- Add Contact Modal -->
+      <div id="addContactModal" class="bm-modal-backdrop bm-d-none" onclick="if(event.target===this)closeAddContactModal()">
+        <div class="bm-modal bm-modal-md">
+          <div class="bm-modal-header">
+            <h3 class="bm-modal-title">Add Contact</h3>
+            <button class="bm-btn bm-btn-ghost bm-btn-icon" onclick="closeAddContactModal()"><i class="ph ph-x"></i></button>
+          </div>
+          <div class="bm-modal-body">
+            <div class="bm-grid-2col bm-mb-1">
+              <div>
+                <label class="bm-label">Full Name</label>
+                <input class="bm-input" type="text" id="acName" placeholder="e.g. Jane Doe" />
+              </div>
+              <div>
+                <label class="bm-label">Job Title</label>
+                <input class="bm-input" type="text" id="acTitle" placeholder="e.g. VP of Sales" />
+              </div>
+            </div>
+            <div class="bm-grid-2col bm-mb-1">
+              <div>
+                <label class="bm-label">Company</label>
+                <input class="bm-input" type="text" id="acCompany" placeholder="e.g. Acme Corp" />
+              </div>
+              <div>
+                <label class="bm-label">Phone</label>
+                <input class="bm-input" type="tel" id="acPhone" placeholder="+1 555 000 0000" />
+              </div>
+            </div>
+            <div class="bm-mb-1">
+              <label class="bm-label">Email</label>
+              <input class="bm-input" type="email" id="acEmail" placeholder="e.g. jane@acme.com" />
+            </div>
+            <div class="bm-mb-1">
+              <label class="bm-label">Status</label>
+              <select class="bm-select" id="acStatus">
+                <option value="active">Active</option>
+                <option value="warm">Warm</option>
+                <option value="cold">Cold</option>
+              </select>
+            </div>
+          </div>
+          <div class="bm-modal-footer">
+            <button class="bm-btn bm-btn-ghost" onclick="closeAddContactModal()" data-i18n="action.cancel">Cancel</button>
+            <button class="bm-btn bm-btn-primary" onclick="saveContact()" data-i18n="action.addContact">Add Contact</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Deal Modal -->
+      <div id="addDealModal" class="bm-modal-backdrop bm-d-none" onclick="if(event.target===this)closeAddDealModal()">
+        <div class="bm-modal bm-modal-md">
+          <div class="bm-modal-header">
+            <h3 class="bm-modal-title">Add Deal</h3>
+            <button class="bm-btn bm-btn-ghost bm-btn-icon" onclick="closeAddDealModal()"><i class="ph ph-x"></i></button>
+          </div>
+          <div class="bm-modal-body">
+            <div class="bm-mb-1">
+              <label class="bm-label">Deal Title</label>
+              <input class="bm-input" type="text" id="adTitle" placeholder="e.g. Enterprise License" />
+            </div>
+            <div class="bm-grid-2col bm-mb-1">
+              <div>
+                <label class="bm-label">Company</label>
+                <input class="bm-input" type="text" id="adCompany" placeholder="e.g. Acme Corp" />
+              </div>
+              <div>
+                <label class="bm-label">Value ($)</label>
+                <input class="bm-input" type="number" id="adValue" placeholder="e.g. 50000" min="0" />
+              </div>
+            </div>
+            <div class="bm-grid-2col bm-mb-1">
+              <div>
+                <label class="bm-label">Stage</label>
+                <select class="bm-select" id="adStage">
+                  <option>To Contact</option>
+                  <option>Qualified</option>
+                  <option>Proposal</option>
+                  <option>Closed Won</option>
+                </select>
+              </div>
+              <div>
+                <label class="bm-label">Priority</label>
+                <select class="bm-select" id="adPriority">
+                  <option value="high">High</option>
+                  <option value="mid" selected>Medium</option>
+                  <option value="low">Low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="bm-modal-footer">
+            <button class="bm-btn bm-btn-ghost" onclick="closeAddDealModal()">Cancel</button>
+            <button class="bm-btn bm-btn-primary" onclick="saveDeal()">Add Deal</button>
+          </div>
+        </div>
+      </div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script src="/assets/js/chart-helpers.js"></script>
+  <script src="/assets/js/pages/crm.js"></script>
+{% endblock %}

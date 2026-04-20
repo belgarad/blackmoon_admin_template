@@ -1,0 +1,282 @@
+{% extends "layouts/base.html" %}
+{% set title = "Search Results" %}
+{% set activeMenu = "search-results" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <!-- ── Page header ────────────────────────────────── -->
+          <div class="bm-flex-between-wrap-mb6">
+            <div>
+              <h1 class="bm-heading-xl-fg">Search Results</h1>
+              <nav class="bm-text-sm-muted-flex">
+                <a href="dashboard.html" class="bm-link-muted" data-i18n="breadcrumb.dashboard">Dashboard</a>
+                <i class="ph ph-caret-right bm-text-body"></i>
+                <span class="bm-text-default">Search</span>
+              </nav>
+            </div>
+          </div>
+
+          <!-- ── Search Bar ─────────────────────────────────── -->
+          <div class="search-bar-card bm-card bm-mb-xl">
+            <div class="bm-card-body">
+              <div class="search-input-wrap">
+                <i class="ph ph-magnifying-glass bm-text-xl bm-text-muted"></i>
+                <input class="search-input" type="text" placeholder="Search for pages, users, files, projects..." value="admin dashboard" />
+                <button class="bm-btn bm-btn-primary bm-btn-sm">Search</button>
+              </div>
+              <div class="search-meta bm-mt-sm">
+                <span class="bm-text-sm-muted">About <strong>24</strong> results found in <strong>0.03</strong> seconds</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Tabs ───────────────────────────────────────── -->
+          <div class="bm-tabs bm-mb-xl" data-tab-group="search">
+            <button class="bm-tab active" data-tab="all">All Results <span class="bm-badge bm-badge-muted bm-text-micro-badge">24</span></button>
+            <button class="bm-tab" data-tab="users">Users <span class="bm-badge bm-badge-muted bm-text-micro-badge">5</span></button>
+            <button class="bm-tab" data-tab="files">Files <span class="bm-badge bm-badge-muted bm-text-micro-badge">8</span></button>
+            <button class="bm-tab" data-tab="projects">Projects <span class="bm-badge bm-badge-muted bm-text-micro-badge">3</span></button>
+          </div>
+
+          <!-- ── All Results Tab ────────────────────────────── -->
+          <div data-tab-panel="search" data-tab-content="all" class="bm-display-block">
+            <div class="search-results-list">
+
+              <!-- Result 1 — Page -->
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-primary-subtle">
+                  <i class="ph ph-squares-four bm-text-primary"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="dashboard.html" class="search-result-title">
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge bm-mr-xs">Page</span>
+                    <mark class="search-highlight">Admin</mark> <mark class="search-highlight">Dashboard</mark> — Overview
+                  </a>
+                  <p class="search-result-excerpt">Main <mark class="search-highlight">dashboard</mark> with KPI cards, revenue charts, recent orders, and activity feed. The central hub for your <mark class="search-highlight">admin</mark> panel.</p>
+                  <span class="search-result-meta">pages/dashboard.html — Updated 2 days ago</span>
+                </div>
+              </div>
+
+              <!-- Result 2 — Page -->
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-info-subtle">
+                  <i class="ph ph-chart-bar bm-text-info"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="analytics.html" class="search-result-title">
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge bm-mr-xs">Page</span>
+                    Analytics <mark class="search-highlight">Dashboard</mark>
+                  </a>
+                  <p class="search-result-excerpt">Advanced analytics with visitor trends, conversion funnels, traffic sources, and real-time <mark class="search-highlight">dashboard</mark> metrics.</p>
+                  <span class="search-result-meta">pages/analytics.html — Updated 5 days ago</span>
+                </div>
+              </div>
+
+              <!-- Result 3 — User -->
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-success-subtle">
+                  <i class="ph ph-user bm-text-success"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="user-detail.html" class="search-result-title">
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge bm-mr-xs">User</span>
+                    John <mark class="search-highlight">Admin</mark>strator
+                  </a>
+                  <p class="search-result-excerpt">Super <mark class="search-highlight">admin</mark> user with full system access. Last active 3 hours ago.</p>
+                  <span class="search-result-meta">john@example.com — Role: Administrator</span>
+                </div>
+              </div>
+
+              <!-- Result 4 — File -->
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-warning-subtle">
+                  <i class="ph ph-file-text bm-text-warning"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="#" class="search-result-title">
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge bm-mr-xs">File</span>
+                    <mark class="search-highlight">Admin</mark>_<mark class="search-highlight">Dashboard</mark>_Report_Q4.pdf
+                  </a>
+                  <p class="search-result-excerpt">Quarterly performance report of the <mark class="search-highlight">admin</mark> <mark class="search-highlight">dashboard</mark> usage statistics and KPI analysis.</p>
+                  <span class="search-result-meta">2.4 MB — Uploaded by Alice Smith — Jan 15, 2026</span>
+                </div>
+              </div>
+
+              <!-- Result 5 — Project -->
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-danger-subtle">
+                  <i class="ph ph-rocket-launch bm-text-danger"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="projects/list.html" class="search-result-title">
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge bm-mr-xs">Project</span>
+                    <mark class="search-highlight">Admin</mark> Panel Redesign
+                  </a>
+                  <p class="search-result-excerpt">Complete redesign of the <mark class="search-highlight">admin</mark> <mark class="search-highlight">dashboard</mark> with new components, improved UX, and dark mode support.</p>
+                  <span class="search-result-meta">In Progress — 65% completed — Due: Mar 2026</span>
+                </div>
+              </div>
+
+              <!-- Result 6 — Page -->
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-primary-subtle">
+                  <i class="ph ph-trend-up bm-text-primary"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="dashboard-marketing.html" class="search-result-title">
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge bm-mr-xs">Page</span>
+                    Marketing <mark class="search-highlight">Dashboard</mark>
+                  </a>
+                  <p class="search-result-excerpt">Campaign performance metrics, channel distribution, and conversion tracking in a single <mark class="search-highlight">dashboard</mark> view.</p>
+                  <span class="search-result-meta">pages/dashboard-marketing.html — Updated 1 week ago</span>
+                </div>
+              </div>
+
+              <!-- Result 7 — File -->
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-warning-subtle">
+                  <i class="ph ph-folder bm-text-warning"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="file-manager/files.html" class="search-result-title">
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge bm-mr-xs">File</span>
+                    <mark class="search-highlight">Dashboard</mark>_Wireframes.fig
+                  </a>
+                  <p class="search-result-excerpt">Figma design file containing wireframes for the new <mark class="search-highlight">admin</mark> <mark class="search-highlight">dashboard</mark> layout.</p>
+                  <span class="search-result-meta">18.7 MB — Uploaded by Carol Wilson — Dec 20, 2025</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Pagination -->
+            <div class="search-pagination bm-mt-xl">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" disabled>
+                <i class="ph ph-caret-left bm-text-md"></i> Previous
+              </button>
+              <div class="search-pagination-pages">
+                <button class="bm-btn bm-btn-primary bm-btn-sm">1</button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm">2</button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm">3</button>
+              </div>
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                Next <i class="ph ph-caret-right bm-text-md"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- ── Users Tab ──────────────────────────────────── -->
+          <div data-tab-panel="search" data-tab-content="users" class="bm-d-none">
+            <div class="search-results-list">
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-success-subtle">
+                  <i class="ph ph-user bm-text-success"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="user-detail.html" class="search-result-title">John <mark class="search-highlight">Admin</mark>strator</a>
+                  <p class="search-result-excerpt">Super <mark class="search-highlight">admin</mark> user with full system access. Last active 3 hours ago.</p>
+                  <span class="search-result-meta">john@example.com — Role: Administrator</span>
+                </div>
+              </div>
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-success-subtle">
+                  <i class="ph ph-user bm-text-success"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="user-detail.html" class="search-result-title">Alice Smith — <mark class="search-highlight">Admin</mark> Role</a>
+                  <p class="search-result-excerpt">Content <mark class="search-highlight">admin</mark>istrator managing blog posts and support tickets.</p>
+                  <span class="search-result-meta">alice@example.com — Role: Content Admin</span>
+                </div>
+              </div>
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-success-subtle">
+                  <i class="ph ph-user bm-text-success"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="user-detail.html" class="search-result-title">Bob <mark class="search-highlight">Admin</mark> Manager</a>
+                  <p class="search-result-excerpt">Team lead with <mark class="search-highlight">admin</mark> privileges for user management and roles.</p>
+                  <span class="search-result-meta">bob@example.com — Role: Team Lead</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Files Tab ──────────────────────────────────── -->
+          <div data-tab-panel="search" data-tab-content="files" class="bm-d-none">
+            <div class="search-results-list">
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-warning-subtle">
+                  <i class="ph ph-file-text bm-text-warning"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="#" class="search-result-title"><mark class="search-highlight">Admin</mark>_<mark class="search-highlight">Dashboard</mark>_Report_Q4.pdf</a>
+                  <p class="search-result-excerpt">Quarterly performance report — 2.4 MB</p>
+                  <span class="search-result-meta">Uploaded by Alice Smith — Jan 15, 2026</span>
+                </div>
+              </div>
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-warning-subtle">
+                  <i class="ph ph-folder bm-text-warning"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="#" class="search-result-title"><mark class="search-highlight">Dashboard</mark>_Wireframes.fig</a>
+                  <p class="search-result-excerpt">Figma design file — 18.7 MB</p>
+                  <span class="search-result-meta">Uploaded by Carol Wilson — Dec 20, 2025</span>
+                </div>
+              </div>
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-warning-subtle">
+                  <i class="ph ph-image bm-text-warning"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="#" class="search-result-title"><mark class="search-highlight">admin</mark>_logo_dark.svg</a>
+                  <p class="search-result-excerpt">Dark theme logo variant — 12 KB</p>
+                  <span class="search-result-meta">Uploaded by Design Team — Nov 3, 2025</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Projects Tab ───────────────────────────────── -->
+          <div data-tab-panel="search" data-tab-content="projects" class="bm-d-none">
+            <div class="search-results-list">
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-danger-subtle">
+                  <i class="ph ph-rocket-launch bm-text-danger"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="projects/list.html" class="search-result-title"><mark class="search-highlight">Admin</mark> Panel Redesign</a>
+                  <p class="search-result-excerpt">Complete redesign of the <mark class="search-highlight">admin</mark> <mark class="search-highlight">dashboard</mark> with new components.</p>
+                  <span class="search-result-meta">In Progress — 65% — Due: Mar 2026</span>
+                </div>
+              </div>
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-primary-subtle">
+                  <i class="ph ph-code bm-text-primary"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="projects/list.html" class="search-result-title"><mark class="search-highlight">Dashboard</mark> API v2</a>
+                  <p class="search-result-excerpt">New REST API endpoints for the <mark class="search-highlight">admin</mark> <mark class="search-highlight">dashboard</mark> data layer.</p>
+                  <span class="search-result-meta">Planning — 10% — Due: Jun 2026</span>
+                </div>
+              </div>
+              <div class="search-result-item">
+                <div class="search-result-icon bm-bg-success-subtle">
+                  <i class="ph ph-check-circle bm-text-success"></i>
+                </div>
+                <div class="search-result-body">
+                  <a href="projects/list.html" class="search-result-title"><mark class="search-highlight">Admin</mark> Mobile App</a>
+                  <p class="search-result-excerpt">Mobile companion app for the <mark class="search-highlight">admin</mark> panel with push notifications.</p>
+                  <span class="search-result-meta">Completed — 100% — Delivered: Sep 2025</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

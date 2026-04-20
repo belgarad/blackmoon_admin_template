@@ -1,0 +1,236 @@
+{% extends "layouts/base.html" %}
+{% set title = "Finance Dashboard" %}
+{% set activeMenu = "dashboard-finance" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Finance</span></div>
+              </nav>
+              <h1 class="bm-page-title">Finance Dashboard</h1>
+              <p class="bm-page-subtitle">Income, expenses, cash flow, and budget overview.</p>
+            </div>
+            <div class="bm-page-actions">
+              <div id="finPeriod" class="bm-tab-bar">
+                <button class="bm-btn bm-btn-primary bm-btn-sm">Monthly</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Quarterly</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Yearly</button>
+              </div>
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-download-simple bm-text-md"></i>
+                <span data-i18n="action.export">Export</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="bm-grid-auto-lg">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-trend-up bm-text-lg-success"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Total Revenue</div>
+                <div class="bm-stats-card-v2-value" data-counter="124800" data-counter-prefix="$">$124,800</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>12.4%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-danger"><i class="ph ph-trend-down bm-text-lg-danger"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Total Expenses</div>
+                <div class="bm-stats-card-v2-value" data-counter="78200" data-counter-prefix="$">$78,200</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>3.8%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-bank bm-text-lg-primary"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Net Profit</div>
+                <div class="bm-stats-card-v2-value" data-counter="46600" data-counter-prefix="$">$46,600</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>28.1%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-receipt bm-text-lg-warning"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Pending Invoices</div>
+                <div class="bm-stats-card-v2-value" data-counter="18400" data-counter-prefix="$">$18,400</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-text-sm-muted">8 invoices outstanding</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="bm-grid-2-1-mb">
+            <!-- Revenue vs Expenses -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Revenue vs Expenses</div>
+                  <div class="bm-caption-muted-top">Monthly comparison over last 6 months</div>
+                </div>
+                <div class="bm-flex-center-gap-md-mr">
+                  <span class="bm-flex-center-gap-sm-body"><span class="bm-legend-dot-green"></span>Revenue</span>
+                  <span class="bm-flex-center-gap-sm-body"><span class="bm-legend-dot-danger"></span>Expenses</span>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-revenue-expense" class="bm-chart-container"></div>
+              </div>
+            </div>
+            <!-- Expense Breakdown -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Expense Breakdown</div>
+                  <div class="bm-caption-muted-top">This month by category</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-expense-breakdown" class="bm-chart-container"></div>
+                <div class="bm-flex-col-gap-md-mt">
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-blue"></span>Salaries</span><span class="bm-text-caption-semibold2">42%</span></div>
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-green"></span>Operations</span><span class="bm-text-caption-semibold2">24%</span></div>
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-amber"></span>Marketing</span><span class="bm-text-caption-semibold2">18%</span></div>
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-red"></span>Software</span><span class="bm-text-caption-semibold2">11%</span></div>
+                  <div class="bm-flex-center-justify"><span class="bm-flex-center-gap-md-caption"><span class="bm-legend-dot-purple"></span>Other</span><span class="bm-text-caption-semibold2">5%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cash Flow Chart -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-header">
+              <div>
+                <div class="bm-card-title">Cash Flow</div>
+                <div class="bm-caption-muted-top">Net cash flow over 12 months</div>
+              </div>
+            </div>
+            <div class="bm-card-body bm-pt-sm">
+              <div id="chart-cashflow" class="bm-chart-container" style="min-height:260px"></div>
+            </div>
+          </div>
+
+          <!-- Budget Comparison + Recent Transactions -->
+          <div class="bm-grid-2-1">
+            <!-- Budget vs Actual -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Budget vs Actual</div>
+                  <div class="bm-caption-muted-top">Monthly budget utilization by department</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-flex-col-gap-lg">
+                <div>
+                  <div class="bm-flex-between-mb2"><span class="bm-text-caption-medium">Engineering</span><span class="bm-text-caption-semibold">$32,000 / $35,000</span></div>
+                  <div class="bm-progress bm-progress-sm bm-progress-success"><div class="bm-progress-bar" style="width: 91%"></div></div>
+                </div>
+                <div>
+                  <div class="bm-flex-between-mb2"><span class="bm-text-caption-medium">Marketing</span><span class="bm-text-caption-semibold bm-text-danger">$16,500 / $14,000</span></div>
+                  <div class="bm-progress bm-progress-sm bm-progress-danger"><div class="bm-progress-bar" style="width: 100%"></div></div>
+                  <div class="bm-text-2xs-muted bm-text-danger bm-mt-xs">Over budget by $2,500</div>
+                </div>
+                <div>
+                  <div class="bm-flex-between-mb2"><span class="bm-text-caption-medium">Sales</span><span class="bm-text-caption-semibold">$12,800 / $18,000</span></div>
+                  <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar" style="width: 71%"></div></div>
+                </div>
+                <div>
+                  <div class="bm-flex-between-mb2"><span class="bm-text-caption-medium">Operations</span><span class="bm-text-caption-semibold bm-text-warning">$9,200 / $10,000</span></div>
+                  <div class="bm-progress bm-progress-sm bm-progress-warning"><div class="bm-progress-bar" style="width: 92%"></div></div>
+                </div>
+                <div>
+                  <div class="bm-flex-between-mb2"><span class="bm-text-caption-medium">HR & Admin</span><span class="bm-text-caption-semibold">$7,700 / $12,000</span></div>
+                  <div class="bm-progress bm-progress-sm bm-progress-success"><div class="bm-progress-bar" style="width: 64%"></div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div class="bm-card-title">Recent Transactions</div>
+                <a href="invoices.html" class="bm-btn bm-btn-outline bm-btn-sm">View All</a>
+              </div>
+              <div class="bm-card-body bm-flex-col-gap-lg">
+                <div class="bm-flex-between-plain">
+                  <div class="bm-flex-center-gap">
+                    <div class="bm-icon-box-success-2"><i class="ph ph-arrow-down bm-text-md"></i></div>
+                    <div><div class="bm-text-body-medium-swap">Payment from Acme Corp</div><div class="bm-text-2xs-muted">Apr 8, 2026</div></div>
+                  </div>
+                  <div class="bm-text-body-semibold bm-text-success">+$12,400</div>
+                </div>
+                <div class="bm-flex-between-plain">
+                  <div class="bm-flex-center-gap">
+                    <div class="bm-icon-box-danger"><i class="ph ph-arrow-up bm-text-md"></i></div>
+                    <div><div class="bm-text-body-medium-swap">AWS Monthly Invoice</div><div class="bm-text-2xs-muted">Apr 7, 2026</div></div>
+                  </div>
+                  <div class="bm-text-body-semibold bm-text-danger">-$3,280</div>
+                </div>
+                <div class="bm-flex-between-plain">
+                  <div class="bm-flex-center-gap">
+                    <div class="bm-icon-box-success-2"><i class="ph ph-arrow-down bm-text-md"></i></div>
+                    <div><div class="bm-text-body-medium-swap">Subscription — Pro Plans</div><div class="bm-text-2xs-muted">Apr 6, 2026</div></div>
+                  </div>
+                  <div class="bm-text-body-semibold bm-text-success">+$8,960</div>
+                </div>
+                <div class="bm-flex-between-plain">
+                  <div class="bm-flex-center-gap">
+                    <div class="bm-icon-box-danger"><i class="ph ph-arrow-up bm-text-md"></i></div>
+                    <div><div class="bm-text-body-medium-swap">Figma Enterprise</div><div class="bm-text-2xs-muted">Apr 5, 2026</div></div>
+                  </div>
+                  <div class="bm-text-body-semibold bm-text-danger">-$780</div>
+                </div>
+                <div class="bm-flex-between-plain">
+                  <div class="bm-flex-center-gap">
+                    <div class="bm-icon-box-success-2"><i class="ph ph-arrow-down bm-text-md"></i></div>
+                    <div><div class="bm-text-body-medium-swap">Consulting — TechStart</div><div class="bm-text-2xs-muted">Apr 4, 2026</div></div>
+                  </div>
+                  <div class="bm-text-body-semibold bm-text-success">+$5,600</div>
+                </div>
+                <div class="bm-flex-between-plain">
+                  <div class="bm-flex-center-gap">
+                    <div class="bm-icon-box-danger"><i class="ph ph-arrow-up bm-text-md"></i></div>
+                    <div><div class="bm-text-body-medium-swap">Office Rent</div><div class="bm-text-2xs-muted">Apr 1, 2026</div></div>
+                  </div>
+                  <div class="bm-text-body-semibold bm-text-danger">-$4,500</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/chart-helpers.js"></script>
+<script src="/assets/js/pages/dashboard-finance.js"></script>
+{% endblock %}

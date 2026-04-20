@@ -1,0 +1,851 @@
+{% extends "layouts/base.html" %}
+{% set title = "Components" %}
+{% set activeMenu = "components" %}
+{% set basePath = "" %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <h1 class="bm-text-2xl-bold-fg-mb">Components</h1>
+          <p class="bm-text-body-muted-mb">All available UI components with examples</p>
+
+          <!-- ====== BUTTONS ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Buttons</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Button variants using <code class="bm-badge-muted">.bm-btn</code></p>
+              <div class="bm-flex-wrap-gap-mb">
+                <button class="bm-btn bm-btn-primary">Primary</button>
+                <button class="bm-btn bm-btn-secondary">Secondary</button>
+                <button class="bm-btn bm-btn-outline">Outline</button>
+                <button class="bm-btn bm-btn-ghost">Ghost</button>
+                <button class="bm-btn bm-btn-destructive">Destructive</button>
+              </div>
+              <p class="bm-text-caption-muted-mb">Button sizes</p>
+              <div class="bm-flex-wrap-gap-mb">
+                <button class="bm-btn bm-btn-primary bm-btn-sm">Small</button>
+                <button class="bm-btn bm-btn-primary">Default</button>
+                <button class="bm-btn bm-btn-primary bm-btn-lg">Large</button>
+              </div>
+              <p class="bm-text-caption-muted-mb">Icon buttons</p>
+              <div class="bm-flex-wrap-gap">
+                <button class="bm-btn bm-btn-primary bm-btn-icon"><i class="ph ph-plus bm-text-lg"></i></button>
+                <button class="bm-btn bm-btn-outline bm-btn-icon"><i class="ph ph-pencil bm-text-lg"></i></button>
+                <button class="bm-btn bm-btn-ghost bm-btn-icon"><i class="ph ph-trash bm-text-lg"></i></button>
+                <button class="bm-btn bm-btn-destructive bm-btn-icon"><i class="ph ph-x bm-text-lg"></i></button>
+              </div>
+              <p class="bm-text-caption-muted-mt3">Buttons with icons</p>
+              <div class="bm-flex-wrap-gap">
+                <button class="bm-btn bm-btn-primary"><i class="ph ph-plus bm-text-lg"></i> Create New</button>
+                <button class="bm-btn bm-btn-outline"><i class="ph ph-download-simple bm-text-lg"></i> Export</button>
+                <button class="bm-btn bm-btn-destructive"><i class="ph ph-trash bm-text-lg"></i> Delete</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== BADGES ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Badges</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Status badges using <code class="bm-badge-muted">.bm-badge</code></p>
+              <div class="bm-flex-wrap-gap">
+                <span class="bm-badge bm-badge-primary">Primary</span>
+                <span class="bm-badge bm-badge-success">Success</span>
+                <span class="bm-badge bm-badge-warning">Warning</span>
+                <span class="bm-badge bm-badge-danger">Danger</span>
+                <span class="bm-badge bm-badge-info">Info</span>
+              </div>
+              <p class="bm-text-caption-muted-mt3">Usage examples</p>
+              <div class="bm-flex-wrap-gap-xl">
+                <span class="bm-text-body-medium">Status: <span class="bm-badge bm-badge-success">Active</span></span>
+                <span class="bm-text-body-medium">Role: <span class="bm-badge bm-badge-primary">Admin</span></span>
+                <span class="bm-text-body-medium">Priority: <span class="bm-badge bm-badge-danger">High</span></span>
+                <span class="bm-text-body-medium">Type: <span class="bm-badge bm-badge-info">Feature</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== AVATARS ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Avatars</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Avatar sizes</p>
+              <div class="bm-flex-wrap-mb-xl">
+                <div class="bm-text-center"><div class="bm-avatar bm-avatar-xs">JD</div><div class="bm-text-2xs-muted-mt">xs (24px)</div></div>
+                <div class="bm-text-center"><div class="bm-avatar bm-avatar-sm">JD</div><div class="bm-text-2xs-muted-mt">sm (32px)</div></div>
+                <div class="bm-text-center"><div class="bm-avatar bm-avatar-md">JD</div><div class="bm-text-2xs-muted-mt">md (40px)</div></div>
+                <div class="bm-text-center"><div class="bm-avatar bm-avatar-lg">JD</div><div class="bm-text-2xs-muted-mt">lg (48px)</div></div>
+                <div class="bm-text-center"><div class="bm-avatar bm-avatar-xl">JD</div><div class="bm-text-2xs-muted-mt">xl (64px)</div></div>
+              </div>
+              <p class="bm-text-caption-muted-mb">Avatar group</p>
+              <div class="bm-d-flex">
+                <div class="bm-avatar bm-avatar-sm bm-border-success-overlap">AS</div>
+                <div class="bm-avatar bm-avatar-sm bm-border-success-overlap">BW</div>
+                <div class="bm-avatar bm-avatar-sm bm-border-success-overlap">EJ</div>
+                <div class="bm-avatar bm-avatar-sm bm-border-success-overlap">DM</div>
+                <div class="bm-avatar bm-avatar-sm bm-avatar-overlap-muted">+5</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== ALERTS ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Alerts</span></div>
+            <div class="bm-card-body bm-flex-col-gap-sm">
+              <div class="bm-alert bm-alert-success">
+                <i class="ph ph-check-circle bm-text-xl"></i>
+                <div><strong>Success!</strong> Your changes have been saved successfully.</div>
+              </div>
+              <div class="bm-alert bm-alert-warning">
+                <i class="ph ph-warning bm-text-xl"></i>
+                <div><strong>Warning!</strong> Please review the following items before proceeding.</div>
+              </div>
+              <div class="bm-alert bm-alert-danger">
+                <i class="ph ph-x-circle bm-text-xl"></i>
+                <div><strong>Error!</strong> Something went wrong. Please try again later.</div>
+              </div>
+              <div class="bm-alert bm-alert-info">
+                <i class="ph ph-info bm-text-xl"></i>
+                <div><strong>Info:</strong> A new version is available. Please update to continue.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== FORM ELEMENTS ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Form Elements</span></div>
+            <div class="bm-card-body">
+              <div class="bm-grid-2col-max">
+                <div>
+                  <label class="bm-label">Text Input</label>
+                  <input class="bm-input" type="text" placeholder="Enter text..." />
+                </div>
+                <div>
+                  <label class="bm-label">Email Input</label>
+                  <input class="bm-input" type="email" placeholder="name@example.com" />
+                </div>
+                <div>
+                  <label class="bm-label">Password Input</label>
+                  <input class="bm-input" type="password" placeholder="Enter password..." />
+                </div>
+                <div>
+                  <label class="bm-label">Select</label>
+                  <select class="bm-select">
+                    <option value="">Choose an option...</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3</option>
+                  </select>
+                </div>
+                <div class="bm-grid-span-2">
+                  <label class="bm-label">Textarea</label>
+                  <textarea class="bm-input bm-resize-v" rows="3" placeholder="Enter a longer text..."></textarea>
+                </div>
+                <div>
+                  <label class="bm-label bm-mb-sm">Checkboxes</label>
+                  <div class="bm-flex-col-gap-md">
+                    <label class="bm-flex-action-sm">
+                      <input type="checkbox" class="bm-checkbox" checked /> Option A
+                    </label>
+                    <label class="bm-flex-action-sm">
+                      <input type="checkbox" class="bm-checkbox" /> Option B
+                    </label>
+                    <label class="bm-flex-action-sm">
+                      <input type="checkbox" class="bm-checkbox" /> Option C
+                    </label>
+                  </div>
+                </div>
+                <div>
+                  <label class="bm-label bm-mb-sm">Radio Buttons</label>
+                  <div class="bm-flex-col-gap-md">
+                    <label class="bm-flex-action-sm">
+                      <input type="radio" name="radio-demo" class="bm-radio" checked /> Choice 1
+                    </label>
+                    <label class="bm-flex-action-sm">
+                      <input type="radio" name="radio-demo" class="bm-radio" /> Choice 2
+                    </label>
+                    <label class="bm-flex-action-sm">
+                      <input type="radio" name="radio-demo" class="bm-radio" /> Choice 3
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="bm-mt-1500">
+                <label class="bm-label bm-mb-sm">Toggle Switches</label>
+                <div class="bm-flex-gap-1500">
+                  <div class="bm-flex-center-gap-md">
+                    <div class="bm-switch active" onclick="this.classList.toggle('active')"></div>
+                    <span class="bm-text-body">Enabled</span>
+                  </div>
+                  <div class="bm-flex-center-gap-md">
+                    <div class="bm-switch" onclick="this.classList.toggle('active')"></div>
+                    <span class="bm-text-body">Disabled</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== TABS ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Tabs</span></div>
+            <div class="bm-card-body">
+              <div class="bm-tabs bm-mb-md" data-tab-group="demo-tabs">
+                <button class="bm-tab active" data-tab="tab1">Overview</button>
+                <button class="bm-tab" data-tab="tab2">Details</button>
+                <button class="bm-tab" data-tab="tab3">History</button>
+              </div>
+              <div data-tab-panel="demo-tabs" data-tab-content="tab1" class="bm-display-block">
+                <p class="bm-text-body-muted">This is the Overview tab content. Click other tabs to switch.</p>
+              </div>
+              <div data-tab-panel="demo-tabs" data-tab-content="tab2" class="bm-d-none">
+                <p class="bm-text-body-muted">This is the Details tab content with more detailed information.</p>
+              </div>
+              <div data-tab-panel="demo-tabs" data-tab-content="tab3" class="bm-d-none">
+                <p class="bm-text-body-muted">This is the History tab showing past records.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== MODAL ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Modal</span></div>
+            <div class="bm-card-body">
+              <button class="bm-btn bm-btn-primary" onclick="document.getElementById('demoModal').classList.remove('bm-d-none')">Open Modal</button>
+            </div>
+          </div>
+
+          <!-- Modal -->
+          <div id="demoModal" class="bm-modal-backdrop bm-d-none" onclick="if(event.target===this)this.classList.add('bm-d-none')">
+            <div class="bm-modal">
+              <div class="bm-modal-header">
+                <span class="bm-modal-title">Example Modal</span>
+                <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm" onclick="document.getElementById('demoModal').classList.add('bm-d-none')">
+                  <i class="ph ph-x bm-text-lg"></i>
+                </button>
+              </div>
+              <div class="bm-modal-body">
+                <p class="bm-text-body-muted">This is a modal dialog. You can place any content here including forms, messages, or confirmations.</p>
+                <div class="bm-mt-md">
+                  <label class="bm-label">Example Input</label>
+                  <input class="bm-input" type="text" placeholder="Type something..." />
+                </div>
+              </div>
+              <div class="bm-modal-footer">
+                <button class="bm-btn bm-btn-outline" onclick="document.getElementById('demoModal').classList.add('bm-d-none')">Cancel</button>
+                <button class="bm-btn bm-btn-primary" onclick="document.getElementById('demoModal').classList.add('bm-d-none')">Confirm</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== PAGINATION ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Pagination</span></div>
+            <div class="bm-card-body">
+              <div class="bm-pagination">
+                <button class="bm-page-btn" disabled>‹</button>
+                <button class="bm-page-btn active">1</button>
+                <button class="bm-page-btn">2</button>
+                <button class="bm-page-btn">3</button>
+                <button class="bm-page-btn">4</button>
+                <button class="bm-page-btn">5</button>
+                <button class="bm-page-btn">…</button>
+                <button class="bm-page-btn">20</button>
+                <button class="bm-page-btn">›</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== EMPTY STATE & SPINNER ====== -->
+          <div class="bm-grid-2col-mb">
+            <div class="bm-card">
+              <div class="bm-card-header"><span class="bm-card-title">Empty State</span></div>
+              <div class="bm-card-body">
+                <div class="bm-empty-state">
+                  <div class="bm-empty-state-icon">
+                    <i class="ph ph-tray bm-text-5xl-icon"></i>
+                  </div>
+                  <div class="bm-empty-state-title">No items found</div>
+                  <div class="bm-empty-state-description">Try adjusting your search or filter criteria.</div>
+                  <button class="bm-btn bm-btn-primary bm-btn-sm bm-mt-md">Add Item</button>
+                </div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-header"><span class="bm-card-title">Loading Spinner</span></div>
+              <div class="bm-card-body bm-flex-col-center-p">
+                <div class="bm-spinner"></div>
+                <span class="bm-text-body-muted">Loading data...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== DATA GRID ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">DataGrid</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Sortable, searchable, paginated table using <code class="bm-badge-muted">new App.DataGrid(el, opts)</code></p>
+              <div id="demoGrid"></div>
+            </div>
+          </div>
+
+          <!-- ====== FILE DROPZONE ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">File Dropzone</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Drag-and-drop file upload using <code class="bm-badge-muted">new App.Dropzone(el, opts)</code></p>
+              <div id="demoDropzone"></div>
+            </div>
+          </div>
+
+          <!-- ====== STEPPER / WIZARD ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Stepper / Wizard</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Multi-step wizard using <code class="bm-badge-muted">new App.Stepper(el, opts)</code> or <code class="bm-badge-muted">App.initSteppers()</code></p>
+
+              <div data-stepper id="demoStepper">
+                <!-- Step nav -->
+                <div class="bm-flex-align-mb8">
+                  <div data-stepper-step class="bm-flex-shrink-gap">
+                    <div class="bm-stepper-bullet bm-step-circle">1</div>
+                    <span class="bm-text-sm-medium-fg">Account</span>
+                  </div>
+                  <div data-stepper-line class="bm-step-progress-line"></div>
+                  <div data-stepper-step class="bm-flex-shrink-gap">
+                    <div class="bm-stepper-bullet bm-w-2rem-step">2</div>
+                    <span class="bm-text-sm-semibold-muted">Profile</span>
+                  </div>
+                  <div data-stepper-line class="bm-step-progress-line"></div>
+                  <div data-stepper-step class="bm-flex-shrink-gap">
+                    <div class="bm-stepper-bullet bm-w-2rem-step">3</div>
+                    <span class="bm-text-sm-semibold-muted">Review</span>
+                  </div>
+                </div>
+
+                <!-- Panels -->
+                <div data-stepper-panel class="bm-d-none">
+                  <div class="bm-w-max-420">
+                    <h3 class="bm-text-md-fg-semibold-mb">Create your account</h3>
+                    <div class="bm-flex-col-gap-875">
+                      <div><label class="bm-label">Email address</label><input class="bm-input" type="email" placeholder="name@example.com" /></div>
+                      <div><label class="bm-label">Password</label><input class="bm-input" type="password" placeholder="Min 8 characters" /></div>
+                    </div>
+                  </div>
+                </div>
+                <div data-stepper-panel class="bm-d-none">
+                  <div class="bm-w-max-420">
+                    <h3 class="bm-text-md-fg-semibold-mb">Your profile</h3>
+                    <div class="bm-flex-col-gap-875">
+                      <div><label class="bm-label">Full name</label><input class="bm-input" type="text" placeholder="Jane Doe" /></div>
+                      <div><label class="bm-label">Job title</label><input class="bm-input" type="text" placeholder="e.g. Product Designer" /></div>
+                    </div>
+                  </div>
+                </div>
+                <div data-stepper-panel class="bm-d-none">
+                  <div class="bm-w-max-420">
+                    <h3 class="bm-text-md-fg-semibold-mb">All done!</h3>
+                    <p class="bm-text-body-muted">Review your information and click <strong>Submit</strong> to complete setup.</p>
+                    <div class="bm-muted-note">
+                      Your account is ready to go. Click Submit to finish.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="bm-flex-sep-top-mt">
+                  <button class="bm-btn bm-btn-outline" data-stepper-prev>← Prev</button>
+                  <button class="bm-btn bm-btn-primary" data-stepper-next>Next →</button>
+                  <button class="bm-btn bm-btn-primary bm-d-none" data-stepper-submit>Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== RANGE SLIDER ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Range Slider</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Smooth range inputs with fill track using <code class="bm-badge-muted">App.initRangeSliders()</code> — add <code class="bm-badge-muted">class="bm-range"</code> to any <code class="bm-badge-muted">&lt;input type="range"&gt;</code></p>
+
+              <div class="bm-flex-col-gap-2xl">
+                <!-- Single: volume -->
+                <div>
+                  <label class="bm-label bm-mb-sm">Volume</label>
+                  <div class="bm-range-wrap bm-flex-center-gap-xl2">
+                    <input type="range" class="bm-range bm-flex-1" min="0" max="100" value="65" data-suffix="%" />
+                    <span class="bm-range-value bm-text-label-min">65%</span>
+                  </div>
+                </div>
+                <!-- Single: price -->
+                <div>
+                  <label class="bm-label bm-mb-sm">Price limit</label>
+                  <div class="bm-range-wrap bm-flex-center-gap-xl2">
+                    <input type="range" class="bm-range bm-flex-1" min="0" max="1000" value="350" data-prefix="$" />
+                    <span class="bm-range-value bm-stat-val">$350</span>
+                  </div>
+                </div>
+                <!-- Single: opacity -->
+                <div>
+                  <label class="bm-label bm-mb-sm">Opacity</label>
+                  <div class="bm-range-wrap bm-flex-center-gap-xl2">
+                    <input type="range" class="bm-range bm-flex-1" min="0" max="100" value="80" data-suffix="%" />
+                    <span class="bm-range-value bm-text-label-min">80%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== OTP INPUT ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">OTP Input</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">One-time password input with auto-advance and paste support using <code class="bm-badge-muted">App.initOTP()</code> — wrap cells in <code class="bm-badge-muted">.bm-otp</code> with <code class="bm-badge-muted">.bm-otp-input</code> children</p>
+
+              <div class="bm-flex-col-gap8">
+                <!-- 6-digit OTP -->
+                <div>
+                  <label class="bm-label bm-mb-sm">6-digit verification code</label>
+                  <div class="bm-otp bm-flex-gap-xs" id="demoOtp6" onchange="document.getElementById('otpVal6').textContent = event.detail.value">
+                    <input class="bm-otp-input bm-otp-input" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="bm-otp-input bm-otp-input" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="bm-otp-input bm-otp-input" type="text" inputmode="numeric" maxlength="1" />
+                    <span class="bm-icon-nav">—</span>
+                    <input class="bm-otp-input bm-otp-input" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="bm-otp-input bm-otp-input" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="bm-otp-input bm-otp-input" type="text" inputmode="numeric" maxlength="1" />
+                  </div>
+                  <p class="bm-text-sm-muted-mt2">Value: <code id="otpVal6" class="bm-badge-muted"></code></p>
+                </div>
+                <!-- 4-digit PIN -->
+                <div>
+                  <label class="bm-label bm-mb-sm">4-digit PIN</label>
+                  <div class="bm-otp bm-flex-gap-xs" id="demoOtp4" onchange="document.getElementById('otpVal4').textContent = event.detail.value">
+                    <input class="bm-otp-input bm-otp-input-lg" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="bm-otp-input bm-otp-input-lg" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="bm-otp-input bm-otp-input-lg" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="bm-otp-input bm-otp-input-lg" type="text" inputmode="numeric" maxlength="1" />
+                  </div>
+                  <p class="bm-text-sm-muted-mt2">Value: <code id="otpVal4" class="bm-badge-muted"></code></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== FORM VALIDATION ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Form Validation</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Client-side validation with inline feedback. Fields turn red and display error messages on invalid submit.</p>
+
+              <form id="demoValidationForm" novalidate class="bm-w-max-480" onsubmit="return handleDemoFormSubmit(event)">
+                <div class="bm-flex-col-gap-xl">
+
+                  <!-- Full Name (required) -->
+                  <div id="fldName">
+                    <label class="bm-label">Full name <span class="bm-text-danger">*</span></label>
+                    <input id="inpName" class="bm-input" type="text" placeholder="Jane Doe" />
+                    <p id="errName" class="bm-hidden-error"></p>
+                  </div>
+
+                  <!-- Email (required + format) -->
+                  <div id="fldEmail">
+                    <label class="bm-label">Email address <span class="bm-text-danger">*</span></label>
+                    <input id="inpEmail" class="bm-input" type="email" placeholder="name@example.com" />
+                    <p id="errEmail" class="bm-hidden-error"></p>
+                  </div>
+
+                  <!-- Password (required + min-length 8) -->
+                  <div id="fldPwd">
+                    <label class="bm-label">Password <span class="bm-text-danger">*</span></label>
+                    <input id="inpPwd" class="bm-input" type="password" placeholder="Min 8 characters" />
+                    <p id="errPwd" class="bm-hidden-error"></p>
+                  </div>
+
+                  <!-- URL (optional + format) -->
+                  <div id="fldUrl">
+                    <label class="bm-label">Website <span class="bm-text-sm-muted">(optional)</span></label>
+                    <input id="inpUrl" class="bm-input" type="url" placeholder="https://example.com" />
+                    <p id="errUrl" class="bm-hidden-error"></p>
+                  </div>
+
+                  <!-- Terms (required checkbox) -->
+                  <div id="fldTerms">
+                    <label class="bm-flex-start-gap-sm">
+                      <input id="inpTerms" class="bm-checkbox bm-mt-xs-shrink0" type="checkbox" />
+                      <span class="bm-text-sm-fg">I agree to the <a href="#" class="bm-text-primary">Terms of Service</a> and <a href="#" class="bm-text-primary">Privacy Policy</a></span>
+                    </label>
+                    <p id="errTerms" class="bm-hidden-error"></p>
+                  </div>
+
+                  <div class="bm-flex-gap-750">
+                    <button type="submit" class="bm-btn bm-btn-primary">Submit Form</button>
+                    <button type="button" class="bm-btn bm-btn-outline" onclick="resetDemoForm()">Reset</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- ====== BREADCRUMB ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Breadcrumb</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Navigation breadcrumbs using <code class="bm-badge-muted">.bm-breadcrumb</code></p>
+              <nav class="bm-breadcrumb">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="#">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="#">Projects</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Dashboard</span></div>
+              </nav>
+            </div>
+          </div>
+
+          <!-- ====== PROGRESS BAR ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Progress Bar</span></div>
+            <div class="bm-card-body bm-flex-col-gap-lg">
+              <p class="bm-text-caption-muted-mb">Progress bars using <code class="bm-badge-muted">.bm-progress</code> — color modifier goes on the wrapper</p>
+              <div>
+                <div class="bm-text-caption-medium bm-mb-xs">Default (75%)</div>
+                <div class="bm-progress bm-progress-sm"><div class="bm-progress-bar" style="width: 75%"></div></div>
+              </div>
+              <div>
+                <div class="bm-text-caption-medium bm-mb-xs">Success (91%)</div>
+                <div class="bm-progress bm-progress-sm bm-progress-success"><div class="bm-progress-bar" style="width: 91%"></div></div>
+              </div>
+              <div>
+                <div class="bm-text-caption-medium bm-mb-xs">Warning (60%)</div>
+                <div class="bm-progress bm-progress-sm bm-progress-warning"><div class="bm-progress-bar" style="width: 60%"></div></div>
+              </div>
+              <div>
+                <div class="bm-text-caption-medium bm-mb-xs">Danger (100% — Over budget)</div>
+                <div class="bm-progress bm-progress-sm bm-progress-danger"><div class="bm-progress-bar" style="width: 100%"></div></div>
+              </div>
+              <div>
+                <div class="bm-text-caption-medium bm-mb-xs">Striped + animated (45%)</div>
+                <div class="bm-progress bm-progress-sm bm-progress-striped"><div class="bm-progress-bar" style="width: 45%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== AVATAR GROUP ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Avatar Group (Stacked)</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Overlapping avatars using <code class="bm-badge-muted">.bm-avatar-group</code></p>
+              <div class="bm-avatar-group">
+                <div class="bm-avatar bm-avatar-sm">AS</div>
+                <div class="bm-avatar bm-avatar-sm">BW</div>
+                <div class="bm-avatar bm-avatar-sm">EJ</div>
+                <div class="bm-avatar bm-avatar-sm">DM</div>
+                <div class="bm-avatar-count bm-avatar bm-avatar-sm">+3</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== TOOLTIP ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Tooltip</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">CSS-only tooltips using <code class="bm-badge-muted">.bm-tooltip-wrapper</code> + <code class="bm-badge-muted">.bm-tooltip</code></p>
+              <div class="bm-flex-wrap-gap-xl">
+                <div class="bm-tooltip-wrapper">
+                  <button class="bm-btn bm-btn-primary bm-btn-sm">Hover me</button>
+                  <span class="bm-tooltip">This is a tooltip</span>
+                </div>
+                <div class="bm-tooltip-wrapper">
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">Another one</button>
+                  <span class="bm-tooltip">More info here</span>
+                </div>
+                <div class="bm-tooltip-wrapper">
+                  <i class="ph ph-info bm-text-lg-primary"></i>
+                  <span class="bm-tooltip">Icon tooltip</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== ACCORDION ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Accordion</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Collapsible sections using <code class="bm-badge-muted">.bm-accordion</code></p>
+              <div class="bm-accordion" id="demoAccordion">
+                <div class="bm-accordion-item open">
+                  <button class="bm-accordion-trigger" onclick="this.parentElement.classList.toggle('open')">
+                    What is BlackMoon Admin Kit?
+                    <i class="ph ph-caret-down bm-accordion-icon"></i>
+                  </button>
+                  <div class="bm-accordion-content"><div class="bm-accordion-body">BlackMoon Admin Kit is a modern, theme-aware admin dashboard template built with vanilla HTML, CSS, and JavaScript. It supports light, light-grey, and dark themes.</div></div>
+                </div>
+                <div class="bm-accordion-item">
+                  <button class="bm-accordion-trigger" onclick="this.parentElement.classList.toggle('open')">
+                    How do I customize themes?
+                    <i class="ph ph-caret-down bm-accordion-icon"></i>
+                  </button>
+                  <div class="bm-accordion-content"><div class="bm-accordion-body">Themes are controlled via CSS custom properties on the <code class="bm-badge-muted">[data-theme]</code> attribute. Switch between light, light-grey, and dark by changing the attribute on <code class="bm-badge-muted">&lt;html&gt;</code>.</div></div>
+                </div>
+                <div class="bm-accordion-item">
+                  <button class="bm-accordion-trigger" onclick="this.parentElement.classList.toggle('open')">
+                    Can I use this with a framework?
+                    <i class="ph ph-caret-down bm-accordion-icon"></i>
+                  </button>
+                  <div class="bm-accordion-content"><div class="bm-accordion-body">Yes! The CSS and JS are framework-agnostic. You can integrate the component classes and patterns into React, Vue, or any other framework.</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== TAGS / CHIPS ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Tags / Chips</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Display tags using <code class="bm-badge-muted">.bm-tag</code></p>
+              <div class="bm-flex-wrap-gap-mb">
+                <span class="bm-tag">Default</span>
+                <span class="bm-tag bm-tag-primary">Primary</span>
+                <span class="bm-tag bm-tag-success">Success</span>
+                <span class="bm-tag bm-tag-warning">Warning</span>
+                <span class="bm-tag bm-tag-danger">Danger</span>
+                <span class="bm-tag bm-tag-info">Info</span>
+              </div>
+              <p class="bm-text-caption-muted-mb">Removable tags</p>
+              <div class="bm-flex-wrap-gap">
+                <span class="bm-tag bm-tag-primary bm-tag-removable">React <button class="bm-tag-remove-btn" onclick="this.parentElement.remove()">×</button></span>
+                <span class="bm-tag bm-tag-success bm-tag-removable">Vue <button class="bm-tag-remove-btn" onclick="this.parentElement.remove()">×</button></span>
+                <span class="bm-tag bm-tag-info bm-tag-removable">Angular <button class="bm-tag-remove-btn" onclick="this.parentElement.remove()">×</button></span>
+                <span class="bm-tag bm-tag-warning bm-tag-removable">Svelte <button class="bm-tag-remove-btn" onclick="this.parentElement.remove()">×</button></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== DIVIDER ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Divider</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Horizontal dividers using <code class="bm-badge-muted">.bm-divider</code> and <code class="bm-badge-muted">.bm-divider-text</code></p>
+              <div>Content above the divider</div>
+              <hr class="bm-divider" />
+              <div>Content below the divider</div>
+              <div class="bm-divider-text">Or continue with</div>
+              <div>Content after text divider</div>
+            </div>
+          </div>
+
+          <!-- ====== TREND INDICATOR ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Trend Indicator</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Inline trend pills using <code class="bm-badge-muted">.bm-trend-up</code> / <code class="bm-badge-muted">.bm-trend-down</code></p>
+              <div class="bm-flex-wrap-gap-xl">
+                <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>12.5%</span>
+                <span class="bm-trend-down"><i class="ph ph-arrow-down"></i>3.8%</span>
+                <span class="bm-trend-up"><i class="ph ph-arrow-up"></i>$2,400</span>
+                <span class="bm-trend-down"><i class="ph ph-arrow-down"></i>8 users</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== PAGE HEADER ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Page Header</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Page header with breadcrumb, title, subtitle and actions using <code class="bm-badge-muted">.bm-page-header</code></p>
+              <div class="bm-page-header" style="border-bottom:1px solid var(--border);padding-bottom:1rem;">
+                <div>
+                  <nav class="bm-breadcrumb bm-mb-xs">
+                    <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="#">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                    <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="#">Users</a><span class="bm-breadcrumb-separator">/</span></div>
+                    <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Overview</span></div>
+                  </nav>
+                  <h1 class="bm-page-title">User Management</h1>
+                  <p class="bm-page-subtitle">Manage your team members and their permissions.</p>
+                </div>
+                <div class="bm-page-actions">
+                  <button class="bm-btn bm-btn-outline bm-btn-sm"><i class="ph ph-download-simple bm-text-md"></i> Export</button>
+                  <button class="bm-btn bm-btn-primary bm-btn-sm"><i class="ph ph-plus bm-text-md"></i> New User</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== CAROUSEL ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Carousel</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Image/content carousel using <code class="bm-badge-muted">data-bm-carousel</code></p>
+              <div data-bm-carousel data-autoplay="true" data-interval="4000" style="max-width:480px;">
+                <div class="bm-carousel-track">
+                  <div class="bm-carousel-slide">
+                    <div class="bm-card-gradient-primary bm-text-center" style="padding:3rem 2rem;border-radius:var(--radius-xl);">
+                      <i class="ph ph-rocket-launch bm-text-lg-primary"></i>
+                      <h3 class="bm-text-md-bold bm-mt-md">Slide One</h3>
+                      <p class="bm-text-caption-muted">Getting started is easy.</p>
+                    </div>
+                  </div>
+                  <div class="bm-carousel-slide">
+                    <div class="bm-card-gradient-success bm-text-center" style="padding:3rem 2rem;border-radius:var(--radius-xl);">
+                      <i class="ph ph-check-circle bm-text-lg-success"></i>
+                      <h3 class="bm-text-md-bold bm-mt-md">Slide Two</h3>
+                      <p class="bm-text-caption-muted">Everything is set up.</p>
+                    </div>
+                  </div>
+                  <div class="bm-carousel-slide">
+                    <div class="bm-card-gradient-warning bm-text-center" style="padding:3rem 2rem;border-radius:var(--radius-xl);">
+                      <i class="ph ph-lightbulb bm-text-lg-warning"></i>
+                      <h3 class="bm-text-md-bold bm-mt-md">Slide Three</h3>
+                      <p class="bm-text-caption-muted">Explore more features.</p>
+                    </div>
+                  </div>
+                </div>
+                <button class="bm-carousel-nav bm-carousel-nav-prev"><i class="ph ph-caret-left"></i></button>
+                <button class="bm-carousel-nav bm-carousel-nav-next"><i class="ph ph-caret-right"></i></button>
+                <div class="bm-carousel-dots"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== LIGHTBOX ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Lightbox</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Image lightbox gallery using <code class="bm-badge-muted">data-bm-lightbox</code> — click images to open, use arrows or keyboard to navigate</p>
+              <div class="bm-flex-wrap-gap">
+                <div style="width:120px;height:80px;background:var(--primary);border-radius:var(--radius-md);cursor:pointer;display:flex;align-items:center;justify-content:center;" data-bm-lightbox="demoGallery" data-caption="Blue card">
+                  <i class="ph ph-image"></i>
+                </div>
+                <div style="width:120px;height:80px;background:var(--success);border-radius:var(--radius-md);cursor:pointer;display:flex;align-items:center;justify-content:center;" data-bm-lightbox="demoGallery" data-caption="Green card">
+                  <i class="ph ph-mountains"></i>
+                </div>
+                <div style="width:120px;height:80px;background:var(--warning);border-radius:var(--radius-md);cursor:pointer;display:flex;align-items:center;justify-content:center;" data-bm-lightbox="demoGallery" data-caption="Yellow card">
+                  <i class="ph ph-camera"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== SKELETON LOADING ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Skeleton Loading</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Skeleton placeholders using <code class="bm-badge-muted">.bm-skeleton</code> classes or <code class="bm-badge-muted">App.skeleton.show/hide()</code></p>
+              <div class="bm-grid-2col-mb">
+                <div>
+                  <label class="bm-label bm-mb-sm">CSS classes (static)</label>
+                  <div class="bm-flex-center-gap-md bm-mb-md">
+                    <div class="bm-skeleton bm-skeleton-avatar"></div>
+                    <div style="flex:1;">
+                      <div class="bm-skeleton bm-skeleton-title bm-mb-xs"></div>
+                      <div class="bm-skeleton bm-skeleton-text"></div>
+                    </div>
+                  </div>
+                  <div class="bm-skeleton bm-skeleton-text bm-mb-xs"></div>
+                  <div class="bm-skeleton bm-skeleton-text bm-mb-xs" style="width:80%"></div>
+                  <div class="bm-skeleton bm-skeleton-text" style="width:60%"></div>
+                  <div class="bm-skeleton bm-skeleton-btn bm-mt-md"></div>
+                </div>
+                <div>
+                  <label class="bm-label bm-mb-sm">JS API (dynamic)</label>
+                  <div id="skeletonTarget" class="bm-p-md" style="border:1px dashed var(--border);border-radius:var(--radius-md);">
+                    <p class="bm-text-body-muted">This content will be replaced by skeleton.</p>
+                  </div>
+                  <div class="bm-flex-gap-xs bm-mt-md">
+                    <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.skeleton.show('#skeletonTarget',{lines:3,type:'text'})">Show Skeleton</button>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.skeleton.hide('#skeletonTarget')">Hide Skeleton</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== LOADING BAR ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Loading Bar</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Top-of-page progress bar via <code class="bm-badge-muted">App.LoadingBar.start()</code> / <code class="bm-badge-muted">App.LoadingBar.done()</code></p>
+              <div class="bm-flex-wrap-gap">
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.LoadingBar.start();setTimeout(function(){App.LoadingBar.done()},2000)">Start Loading (2s)</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== NOTIFICATION ITEM ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Notification Item</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Notification list items using <code class="bm-badge-muted">.bm-notif-item</code> (as used in the notification panel)</p>
+              <div style="max-width:400px;">
+                <div class="bm-notif-item unread" style="padding:0.75rem;border-bottom:1px solid var(--border);">
+                  <div class="bm-notif-icon bm-bg-success-light"><i class="ph ph-check-circle bm-text-md-success"></i></div>
+                  <div class="bm-notif-body">
+                    <div class="bm-notif-title">New order placed</div>
+                    <div class="bm-notif-text">John Doe placed order #ORD-8912 for $249.00</div>
+                    <div class="bm-notif-time">2 minutes ago</div>
+                  </div>
+                </div>
+                <div class="bm-notif-item" style="padding:0.75rem;">
+                  <div class="bm-notif-icon bm-bg-primary-light"><i class="ph ph-user-plus bm-text-md-primary"></i></div>
+                  <div class="bm-notif-body">
+                    <div class="bm-notif-title">New team member</div>
+                    <div class="bm-notif-text">Alice Smith joined the Design team</div>
+                    <div class="bm-notif-time">1 hour ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== TIMELINE V2 ====== -->
+          <div class="bm-card bm-mb-xl">
+            <div class="bm-card-header"><span class="bm-card-title">Timeline v2</span></div>
+            <div class="bm-card-body">
+              <p class="bm-text-caption-muted-mb">Vertical timeline with icons using <code class="bm-badge-muted">.bm-timeline-v2</code></p>
+              <div class="bm-timeline-v2">
+                <div class="bm-timeline-v2-item">
+                  <div class="bm-timeline-v2-marker bm-timeline-v2-marker-success"><i class="ph ph-check"></i></div>
+                  <div class="bm-timeline-v2-line"></div>
+                  <div class="bm-timeline-v2-content">
+                    <div class="bm-timeline-v2-title">Project created</div>
+                    <div class="bm-timeline-v2-desc">The project "BlackMoon Admin" was initialized with base template files.</div>
+                    <div class="bm-timeline-v2-time">2 hours ago</div>
+                  </div>
+                </div>
+                <div class="bm-timeline-v2-item">
+                  <div class="bm-timeline-v2-marker"><i class="ph ph-user-plus"></i></div>
+                  <div class="bm-timeline-v2-line"></div>
+                  <div class="bm-timeline-v2-content">
+                    <div class="bm-timeline-v2-title">Team member added</div>
+                    <div class="bm-timeline-v2-desc">Alice Johnson was assigned as a contributor.</div>
+                    <div class="bm-timeline-v2-time">5 hours ago</div>
+                  </div>
+                </div>
+                <div class="bm-timeline-v2-item">
+                  <div class="bm-timeline-v2-marker bm-timeline-v2-marker-warning"><i class="ph ph-warning"></i></div>
+                  <div class="bm-timeline-v2-line"></div>
+                  <div class="bm-timeline-v2-content">
+                    <div class="bm-timeline-v2-title">Deadline approaching</div>
+                    <div class="bm-timeline-v2-desc">Sprint 3 delivery is due in 2 days.</div>
+                    <div class="bm-timeline-v2-time">Yesterday</div>
+                  </div>
+                </div>
+                <div class="bm-timeline-v2-item">
+                  <div class="bm-timeline-v2-marker bm-timeline-v2-marker-muted"><i class="ph ph-clock"></i></div>
+                  <div class="bm-timeline-v2-content">
+                    <div class="bm-timeline-v2-title">Scheduled review</div>
+                    <div class="bm-timeline-v2-desc">Code review session planned for Friday 3 PM.</div>
+                    <div class="bm-timeline-v2-time">3 days ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/components.js"></script>
+{% endblock %}

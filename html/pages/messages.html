@@ -1,0 +1,459 @@
+{% extends "layouts/base.html" %}
+{% set title = "Messages" %}
+{% set activeMenu = "messages" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/messages.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <!-- 3-Panel Messages Layout -->
+          <div class="msg-layout">
+
+            <!-- ═══ Left: Folder Nav ═══ -->
+            <div class="msg-folders">
+              <div class="msg-folders-header">
+                <button class="bm-btn bm-btn-primary bm-btn-sm msg-compose-btn" id="composeBtn">
+                  <i class="ph ph-note-pencil"></i>Compose
+                </button>
+              </div>
+              <nav class="msg-folder-nav">
+                <button class="msg-folder active" data-folder="inbox">
+                  <i class="ph ph-tray"></i>
+                  <span class="msg-folder-label">Inbox</span>
+                  <span class="msg-folder-count">3</span>
+                </button>
+                <button class="msg-folder" data-folder="starred">
+                  <i class="ph ph-star"></i>
+                  <span class="msg-folder-label">Starred</span>
+                  <span class="msg-folder-count">2</span>
+                </button>
+                <button class="msg-folder" data-folder="sent">
+                  <i class="ph ph-paper-plane-tilt"></i>
+                  <span class="msg-folder-label">Sent</span>
+                </button>
+                <button class="msg-folder" data-folder="drafts">
+                  <i class="ph ph-note"></i>
+                  <span class="msg-folder-label">Drafts</span>
+                  <span class="msg-folder-count warn">2</span>
+                </button>
+                <button class="msg-folder" data-folder="archive">
+                  <i class="ph ph-archive"></i>
+                  <span class="msg-folder-label">Archive</span>
+                </button>
+                <button class="msg-folder" data-folder="trash">
+                  <i class="ph ph-trash"></i>
+                  <span class="msg-folder-label">Trash</span>
+                </button>
+              </nav>
+              <div class="msg-folder-labels">
+                <div class="msg-folder-labels-title">Labels</div>
+                <div class="msg-label-item"><span class="msg-label-dot" style="background:var(--primary)"></span>Work</div>
+                <div class="msg-label-item"><span class="msg-label-dot" style="background:var(--success)"></span>Personal</div>
+                <div class="msg-label-item"><span class="msg-label-dot" style="background:var(--warning)"></span>Finance</div>
+                <div class="msg-label-item"><span class="msg-label-dot" style="background:var(--danger)"></span>Urgent</div>
+              </div>
+              <div class="msg-folder-storage">
+                <div class="msg-storage-bar"><div class="msg-storage-fill" style="width:35%"></div></div>
+                <span class="msg-storage-text">1.2 GB of 5 GB used</span>
+              </div>
+            </div>
+
+            <!-- ═══ Middle: Message List ═══ -->
+            <div class="msg-list-panel">
+              <!-- List Toolbar -->
+              <div class="msg-list-toolbar">
+                <div class="msg-list-toolbar-left">
+                  <input type="checkbox" class="msg-check-all" id="msgCheckAll" title="Select all">
+                  <div class="msg-bulk-actions" id="msgBulkActions">
+                    <button class="bm-action-btn" onclick="bulkAction('archive')" title="Archive"><i class="ph ph-archive"></i></button>
+                    <button class="bm-action-btn" onclick="bulkAction('read')" title="Mark read"><i class="ph ph-envelope-open"></i></button>
+                    <button class="bm-action-btn bm-action-danger" onclick="bulkAction('delete')" title="Delete"><i class="ph ph-trash"></i></button>
+                    <span class="msg-bulk-count" id="msgBulkCount"></span>
+                  </div>
+                </div>
+                <div class="msg-list-toolbar-right">
+                  <div class="msg-search-wrap">
+                    <i class="ph ph-magnifying-glass msg-search-icon"></i>
+                    <input class="bm-input msg-search-input" type="text" placeholder="Search…" oninput="filterMessages(this.value)" />
+                  </div>
+                  <button class="bm-action-btn" onclick="App.toast.info('Refreshed','Messages synced.')" title="Refresh"><i class="ph ph-arrow-clockwise"></i></button>
+                </div>
+              </div>
+
+              <!-- Inbox -->
+              <div class="msg-folder-content active" data-folder-content="inbox">
+                <ul class="msg-list">
+                  <li class="msg-item unread" data-starred="false" data-sender="Alice Smith" data-initials="AS" data-subject="Project Update: Q1 Report" data-time="2 min ago" data-badge="Work" data-badge-color="info" data-body="Hi John,&#10;&#10;I've finished the Q1 report and attached it for your review. The key highlights include a 15% increase in revenue and successful completion of all major milestones.&#10;&#10;Let me know if you need any changes or have questions about specific sections.&#10;&#10;Best regards,&#10;Alice" data-has-attachment="true">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">AS</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row">
+                        <span class="msg-sender">Alice Smith</span>
+                        <span class="bm-badge bm-badge-info bm-badge-sm">Work</span>
+                      </div>
+                      <div class="msg-subject">Project Update: Q1 Report</div>
+                      <div class="msg-preview">Hi John, I've finished the Q1 report and attached it for your review. Let me know if you need any changes.</div>
+                    </div>
+                    <div class="msg-end">
+                      <span class="msg-time">2 min ago</span>
+                      <i class="ph ph-paperclip msg-attach-icon"></i>
+                    </div>
+                  </li>
+                  <li class="msg-item unread" data-starred="true" data-sender="Bob Wilson" data-initials="BW" data-subject="Design Review Meeting" data-time="15 min ago" data-badge="Design" data-badge-color="primary" data-body="Hey John,&#10;&#10;Can we schedule a design review meeting for this Friday? I have some mockups ready to present for the new dashboard layout.&#10;&#10;I've prepared three different concepts and would love the team's feedback before we finalize the direction.&#10;&#10;Let me know what time works best.&#10;&#10;Cheers,&#10;Bob">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star starred" onclick="event.stopPropagation();toggleStar(this)" title="Unstar"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">BW</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row">
+                        <span class="msg-sender">Bob Wilson</span>
+                        <span class="bm-badge bm-badge-primary bm-badge-sm">Design</span>
+                      </div>
+                      <div class="msg-subject">Design Review Meeting</div>
+                      <div class="msg-preview">Can we schedule a design review meeting for this Friday? I have some mockups ready to present.</div>
+                    </div>
+                    <div class="msg-end">
+                      <span class="msg-time">15 min ago</span>
+                    </div>
+                  </li>
+                  <li class="msg-item unread" data-starred="false" data-sender="Emma Johnson" data-initials="EJ" data-subject="New Feature Request" data-time="1 hour ago" data-badge="Feature" data-badge-color="success" data-body="Hi John,&#10;&#10;The client has requested a new dashboard feature. I've outlined the requirements in the attached document.&#10;&#10;Key requirements:&#10;• Real-time analytics widget&#10;• Customizable chart types&#10;• Export to PDF functionality&#10;• Dark mode support&#10;&#10;Please review and let me know your thoughts on the timeline.&#10;&#10;Thanks,&#10;Emma" data-has-attachment="true">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">EJ</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row">
+                        <span class="msg-sender">Emma Johnson</span>
+                        <span class="bm-badge bm-badge-success bm-badge-sm">Feature</span>
+                      </div>
+                      <div class="msg-subject">New Feature Request</div>
+                      <div class="msg-preview">The client has requested a new dashboard feature. I've outlined the requirements in the attached document.</div>
+                    </div>
+                    <div class="msg-end">
+                      <span class="msg-time">1 hour ago</span>
+                      <i class="ph ph-paperclip msg-attach-icon"></i>
+                    </div>
+                  </li>
+                  <li class="msg-item" data-starred="true" data-sender="David Miller" data-initials="DM" data-subject="Re: API Integration" data-time="3 hours ago" data-badge="Dev" data-badge-color="info" data-body="Hi John,&#10;&#10;Thanks for the documentation. The integration is working perfectly now. All endpoints are returning expected responses.&#10;&#10;I've also added error handling for edge cases and updated the unit tests. Everything passes on the CI pipeline.&#10;&#10;Let me know if you need anything else.&#10;&#10;Best,&#10;David">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star starred" onclick="event.stopPropagation();toggleStar(this)" title="Unstar"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">DM</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row">
+                        <span class="msg-sender">David Miller</span>
+                        <span class="bm-badge bm-badge-info bm-badge-sm">Dev</span>
+                      </div>
+                      <div class="msg-subject">Re: API Integration</div>
+                      <div class="msg-preview">Thanks for the documentation. The integration is working perfectly now. All endpoints are returning expected responses.</div>
+                    </div>
+                    <div class="msg-end">
+                      <span class="msg-time">3 hours ago</span>
+                    </div>
+                  </li>
+                  <li class="msg-item" data-starred="false" data-sender="Sarah Kim" data-initials="SK" data-subject="Team Lunch" data-time="5 hours ago" data-body="Hey team!&#10;&#10;Just a reminder about the team lunch tomorrow at 12:30 PM at the Italian restaurant downstairs.&#10;&#10;Please let me know if you have any dietary restrictions so I can inform the restaurant ahead of time.&#10;&#10;Looking forward to it!&#10;Sarah">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">SK</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row">
+                        <span class="msg-sender">Sarah Kim</span>
+                      </div>
+                      <div class="msg-subject">Team Lunch</div>
+                      <div class="msg-preview">Hey team! Just a reminder about the team lunch tomorrow at 12:30 PM at the Italian restaurant downstairs.</div>
+                    </div>
+                    <div class="msg-end">
+                      <span class="msg-time">5 hours ago</span>
+                    </div>
+                  </li>
+                  <li class="msg-item" data-starred="false" data-sender="Mike Rodriguez" data-initials="MR" data-subject="Server Maintenance Notice" data-time="Yesterday" data-badge="Urgent" data-badge-color="danger" data-body="Hi everyone,&#10;&#10;Scheduled maintenance this weekend from Saturday 10 PM to Sunday 6 AM. Systems may be intermittent during this window.&#10;&#10;Affected services:&#10;• Production API servers&#10;• Database clusters&#10;• CDN endpoints&#10;&#10;Please plan accordingly and save any work in progress before Saturday 9 PM.&#10;&#10;Thanks,&#10;Mike">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">MR</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row">
+                        <span class="msg-sender">Mike Rodriguez</span>
+                        <span class="bm-badge bm-badge-danger bm-badge-sm">Urgent</span>
+                      </div>
+                      <div class="msg-subject">Server Maintenance Notice</div>
+                      <div class="msg-preview">Scheduled maintenance this weekend from Saturday 10 PM to Sunday 6 AM. Systems may be intermittent.</div>
+                    </div>
+                    <div class="msg-end">
+                      <span class="msg-time">Yesterday</span>
+                    </div>
+                  </li>
+                  <li class="msg-item" data-starred="false" data-sender="Lisa Park" data-initials="LP" data-subject="Invoice #1024" data-time="2 days ago" data-badge="Finance" data-badge-color="warning" data-body="Hi John,&#10;&#10;Please find attached the invoice for March services. Payment is due within 30 days of the issue date.&#10;&#10;Invoice Summary:&#10;• Design services: $4,500&#10;• Development: $8,200&#10;• Consulting: $2,300&#10;• Total: $15,000&#10;&#10;Please let me know if you have any questions.&#10;&#10;Best regards,&#10;Lisa" data-has-attachment="true">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">LP</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row">
+                        <span class="msg-sender">Lisa Park</span>
+                        <span class="bm-badge bm-badge-warning bm-badge-sm">Finance</span>
+                      </div>
+                      <div class="msg-subject">Invoice #1024</div>
+                      <div class="msg-preview">Please find attached the invoice for March services. Payment is due within 30 days of the issue date.</div>
+                    </div>
+                    <div class="msg-end">
+                      <span class="msg-time">2 days ago</span>
+                      <i class="ph ph-paperclip msg-attach-icon"></i>
+                    </div>
+                  </li>
+                  <li class="msg-item" data-starred="false" data-sender="Tom Chen" data-initials="TC" data-subject="Brand Guidelines Update" data-time="3 days ago" data-badge="Design" data-badge-color="primary" data-body="Hi team,&#10;&#10;We've updated the brand guidelines with the new color palette and typography. Please review the attached PDF.&#10;&#10;Key changes:&#10;• Updated primary color to #4B77BE&#10;• New heading font: Inter&#10;• Revised spacing system&#10;• Updated logo usage guidelines&#10;&#10;Please use these new guidelines for all future projects.&#10;&#10;Thanks,&#10;Tom" data-has-attachment="true">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">TC</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row">
+                        <span class="msg-sender">Tom Chen</span>
+                        <span class="bm-badge bm-badge-primary bm-badge-sm">Design</span>
+                      </div>
+                      <div class="msg-subject">Brand Guidelines Update</div>
+                      <div class="msg-preview">We've updated the brand guidelines with the new color palette and typography. Please review the attached PDF.</div>
+                    </div>
+                    <div class="msg-end">
+                      <span class="msg-time">3 days ago</span>
+                      <i class="ph ph-paperclip msg-attach-icon"></i>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Starred -->
+              <div class="msg-folder-content" data-folder-content="starred">
+                <ul class="msg-list">
+                  <li class="msg-item" data-starred="true" data-sender="Bob Wilson" data-initials="BW" data-subject="Design Review Meeting" data-time="15 min ago" data-badge="Design" data-badge-color="primary" data-body="Hey John,&#10;&#10;Can we schedule a design review meeting for this Friday? I have some mockups ready to present for the new dashboard layout.&#10;&#10;Cheers,&#10;Bob">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star starred" onclick="event.stopPropagation();toggleStar(this)" title="Unstar"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">BW</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row"><span class="msg-sender">Bob Wilson</span><span class="bm-badge bm-badge-primary bm-badge-sm">Design</span></div>
+                      <div class="msg-subject">Design Review Meeting</div>
+                      <div class="msg-preview">Can we schedule a design review meeting for this Friday?</div>
+                    </div>
+                    <div class="msg-end"><span class="msg-time">15 min ago</span></div>
+                  </li>
+                  <li class="msg-item" data-starred="true" data-sender="David Miller" data-initials="DM" data-subject="Re: API Integration" data-time="3 hours ago" data-badge="Dev" data-badge-color="info" data-body="Thanks for the documentation. The integration is working perfectly now.&#10;&#10;Best,&#10;David">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star starred" onclick="event.stopPropagation();toggleStar(this)" title="Unstar"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">DM</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row"><span class="msg-sender">David Miller</span><span class="bm-badge bm-badge-info bm-badge-sm">Dev</span></div>
+                      <div class="msg-subject">Re: API Integration</div>
+                      <div class="msg-preview">Thanks for the documentation. The integration is working perfectly now.</div>
+                    </div>
+                    <div class="msg-end"><span class="msg-time">3 hours ago</span></div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Sent -->
+              <div class="msg-folder-content" data-folder-content="sent">
+                <ul class="msg-list">
+                  <li class="msg-item" data-starred="false" data-sender="To: Alice Smith" data-initials="AS" data-subject="Re: Project Update: Q1 Report" data-time="1 hour ago" data-body="Great work on the report! I've reviewed it and added some comments. Please check section 3.&#10;&#10;Regards,&#10;John">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">AS</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row"><span class="msg-sender">To: Alice Smith</span></div>
+                      <div class="msg-subject">Re: Project Update: Q1 Report</div>
+                      <div class="msg-preview">Great work on the report! I've reviewed it and added some comments.</div>
+                    </div>
+                    <div class="msg-end"><span class="msg-time">1 hour ago</span></div>
+                  </li>
+                  <li class="msg-item" data-starred="false" data-sender="To: Bob Wilson" data-initials="BW" data-subject="Re: Design Review Meeting" data-time="Yesterday" data-body="Friday works for me. Let's book conference room B for 2 PM. I'll send the calendar invite.&#10;&#10;— John">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">BW</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row"><span class="msg-sender">To: Bob Wilson</span></div>
+                      <div class="msg-subject">Re: Design Review Meeting</div>
+                      <div class="msg-preview">Friday works for me. Let's book conference room B for 2 PM.</div>
+                    </div>
+                    <div class="msg-end"><span class="msg-time">Yesterday</span></div>
+                  </li>
+                  <li class="msg-item" data-starred="false" data-sender="To: Team" data-initials="TM" data-subject="Sprint Retrospective Notes" data-time="2 days ago" data-body="Hi team, attached are the notes from today's retrospective. Please review the action items before next standup.&#10;&#10;— John" data-has-attachment="true">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">TM</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row"><span class="msg-sender">To: Team</span></div>
+                      <div class="msg-subject">Sprint Retrospective Notes</div>
+                      <div class="msg-preview">Hi team, attached are the notes from today's retrospective.</div>
+                    </div>
+                    <div class="msg-end"><span class="msg-time">2 days ago</span><i class="ph ph-paperclip msg-attach-icon"></i></div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Drafts -->
+              <div class="msg-folder-content" data-folder-content="drafts">
+                <ul class="msg-list">
+                  <li class="msg-item msg-draft" data-starred="false" data-sender="To: Sarah Kim" data-initials="SK" data-subject="Performance Review Feedback" data-time="Apr 3" data-body="Hi Sarah, I wanted to share some feedback regarding the last quarter's performance metrics and goals…">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">SK</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row"><span class="msg-sender">To: Sarah Kim</span><span class="bm-badge bm-badge-warning bm-badge-sm">Draft</span></div>
+                      <div class="msg-subject">Performance Review Feedback</div>
+                      <div class="msg-preview">Hi Sarah, I wanted to share some feedback regarding the last quarter's performance…</div>
+                    </div>
+                    <div class="msg-end"><span class="msg-time">Apr 3</span></div>
+                  </li>
+                  <li class="msg-item msg-draft" data-starred="false" data-sender="To: HR Department" data-initials="HR" data-subject="Vacation Request" data-time="Apr 1" data-body="I would like to request vacation days from July 15th to July 22nd for a family trip…">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">HR</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row"><span class="msg-sender">To: HR Department</span><span class="bm-badge bm-badge-warning bm-badge-sm">Draft</span></div>
+                      <div class="msg-subject">Vacation Request</div>
+                      <div class="msg-preview">I would like to request vacation days from July 15th to July 22nd…</div>
+                    </div>
+                    <div class="msg-end"><span class="msg-time">Apr 1</span></div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Archive -->
+              <div class="msg-folder-content" data-folder-content="archive">
+                <div class="msg-empty-state">
+                  <i class="ph ph-archive"></i>
+                  <p>No archived messages</p>
+                </div>
+              </div>
+
+              <!-- Trash -->
+              <div class="msg-folder-content" data-folder-content="trash">
+                <ul class="msg-list">
+                  <li class="msg-item" data-starred="false" data-sender="Newsletter" data-initials="NL" data-subject="Weekly Tech Digest" data-time="3 days ago" data-body="This week's top stories: AI breakthroughs, new JavaScript framework, cloud computing trends and more…">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">NL</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row"><span class="msg-sender">Newsletter</span></div>
+                      <div class="msg-subject">Weekly Tech Digest</div>
+                      <div class="msg-preview">This week's top stories: AI breakthroughs, new JavaScript framework…</div>
+                    </div>
+                    <div class="msg-end"><span class="msg-time">3 days ago</span></div>
+                  </li>
+                  <li class="msg-item" data-starred="false" data-sender="Promo Team" data-initials="PR" data-subject="Exclusive Offer: 50% Off Premium Plan" data-time="1 week ago" data-body="Upgrade to our premium plan today and get 50% off for the first 3 months. Limited time offer…">
+                    <input type="checkbox" class="msg-check" onclick="event.stopPropagation();updateBulkCount()">
+                    <button class="msg-star" onclick="event.stopPropagation();toggleStar(this)" title="Star"><i class="ph ph-star"></i></button>
+                    <div class="bm-avatar bm-avatar-sm">PR</div>
+                    <div class="msg-meta">
+                      <div class="msg-top-row"><span class="msg-sender">Promo Team</span></div>
+                      <div class="msg-subject">Exclusive Offer: 50% Off Premium Plan</div>
+                      <div class="msg-preview">Upgrade to our premium plan today and get 50% off for the first 3 months.</div>
+                    </div>
+                    <div class="msg-end"><span class="msg-time">1 week ago</span></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- ═══ Right: Detail / Compose Panel ═══ -->
+            <div class="msg-detail-panel" id="msgDetailPanel">
+
+              <!-- Empty state (default) -->
+              <div class="msg-detail-empty" id="msgDetailEmpty">
+                <i class="ph ph-envelope-open"></i>
+                <h3>Select a message to read</h3>
+                <p>Choose a message from the list or compose a new one</p>
+              </div>
+
+              <!-- Read view -->
+              <div class="msg-detail-view bm-d-none" id="msgDetailView">
+                <div class="msg-detail-header">
+                  <button class="bm-action-btn" id="msgDetailBack" title="Back to list"><i class="ph ph-arrow-left"></i></button>
+                  <div class="msg-detail-actions">
+                    <button class="bm-action-btn" onclick="archiveDetail()" title="Archive"><i class="ph ph-archive"></i></button>
+                    <button class="bm-action-btn bm-action-danger" onclick="deleteDetail()" title="Delete"><i class="ph ph-trash"></i></button>
+                    <button class="bm-action-btn" onclick="toggleDetailStar()" title="Star"><i class="ph ph-star"></i></button>
+                    <button class="bm-action-btn" title="More"><i class="ph ph-dots-three-vertical"></i></button>
+                  </div>
+                </div>
+                <div class="msg-detail-subject" id="detailSubject"></div>
+                <div class="msg-detail-sender-row">
+                  <div class="bm-avatar bm-avatar-sm" id="detailAvatar"></div>
+                  <div class="msg-detail-sender-info">
+                    <span class="msg-detail-sender-name" id="detailSenderName"></span>
+                    <span class="msg-detail-sender-time" id="detailTime"></span>
+                  </div>
+                  <span class="bm-badge bm-badge-sm bm-d-none" id="detailBadge"></span>
+                </div>
+                <div class="msg-detail-body" id="detailBody"></div>
+                <div class="msg-detail-attachments bm-d-none" id="detailAttachments">
+                  <div class="msg-detail-attach-title"><i class="ph ph-paperclip"></i> Attachments</div>
+                  <div class="msg-detail-attach-list">
+                    <div class="msg-detail-attach-file">
+                      <i class="ph ph-file-text"></i>
+                      <span>document.pdf</span>
+                      <span class="msg-attach-size">2.4 MB</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="msg-detail-reply-bar">
+                  <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="replyToMessage()"><i class="ph ph-arrow-bend-up-left"></i> Reply</button>
+                  <button class="bm-btn bm-btn-ghost bm-btn-sm" onclick="forwardMessage()"><i class="ph ph-arrow-bend-up-right"></i> Forward</button>
+                </div>
+              </div>
+
+              <!-- Compose view -->
+              <div class="msg-compose-view bm-d-none" id="msgComposeView">
+                <div class="msg-detail-header">
+                  <span class="msg-compose-title">New Message</span>
+                  <div class="msg-detail-actions">
+                    <button class="bm-action-btn" onclick="closeCompose()" title="Discard"><i class="ph ph-x"></i></button>
+                  </div>
+                </div>
+                <div class="msg-compose-form">
+                  <div class="msg-compose-field">
+                    <label>To</label>
+                    <input class="bm-input" type="text" id="composeTo" placeholder="Recipient email…" />
+                  </div>
+                  <div class="msg-compose-field">
+                    <label>CC / BCC</label>
+                    <input class="bm-input" type="text" id="composeCc" placeholder="Optional…" />
+                  </div>
+                  <div class="msg-compose-field">
+                    <label>Subject</label>
+                    <input class="bm-input" type="text" id="composeSubject" placeholder="Subject…" />
+                  </div>
+                  <div class="msg-compose-editor">
+                    <div class="msg-compose-toolbar">
+                      <button class="bm-action-btn" title="Bold"><i class="ph ph-text-b"></i></button>
+                      <button class="bm-action-btn" title="Italic"><i class="ph ph-text-italic"></i></button>
+                      <button class="bm-action-btn" title="Underline"><i class="ph ph-text-underline"></i></button>
+                      <span class="msg-toolbar-divider"></span>
+                      <button class="bm-action-btn" title="Bullet list"><i class="ph ph-list-bullets"></i></button>
+                      <button class="bm-action-btn" title="Numbered list"><i class="ph ph-list-numbers"></i></button>
+                      <span class="msg-toolbar-divider"></span>
+                      <button class="bm-action-btn" title="Link"><i class="ph ph-link"></i></button>
+                      <button class="bm-action-btn" title="Attach"><i class="ph ph-paperclip"></i></button>
+                    </div>
+                    <textarea class="bm-input msg-compose-textarea" id="composeBody" placeholder="Write your message…"></textarea>
+                  </div>
+                  <div class="msg-compose-actions">
+                    <button class="bm-btn bm-btn-ghost bm-btn-sm" onclick="closeCompose()"><i class="ph ph-trash"></i> Discard</button>
+                    <div class="msg-compose-actions-right">
+                      <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="saveDraft()"><i class="ph ph-note"></i> Save Draft</button>
+                      <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="sendMessage()"><i class="ph ph-paper-plane-tilt"></i> Send</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+  <script src="/assets/js/pages/messages.js"></script>
+{% endblock %}

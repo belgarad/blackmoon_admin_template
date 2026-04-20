@@ -1,0 +1,177 @@
+{% extends "layouts/base.html" %}
+{% set title = "API Keys" %}
+{% set activeMenu = "account-api-keys" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/account.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="overview.html">Account</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">API Keys</span></div>
+              </nav>
+              <h1 class="bm-page-title">API Keys</h1>
+              <p class="bm-page-subtitle">Create and manage API keys for programmatic access.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('API Key','New API key generated.')">
+                <i class="ph ph-plus bm-text-md"></i>
+                Create API Key
+              </button>
+            </div>
+          </div>
+
+          <!-- Account Navigation -->
+          <div class="acct-nav bm-mb-xl">
+            <a href="overview.html" class="acct-nav-item">Overview</a>
+            <a href="../settings.html" class="acct-nav-item">Settings</a>
+            <a href="../security.html" class="acct-nav-item">Security</a>
+            <a href="billing.html" class="acct-nav-item">Billing</a>
+            <a href="statements.html" class="acct-nav-item">Statements</a>
+            <a href="referrals.html" class="acct-nav-item">Referrals</a>
+            <a href="api-keys.html" class="acct-nav-item active">API Keys</a>
+            <a href="logs.html" class="acct-nav-item">Logs</a>
+            <a href="activity.html" class="acct-nav-item">Activity</a>
+          </div>
+
+          <!-- Info Banner -->
+          <div class="bm-card bm-mb-lg acct-info-banner">
+            <div class="bm-card-body">
+              <div class="bm-flex-center-gap-lg">
+                <i class="ph ph-info bm-text-xl-info"></i>
+                <div>
+                  <div class="bm-text-body-medium-swap">API keys provide full access to your account</div>
+                  <div class="bm-text-caption-muted">Keep your keys secure and never share them publicly. Rotate keys regularly for security.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- API Keys Table -->
+          <div class="bm-card">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Your API Keys</span>
+              <span class="bm-badge bm-badge-info">3 Active</span>
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Label</th>
+                    <th scope="col">API Key</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Last Used</th>
+                    <th scope="col" data-i18n="table.status">Status</th>
+                    <th scope="col" class="bm-text-right" data-i18n="table.actions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="bm-text-caption-medium-swap">Production</div>
+                      <div class="bm-text-2xs-muted">Main application key</div>
+                    </td>
+                    <td>
+                      <div class="acct-api-key-row">
+                        <code class="bm-mono-caption">bm_live_k1a2b3c4d5···</code>
+                        <button class="bm-btn bm-btn-ghost bm-btn-icon-xs" title="Copy" onclick="App.toast.info('Copied','API key copied to clipboard.')">
+                          <i class="ph ph-copy bm-text-md"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">Jan 15, 2026</td>
+                    <td class="bm-text-muted">2 min ago</td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-right">
+                      <div class="bm-flex-center-gap-sm bm-justify-end">
+                        <button class="bm-btn bm-btn-outline bm-btn-sm">Rotate</button>
+                        <button class="bm-btn bm-btn-ghost bm-btn-icon-xs"><i class="ph ph-dots-three-vertical bm-text-md"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-text-caption-medium-swap">Staging</div>
+                      <div class="bm-text-2xs-muted">Testing environment</div>
+                    </td>
+                    <td>
+                      <div class="acct-api-key-row">
+                        <code class="bm-mono-caption">bm_test_x9y8z7w6v5···</code>
+                        <button class="bm-btn bm-btn-ghost bm-btn-icon-xs" title="Copy" onclick="App.toast.info('Copied','API key copied to clipboard.')">
+                          <i class="ph ph-copy bm-text-md"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">Mar 3, 2026</td>
+                    <td class="bm-text-muted">5 hours ago</td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-right">
+                      <div class="bm-flex-center-gap-sm bm-justify-end">
+                        <button class="bm-btn bm-btn-outline bm-btn-sm">Rotate</button>
+                        <button class="bm-btn bm-btn-ghost bm-btn-icon-xs"><i class="ph ph-dots-three-vertical bm-text-md"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-text-caption-medium-swap">CI/CD Pipeline</div>
+                      <div class="bm-text-2xs-muted">Automated deployments</div>
+                    </td>
+                    <td>
+                      <div class="acct-api-key-row">
+                        <code class="bm-mono-caption">bm_live_m3n4o5p6q7···</code>
+                        <button class="bm-btn bm-btn-ghost bm-btn-icon-xs" title="Copy" onclick="App.toast.info('Copied','API key copied to clipboard.')">
+                          <i class="ph ph-copy bm-text-md"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">Feb 20, 2026</td>
+                    <td class="bm-text-muted">1 day ago</td>
+                    <td><span class="bm-badge bm-badge-success">Active</span></td>
+                    <td class="bm-text-right">
+                      <div class="bm-flex-center-gap-sm bm-justify-end">
+                        <button class="bm-btn bm-btn-outline bm-btn-sm">Rotate</button>
+                        <button class="bm-btn bm-btn-ghost bm-btn-icon-xs"><i class="ph ph-dots-three-vertical bm-text-md"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-text-caption-medium-swap">Old Integration</div>
+                      <div class="bm-text-2xs-muted">Legacy webhook key</div>
+                    </td>
+                    <td>
+                      <div class="acct-api-key-row">
+                        <code class="bm-mono-caption">bm_live_a1b2c3d4e5···</code>
+                        <button class="bm-btn bm-btn-ghost bm-btn-icon-xs" title="Copy" onclick="App.toast.info('Copied','API key copied to clipboard.')">
+                          <i class="ph ph-copy bm-text-md"></i>
+                        </button>
+                      </div>
+                    </td>
+                    <td class="bm-text-muted">Oct 8, 2025</td>
+                    <td class="bm-text-muted">30 days ago</td>
+                    <td><span class="bm-badge bm-muted-chip">Revoked</span></td>
+                    <td class="bm-text-right">
+                      <div class="bm-flex-center-gap-sm bm-justify-end">
+                        <button class="bm-btn bm-btn-destructive bm-btn-sm">Delete</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

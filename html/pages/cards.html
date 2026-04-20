@@ -1,0 +1,273 @@
+{% extends "layouts/base.html" %}
+{% set title = "Cards" %}
+{% set activeMenu = "cards" %}
+{% set basePath = "" %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <h1 class="bm-text-2xl-bold-fg-mb">Cards</h1>
+          <p class="bm-text-body-muted-mb">Card layout variations and examples</p>
+
+          <!-- ====== BASIC CARD ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Basic Card</h2>
+          <div class="bm-card bm-mb-2xl">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Card Title</span>
+              <button class="bm-btn bm-btn-ghost bm-btn-icon bm-btn-sm"><i class="ph ph-dots-three-vertical bm-text-lg"></i></button>
+            </div>
+            <div class="bm-card-body">
+              <p class="bm-text-body-muted">This is a basic card with header, body and footer sections. Cards use <code class="bm-badge-muted">.bm-card</code> class.</p>
+            </div>
+            <div class="bm-card-footer">
+              <button class="bm-btn bm-btn-outline">Cancel</button>
+              <button class="bm-btn bm-btn-primary">Save</button>
+            </div>
+          </div>
+
+          <!-- ====== STATS CARDS ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Stats Cards</h2>
+          <div class="bm-grid-auto-220">
+            <div class="bm-stats-card">
+              <div class="bm-stats-card-icon bm-bg-primary-light"><i class="ph ph-users bm-text-lg-primary2"></i></div>
+              <div class="bm-stats-card-value">2,847</div>
+              <div class="bm-stats-card-label">Total Users</div>
+              <div class="bm-stats-card-trend up">↑ 12.5%</div>
+            </div>
+            <div class="bm-stats-card">
+              <div class="bm-stats-card-icon bm-bg-success-light"><i class="ph ph-credit-card bm-text-xl-success"></i></div>
+              <div class="bm-stats-card-value">$48,250</div>
+              <div class="bm-stats-card-label">Revenue</div>
+              <div class="bm-stats-card-trend up">↑ 8.2%</div>
+            </div>
+            <div class="bm-stats-card">
+              <div class="bm-stats-card-icon bm-bg-warning-light"><i class="ph ph-shopping-cart bm-text-warning-xl"></i></div>
+              <div class="bm-stats-card-value">1,423</div>
+              <div class="bm-stats-card-label">Orders</div>
+              <div class="bm-stats-card-trend down">↓ 3.1%</div>
+            </div>
+            <div class="bm-stats-card">
+              <div class="bm-stats-card-icon bm-bg-danger-light3"><i class="ph ph-bug bm-icon-danger-lg"></i></div>
+              <div class="bm-stats-card-value">12</div>
+              <div class="bm-stats-card-label">Open Issues</div>
+              <div class="bm-stats-card-trend down">↓ 24%</div>
+            </div>
+          </div>
+
+          <!-- ====== STATS CARDS V2 ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Stats Cards v2</h2>
+          <div class="bm-grid-3col bm-mb-xl">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-credit-card bm-text-lg-primary"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Total Revenue</div>
+                <div class="bm-stats-card-v2-value" data-counter="84290" data-counter-prefix="$">$84,290</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>12.5%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-users bm-text-lg-success"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Active Users</div>
+                <div class="bm-stats-card-v2-value" data-counter="12847">12,847</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend up"><i class="ph ph-arrow-up bm-text-8xs"></i>5.2%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-timer bm-text-lg-warning"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Avg. Session</div>
+                <div class="bm-stats-card-v2-value" data-counter="4.73" data-counter-suffix=" min">4.73 min</div>
+                <div class="bm-stats-card-v2-footer">
+                  <span class="bm-stats-card-v2-trend down"><i class="ph ph-arrow-down bm-text-8xs"></i>1.8%</span>
+                  <span class="bm-stats-card-v2-compared">vs last month</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== FEATURED CARDS ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Featured Cards</h2>
+          <div class="bm-grid-auto-300">
+            <!-- Image Card -->
+            <div class="bm-card bm-overflow-hidden">
+              <div class="bm-card-gradient-primary">
+                <i class="ph ph-rocket-launch bm-text-3xl-white"></i>
+              </div>
+              <div class="bm-card-body">
+                <h3 class="bm-text-md-bold-mb">Getting Started</h3>
+                <p class="bm-text-caption-muted">Learn the basics and get your project up and running in minutes.</p>
+                <button class="bm-btn bm-btn-primary bm-btn-sm bm-mt-md">Learn More</button>
+              </div>
+            </div>
+
+            <!-- Icon Header Card -->
+            <div class="bm-card bm-overflow-hidden">
+              <div class="bm-card-gradient-success">
+                <i class="ph ph-code bm-text-3xl-white"></i>
+              </div>
+              <div class="bm-card-body">
+                <h3 class="bm-text-md-bold-mb">Documentation</h3>
+                <p class="bm-text-caption-muted">Browse the full API documentation and component reference guides.</p>
+                <button class="bm-btn bm-btn-outline bm-btn-sm bm-mt-md">View Docs</button>
+              </div>
+            </div>
+
+            <!-- Pricing Card -->
+            <div class="bm-card bm-overflow-hidden">
+              <div class="bm-card-gradient-warning">
+                <i class="ph ph-diamond bm-text-3xl-white"></i>
+              </div>
+              <div class="bm-card-body">
+                <h3 class="bm-text-md-bold-mb">Upgrade to Pro</h3>
+                <p class="bm-text-caption-muted">Unlock advanced features, priority support and custom themes.</p>
+                <button class="bm-btn bm-btn-outline bm-btn-sm bm-mt-md">Upgrade</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== PROFILE CARDS ====== -->
+          <h2 class="bm-text-lg-semibold-fg">Profile Cards</h2>
+          <div class="bm-grid-auto-250">
+            <div class="bm-card">
+              <div class="bm-card-body bm-text-center-p2rem">
+                <div class="bm-avatar bm-avatar-xl bm-avatar-ring">JD</div>
+                <h3 class="bm-text-md-bold">John Doe</h3>
+                <p class="bm-text-caption-muted">Full-Stack Developer</p>
+                <div class="bm-flex-center-gap-mt">
+                  <span class="bm-badge bm-badge-primary">React</span>
+                  <span class="bm-badge bm-badge-info">Node.js</span>
+                  <span class="bm-badge bm-badge-success">Python</span>
+                </div>
+                <div class="bm-flex-center-gap-2xl">
+                  <div><div class="bm-font-bold">128</div><div class="bm-text-sm-muted">Projects</div></div>
+                  <div><div class="bm-font-bold">1.2K</div><div class="bm-text-sm-muted">Followers</div></div>
+                  <div><div class="bm-font-bold">852</div><div class="bm-text-sm-muted">Following</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-body bm-text-center-p2rem">
+                <div class="bm-avatar bm-avatar-xl bm-avatar-ring">AS</div>
+                <h3 class="bm-text-md-bold">Alice Smith</h3>
+                <p class="bm-text-caption-muted">UI/UX Designer</p>
+                <div class="bm-flex-center-gap-mt">
+                  <span class="bm-badge bm-badge-warning">Figma</span>
+                  <span class="bm-badge bm-badge-primary">CSS</span>
+                  <span class="bm-badge bm-badge-danger">Design</span>
+                </div>
+                <div class="bm-flex-center-gap-2xl">
+                  <div><div class="bm-font-bold">96</div><div class="bm-text-sm-muted">Projects</div></div>
+                  <div><div class="bm-font-bold">3.4K</div><div class="bm-text-sm-muted">Followers</div></div>
+                  <div><div class="bm-font-bold">421</div><div class="bm-text-sm-muted">Following</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="bm-card">
+              <div class="bm-card-body bm-text-center-p2rem">
+                <div class="bm-avatar bm-avatar-xl bm-avatar-ring">BW</div>
+                <h3 class="bm-text-md-bold">Bob Wilson</h3>
+                <p class="bm-text-caption-muted">DevOps Engineer</p>
+                <div class="bm-flex-center-gap-mt">
+                  <span class="bm-badge bm-badge-info">Docker</span>
+                  <span class="bm-badge bm-badge-success">K8s</span>
+                  <span class="bm-badge bm-badge-warning">AWS</span>
+                </div>
+                <div class="bm-flex-center-gap-2xl">
+                  <div><div class="bm-font-bold">64</div><div class="bm-text-sm-muted">Projects</div></div>
+                  <div><div class="bm-font-bold">892</div><div class="bm-text-sm-muted">Followers</div></div>
+                  <div><div class="bm-font-bold">316</div><div class="bm-text-sm-muted">Following</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ====== LIST CARDS ====== -->
+          <h2 class="bm-text-lg-semibold-fg">List Cards</h2>
+          <div class="bm-grid-2col-mb">
+            <!-- Task List -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <span class="bm-card-title">Tasks</span>
+                <span class="bm-badge bm-badge-primary">5 pending</span>
+              </div>
+              <div class="bm-card-body bm-p-0">
+                <div class="bm-border-bottom-px-lg">
+                  <input type="checkbox" class="bm-checkbox" checked />
+                  <span class="bm-text-body-strikethrough">Update user documentation</span>
+                </div>
+                <div class="bm-border-bottom-px-lg">
+                  <input type="checkbox" class="bm-checkbox" checked />
+                  <span class="bm-text-body-strikethrough">Review pull requests</span>
+                </div>
+                <div class="bm-border-bottom-px-lg">
+                  <input type="checkbox" class="bm-checkbox" />
+                  <span class="bm-text-body">Fix login page responsiveness</span>
+                </div>
+                <div class="bm-border-bottom-px-lg">
+                  <input type="checkbox" class="bm-checkbox" />
+                  <span class="bm-text-body">Add dark mode to settings</span>
+                </div>
+                <div class="bm-flex-px-gap">
+                  <input type="checkbox" class="bm-checkbox" />
+                  <span class="bm-text-body">Deploy to production</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Activity Feed -->
+            <div class="bm-card">
+              <div class="bm-card-header"><span class="bm-card-title">Activity Feed</span></div>
+              <div class="bm-card-body bm-p-0">
+                <div class="bm-flex-sep-px">
+                  <div class="bm-avatar bm-avatar-sm bm-flex-shrink0-plain">JD</div>
+                  <div>
+                    <div class="bm-text-body"><strong>John Doe</strong> pushed 3 commits</div>
+                    <div class="bm-text-sm-muted">2 min ago</div>
+                  </div>
+                </div>
+                <div class="bm-flex-sep-px">
+                  <div class="bm-avatar bm-avatar-sm bm-flex-shrink0-plain">AS</div>
+                  <div>
+                    <div class="bm-text-body"><strong>Alice Smith</strong> created issue #42</div>
+                    <div class="bm-text-sm-muted">15 min ago</div>
+                  </div>
+                </div>
+                <div class="bm-flex-sep-px">
+                  <div class="bm-avatar bm-avatar-sm bm-flex-shrink0-plain">BW</div>
+                  <div>
+                    <div class="bm-text-body"><strong>Bob Wilson</strong> merged PR #38</div>
+                    <div class="bm-text-sm-muted">1 hour ago</div>
+                  </div>
+                </div>
+                <div class="bm-flex-px-gap-sm">
+                  <div class="bm-avatar bm-avatar-sm bm-flex-shrink0-plain">EJ</div>
+                  <div>
+                    <div class="bm-text-body"><strong>Emma Johnson</strong> deployed v2.1.0</div>
+                    <div class="bm-text-sm-muted">3 hours ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script>App.initCounters && App.initCounters();</script>
+{% endblock %}

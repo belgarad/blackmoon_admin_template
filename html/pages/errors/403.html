@@ -1,0 +1,18 @@
+﻿{% extends "layouts/error.html" %}
+{% set title = "403 — Unauthorized" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/error.scss">
+{% endblock %}
+
+{% block content %}
+  <div>
+    <div class="bm-text-6xl-danger">403</div>
+    <h1 class="bm-text-2xl-bold-fg2" data-i18n="error.forbidden">Access Denied</h1>
+    <p class="bm-text-body-muted-max" data-i18n="error.forbiddenDesc">You don't have permission to access this page. Contact your administrator if you think this is a mistake.</p>
+    <a href="/pages/dashboard.html" class="bm-btn bm-btn-primary bm-no-underline">
+      <i class="ph ph-arrow-left bm-text-lg"></i>
+      <span data-i18n="action.backToDashboard">Back to Dashboard</span>
+    </a>
+  </div>
+{% endblock %}

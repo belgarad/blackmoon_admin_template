@@ -1,0 +1,613 @@
+/* ================================================================
+   BLACKMOON ADMIN KIT — Component Classes
+   Replaces complex multi-property inline styles with semantic
+   component-level classes. Naming: .bm-{component}-{element}
+   ================================================================ */
+
+/* ================================================================
+   OVERLAY / MODAL BACKDROP
+   style="position:fixed;inset:0;z-index:100;display:none;"
+   ================================================================ */
+.bm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+}
+
+/* ================================================================
+   DROPDOWN PANEL
+   style="display:none;position:fixed;z-index:101;width:260px;
+          background:var(--card);border:1px solid var(--border);
+          border-radius:var(--radius-xl);
+          box-shadow:0 10px 40px rgba(0,0,0,0.12);overflow:hidden;"
+   ================================================================ */
+.bm-dropdown-panel {
+  display: none;
+  position: fixed;
+  z-index: 101;
+  width: 260px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+/* ================================================================
+   DROPDOWN ITEM
+   style="cursor:pointer;display:flex;align-items:center;gap:0.5rem;
+          padding:0.25rem 0.5rem;border-radius:var(--radius-lg);
+          transition:background 150ms;"
+   ================================================================ */
+.bm-dropdown-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-lg);
+  transition: background 150ms;
+}
+.bm-dropdown-item:hover {
+  background: var(--muted);
+}
+
+/* ================================================================
+   DROPDOWN FOOTER (danger action)
+   style="display:flex;align-items:center;justify-content:center;
+          gap:0.5rem;padding:0.5rem;font-size:0.8125rem;font-weight:500;
+          color:var(--destructive);border:1px solid var(--border);
+          border-radius:var(--radius-md);text-decoration:none;
+          transition:background 150ms;"
+   ================================================================ */
+.bm-dropdown-action-danger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--destructive);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background 150ms;
+}
+.bm-dropdown-action-danger:hover {
+  background: var(--danger-light);
+}
+
+/* ================================================================
+   DROPDOWN FOOTER (full-width button)
+   style="width:100%;justify-content:center;font-size:0.8125rem;"
+   ================================================================ */
+.bm-dropdown-footer-btn {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.8125rem;
+}
+
+/* ================================================================
+   LIST HEADER ROW
+   style="display:flex;align-items:center;justify-content:space-between;
+          padding:0.5rem 0.625rem;margin-bottom:0.25rem;"
+   ================================================================ */
+.bm-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.625rem;
+  margin-bottom: 0.25rem;
+}
+
+/* ================================================================
+   BADGE — small size
+   style="font-size:0.75rem;padding:0.125rem 0.5rem;"
+   ================================================================ */
+.bm-badge-sm {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+}
+
+/* ================================================================
+   BADGE — tag style
+   style="font-size:0.75rem;padding:0.125rem 0.375rem;border-radius:..."
+   ================================================================ */
+.bm-badge-tag {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ================================================================
+   BADGE — muted background
+   style="background:var(--muted);padding:0.125rem 0.375rem;
+          border-radius:var(--radius-sm);font-size:0.75rem;"
+   ================================================================ */
+.bm-badge-muted {
+  background: var(--muted);
+  padding: 0.125rem 0.375rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+}
+
+/* ================================================================
+   BADGE — keyboard shortcut (kbd)
+   style="font-size:0.625rem;border:1px solid var(--border);
+          border-radius:3px;padding:1px 4px;
+          background:var(--muted);margin-left:auto;"
+   ================================================================ */
+.bm-kbd {
+  font-size: 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 4px;
+  background: var(--muted);
+  margin-left: auto;
+}
+
+/* ================================================================
+   INFO CARD HEADER with gradient
+   style="padding:1rem;background:linear-gradient(135deg,
+          var(--primary-light),transparent);
+          border-bottom:1px solid var(--border);"
+   ================================================================ */
+.bm-card-gradient-header {
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-light), transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ================================================================
+   FLEX ROW with grow content (caption + flex-grow)
+   style="flex-grow:1;padding-top:1.25rem;"
+   ================================================================ */
+.bm-flex-grow-content {
+  flex-grow: 1;
+  padding-top: 1.25rem;
+}
+
+/* ================================================================
+   CAPTION with top margin
+   style="font-size:0.75rem;color:var(--muted-foreground);margin-top:0.125rem;"
+   ================================================================ */
+.bm-caption-muted-top {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-top: 0.125rem;
+}
+
+/* ================================================================
+   CAPTION SECTION HEADER
+   style="font-size:0.8125rem;color:var(--muted-foreground);margin-bottom:1rem;"
+   ================================================================ */
+.bm-caption-section {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+}
+
+/* ================================================================
+   MONOSPACE CAPTION
+   style="font-family:monospace;font-size:0.8125rem;"
+   ================================================================ */
+.bm-mono-caption {
+  font-family: monospace;
+  font-size: 0.8125rem;
+}
+
+/* ================================================================
+   TIMELINE COMPONENTS (activity-feed / timeline pages)
+   ================================================================ */
+.bm-timeline { display: flex; flex-direction: column; gap: 0; }
+.bm-timeline-item { display: flex; gap: 1rem; position: relative; padding-bottom: 1.5rem; }
+.bm-timeline-item:last-child { padding-bottom: 0; }
+.bm-timeline-item:not(:last-child) .bm-timeline-line { position: absolute; left: 1.1875rem; top: 2.25rem; bottom: 0; width: 2px; background: var(--border); }
+.bm-timeline-icon { width: 2.375rem; height: 2.375rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; position: relative; z-index: 1; border: 2px solid var(--background); }
+.bm-timeline-body { flex: 1; min-width: 0; padding-top: 0.35rem; }
+.bm-timeline-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.3125rem; }
+.bm-timeline-actor { font-size: 0.875rem; font-weight: 600; color: var(--foreground); }
+.bm-timeline-action { font-size: 0.875rem; color: var(--muted-foreground); }
+.bm-timeline-target { font-size: 0.875rem; font-weight: 500; color: var(--primary); }
+.bm-timeline-time { font-size: 0.75rem; color: var(--muted-foreground); white-space: nowrap; }
+.bm-timeline-content { font-size: 0.8125rem; color: var(--muted-foreground); line-height: 1.6; }
+.bm-timeline-attachment { margin-top: 0.625rem; padding: 0.75rem 1rem; background: var(--accent); border: 1px solid var(--border); border-radius: var(--radius-lg); font-size: 0.8125rem; display: flex; align-items: center; gap: 0.625rem; color: var(--foreground); max-width: 360px; }
+.bm-timeline-date-divider { display: flex; align-items: center; gap: 0.75rem; margin: 1.25rem 0; color: var(--muted-foreground); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+.bm-timeline-date-divider::before,
+.bm-timeline-date-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* Icon-based timeline variant (timeline.html) */
+.bm-timeline-icon-primary { background: var(--primary); color: #fff; }
+.bm-timeline-icon-success { background: var(--success); color: #fff; }
+.bm-timeline-icon-warning { background: var(--warning); color: #fff; }
+.bm-timeline-icon-danger  { background: var(--danger); color: #fff; }
+.bm-timeline-icon-info    { background: var(--info); color: #fff; }
+.bm-timeline-icon-muted   { background: var(--muted); color: var(--muted-foreground); }
+.bm-timeline-header { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem; }
+.bm-timeline-title  { font-size: 0.875rem; font-weight: 600; color: var(--foreground); flex: 1; min-width: 0; }
+.bm-timeline-text   { font-size: 0.8125rem; color: var(--muted-foreground); line-height: 1.5; }
+.bm-timeline-avatar { position: absolute; left: 0; top: 0; z-index: 1; }
+
+/* ================================================================
+   CHIP / TAG COMPONENTS
+   ================================================================ */
+.bm-chip-group { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+.bm-chip {
+  display: inline-flex; align-items: center; gap: 0.3125rem;
+  padding: 0.3125rem 0.75rem; border: 1px solid var(--border);
+  border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 500;
+  color: var(--muted-foreground); background: var(--background);
+  cursor: pointer; transition: background 130ms, border-color 130ms, color 130ms;
+  user-select: none;
+}
+.bm-chip:hover         { background: var(--accent); color: var(--foreground); }
+.bm-chip.active        { background: var(--primary); border-color: var(--primary); color: #fff; }
+.bm-chip.active:hover  { opacity: 0.9; }
+
+/* ================================================================
+   COMMENT BOX
+   ================================================================ */
+.bm-comment-box {
+  display: flex; align-items: flex-start; gap: 0.75rem;
+  padding: 0.875rem 1rem; background: var(--accent);
+  border: 1px solid var(--border); border-radius: var(--radius-xl);
+  margin-top: 0.75rem;
+}
+.bm-comment-input {
+  flex: 1; border: none; background: transparent; outline: none;
+  font-size: 0.875rem; color: var(--foreground);
+  resize: none; min-height: 2.25rem; line-height: 1.5;
+}
+.bm-comment-input::placeholder { color: var(--muted-foreground); }
+
+/* ================================================================
+   STATS STRIP
+   ================================================================ */
+.stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.stats-strip-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 1rem 1.25rem; display: flex; align-items: center; gap: 1rem; }
+.stats-strip-icon { width: 2.5rem; height: 2.5rem; border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.125rem; }
+
+/* ================================================================
+   PRICING CARD
+   ================================================================ */
+.bm-pricing-card { position: relative; transition: transform 200ms ease, box-shadow 200ms ease; }
+.bm-pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); }
+.bm-pricing-card.featured { border-color: var(--primary); }
+.bm-pricing-feature {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  font-size: 0.875rem; color: var(--foreground); margin-bottom: 0.625rem;
+}
+.bm-pricing-feature .ph { font-size: 1.1rem; color: var(--success); flex-shrink: 0; margin-top: 1px; }
+.bm-pricing-feature.unavailable { color: var(--muted-foreground); }
+
+/* ================================================================
+   BUTTON VARIANTS
+   ================================================================ */
+.bm-btn-danger {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem;
+  padding: 0.5rem 1rem; border-radius: var(--radius-md);
+  background: var(--danger); color: #fff; font-size: 0.875rem; font-weight: 500;
+  border: none; cursor: pointer; text-decoration: none; transition: opacity 150ms;
+}
+.bm-btn-danger:hover  { opacity: 0.9; }
+.bm-btn-warning {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem;
+  padding: 0.5rem 1rem; border-radius: var(--radius-md);
+  background: var(--warning); color: #fff; font-size: 0.875rem; font-weight: 500;
+  border: none; cursor: pointer; text-decoration: none; transition: opacity 150ms;
+}
+.bm-btn-warning:hover { opacity: 0.9; }
+.bm-btn-xs {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  padding: 0.25rem 0.625rem; border-radius: var(--radius-sm);
+  font-size: 0.75rem; font-weight: 500; cursor: pointer;
+  border: 1px solid var(--border); background: var(--background);
+  color: var(--foreground); transition: background 120ms;
+}
+.bm-btn-xs:hover { background: var(--accent); }
+
+/* ================================================================
+   COMMAND INPUT (search / filter bar)
+   ================================================================ */
+.bm-command-input-wrap {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 0.875rem; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); background: var(--background);
+}
+.bm-command-icon { font-size: 1.125rem; color: var(--muted-foreground); flex-shrink: 0; }
+
+/* ================================================================
+   FLOATING PANEL
+   ================================================================ */
+.bm-floating-panel {
+  position: sticky; top: calc(var(--header-height, 70px) + 1.25rem);
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 1.25rem;
+}
+
+/* ================================================================
+   DROPDOWN DIVIDER
+   ================================================================ */
+.bm-dropdown-divider { height: 1px; background: var(--border); margin: 0.375rem 0; }
+
+/* ================================================================
+   PAGINATION
+   ================================================================ */
+.bm-pagination-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem; border-radius: var(--radius-md);
+  font-size: 0.875rem; color: var(--foreground);
+  border: 1px solid var(--border); background: var(--background);
+  cursor: pointer; transition: background 120ms;
+}
+.bm-pagination-btn:hover  { background: var(--accent); }
+.bm-pagination-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.bm-pagination-ellipsis {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem; font-size: 0.875rem; color: var(--muted-foreground);
+}
+
+/* ================================================================
+   EMPTY STATES
+   ================================================================ */
+.bm-empty-dropzone {
+  border: 2px dashed var(--border); border-radius: var(--radius-xl);
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 3rem 2rem;
+  color: var(--muted-foreground); text-align: center; transition: background 150ms;
+}
+.bm-empty-dropzone:hover { background: var(--accent); }
+.bm-empty-state-sm {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 2.5rem 1.5rem;
+  text-align: center; color: var(--muted-foreground);
+}
+
+/* ================================================================
+   CODE INLINE
+   ================================================================ */
+.bm-code-inline {
+  display: inline; font-family: monospace; font-size: 0.8125rem;
+  padding: 0.125rem 0.375rem; background: var(--accent);
+  border-radius: var(--radius-sm); border: 1px solid var(--border); color: var(--foreground);
+}
+
+/* ================================================================
+   DIVIDER
+   ================================================================ */
+.bm-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1rem 0;
+}
+.bm-divider-text {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.bm-divider-text::before,
+.bm-divider-text::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid var(--border);
+}
+
+/* ================================================================
+   TREND INDICATOR
+   ================================================================ */
+.bm-trend-up,
+.bm-trend-down {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+}
+.bm-trend-up {
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+}
+.bm-trend-down {
+  color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
+}
+.bm-trend-up .ph,
+.bm-trend-down .ph {
+  font-size: 0.875rem;
+}
+
+/* ================================================================
+   STANDALONE TAG / CHIP
+   ================================================================ */
+.bm-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 999px;
+  background: var(--muted);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  line-height: 1.4;
+}
+.bm-tag-primary   { background: color-mix(in srgb, var(--primary) 12%, transparent); color: var(--primary); border-color: transparent; }
+.bm-tag-success   { background: color-mix(in srgb, var(--success) 12%, transparent); color: var(--success); border-color: transparent; }
+.bm-tag-warning   { background: color-mix(in srgb, var(--warning) 12%, transparent); color: var(--warning); border-color: transparent; }
+.bm-tag-danger    { background: color-mix(in srgb, var(--danger) 12%, transparent); color: var(--danger); border-color: transparent; }
+.bm-tag-info      { background: color-mix(in srgb, var(--info) 12%, transparent); color: var(--info); border-color: transparent; }
+.bm-tag-removable { cursor: pointer; }
+.bm-tag-removable:hover { opacity: 0.8; }
+.bm-tag-remove-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.1);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.625rem;
+  line-height: 1;
+  color: inherit;
+}
+.bm-tag-remove-btn:hover { background: rgba(0,0,0,0.2); }
+
+/* ================================================================
+   TIMELINE V2 (icon + color connectors)
+   ================================================================ */
+.bm-timeline-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+.bm-timeline-v2-item {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+.bm-timeline-v2-item:last-child { padding-bottom: 0; }
+.bm-timeline-v2-item:last-child .bm-timeline-v2-line { display: none; }
+.bm-timeline-v2-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+  z-index: 1;
+  background: var(--primary);
+  color: #fff;
+}
+.bm-timeline-v2-marker .ph { font-size: 1rem; }
+.bm-timeline-v2-marker-success { background: var(--success); }
+.bm-timeline-v2-marker-warning { background: var(--warning); }
+.bm-timeline-v2-marker-danger  { background: var(--danger); }
+.bm-timeline-v2-marker-info    { background: var(--info); }
+.bm-timeline-v2-marker-muted   { background: var(--muted); color: var(--muted-foreground); }
+.bm-timeline-v2-line {
+  position: absolute;
+  left: calc(1rem - 1px);
+  top: 2rem;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.bm-timeline-v2-content {
+  flex: 1;
+  padding-top: 0.25rem;
+}
+.bm-timeline-v2-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.125rem;
+}
+.bm-timeline-v2-desc {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}
+.bm-timeline-v2-time {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+}
+
+/* ================================================================
+   LIST GROUP / LIST ITEM — notification, file, task list widgets
+   ================================================================ */
+.bm-list-group {
+  display: flex;
+  flex-direction: column;
+}
+.bm-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  transition: background 150ms;
+}
+.bm-list-item:last-child { border-bottom: none; }
+.bm-list-item-interactive {
+  cursor: pointer;
+}
+.bm-list-item-interactive:hover {
+  background: color-mix(in srgb, var(--muted) 30%, transparent);
+}
+.bm-list-item-unread {
+  background: color-mix(in srgb, var(--primary) 4%, transparent);
+}
+.bm-list-item-body {
+  flex: 1;
+  min-width: 0;
+}
+.bm-list-item-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.125rem;
+}
+.bm-list-item-desc {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+}
+.bm-list-item-time {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-top: 0.25rem;
+}
+.bm-text-line-through { text-decoration: line-through; opacity: 0.6; }
+.bm-w-8rem { width: 8rem; }
+
+/* ================================================================
+   DANGER ACTION LINK
+   ================================================================ */
+.bm-danger-action-link {
+  color: var(--danger); font-size: 0.875rem; font-weight: 500;
+  text-decoration: none; cursor: pointer; transition: opacity 150ms;
+}
+.bm-danger-action-link:hover { opacity: 0.8; }
+
+/* ================================================================
+   INPUT WITH ICON
+   ================================================================ */
+.bm-input-icon-left    { padding-left: 2.5rem; }
+.bm-input-icon-left-lg { padding-left: 3rem; }
+
+/* ================================================================
+   INLINE PILL
+   ================================================================ */
+.bm-inline-pill {
+  display: inline-flex; align-items: center;
+  padding: 0.1875rem 0.625rem; border-radius: var(--radius-full);
+  font-size: 0.75rem; font-weight: 600;
+  background: var(--primary-light); color: var(--primary);
+}
+
+/* ================================================================
+   FORM GROUP
+   Generic form field wrapper (label + input stack)
+   ================================================================ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

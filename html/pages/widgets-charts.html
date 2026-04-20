@@ -1,0 +1,170 @@
+{% extends "layouts/base.html" %}
+{% set title = "Chart Widgets" %}
+{% set activeMenu = "widgets-charts" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="components.html">UI Showcase</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Chart Widgets</span></div>
+              </nav>
+              <h1 class="bm-page-title">Chart Widgets</h1>
+              <p class="bm-page-subtitle">Chart.js examples — bar, line, area, pie, donut, radar, and more.</p>
+            </div>
+          </div>
+
+          <!-- Row 1: Line + Area -->
+          <div class="bm-grid-2col-mb">
+            <!-- Line Chart -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Line Chart</div>
+                  <div class="bm-caption-muted-top">Monthly user growth</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-line" class="bm-chart-container"></div>
+              </div>
+            </div>
+            <!-- Area Chart -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Area Chart</div>
+                  <div class="bm-caption-muted-top">Revenue trend over time</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-area" class="bm-chart-container"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Bar + Grouped Bar -->
+          <div class="bm-grid-2col-mb">
+            <!-- Bar Chart -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Bar Chart</div>
+                  <div class="bm-caption-muted-top">Sales by region</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-bar" class="bm-chart-container"></div>
+              </div>
+            </div>
+            <!-- Grouped Bar Chart -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Grouped Bar</div>
+                  <div class="bm-caption-muted-top">Revenue vs expenses</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-grouped-bar" class="bm-chart-container"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: Pie + Donut -->
+          <div class="bm-grid-2col-mb">
+            <!-- Pie Chart -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Pie Chart</div>
+                  <div class="bm-caption-muted-top">Traffic sources</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm bm-flex-center-justify">
+                <div id="chart-pie" class="bm-chart-container"></div>
+              </div>
+            </div>
+            <!-- Donut Chart -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Donut Chart</div>
+                  <div class="bm-caption-muted-top">Device breakdown</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm bm-flex-center-justify">
+                <div id="chart-donut" class="bm-chart-container"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 4: Radar + Heatmap -->
+          <div class="bm-grid-2col-mb">
+            <!-- Radar Chart -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Radar Chart</div>
+                  <div class="bm-caption-muted-top">Skill assessment</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm bm-flex-center-justify">
+                <div id="chart-radar" class="bm-chart-container"></div>
+              </div>
+            </div>
+            <!-- Radial Bar Chart -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Radial Bar</div>
+                  <div class="bm-caption-muted-top">Goal completion</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm bm-flex-center-justify">
+                <div id="chart-radial" class="bm-chart-container"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 5: Mixed + Stacked Area -->
+          <div class="bm-grid-2col-mb">
+            <!-- Mixed (Line + Column) -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Mixed Chart</div>
+                  <div class="bm-caption-muted-top">Visitors (column) + bounce rate (line)</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-mixed" class="bm-chart-container"></div>
+              </div>
+            </div>
+            <!-- Stacked Area -->
+            <div class="bm-card">
+              <div class="bm-card-header">
+                <div>
+                  <div class="bm-card-title">Stacked Area</div>
+                  <div class="bm-caption-muted-top">Social media engagement</div>
+                </div>
+              </div>
+              <div class="bm-card-body bm-pt-sm">
+                <div id="chart-stacked-area" class="bm-chart-container"></div>
+              </div>
+            </div>
+          </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/chart-helpers.js"></script>
+<script src="/assets/js/pages/widgets-charts.js"></script>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "layouts/auth.html" %}
+
+{% set title = "Two-Factor Authentication" %}
+{% set brandGradient = "linear-gradient(160deg, #8775A7 0%, #4B77BE 45%, var(--primary) 100%)" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/auth-two-factor.scss">
+{% endblock %}
+
+{% block brand %}
+      <div class="bm-avatar-icon-circle">
+        <i class="ph ph-lock bm-text-4xl-white"></i>
+      </div>
+      <h2 class="auth-brand-headline">Your account, extra secure.</h2>
+      <p class="auth-brand-sub">Two-factor authentication adds a critical layer of protection. Enter the code sent to your device to continue.</p>
+{% endblock %}
+
+{% block form %}
+        <!-- Icon -->
+        <div class="bm-text-center-mb-lg">
+          <div class="bm-avatar-primary-ring">
+            <i class="ph ph-lock bm-text-2rem-primary"></i>
+          </div>
+        </div>
+
+        <h1 class="bm-text-center-800-fg">
+          Two-Factor Auth
+        </h1>
+        <p class="bm-text-center-sm-muted">
+          Enter the 6-digit code sent to
+        </p>
+        <p class="bm-text-center-semibold-fg">
+          +1 (&#x2022;&#x2022;&#x2022;) &#x2022;&#x2022;&#x2022;-4829
+        </p>
+
+        <!-- OTP Inputs -->
+        <div class="otp-grid" id="otpGrid">
+          <input class="otp-cell" id="otp0" type="text" inputmode="numeric" maxlength="1" autocomplete="one-time-code" autofocus>
+          <input class="otp-cell" id="otp1" type="text" inputmode="numeric" maxlength="1">
+          <input class="otp-cell" id="otp2" type="text" inputmode="numeric" maxlength="1">
+          <input class="otp-cell" id="otp3" type="text" inputmode="numeric" maxlength="1">
+          <input class="otp-cell" id="otp4" type="text" inputmode="numeric" maxlength="1">
+          <input class="otp-cell" id="otp5" type="text" inputmode="numeric" maxlength="1">
+        </div>
+
+        <!-- Hint -->
+        <p class="bm-text-center-xs-muted-mb">
+          Demo code: <strong class="bm-text-fg-ls">4 8 2 9 1 6</strong>
+        </p>
+
+        <!-- Error message -->
+        <div id="otpError" class="bm-hidden-err-msg">
+          <i class="ph ph-x-circle bm-text-sm-vmid"></i>
+          Invalid code. Please try again.
+        </div>
+
+        <!-- Verify button -->
+        <button id="verifyBtn" class="bm-btn bm-btn-primary bm-w-full-cta" onclick="verifyCode()" disabled>
+          Verify Code
+        </button>
+
+        <!-- Resend -->
+        <div class="bm-text-center-caption-muted">
+          Didn't receive the code?
+          <button id="resendBtn" onclick="resendCode()" class="bm-btn-ghost-primary">
+            Resend
+          </button>
+          <span id="countdown" class="bm-text-muted"></span>
+        </div>
+
+        <!-- Divider + alternatives -->
+        <div class="bm-divider-top">
+          <button class="bm-btn bm-btn-ghost bm-flex-start-caption" onclick="switchMethod('authenticator')">
+            <i class="ph ph-qr-code bm-text-md"></i>
+            Use authenticator app instead
+          </button>
+          <button class="bm-btn bm-btn-ghost bm-flex-start-caption" onclick="switchMethod('backup')">
+            <i class="ph ph-key bm-text-md"></i>
+            Use a backup code
+          </button>
+        </div>
+
+        <!-- Back link -->
+        <div class="bm-text-center-mt4">
+          <a href="login.html" class="bm-inline-link-muted">
+            <i class="ph ph-arrow-left bm-text-md"></i>
+            Back to Sign In
+          </a>
+        </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/pages/two-factor.js"></script>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "layouts/base.html" %}
+{% set title = "Kanban" %}
+{% set activeMenu = "kanban" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/kanban.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-nav-pb-sm">
+
+          <!-- Page header -->
+          <div class="bm-flex-between-wrap-mb4">
+            <div>
+              <nav class="bm-text-sm-muted-mb3">
+                <a href="dashboard.html" class="bm-link-muted" data-i18n="breadcrumb.home">Home</a>
+                <i class="ph ph-caret-right bm-text-body"></i>
+                <span>Kanban</span>
+              </nav>
+              <h1 class="bm-text-2xl-bold-fg3">Kanban Board</h1>
+              <p class="bm-text-body-muted-m">Drag cards between columns to update status</p>
+            </div>
+            <div class="bm-flex-gap-625">
+              <button class="bm-btn bm-btn-outline bm-btn-sm"><i class="ph ph-funnel bm-text-md"></i> Filter</button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="openAddCardModal(null)"><i class="ph ph-plus bm-text-md"></i> Add Card</button>
+            </div>
+          </div>
+
+          <!-- Filter bar -->
+          <div class="kb-filter">
+            <div class="kb-search">
+              <i class="ph ph-magnifying-glass kb-search-icon"></i>
+              <input type="text" placeholder="Search cards…" oninput="filterCards(this.value)" />
+            </div>
+            <div class="bm-flex-center-gap-md">
+              <span class="bm-text-caption-muted">Assignee:</span>
+              <div class="bm-flex-gap-250" id="assigneeFilters">
+                <button class="bm-btn bm-btn-outline bm-btn-sm af-btn af-btn-active" data-user="all" onclick="setAssigneeFilter(this,'all')">All</button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm af-btn" data-user="JD" onclick="setAssigneeFilter(this,'JD')"><div class="bm-avatar bm-badge-xs-indigo">JD</div></button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm af-btn" data-user="AJ" onclick="setAssigneeFilter(this,'AJ')"><div class="bm-avatar bm-badge-sky-mini">AJ</div></button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm af-btn" data-user="EC" onclick="setAssigneeFilter(this,'EC')"><div class="bm-avatar bm-badge-xs-green">EC</div></button>
+                <button class="bm-btn bm-btn-outline bm-btn-sm af-btn" data-user="GP" onclick="setAssigneeFilter(this,'GP')"><div class="bm-avatar bm-badge-xs-amber">GP</div></button>
+              </div>
+            </div>
+            <div class="bm-flex-center-gap-md">
+              <span class="bm-text-caption-muted">Priority:</span>
+              <select class="bm-select bm-w-auto-caption" onchange="setPriFilter(this.value)">
+                <option value="all">All</option>
+                <option value="urgent">Urgent</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Board -->
+          <div class="kanban-wrap">
+            <div class="kanban-board" id="kanbanBoard"></div>
+          </div>
+
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+  <script src="/assets/js/pages/kanban.js"></script>
+{% endblock %}

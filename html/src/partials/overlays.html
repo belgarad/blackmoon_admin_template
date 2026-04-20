@@ -1,0 +1,152 @@
+  <!-- User Menu Backdrop -->
+  <div id="userMenuBackdrop" class="bm-overlay" aria-hidden="true"></div>
+  <!-- User Menu Panel -->
+  <div id="userMenuPanel" class="bm-dropdown-panel" role="menu" aria-label="User menu">
+    <div class="bm-card-gradient-header">
+      <div class="bm-flex-center-gap-lg">
+        <div class="bm-avatar bm-avatar-md bm-border-success">JD</div>
+        <div>
+          <div class="bm-text-base-semibold">John Doe</div>
+          <div class="bm-text-sm-muted">john@example.com</div>
+          <span class="bm-badge bm-badge-success bm-text-xs-mt">Administrator</span>
+        </div>
+      </div>
+    </div>
+    <div class="bm-p-xs">
+      <ul class="bm-list-reset">
+        <li><a class="user-menu-link" href="{{ basePath }}profile.html"><i class="ph ph-user-circle bm-text-lg"></i><span data-i18n="action.profile">Profile</span></a></li>
+        <li><a class="user-menu-link" href="{{ basePath }}settings.html"><i class="ph ph-gear bm-text-lg"></i><span data-i18n="nav.settings">Settings</span></a></li>
+        <li><a class="user-menu-link" href="#"><i class="ph ph-credit-card bm-text-lg"></i><span data-i18n="action.billing">Billing</span></a></li>
+        <li><a class="user-menu-link" href="#" onclick="App.openCommand();return false;"><i class="ph ph-magnifying-glass bm-text-lg"></i><span data-i18n="form.search">Search</span> <kbd class="bm-kbd">Ctrl K</kbd></a></li>
+      </ul>
+    </div>
+    <div class="bm-section-bottom">
+      <div class="bm-list-header">
+        <span class="bm-flex-caption-medium">
+          <i class="ph ph-moon bm-text-lg" data-theme-icon></i>
+          <span data-theme-label>Light Mode</span>
+        </span>
+        <button class="bm-btn bm-btn-outline bm-btn-sm bm-badge-sm" onclick="ThemeManager.toggle()"><span data-i18n="userMenu.switch">Switch</span></button>
+      </div>
+      <a href="{{ basePath }}auth/login.html" class="bm-dropdown-action-danger">
+        <i class="ph ph-sign-out bm-text-md"></i><span data-i18n="action.signOut">Sign Out</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Notification Panel Backdrop -->
+  <div id="notifBackdrop" class="bm-overlay" aria-hidden="true"></div>
+  <!-- Notification Panel -->
+  <div id="notifPanel" class="bm-notif-panel bm-d-none" role="region" aria-label="Notifications">
+    <div class="bm-notif-header">
+      <span class="bm-notif-header-title" data-i18n="label.notifications">Notifications</span>
+      <div class="bm-flex-center-gap-md">
+        <span class="bm-badge bm-badge-danger">4 new</span>
+        <button class="bm-btn bm-btn-ghost bm-btn-sm bm-badge-sm" data-i18n="action.markAllRead">Mark all read</button>
+      </div>
+    </div>
+    <div class="bm-notif-list">
+      <div class="bm-notif-item unread"><div class="bm-notif-icon bm-bg-success-light"><i class="ph ph-check-circle bm-text-md-success"></i></div><div class="bm-notif-body"><div class="bm-notif-title">New order placed</div><div class="bm-notif-text">John Doe placed order #ORD-8912 for $249.00</div><div class="bm-notif-time">2 minutes ago</div></div></div>
+      <div class="bm-notif-item unread"><div class="bm-notif-icon bm-bg-primary-light"><i class="ph ph-user-plus bm-text-md-primary"></i></div><div class="bm-notif-body"><div class="bm-notif-title">New user registered</div><div class="bm-notif-text">Sarah Connor created a new account</div><div class="bm-notif-time">15 minutes ago</div></div></div>
+      <div class="bm-notif-item unread"><div class="bm-notif-icon bm-bg-warning-light"><i class="ph ph-warning bm-text-md-warning"></i></div><div class="bm-notif-body"><div class="bm-notif-title">Low stock alert</div><div class="bm-notif-text">Product "iPhone Case" is running low (5 left)</div><div class="bm-notif-time">1 hour ago</div></div></div>
+      <div class="bm-notif-item unread"><div class="bm-notif-icon bm-bg-info-light"><i class="ph ph-info bm-text-md-info"></i></div><div class="bm-notif-body"><div class="bm-notif-title">System update scheduled</div><div class="bm-notif-text">Maintenance window on April 5 at 2AM UTC</div><div class="bm-notif-time">3 hours ago</div></div></div>
+      <div class="bm-notif-item bm-opacity-65"><div class="bm-notif-icon bm-bg-muted"><i class="ph ph-envelope bm-text-md-muted"></i></div><div class="bm-notif-body"><div class="bm-notif-title">Monthly report ready</div><div class="bm-notif-text">March 2026 analytics report has been generated</div><div class="bm-notif-time">2 days ago</div></div></div>
+    </div>
+    <div class="bm-notif-footer">
+      <a href="{{ basePath }}activity-feed.html" class="bm-btn bm-btn-outline bm-w-full-center" data-i18n="action.viewAll">View all notifications</a>
+    </div>
+  </div>
+
+  <!-- Command Palette -->
+  <div id="commandPalette" class="bm-command-overlay" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="bm-command-box">
+      <div class="bm-command-input-wrapper">
+        <i class="ph ph-magnifying-glass bm-command-input-icon"></i>
+        <input type="text" class="bm-command-input" data-i18n-placeholder="command.searchPlaceholder" placeholder="Search pages, users, settings..." aria-label="Search pages, users, settings">
+        <kbd class="bm-command-kbd">ESC</kbd>
+      </div>
+      <div class="bm-command-results">
+        <div class="bm-command-group">
+          <div class="bm-command-group-label" data-i18n="command.pages">Pages</div>
+          <a href="{{ basePath }}dashboard.html" class="bm-command-item"><div class="bm-command-item-icon"><i class="ph ph-squares-four bm-text-body"></i></div><span class="bm-command-item-label" data-i18n="nav.dashboard">Dashboard</span></a>
+          <a href="{{ basePath }}analytics.html" class="bm-command-item"><div class="bm-command-item-icon"><i class="ph ph-chart-bar bm-text-body"></i></div><span class="bm-command-item-label" data-i18n="nav.analytics">Analytics</span></a>
+          <a href="{{ basePath }}users.html" class="bm-command-item"><div class="bm-command-item-icon"><i class="ph ph-users bm-text-body"></i></div><span class="bm-command-item-label" data-i18n="nav.users">Users</span></a>
+          <a href="{{ basePath }}crm.html" class="bm-command-item"><div class="bm-command-item-icon"><i class="ph ph-users-three bm-text-body"></i></div><span class="bm-command-item-label" data-i18n="nav.crm">CRM</span></a>
+          <a href="{{ basePath }}kanban.html" class="bm-command-item"><div class="bm-command-item-icon"><i class="ph ph-kanban bm-text-body"></i></div><span class="bm-command-item-label" data-i18n="nav.kanban">Kanban</span></a>
+          <a href="{{ basePath }}settings.html" class="bm-command-item"><div class="bm-command-item-icon"><i class="ph ph-gear bm-text-body"></i></div><span class="bm-command-item-label" data-i18n="nav.settings">Settings</span></a>
+        </div>
+        <div class="bm-command-group">
+          <div class="bm-command-group-label" data-i18n="command.actions">Actions</div>
+          <a href="#" class="bm-command-item" onclick="App.closeCommand();App.toast.success('Report queued','Your report will be ready in a moment.');return false;"><div class="bm-command-item-icon"><i class="ph ph-chart-bar bm-text-body"></i></div><span class="bm-command-item-label" data-i18n="command.generateReport">Generate Report</span></a>
+          <a href="#" class="bm-command-item" onclick="App.closeCommand();ThemeManager.toggle();return false;"><div class="bm-command-item-icon"><i class="ph ph-moon bm-text-body"></i></div><span class="bm-command-item-label" data-i18n="command.toggleDarkMode">Toggle Dark Mode</span></a>
+        </div>
+      </div>
+      <div class="bm-command-footer">
+        <span class="bm-command-shortcut"><kbd class="bm-command-kbd">↵</kbd> <span data-i18n="command.navigate">Navigate</span></span>
+        <span class="bm-command-shortcut"><kbd class="bm-command-kbd">ESC</kbd> <span data-i18n="command.close">Close</span></span>
+        <span class="bm-command-shortcut"><kbd class="bm-command-kbd">Ctrl K</kbd> <span data-i18n="command.open">Open</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Panel Drawer -->
+  <div class="bm-drawer-overlay" data-drawer-overlay="settingsPanel" aria-hidden="true"></div>
+  <div id="settingsPanel" class="bm-drawer" role="dialog" aria-modal="true" aria-labelledby="settingsPanelTitle">
+    <div class="bm-drawer-header">
+      <div class="bm-flex-center-gap">
+        <i class="ph ph-sliders-horizontal bm-text-lg-primary"></i>
+        <h2 class="bm-drawer-title" id="settingsPanelTitle" data-i18n="label.appSettings">App Settings</h2>
+      </div>
+      <button class="bm-btn bm-btn-ghost bm-btn-icon" onclick="App.closeSettingsPanel()" aria-label="Close settings">
+        <i class="ph ph-x"></i>
+      </button>
+    </div>
+    <div class="bm-drawer-body">
+      <div class="bm-settings-section">
+        <div class="bm-settings-section-title" data-i18n="settings.layoutDensity">Layout Density</div>
+        <div class="bm-settings-options">
+          <button class="bm-settings-option" data-settings-density="compact" onclick="App.Settings.set('density','compact')"><i class="ph ph-rows"></i> <span data-i18n="settings.compact">Compact</span></button>
+          <button class="bm-settings-option active" data-settings-density="normal" onclick="App.Settings.set('density','normal')"><i class="ph ph-list"></i> <span data-i18n="settings.normal">Normal</span></button>
+          <button class="bm-settings-option" data-settings-density="comfortable" onclick="App.Settings.set('density','comfortable')"><i class="ph ph-list-numbers"></i> <span data-i18n="settings.spacious">Spacious</span></button>
+        </div>
+      </div>
+      <div class="bm-settings-section">
+        <div class="bm-settings-section-title" data-i18n="settings.sidebarMode">Sidebar Mode</div>
+        <div class="bm-settings-options">
+          <button class="bm-settings-option active" data-settings-sidebar="fixed" onclick="App.Settings.set('sidebarMode','fixed')"><i class="ph ph-sidebar-simple"></i> <span data-i18n="settings.fixed">Fixed</span></button>
+          <button class="bm-settings-option" data-settings-sidebar="collapsed" onclick="App.Settings.set('sidebarMode','collapsed')"><i class="ph ph-sidebar-simple"></i> <span data-i18n="settings.collapsed">Collapsed</span></button>
+        </div>
+      </div>
+      <div class="bm-settings-section">
+        <div class="bm-settings-section-title" data-i18n="settings.contentWidth">Content Width</div>
+        <div class="bm-settings-options">
+          <button class="bm-settings-option active" data-settings-width="default" onclick="App.Settings.set('contentWidth','default')"><i class="ph ph-align-center-horizontal"></i> <span data-i18n="settings.default">Default</span></button>
+          <button class="bm-settings-option" data-settings-width="full" onclick="App.Settings.set('contentWidth','full')"><i class="ph ph-arrows-horizontal"></i> <span data-i18n="settings.fullWidth">Full Width</span></button>
+        </div>
+      </div>
+      <div class="bm-settings-section">
+        <div class="bm-settings-row">
+          <div><div class="bm-settings-row-label" data-i18n="settings.animations">Animations</div><div class="bm-caption-muted-top" data-i18n="settings.animationsDesc">Transitions &amp; micro-interactions</div></div>
+          <button type="button" class="bm-switch active" id="settingsAnimSwitch" role="switch" aria-checked="true" aria-label="Animations" onclick="App.Settings.set('animations', !App.Settings.get('animations'))"></button>
+        </div>
+        <div class="bm-settings-row">
+          <div><div class="bm-settings-row-label" data-i18n="settings.rtlDirection">RTL Direction</div><div class="bm-caption-muted-top" data-i18n="settings.rtlDesc">Right-to-left layout</div></div>
+          <button type="button" class="bm-switch" id="settingsRTLSwitch" role="switch" aria-checked="false" aria-label="RTL Direction" onclick="App.Settings.set('rtl', !App.Settings.get('rtl'))"></button>
+        </div>
+      </div>
+      <div class="bm-settings-section">
+        <div class="bm-settings-section-title" data-i18n="label.language">Language</div>
+        <div class="bm-settings-lang-grid">
+          <button class="bm-settings-lang-btn" data-lang-btn="tr" onclick="i18n.setLang('tr')"><span class="fi fi-tr bm-settings-lang-flag" role="img" aria-label="TR"></span>Türkçe</button>
+          <button class="bm-settings-lang-btn" data-lang-btn="es" onclick="i18n.setLang('es')"><span class="fi fi-es bm-settings-lang-flag" role="img" aria-label="ES"></span>Español</button>
+          <button class="bm-settings-lang-btn" data-lang-btn="ko" onclick="i18n.setLang('ko')"><span class="fi fi-kr bm-settings-lang-flag" role="img" aria-label="KO"></span>한국어</button>
+          <button class="bm-settings-lang-btn active" data-lang-btn="en" onclick="i18n.setLang('en')"><span class="fi fi-us bm-settings-lang-flag" role="img" aria-label="EN"></span>English</button>
+          <button class="bm-settings-lang-btn" data-lang-btn="de" onclick="i18n.setLang('de')"><span class="fi fi-de bm-settings-lang-flag" role="img" aria-label="DE"></span>Deutsch</button>
+          <button class="bm-settings-lang-btn" data-lang-btn="ru" onclick="i18n.setLang('ru')"><span class="fi fi-ru bm-settings-lang-flag" role="img" aria-label="RU"></span>Русский</button>
+        </div>
+      </div>
+      <div class="bm-section-top">
+        <button class="bm-btn bm-btn-outline bm-w-full" onclick="localStorage.removeItem('admin-settings');location.reload();"><i class="ph ph-arrow-clockwise bm-text-md"></i> <span data-i18n="settings.resetDefaults">Reset to Defaults</span></button>
+      </div>
+    </div>
+  </div>

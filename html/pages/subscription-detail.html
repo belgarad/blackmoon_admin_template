@@ -1,0 +1,231 @@
+{% extends "layouts/base.html" %}
+{% set title = "Subscription Detail" %}
+{% set activeMenu = "subscriptions" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/subscriptions.scss">
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="subscriptions.html">Subscriptions</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Acme Corp.</span></div>
+              </nav>
+              <h1 class="bm-page-title">Acme Corp. — Enterprise Plan</h1>
+              <p class="bm-page-subtitle">Annual subscription · Renews Feb 10, 2027</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-x-circle bm-text-md"></i> <span data-i18n="action.cancel">Cancel</span></button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm"><i class="ph ph-swap bm-text-md"></i> Change Plan</button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm"><i class="ph ph-pencil bm-text-md"></i> Edit</button>
+            </div>
+          </div>
+
+          <!-- Layout: Main + Sidebar -->
+          <div class="sub-detail-layout">
+
+            <!-- Main -->
+            <div class="sub-detail-main">
+              <!-- Current Plan Card -->
+              <div class="bm-card bm-mb-lg">
+                <div class="bm-card-header"><div class="bm-card-title">Current Plan</div></div>
+                <div class="bm-card-body">
+                  <div class="sub-plan-banner">
+                    <div class="sub-plan-info">
+                      <div class="bm-text-lg-semibold-fg">Enterprise</div>
+                      <div class="bm-text-body-muted bm-mt-xs">Unlimited users, priority support, custom integrations, SSO, advanced analytics.</div>
+                      <div class="bm-flex-wrap-gap-sm bm-mt-md">
+                        <span class="bm-badge bm-badge-success">Active</span>
+                        <span class="bm-badge bm-badge-muted">Annual Billing</span>
+                      </div>
+                    </div>
+                    <div class="sub-plan-price">
+                      <div class="bm-text-2xl-semibold-fg">$2,000</div>
+                      <div class="bm-text-2xs-muted">/ month</div>
+                      <div class="bm-text-caption-muted bm-mt-xs">$24,000 / year</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Usage -->
+              <div class="bm-card bm-mb-lg">
+                <div class="bm-card-header"><div class="bm-card-title">Usage this Period</div></div>
+                <div class="bm-card-body">
+                  <div class="bm-grid-1-1 bm-mb-lg">
+                    <div>
+                      <div class="bm-flex-between-plain bm-mb-xs">
+                        <span class="bm-text-caption-medium">Team Members</span>
+                        <span class="bm-text-caption-muted">42 / Unlimited</span>
+                      </div>
+                      <div class="bm-progress"><div class="bm-progress-bar bm-bg-primary" style="width:42%"></div></div>
+                    </div>
+                    <div>
+                      <div class="bm-flex-between-plain bm-mb-xs">
+                        <span class="bm-text-caption-medium">Storage</span>
+                        <span class="bm-text-caption-muted">186 GB / 500 GB</span>
+                      </div>
+                      <div class="bm-progress"><div class="bm-progress-bar bm-bg-info" style="width:37%"></div></div>
+                    </div>
+                    <div>
+                      <div class="bm-flex-between-plain bm-mb-xs">
+                        <span class="bm-text-caption-medium">API Calls</span>
+                        <span class="bm-text-caption-muted">824K / 2M</span>
+                      </div>
+                      <div class="bm-progress"><div class="bm-progress-bar bm-bg-warning" style="width:41%"></div></div>
+                    </div>
+                    <div>
+                      <div class="bm-flex-between-plain bm-mb-xs">
+                        <span class="bm-text-caption-medium">Projects</span>
+                        <span class="bm-text-caption-muted">18 / Unlimited</span>
+                      </div>
+                      <div class="bm-progress"><div class="bm-progress-bar bm-bg-success" style="width:18%"></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Payment History -->
+              <div class="bm-card">
+                <div class="bm-card-header">
+                  <div class="bm-card-title">Payment History</div>
+                  <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-download-simple bm-text-md"></i> Export</button>
+                </div>
+                <div class="bm-card-body bm-p-0">
+                  <table class="bm-table bm-table-sm">
+                    <thead>
+                      <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Description</th>
+                        <th scope="col" class="bm-text-right">Amount</th>
+                        <th scope="col">Status</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="bm-text-caption-muted">Feb 10, 2026</td>
+                        <td class="bm-text-caption-medium">Enterprise Plan — Annual Renewal</td>
+                        <td class="bm-text-right bm-font-semibold">$24,000.00</td>
+                        <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                        <td><button class="bm-btn-icon-xs" title="Download invoice"><i class="ph ph-receipt"></i></button></td>
+                      </tr>
+                      <tr>
+                        <td class="bm-text-caption-muted">Feb 10, 2025</td>
+                        <td class="bm-text-caption-medium">Enterprise Plan — Annual Renewal</td>
+                        <td class="bm-text-right bm-font-semibold">$24,000.00</td>
+                        <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                        <td><button class="bm-btn-icon-xs" title="Download invoice"><i class="ph ph-receipt"></i></button></td>
+                      </tr>
+                      <tr>
+                        <td class="bm-text-caption-muted">Feb 10, 2024</td>
+                        <td class="bm-text-caption-medium">Professional to Enterprise Upgrade</td>
+                        <td class="bm-text-right bm-font-semibold">$20,400.00</td>
+                        <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                        <td><button class="bm-btn-icon-xs" title="Download invoice"><i class="ph ph-receipt"></i></button></td>
+                      </tr>
+                      <tr>
+                        <td class="bm-text-caption-muted">Feb 10, 2023</td>
+                        <td class="bm-text-caption-medium">Professional Plan — Annual</td>
+                        <td class="bm-text-right bm-font-semibold">$2,988.00</td>
+                        <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                        <td><button class="bm-btn-icon-xs" title="Download invoice"><i class="ph ph-receipt"></i></button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sub-detail-sidebar">
+              <!-- Subscription Info -->
+              <div class="bm-card bm-mb-lg">
+                <div class="bm-card-header"><div class="bm-card-title">Subscription Info</div></div>
+                <div class="bm-card-body bm-flex-col-gap-lg">
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Subscription ID</div>
+                    <div class="bm-text-caption-medium bm-font-mono">SUB-2024-00042</div>
+                  </div>
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Start Date</div>
+                    <div class="bm-text-caption-medium">Feb 10, 2023</div>
+                  </div>
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Current Period</div>
+                    <div class="bm-text-caption-medium">Feb 10, 2026 → Feb 10, 2027</div>
+                  </div>
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Auto-Renew</div>
+                    <div class="bm-text-caption-medium bm-text-success">Enabled</div>
+                  </div>
+                  <div>
+                    <div class="bm-text-2xs-muted bm-mb-xs">Payment Method</div>
+                    <div class="bm-flex-center-gap-sm">
+                      <i class="ph ph-credit-card bm-text-md-muted"></i>
+                      <span class="bm-text-caption-medium">•••• 4242</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Customer -->
+              <div class="bm-card bm-mb-lg">
+                <div class="bm-card-header"><div class="bm-card-title">Customer</div></div>
+                <div class="bm-card-body">
+                  <div class="bm-flex-center-gap-md bm-mb-md">
+                    <div class="bm-avatar bm-avatar-sm">AC</div>
+                    <div>
+                      <div class="bm-text-caption-medium">Acme Corp.</div>
+                      <div class="bm-text-2xs-muted">alice.smith@acmecorp.com</div>
+                    </div>
+                  </div>
+                  <a href="contact-detail.html" class="bm-btn bm-btn-outline bm-btn-sm bm-w-full">View Contact</a>
+                </div>
+              </div>
+
+              <!-- Plan Features -->
+              <div class="bm-card">
+                <div class="bm-card-header"><div class="bm-card-title">Plan Features</div></div>
+                <div class="bm-card-body bm-flex-col-gap-md">
+                  <div class="sub-feature-row">
+                    <i class="ph ph-check-circle bm-text-md-success"></i>
+                    <span class="bm-text-caption-medium">Unlimited team members</span>
+                  </div>
+                  <div class="sub-feature-row">
+                    <i class="ph ph-check-circle bm-text-md-success"></i>
+                    <span class="bm-text-caption-medium">500 GB storage</span>
+                  </div>
+                  <div class="sub-feature-row">
+                    <i class="ph ph-check-circle bm-text-md-success"></i>
+                    <span class="bm-text-caption-medium">2M API calls / month</span>
+                  </div>
+                  <div class="sub-feature-row">
+                    <i class="ph ph-check-circle bm-text-md-success"></i>
+                    <span class="bm-text-caption-medium">Priority support (SLA 4h)</span>
+                  </div>
+                  <div class="sub-feature-row">
+                    <i class="ph ph-check-circle bm-text-md-success"></i>
+                    <span class="bm-text-caption-medium">SSO & SAML</span>
+                  </div>
+                  <div class="sub-feature-row">
+                    <i class="ph ph-check-circle bm-text-md-success"></i>
+                    <span class="bm-text-caption-medium">Custom integrations</span>
+                  </div>
+                  <div class="sub-feature-row">
+                    <i class="ph ph-check-circle bm-text-md-success"></i>
+                    <span class="bm-text-caption-medium">Advanced analytics</span>
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+{% endblock %}

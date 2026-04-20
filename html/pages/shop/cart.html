@@ -1,0 +1,162 @@
+{% extends "layouts/base.html" %}
+{% set title = "Shopping Cart" %}
+{% set activeMenu = "shop-cart" %}
+{% set basePath = "../" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/cart.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-py-nav-wide2">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="products.html">Shop</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Cart</span></div>
+              </nav>
+              <h1 class="bm-page-title">Shopping Cart</h1>
+              <p class="bm-page-subtitle">3 items in your cart</p>
+            </div>
+            <a href="products.html" class="bm-btn bm-btn-ghost bm-btn-sm">
+              <i class="ph ph-arrow-left bm-text-md"></i>
+              Continue Shopping
+            </a>
+          </div>
+
+          <div class="bm-grid-main-320">
+
+            <!-- Cart Items -->
+            <div class="bm-card bm-p-xl">
+
+              <!-- Cart item 1 -->
+              <div class="cart-item">
+                <div class="cart-img"><i class="ph ph-headphones bm-text-4xl-muted-2"></i></div>
+                <div>
+                  <div class="bm-text-2xs-label">Electronics</div>
+                  <div class="bm-text-base-semibold-mb">SoundWave Pro X Wireless Headphones</div>
+                  <div class="bm-text-sm-muted-mb2">Color: Space Black</div>
+                  <div class="bm-flex-center-gap-xl2">
+                    <div class="qty-ctrl">
+                      <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                      <input class="qty-val" type="number" value="1" min="1" max="99" onchange="recalc()">
+                      <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+                    </div>
+                    <button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-danger" onclick="removeItem(this)">
+                      <i class="ph ph-trash bm-text-body"></i>Remove
+                    </button>
+                  </div>
+                </div>
+                <div class="bm-text-right">
+                  <div class="bm-text-lg-bold-fg">$89.99</div>
+                  <div class="bm-price-strike">$129.99</div>
+                </div>
+              </div>
+
+              <!-- Cart item 2 -->
+              <div class="cart-item">
+                <div class="cart-img"><i class="ph ph-laptop bm-text-4xl-muted-2"></i></div>
+                <div>
+                  <div class="bm-text-2xs-label">Electronics</div>
+                  <div class="bm-text-base-semibold-mb">NexBook Pro 16 — M3 Ultra</div>
+                  <div class="bm-text-sm-muted-mb2">RAM: 32GB · Storage: 1TB</div>
+                  <div class="bm-flex-center-gap-xl2">
+                    <div class="qty-ctrl">
+                      <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                      <input class="qty-val" type="number" value="1" min="1" max="99" onchange="recalc()">
+                      <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+                    </div>
+                    <button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-danger" onclick="removeItem(this)">
+                      <i class="ph ph-trash bm-text-body"></i>Remove
+                    </button>
+                  </div>
+                </div>
+                <div class="bm-text-right">
+                  <div class="bm-text-lg-bold-fg">$1,499.00</div>
+                </div>
+              </div>
+
+              <!-- Cart item 3 -->
+              <div class="cart-item">
+                <div class="cart-img"><i class="ph ph-coat-hanger bm-text-4xl-muted-2"></i></div>
+                <div>
+                  <div class="bm-text-2xs-label">Clothing</div>
+                  <div class="bm-text-base-semibold-mb">Urban Classic Cotton Hoodie</div>
+                  <div class="bm-text-sm-muted-mb2">Size: L · Color: Heather Gray</div>
+                  <div class="bm-flex-center-gap-xl2">
+                    <div class="qty-ctrl">
+                      <button class="qty-btn" onclick="changeQty(this,-1)">−</button>
+                      <input class="qty-val" type="number" value="2" min="1" max="99" onchange="recalc()">
+                      <button class="qty-btn" onclick="changeQty(this,1)">+</button>
+                    </div>
+                    <button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-danger" onclick="removeItem(this)">
+                      <i class="ph ph-trash bm-text-body"></i>Remove
+                    </button>
+                  </div>
+                </div>
+                <div class="bm-text-right">
+                  <div class="bm-text-lg-bold-fg">$109.98</div>
+                  <div class="bm-text-sm-muted">2 × $54.99</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Order Summary -->
+            <div class="bm-flex-col-gap-lg">
+              <div class="bm-card bm-p-xl">
+                <h3 class="bm-text-md-fg-semibold-m">Order Summary</h3>
+
+                <div class="order-row"><span class="order-row-label">Subtotal (4 items)</span><span class="order-row-value">$1,698.97</span></div>
+                <div class="order-row"><span class="order-row-label">Shipping</span><span class="order-row-value bm-text-success">Free</span></div>
+                <div class="order-row"><span class="order-row-label">Discount (SAVE20)</span><span class="order-row-value bm-text-success">−$89.99</span></div>
+                <div class="order-row"><span class="order-row-label">Tax (8%)</span><span class="order-row-value">$128.72</span></div>
+                <div class="order-total">
+                  <span class="order-total-label">Total</span>
+                  <span class="order-total-value">$1,737.70</span>
+                </div>
+
+                <!-- Coupon -->
+                <div class="bm-sep-top-mt">
+                  <div class="bm-text-sm2-medium-mb">Coupon Code</div>
+                  <div class="bm-flex-gap-xs">
+                    <input class="bm-input bm-flex-1" placeholder="Enter code" value="SAVE20">
+                    <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.success('Applied!','Coupon SAVE20 applied.')">Apply</button>
+                  </div>
+                  <div class="bm-hint-success-xs">✓ Coupon SAVE20 applied — 5% off electronics</div>
+                </div>
+
+                <a href="checkout.html" class="bm-btn bm-btn-primary bm-w-full-mt-center">
+                  <i class="ph ph-credit-card bm-text-md"></i>
+                  Proceed to Checkout
+                </a>
+                <div class="bm-flex-center-centered-sm">
+                  <i class="ph ph-lock bm-text-body"></i>
+                  Secure SSL checkout
+                </div>
+              </div>
+
+              <!-- Accepted payments -->
+              <div class="bm-card bm-p-flex-between-gap">
+                <span class="bm-text-sm-muted-shrink">We accept:</span>
+                <div class="bm-flex-center-gap-md">
+                  <div class="bm-p-xs-tag">VISA</div>
+                  <div class="bm-p-xs-tag">MC</div>
+                  <div class="bm-p-xs-tag">AMEX</div>
+                  <div class="bm-badge-paypal">PayPal</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/cart.js"></script>
+{% endblock %}

@@ -1,0 +1,303 @@
+{% extends "layouts/base.html" %}
+{% set title = "FAQ" %}
+{% set activeMenu = "faq" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">FAQ</span></div>
+              </nav>
+              <h1 class="bm-page-title">Help Center</h1>
+              <p class="bm-page-subtitle">Browse answers or search for a specific topic below.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.info('Email','Opening support form…')">
+                <i class="ph ph-envelope bm-text-md"></i> Email Us
+              </button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.info('Chat','Connecting you to live chat…')">
+                <i class="ph ph-chat-circle bm-text-md"></i> Live Chat
+              </button>
+            </div>
+          </div>
+
+          <!-- Search Hero -->
+          <div class="bm-card bm-p-xl bm-mb-xl faq-hero">
+            <h2 class="faq-hero-title">How can we help?</h2>
+            <p class="faq-hero-sub">Search across 19 articles covering billing, technical setup, and security.</p>
+            <div class="faq-search-wrap">
+              <i class="ph ph-magnifying-glass faq-search-icon"></i>
+              <input id="faqSearch" class="faq-search-input" type="text" placeholder="Search — e.g. dark mode, refund, 2FA…" oninput="searchFaq(this.value)" />
+            </div>
+            <div class="faq-popular-tags">
+              <span class="faq-tag-label">Category:</span>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" data-faq-cat="all" onclick="filterFaq('all')">All</button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm" data-faq-cat="general" onclick="filterFaq('general')">General</button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm" data-faq-cat="billing" onclick="filterFaq('billing')">Billing</button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm" data-faq-cat="technical" onclick="filterFaq('technical')">Technical</button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm" data-faq-cat="security" onclick="filterFaq('security')">Security</button>
+            </div>
+          </div>
+
+          <!-- Layout: FAQ + Sidebar -->
+          <div class="bm-grid-main-aside">
+
+            <!-- ── FAQ Column ── -->
+            <div>
+              <!-- No results -->
+              <div id="faqNoResults" class="bm-card bm-p-xl bm-text-center bm-mb-xl bm-d-none">
+                <i class="ph ph-magnifying-glass-minus bm-text-4xl-muted"></i>
+                <p class="bm-text-base-semibold-mb">No matching questions</p>
+                <p class="bm-text-sm-muted">Try a different keyword or <button class="bm-text-primary-link" onclick="setFaqSearch('')">clear search</button>.</p>
+              </div>
+
+              <!-- General -->
+              <div id="section-general" class="bm-card bm-mb-xl" data-faq-section="general">
+                <div class="bm-card-header">
+                  <div class="bm-flex-center-gap">
+                    <i class="ph ph-info bm-text-primary"></i>
+                    <span class="bm-card-title">General</span>
+                  </div>
+                  <span class="bm-badge bm-badge-muted">5 questions</span>
+                </div>
+                <div class="bm-p-lg">
+                  <div class="bm-accordion">
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">What is BlackMoon Admin Kit?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>BlackMoon Admin Kit is a comprehensive admin dashboard template built with modern web technologies including HTML, Angular, React, and Vue.js. It provides a complete set of UI components and page templates to help you build professional admin interfaces quickly.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item" id="faq-g2">
+                      <button class="bm-accordion-trigger">Which frameworks are supported?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>BlackMoon Admin Kit comes in four framework versions: <strong>HTML/CSS</strong> (pure frontend, no build step), <strong>Angular 19</strong>, <strong>React 19 with Vite</strong>, and <strong>Vue 3 with Vite</strong>. Each version includes the same set of pages and components adapted to the framework's conventions.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">Is it mobile-responsive?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Yes. Every layout and component is fully responsive. The sidebar collapses into a mobile drawer on smaller screens, and all grid layouts adapt using CSS flexbox and grid. The template also supports fluid, boxed, and full-width content layouts via the Settings panel.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item" id="faq-g4">
+                      <button class="bm-accordion-trigger">Does it support dark mode?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Yes. Dark mode is built in using CSS custom properties. Clicking the theme toggle button in the header or user menu switches between light and dark modes. The selected mode is persisted in <code>localStorage</code> across page reloads.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">How do I get started quickly?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Download the template, extract the zip, and open <code>html/pages/dashboard.html</code> directly in your browser — no build step needed. To preview all pages, open <code>html/index.html</code>. For Angular, React or Vue versions, run <code>npm install &amp;&amp; npm run dev</code> to start the dev server.</p></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Billing -->
+              <div id="section-billing" class="bm-card bm-mb-xl" data-faq-section="billing">
+                <div class="bm-card-header">
+                  <div class="bm-flex-center-gap">
+                    <i class="ph ph-credit-card bm-text-success"></i>
+                    <span class="bm-card-title">Billing &amp; Plans</span>
+                  </div>
+                  <span class="bm-badge bm-badge-muted">5 questions</span>
+                </div>
+                <div class="bm-p-lg">
+                  <div class="bm-accordion">
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">What payment methods do you accept?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>We accept all major credit and debit cards (Visa, Mastercard, American Express), PayPal, and bank transfers for annual enterprise plans. All payments are processed securely through Stripe.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">Can I change my plan at any time?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Yes. You can upgrade or downgrade your plan at any time. When upgrading, you'll only pay the prorated difference. When downgrading, the change takes effect at the start of your next billing cycle.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item" id="faq-b3">
+                      <button class="bm-accordion-trigger">Is there a free trial?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Yes. All paid plans come with a 14-day free trial — no credit card required. You can explore all features during the trial and only provide billing information when you decide to continue.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">How does annual billing work?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Annual billing is charged once per year upfront and gives you a <strong>20% discount</strong> compared to monthly billing. You'll receive a single invoice for the full year. Refunds are available within the first 30 days.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">Can I get a refund?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Monthly subscribers can request a full refund within 7 days of their first payment. Annual subscribers are eligible for a full refund within 30 days of purchase. Contact our support team with your order ID to initiate the refund.</p></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Technical -->
+              <div id="section-technical" class="bm-card bm-mb-xl" data-faq-section="technical">
+                <div class="bm-card-header">
+                  <div class="bm-flex-center-gap">
+                    <i class="ph ph-code bm-text-info-plain"></i>
+                    <span class="bm-card-title">Technical</span>
+                  </div>
+                  <span class="bm-badge bm-badge-muted">5 questions</span>
+                </div>
+                <div class="bm-p-lg">
+                  <div class="bm-accordion">
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">Does it require a backend?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>No. The HTML version is a pure frontend template with no backend required. All data shown is static or mock data. You can integrate it with any REST API, GraphQL endpoint, or backend framework of your choice.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item" id="faq-t2">
+                      <button class="bm-accordion-trigger">What third-party libraries are included?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>The HTML version is intentionally lean. The only third-party dependency is <strong>Chart.js v4.4</strong> (loaded via CDN) for charts and sparklines. All other UI components — modals, drawers, date pickers, data grids, sortable tables, etc. — are built from scratch in vanilla JavaScript.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">How do I customize the color scheme?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>All colors are defined as CSS custom properties in <code>assets/css/theme.css</code>. To change the primary color, dark mode colors, or any other design token, simply edit the corresponding variable in that file. The entire UI updates automatically.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">Can I use it with Bootstrap or Tailwind CSS?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>The HTML template uses its own CSS system with <code>bm-</code> prefixed classes. It does not depend on Bootstrap or Tailwind, so there are no conflicts. You can add either framework alongside it for specific use cases if needed.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">Is there a REST API I can connect to?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>The template is API-agnostic. Connect it to any REST or GraphQL backend by replacing mock data with <code>fetch()</code> calls. Angular, React and Vue versions include recommended patterns for API service layers in their documentation.</p></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Security -->
+              <div id="section-security" class="bm-card bm-mb-xl" data-faq-section="security">
+                <div class="bm-card-header">
+                  <div class="bm-flex-center-gap">
+                    <i class="ph ph-shield bm-text-warning-plain"></i>
+                    <span class="bm-card-title">Security &amp; Privacy</span>
+                  </div>
+                  <span class="bm-badge bm-badge-muted">4 questions</span>
+                </div>
+                <div class="bm-p-lg">
+                  <div class="bm-accordion">
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">Is my data safe?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Yes. All data is encrypted at rest using AES-256 and in transit using TLS 1.3. We perform daily backups with 30-day retention and are SOC 2 Type II certified.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item" id="faq-s2">
+                      <button class="bm-accordion-trigger">Do you support two-factor authentication?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Yes. Two-factor authentication (2FA) is available via TOTP authenticator apps (Google Authenticator, Authy, etc.) or SMS. Enterprise plans also support hardware security keys (FIDO2/WebAuthn).</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">Where is data stored?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Data is stored in EU and US datacenters (AWS). Enterprise customers can request data residency in a specific region. We are GDPR and CCPA compliant.</p></div></div>
+                    </div>
+                    <div class="bm-accordion-item">
+                      <button class="bm-accordion-trigger">How do I report a security vulnerability?<i class="ph ph-caret-down bm-accordion-icon"></i></button>
+                      <div class="bm-accordion-content"><div class="bm-accordion-body"><p>Email <strong>security@example.com</strong> with a detailed description. We follow responsible disclosure and aim to respond within 48 hours. Critical vulnerabilities are patched and disclosed within 90 days.</p></div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTA card -->
+              <div class="bm-card">
+                <div class="bm-card-body bm-text-center-p-mb">
+                  <i class="ph ph-headset bm-text-4xl-primary-block"></i>
+                  <h3 class="bm-text-lg-semibold-mb">Still have questions?</h3>
+                  <p class="bm-text-sm-muted-mb5">Our support team is available Monday–Friday, 9AM–6PM UTC.</p>
+                  <div class="bm-flex-wrap-center">
+                    <button class="bm-btn bm-btn-primary" onclick="App.toast.info('Support','Opening chat window...')">
+                      <i class="ph ph-chat-circle bm-text-md"></i> Live Chat
+                    </button>
+                    <button class="bm-btn bm-btn-outline" onclick="App.toast.info('Email','support@example.com')">
+                      <i class="ph ph-envelope bm-text-md"></i> Email Us
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- /faq col -->
+
+            <!-- ── Sidebar Column ── -->
+            <div class="bm-flex-col-gap-lg">
+
+              <!-- Category Navigation -->
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-base-semibold-0 bm-mb-sm">Categories</h3>
+                <nav class="bm-flex-col-gap-xs">
+                  <a href="#section-general" class="faq-nav-link">
+                    <i class="ph ph-info bm-text-primary"></i>
+                    General
+                    <span class="faq-nav-count">5</span>
+                  </a>
+                  <a href="#section-billing" class="faq-nav-link">
+                    <i class="ph ph-credit-card bm-text-success"></i>
+                    Billing &amp; Plans
+                    <span class="faq-nav-count">5</span>
+                  </a>
+                  <a href="#section-technical" class="faq-nav-link">
+                    <i class="ph ph-code bm-text-info-plain"></i>
+                    Technical
+                    <span class="faq-nav-count">5</span>
+                  </a>
+                  <a href="#section-security" class="faq-nav-link">
+                    <i class="ph ph-shield bm-text-warning-plain"></i>
+                    Security &amp; Privacy
+                    <span class="faq-nav-count">4</span>
+                  </a>
+                </nav>
+              </div>
+
+              <!-- Popular Questions -->
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-base-semibold-0 bm-mb-sm">Popular Questions</h3>
+                <div>
+                  <a href="#faq-g4" class="faq-popular-item" onclick="openFaqItem('faq-g4');return false">
+                    <i class="ph ph-caret-right bm-text-md-muted"></i>
+                    Does it support dark mode?
+                  </a>
+                  <a href="#faq-b3" class="faq-popular-item" onclick="openFaqItem('faq-b3');return false">
+                    <i class="ph ph-caret-right bm-text-md-muted"></i>
+                    Is there a free trial?
+                  </a>
+                  <a href="#faq-t2" class="faq-popular-item" onclick="openFaqItem('faq-t2');return false">
+                    <i class="ph ph-caret-right bm-text-md-muted"></i>
+                    What third-party libraries are included?
+                  </a>
+                  <a href="#faq-s2" class="faq-popular-item" onclick="openFaqItem('faq-s2');return false">
+                    <i class="ph ph-caret-right bm-text-md-muted"></i>
+                    Do you support 2FA?
+                  </a>
+                  <a href="#faq-g2" class="faq-popular-item" onclick="openFaqItem('faq-g2');return false">
+                    <i class="ph ph-caret-right bm-text-md-muted"></i>
+                    Which frameworks are supported?
+                  </a>
+                </div>
+              </div>
+
+              <!-- Contact Support -->
+              <div class="bm-card bm-p-lg">
+                <div class="bm-flex-center-gap bm-mb-sm">
+                  <div class="bm-icon-circle-success-md">
+                    <i class="ph ph-headset bm-text-md-success"></i>
+                  </div>
+                  <div>
+                    <div class="bm-text-caption-medium-fg">Need more help?</div>
+                    <div class="bm-text-2xs-muted">Mon–Fri · 9 AM–6 PM UTC</div>
+                  </div>
+                </div>
+                <div class="bm-flex-col-gap-sm">
+                  <button class="bm-btn bm-btn-primary bm-w-full-center bm-btn-sm" onclick="App.toast.info('Chat','Connecting to live chat…')">
+                    <i class="ph ph-chat-circle bm-text-md"></i> Start Live Chat
+                  </button>
+                  <button class="bm-btn bm-btn-outline bm-w-full-center bm-btn-sm" onclick="App.toast.info('Email','support@example.com')">
+                    <i class="ph ph-envelope bm-text-md"></i> Send Email
+                  </button>
+                </div>
+                <p class="bm-text-sm-muted bm-text-center bm-mt-sm">Avg. reply: <strong>~2 hours</strong></p>
+              </div>
+
+            </div><!-- /sidebar col -->
+
+          </div><!-- /grid -->
+        </div>
+      
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/faq.js"></script>
+{% endblock %}

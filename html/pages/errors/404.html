@@ -1,0 +1,19 @@
+﻿{% extends "layouts/error.html" %}
+{% set title = "404 — Page Not Found" %}
+{% set pageDescription = "The page you are looking for could not be found." %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/error.scss">
+{% endblock %}
+
+{% block content %}
+  <div>
+    <div class="bm-error-code">404</div>
+    <h1 class="bm-text-2xl-bold-fg2" data-i18n="error.pageNotFound">Page Not Found</h1>
+    <p class="bm-text-body-muted-max" data-i18n="error.pageNotFoundDesc">The page you're looking for doesn't exist or has been moved.</p>
+    <a href="/pages/dashboard.html" class="bm-btn bm-btn-primary bm-no-underline">
+      <i class="ph ph-arrow-left bm-text-lg"></i>
+      <span data-i18n="action.backToDashboard">Back to Dashboard</span>
+    </a>
+  </div>
+{% endblock %}

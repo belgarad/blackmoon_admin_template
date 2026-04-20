@@ -1,0 +1,273 @@
+{% extends "layouts/base.html" %}
+{% set title = "Create Account" %}
+{% set activeMenu = "wizard-create-account" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <!-- ── Page header ────────────────────────────────── -->
+          <div class="bm-flex-between-wrap-mb6">
+            <div>
+              <h1 class="bm-heading-xl-fg">Create Account</h1>
+              <nav class="bm-text-sm-muted-flex">
+                <a href="dashboard.html" class="bm-link-muted" data-i18n="breadcrumb.dashboard">Dashboard</a>
+                <i class="ph ph-caret-right bm-text-body"></i>
+                <span class="bm-text-default">Wizards</span>
+                <i class="ph ph-caret-right bm-text-body"></i>
+                <span class="bm-text-default">Create Account</span>
+              </nav>
+            </div>
+          </div>
+
+          <!-- ── Wizard Card ────────────────────────────────── -->
+          <div class="bm-card">
+            <div class="bm-card-body">
+
+              <div class="bm-stepper" data-stepper style="--step-count: 4">
+
+                <!-- Step Nav -->
+                <div class="bm-stepper-nav">
+                  <div class="bm-stepper-step active" data-stepper-step>
+                    <div class="bm-stepper-bullet">1</div>
+                    <span class="bm-stepper-step-label">Personal Info</span>
+                    <span class="bm-stepper-step-desc">Basic details</span>
+                  </div>
+                  <div class="bm-stepper-line" data-stepper-line></div>
+                  <div class="bm-stepper-step" data-stepper-step>
+                    <div class="bm-stepper-bullet">2</div>
+                    <span class="bm-stepper-step-label">Company</span>
+                    <span class="bm-stepper-step-desc">Business details</span>
+                  </div>
+                  <div class="bm-stepper-line" data-stepper-line></div>
+                  <div class="bm-stepper-step" data-stepper-step>
+                    <div class="bm-stepper-bullet">3</div>
+                    <span class="bm-stepper-step-label">Plan</span>
+                    <span class="bm-stepper-step-desc">Select a plan</span>
+                  </div>
+                  <div class="bm-stepper-line" data-stepper-line></div>
+                  <div class="bm-stepper-step" data-stepper-step>
+                    <div class="bm-stepper-bullet">4</div>
+                    <span class="bm-stepper-step-label">Confirmation</span>
+                    <span class="bm-stepper-step-desc">Review & submit</span>
+                  </div>
+                </div>
+
+                <!-- Step Content -->
+                <div class="bm-stepper-content">
+
+                  <!-- ── Panel 1: Personal Info ──────────────── -->
+                  <div class="bm-stepper-panel active" data-stepper-panel>
+                    <h3 class="bm-text-lg-semibold-fg bm-mb-md">Personal Information</h3>
+                    <p class="bm-text-sm-muted bm-mb-lg">Enter your personal details to get started.</p>
+
+                    <div class="bm-grid-2col-narrow">
+                      <div class="bm-field">
+                        <label class="bm-label">First Name <span class="bm-text-danger">*</span></label>
+                        <input class="bm-input" type="text" name="wiz_first_name" placeholder="e.g. John" required />
+                        <span class="bm-field-error"></span>
+                      </div>
+                      <div class="bm-field">
+                        <label class="bm-label">Last Name <span class="bm-text-danger">*</span></label>
+                        <input class="bm-input" type="text" name="wiz_last_name" placeholder="e.g. Doe" required />
+                        <span class="bm-field-error"></span>
+                      </div>
+                      <div class="bm-field bm-grid-span-2">
+                        <label class="bm-label">Email Address <span class="bm-text-danger">*</span></label>
+                        <input class="bm-input" type="email" name="wiz_email" placeholder="e.g. john@company.com" required />
+                        <span class="bm-field-error"></span>
+                      </div>
+                      <div>
+                        <label class="bm-label">Phone Number</label>
+                        <input class="bm-input" type="tel" name="wiz_phone" placeholder="+1 (555) 000-0000" />
+                      </div>
+                      </div>
+                      <div>
+                        <label class="bm-label">Country</label>
+                        <select class="bm-select">
+                          <option value="">Select country</option>
+                          <option>United States</option>
+                          <option>United Kingdom</option>
+                          <option>Germany</option>
+                          <option>Turkey</option>
+                          <option>France</option>
+                          <option>Canada</option>
+                          <option>Australia</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ── Panel 2: Company ────────────────────── -->
+                  <div class="bm-stepper-panel" data-stepper-panel>
+                    <h3 class="bm-text-lg-semibold-fg bm-mb-md">Company Information</h3>
+                    <p class="bm-text-sm-muted bm-mb-lg">Tell us about your business.</p>
+
+                    <div class="bm-grid-2col-narrow">
+                      <div class="bm-field bm-grid-span-2">
+                        <label class="bm-label">Company Name <span class="bm-text-danger">*</span></label>
+                        <input class="bm-input" type="text" name="wiz_company" placeholder="e.g. Acme Inc." required />
+                        <span class="bm-field-error"></span>
+                      </div>
+                      <div>
+                        <label class="bm-label">Industry</label>
+                        <select class="bm-select">
+                          <option value="">Select industry</option>
+                          <option>Technology</option>
+                          <option>Finance</option>
+                          <option>Healthcare</option>
+                          <option>Education</option>
+                          <option>Manufacturing</option>
+                          <option>Retail</option>
+                          <option>Other</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="bm-label">Company Size</label>
+                        <select class="bm-select">
+                          <option value="">Select size</option>
+                          <option>1 – 10 employees</option>
+                          <option>11 – 50 employees</option>
+                          <option>51 – 200 employees</option>
+                          <option>201 – 500 employees</option>
+                          <option>500+ employees</option>
+                        </select>
+                      </div>
+                      <div class="bm-grid-span-2">
+                        <label class="bm-label">Website</label>
+                        <input class="bm-input" type="url" placeholder="https://example.com" />
+                      </div>
+                      <div class="bm-grid-span-2">
+                        <label class="bm-label">Business Address</label>
+                        <textarea class="bm-input bm-resize-v" rows="2" placeholder="Street address, City, State, ZIP"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- ── Panel 3: Plan ───────────────────────── -->
+                  <div class="bm-stepper-panel" data-stepper-panel>
+                    <h3 class="bm-text-lg-semibold-fg bm-mb-md">Select a Plan</h3>
+                    <p class="bm-text-sm-muted bm-mb-lg">Choose the plan that works best for you.</p>
+
+                    <div class="wizard-plan-grid">
+                      <label class="wizard-plan-card">
+                        <input type="radio" name="plan" value="starter" class="bm-d-none" checked />
+                        <div class="wizard-plan-inner">
+                          <i class="ph ph-rocket-launch bm-text-2xl bm-text-primary"></i>
+                          <span class="wizard-plan-name">Starter</span>
+                          <span class="wizard-plan-price">$9<small>/mo</small></span>
+                          <ul class="wizard-plan-features">
+                            <li>5 Projects</li>
+                            <li>10 GB Storage</li>
+                            <li>Email Support</li>
+                          </ul>
+                        </div>
+                      </label>
+                      <label class="wizard-plan-card">
+                        <input type="radio" name="plan" value="business" class="bm-d-none" />
+                        <div class="wizard-plan-inner">
+                          <i class="ph ph-briefcase bm-text-2xl bm-text-info"></i>
+                          <span class="wizard-plan-name">Business</span>
+                          <span class="wizard-plan-price">$29<small>/mo</small></span>
+                          <ul class="wizard-plan-features">
+                            <li>25 Projects</li>
+                            <li>100 GB Storage</li>
+                            <li>Priority Support</li>
+                            <li>Team Collaboration</li>
+                          </ul>
+                        </div>
+                      </label>
+                      <label class="wizard-plan-card">
+                        <input type="radio" name="plan" value="enterprise" class="bm-d-none" />
+                        <div class="wizard-plan-inner">
+                          <i class="ph ph-diamond bm-text-2xl bm-text-warning"></i>
+                          <span class="wizard-plan-name">Enterprise</span>
+                          <span class="wizard-plan-price">$79<small>/mo</small></span>
+                          <ul class="wizard-plan-features">
+                            <li>Unlimited Projects</li>
+                            <li>1 TB Storage</li>
+                            <li>24/7 Phone Support</li>
+                            <li>Custom Integrations</li>
+                            <li>SSO & Audit Logs</li>
+                          </ul>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- ── Panel 4: Confirmation ───────────────── -->
+                  <div class="bm-stepper-panel" data-stepper-panel>
+                    <div class="wizard-confirm-wrap">
+                      <div class="wizard-confirm-icon bm-bg-success-subtle">
+                        <i class="ph ph-check-circle bm-text-success"></i>
+                      </div>
+                      <h3 class="bm-text-lg-semibold-fg bm-mb-sm">Almost Done!</h3>
+                      <p class="bm-text-sm-muted bm-mb-lg">Review your information below before submitting.</p>
+
+                      <div class="wizard-summary-card">
+                          <div class="wizard-summary-grid">
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Full Name</span>
+                              <span class="wizard-summary-value">John Doe</span>
+                            </div>
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Email</span>
+                              <span class="wizard-summary-value">john@company.com</span>
+                            </div>
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Company</span>
+                              <span class="wizard-summary-value">Acme Inc.</span>
+                            </div>
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Industry</span>
+                              <span class="wizard-summary-value">Technology</span>
+                            </div>
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Selected Plan</span>
+                              <span class="wizard-summary-value"><span class="bm-badge bm-badge-primary">Starter — $9/mo</span></span>
+                            </div>
+                            <div class="wizard-summary-item">
+                              <span class="wizard-summary-label">Phone</span>
+                              <span class="wizard-summary-value">+1 (555) 000-0000</span>
+                            </div>
+                          </div>
+                      </div>
+
+                      <label class="bm-flex-center-gap-xs bm-mt-lg">
+                        <input type="checkbox" class="bm-checkbox" />
+                        <span class="bm-text-sm-muted">I agree to the <a href="#" class="bm-link-primary">Terms of Service</a> and <a href="#" class="bm-link-primary">Privacy Policy</a></span>
+                      </label>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Step Actions -->
+                <div class="bm-stepper-actions">
+                  <button class="bm-btn bm-btn-outline" data-stepper-prev>
+                    <i class="ph ph-arrow-left bm-text-md"></i> Back
+                  </button>
+                  <div class="bm-flex-gap-xs">
+                    <button class="bm-btn bm-btn-primary" data-stepper-next>
+                      Continue <i class="ph ph-arrow-right bm-text-md"></i>
+                    </button>
+                    <button class="bm-btn bm-btn-success" data-stepper-submit>
+                      <i class="ph ph-check bm-text-md"></i> Submit
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/pages/wizard-create-account.js"></script>
+{% endblock %}

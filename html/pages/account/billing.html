@@ -1,0 +1,187 @@
+{% extends "layouts/base.html" %}
+{% set title = "Billing" %}
+{% set activeMenu = "account-billing" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/account.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="overview.html">Account</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Billing</span></div>
+              </nav>
+              <h1 class="bm-page-title">Billing</h1>
+              <p class="bm-page-subtitle">Manage your subscription, payment methods, and billing history.</p>
+            </div>
+          </div>
+
+          <!-- Account Navigation -->
+          <div class="acct-nav bm-mb-xl">
+            <a href="overview.html" class="acct-nav-item">Overview</a>
+            <a href="../settings.html" class="acct-nav-item">Settings</a>
+            <a href="../security.html" class="acct-nav-item">Security</a>
+            <a href="billing.html" class="acct-nav-item active">Billing</a>
+            <a href="statements.html" class="acct-nav-item">Statements</a>
+            <a href="referrals.html" class="acct-nav-item">Referrals</a>
+            <a href="api-keys.html" class="acct-nav-item">API Keys</a>
+            <a href="logs.html" class="acct-nav-item">Logs</a>
+            <a href="activity.html" class="acct-nav-item">Activity</a>
+          </div>
+
+          <!-- Current Plan -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Current Plan</span>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">Upgrade Plan</button>
+            </div>
+            <div class="bm-card-body">
+              <div class="acct-plan-grid">
+                <div class="acct-plan-card acct-plan-active">
+                  <div class="bm-flex-between-start-mb">
+                    <div>
+                      <div class="bm-text-lg-semibold-fg">Professional</div>
+                      <div class="bm-text-caption-muted">For growing teams and businesses</div>
+                    </div>
+                    <span class="bm-badge bm-badge-success">Active</span>
+                  </div>
+                  <div class="acct-plan-price">
+                    <span class="acct-plan-amount">$49</span>
+                    <span class="bm-text-body-muted">/ month</span>
+                  </div>
+                  <div class="bm-flex-col-gap-md-mt">
+                    <div class="bm-flex-center-gap-sm-body"><i class="ph ph-check-circle bm-text-md-success"></i> Up to 25 team members</div>
+                    <div class="bm-flex-center-gap-sm-body"><i class="ph ph-check-circle bm-text-md-success"></i> 100 GB storage</div>
+                    <div class="bm-flex-center-gap-sm-body"><i class="ph ph-check-circle bm-text-md-success"></i> Priority support</div>
+                    <div class="bm-flex-center-gap-sm-body"><i class="ph ph-check-circle bm-text-md-success"></i> Advanced analytics</div>
+                    <div class="bm-flex-center-gap-sm-body"><i class="ph ph-check-circle bm-text-md-success"></i> API access</div>
+                  </div>
+                  <div class="bm-mt-lg">
+                    <div class="bm-text-caption-muted">Next billing: April 15, 2026</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Methods -->
+          <div class="bm-card bm-mb-lg">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Payment Methods</span>
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-plus bm-text-md"></i>
+                Add Card
+              </button>
+            </div>
+            <div class="bm-card-body bm-flex-col-gap-xl">
+              <div class="bm-flex-between-plain">
+                <div class="bm-flex-center-gap-lg">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-credit-card bm-text-lg-primary"></i></div>
+                  <div>
+                    <div class="bm-text-body-medium-swap">Visa ending in 4242</div>
+                    <div class="bm-text-caption-muted">Expires 12/2028</div>
+                  </div>
+                </div>
+                <div class="bm-flex-center-gap-md">
+                  <span class="bm-badge bm-badge-primary">Primary</span>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon-xs"><i class="ph ph-dots-three-vertical bm-text-md"></i></button>
+                </div>
+              </div>
+              <div class="bm-border-top"></div>
+              <div class="bm-flex-between-plain">
+                <div class="bm-flex-center-gap-lg">
+                  <div class="bm-icon-box-warning"><i class="ph ph-credit-card bm-text-lg-warning"></i></div>
+                  <div>
+                    <div class="bm-text-body-medium-swap">Mastercard ending in 8371</div>
+                    <div class="bm-text-caption-muted">Expires 06/2027</div>
+                  </div>
+                </div>
+                <div class="bm-flex-center-gap-md">
+                  <button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm">Set as primary</button>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon-xs"><i class="ph ph-dots-three-vertical bm-text-md"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Billing History -->
+          <div class="bm-card">
+            <div class="bm-card-header">
+              <span class="bm-card-title">Billing History</span>
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-download-simple bm-text-md"></i>
+                Download All
+              </button>
+            </div>
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Invoice</th>
+                    <th scope="col" data-i18n="table.date">Date</th>
+                    <th scope="col" data-i18n="table.amount">Amount</th>
+                    <th scope="col" data-i18n="table.status">Status</th>
+                    <th scope="col" class="bm-text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="bm-text-primary-semibold">#INV-0892</td>
+                    <td class="bm-text-muted">Apr 1, 2026</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-primary-semibold">#INV-0845</td>
+                    <td class="bm-text-muted">Mar 1, 2026</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-primary-semibold">#INV-0798</td>
+                    <td class="bm-text-muted">Feb 1, 2026</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-primary-semibold">#INV-0751</td>
+                    <td class="bm-text-muted">Jan 1, 2026</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm">Download</button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-text-primary-semibold">#INV-0704</td>
+                    <td class="bm-text-muted">Dec 1, 2025</td>
+                    <td class="bm-font-semibold">$49.00</td>
+                    <td><span class="bm-badge bm-badge-success">Paid</span></td>
+                    <td class="bm-text-right"><button class="bm-btn bm-btn-ghost bm-btn-sm bm-text-sm">Download</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="bm-card-footer bm-justify-between">
+              <span class="bm-text-sm-muted">Showing 5 of 12 invoices</span>
+              <div class="bm-pagination">
+                <button class="bm-page-btn" disabled><i class="ph ph-caret-left bm-text-body"></i></button>
+                <button class="bm-page-btn active">1</button><button class="bm-page-btn">2</button><button class="bm-page-btn">3</button>
+                <button class="bm-page-btn"><i class="ph ph-caret-right bm-text-body"></i></button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

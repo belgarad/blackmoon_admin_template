@@ -1,0 +1,167 @@
+{% extends "layouts/base.html" %}
+{% set title = "Read Email" %}
+{% set activeMenu = "email" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/mail.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <div class="mail-compose-layout">
+            <!-- Sidebar -->
+            <div class="mail-sidebar">
+              <a href="messages.html" class="bm-btn bm-btn-primary bm-btn-sm bm-w-full bm-mb-md">
+                <i class="ph ph-pencil bm-text-md"></i>Compose
+              </a>
+              <nav class="mail-nav">
+                <a href="messages.html" class="mail-nav-item">
+                  <i class="ph ph-tray"></i>
+                  <span>Inbox</span>
+                  <span class="bm-badge bm-badge-primary bm-text-micro-badge" style="margin-left:auto">12</span>
+                </a>
+                <a href="#" class="mail-nav-item">
+                  <i class="ph ph-paper-plane-tilt"></i>
+                  <span>Sent</span>
+                </a>
+                <a href="#" class="mail-nav-item">
+                  <i class="ph ph-note"></i>
+                  <span>Drafts</span>
+                  <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">3</span>
+                </a>
+                <a href="#" class="mail-nav-item">
+                  <i class="ph ph-star"></i>
+                  <span>Starred</span>
+                </a>
+                <a href="#" class="mail-nav-item">
+                  <i class="ph ph-trash"></i>
+                  <span>Trash</span>
+                </a>
+              </nav>
+              <div class="bm-mt-md">
+                <div class="bm-text-xs bm-text-muted bm-text-uppercase bm-mb-xs">Labels</div>
+                <div class="mail-nav">
+                  <a href="#" class="mail-nav-item">
+                    <span class="mail-label-dot" style="background:var(--primary)"></span>
+                    <span>Work</span>
+                  </a>
+                  <a href="#" class="mail-nav-item">
+                    <span class="mail-label-dot" style="background:var(--success)"></span>
+                    <span>Personal</span>
+                  </a>
+                  <a href="#" class="mail-nav-item">
+                    <span class="mail-label-dot" style="background:var(--warning)"></span>
+                    <span>Important</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Read Area -->
+            <div class="mail-compose-main">
+              <div class="bm-card">
+
+                <!-- Email Header -->
+                <div class="bm-p-lg" style="border-bottom:1px solid var(--border)">
+                  <!-- Toolbar -->
+                  <div class="bm-flex-between-wrap bm-mb-md">
+                    <a href="messages.html" class="bm-btn bm-btn-outline bm-btn-sm">
+                      <i class="ph ph-arrow-left bm-text-md"></i>Back
+                    </a>
+                    <div class="bm-flex-gap-xs">
+                      <button class="bm-btn-icon-xs" title="Archive"><i class="ph ph-archive"></i></button>
+                      <button class="bm-btn-icon-xs" title="Mark as spam"><i class="ph ph-flag"></i></button>
+                      <button class="bm-btn-icon-xs" title="Delete"><i class="ph ph-trash bm-text-danger"></i></button>
+                      <button class="bm-btn-icon-xs" title="Star"><i class="ph ph-star"></i></button>
+                      <button class="bm-btn-icon-xs" title="Print"><i class="ph ph-printer"></i></button>
+                    </div>
+                  </div>
+
+                  <h2 class="bm-text-lg bm-font-semibold bm-mb-sm">Q1 2026 Financial Report — Review Required</h2>
+                  <div class="bm-flex-gap-xs bm-mb-md" style="flex-wrap:wrap">
+                    <span class="bm-badge bm-badge-primary bm-text-micro-badge">Work</span>
+                    <span class="bm-badge bm-badge-warning bm-text-micro-badge">Important</span>
+                  </div>
+
+                  <div class="mail-read-meta">
+                    <div class="bm-flex-center-gap-sm">
+                      <div class="bm-avatar bm-avatar-sm" style="background:color-mix(in srgb,var(--success) 14%,transparent);color:var(--success)">SA</div>
+                      <div>
+                        <div class="bm-text-sm bm-font-medium">Sarah Adams <span class="bm-text-muted bm-font-normal">&lt;sarah.adams@company.com&gt;</span></div>
+                        <div class="bm-text-xs bm-text-muted">to me, finance-team@company.com</div>
+                      </div>
+                    </div>
+                    <div class="bm-text-xs bm-text-muted">Mar 27, 2026 at 15:42</div>
+                  </div>
+                </div>
+
+                <!-- Email Body -->
+                <div class="bm-p-lg mail-read-body">
+                  <p>Hi John,</p>
+                  <p>I've attached the Q1 2026 financial report for your review. Here's a summary of the key highlights:</p>
+                  <ul>
+                    <li><strong>Revenue:</strong> $2.4M — up 18% from Q4 2025</li>
+                    <li><strong>Expenses:</strong> $1.8M — within budget targets</li>
+                    <li><strong>Net Profit:</strong> $620K — margin improved to 25.8%</li>
+                    <li><strong>New Clients:</strong> 14 enterprise accounts acquired</li>
+                  </ul>
+                  <p>The main areas of concern:</p>
+                  <ol>
+                    <li>Marketing spend exceeded forecast by 8% due to the product launch campaign</li>
+                    <li>Infrastructure costs are trending upward — may need to revisit cloud provider pricing</li>
+                    <li>Headcount increase planned for Q2 will impact the personnel budget</li>
+                  </ol>
+                  <p>Could you please review the full report and share your feedback by <strong>Friday, March 29</strong>? We need to finalize numbers before the board meeting on April 2.</p>
+                  <p>Let me know if you have any questions.</p>
+                  <p>Best regards,<br><strong>Sarah Adams</strong><br>Finance Director</p>
+                </div>
+
+                <!-- Attachments -->
+                <div class="bm-p-lg" style="border-top:1px solid var(--border)">
+                  <div class="bm-text-xs bm-text-muted bm-text-uppercase bm-mb-sm">Attachments (2)</div>
+                  <div class="mail-attachments">
+                    <div class="shop-upload-thumb">
+                      <i class="ph ph-file"></i>
+                      <div>
+                        <div class="bm-text-sm bm-font-medium">Q1-2026-Financial-Report.pdf</div>
+                        <div class="bm-text-xs bm-text-muted">4.2 MB</div>
+                      </div>
+                      <button class="bm-btn-icon-xs" title="Download"><i class="ph ph-download-simple"></i></button>
+                    </div>
+                    <div class="shop-upload-thumb">
+                      <i class="ph ph-table"></i>
+                      <div>
+                        <div class="bm-text-sm bm-font-medium">Q1-Revenue-Breakdown.xlsx</div>
+                        <div class="bm-text-xs bm-text-muted">1.8 MB</div>
+                      </div>
+                      <button class="bm-btn-icon-xs" title="Download"><i class="ph ph-download-simple"></i></button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Reply -->
+                <div class="bm-p-lg" style="border-top:1px solid var(--border)">
+                  <div class="bm-flex-gap-xs">
+                    <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="window.location.href='messages.html'">
+                      <i class="ph ph-arrow-bend-up-left bm-text-md"></i>Reply
+                    </button>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm">
+                      <i class="ph ph-arrow-u-up-left bm-text-md"></i>Reply All
+                    </button>
+                    <button class="bm-btn bm-btn-outline bm-btn-sm">
+                      <i class="ph ph-arrow-bend-up-right bm-text-md"></i>Forward
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

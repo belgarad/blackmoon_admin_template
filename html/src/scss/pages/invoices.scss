@@ -1,0 +1,76 @@
+.kpi-mini { display:flex;flex-direction:column;gap:0.375rem; }
+  .kpi-mini-value { font-size:1.5rem;font-weight:700;color:var(--foreground); }
+  .kpi-mini-label { font-size:0.8125rem;color:var(--muted-foreground); }
+  .kpi-mini-change { font-size:0.75rem;font-weight:600; }
+  .kpi-mini-change.up { color:var(--success); }
+  .kpi-mini-change.down { color:var(--danger); }
+
+/* Create / Detail Layouts */
+.inv-create-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.inv-create-sidebar {
+  position: sticky;
+  top: calc(var(--header-h, 64px) + 1rem);
+}
+
+@media (max-width: 1023px) {
+  .inv-create-layout {
+    grid-template-columns: 1fr;
+  }
+  .inv-create-sidebar {
+    position: static;
+  }
+}
+
+/* Invoice Detail */
+.inv-detail {
+  max-width: 900px;
+}
+
+.inv-parties {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 640px) {
+  .inv-parties {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.inv-totals-section {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inv-totals-box {
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/* Shared total row reuse from shop-manage */
+.shop-order-totals,
+.inv-totals-box {
+  .shop-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+  }
+  .shop-total-grand {
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--foreground);
+  }
+}

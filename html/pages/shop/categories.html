@@ -1,0 +1,244 @@
+{% extends "layouts/base.html" %}
+{% set title = "Categories" %}
+{% set activeMenu = "shop-categories" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/shop-manage.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="products.html">Shop</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Categories</span></div>
+              </nav>
+              <h1 class="bm-page-title">Categories</h1>
+              <p class="bm-page-subtitle">Organize your products into categories</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="document.getElementById('addCategoryModal').classList.add('open')">
+                <i class="ph ph-plus bm-text-md"></i>Add Category
+              </button>
+            </div>
+          </div>
+
+          <div class="shop-cat-layout">
+            <!-- Category Tree -->
+            <div class="bm-card bm-p-lg">
+              <h3 class="bm-text-md bm-font-semibold bm-mb-md">Category Tree</h3>
+              <div class="fm-tree">
+                <div class="fm-tree-item open">
+                  <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                    <i class="ph ph-caret-right fm-tree-arrow"></i>
+                    <i class="ph ph-tag"></i>
+                    <span class="fm-tree-label">Electronics</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">84</span>
+                  </div>
+                  <div class="fm-tree-children">
+                    <div class="fm-tree-item">
+                      <div class="fm-tree-toggle">
+                        <i class="ph ph-caret-right fm-tree-arrow"></i>
+                        <i class="ph ph-arrow-bend-down-right"></i>
+                        <span class="fm-tree-label">Smartphones</span>
+                        <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">32</span>
+                      </div>
+                    </div>
+                    <div class="fm-tree-item">
+                      <div class="fm-tree-toggle">
+                        <i class="ph ph-caret-right fm-tree-arrow"></i>
+                        <i class="ph ph-arrow-bend-down-right"></i>
+                        <span class="fm-tree-label">Laptops</span>
+                        <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">28</span>
+                      </div>
+                    </div>
+                    <div class="fm-tree-item">
+                      <div class="fm-tree-toggle">
+                        <i class="ph ph-caret-right fm-tree-arrow"></i>
+                        <i class="ph ph-arrow-bend-down-right"></i>
+                        <span class="fm-tree-label">Accessories</span>
+                        <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">24</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fm-tree-item open">
+                  <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                    <i class="ph ph-caret-right fm-tree-arrow"></i>
+                    <i class="ph ph-coat-hanger"></i>
+                    <span class="fm-tree-label">Clothing</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">62</span>
+                  </div>
+                  <div class="fm-tree-children">
+                    <div class="fm-tree-item">
+                      <div class="fm-tree-toggle">
+                        <i class="ph ph-caret-right fm-tree-arrow"></i>
+                        <i class="ph ph-arrow-bend-down-right"></i>
+                        <span class="fm-tree-label">Men</span>
+                        <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">28</span>
+                      </div>
+                    </div>
+                    <div class="fm-tree-item">
+                      <div class="fm-tree-toggle">
+                        <i class="ph ph-caret-right fm-tree-arrow"></i>
+                        <i class="ph ph-arrow-bend-down-right"></i>
+                        <span class="fm-tree-label">Women</span>
+                        <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">34</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fm-tree-item">
+                  <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                    <i class="ph ph-caret-right fm-tree-arrow"></i>
+                    <i class="ph ph-house"></i>
+                    <span class="fm-tree-label">Home & Garden</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">41</span>
+                  </div>
+                </div>
+                <div class="fm-tree-item">
+                  <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                    <i class="ph ph-caret-right fm-tree-arrow"></i>
+                    <i class="ph ph-barbell"></i>
+                    <span class="fm-tree-label">Sports</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">30</span>
+                  </div>
+                </div>
+                <div class="fm-tree-item">
+                  <div class="fm-tree-toggle" onclick="this.parentElement.classList.toggle('open')">
+                    <i class="ph ph-caret-right fm-tree-arrow"></i>
+                    <i class="ph ph-book-open"></i>
+                    <span class="fm-tree-label">Books</span>
+                    <span class="bm-badge bm-badge-muted bm-text-micro-badge" style="margin-left:auto">31</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category Table -->
+            <div class="bm-card bm-p-lg">
+              <div class="bm-flex-between-wrap bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold">All Categories</h3>
+                <input class="bm-input bm-w-max-200" placeholder="Search categories…">
+              </div>
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Products</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Created</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="bm-font-medium">Electronics</td>
+                    <td>84</td>
+                    <td><span class="bm-badge bm-badge-success bm-text-micro-badge">Active</span></td>
+                    <td>Jan 5, 2026</td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <button class="bm-btn-icon-xs" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-btn-icon-xs" title="Delete"><i class="ph ph-trash bm-text-danger"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">Clothing</td>
+                    <td>62</td>
+                    <td><span class="bm-badge bm-badge-success bm-text-micro-badge">Active</span></td>
+                    <td>Jan 5, 2026</td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <button class="bm-btn-icon-xs" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-btn-icon-xs" title="Delete"><i class="ph ph-trash bm-text-danger"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">Home & Garden</td>
+                    <td>41</td>
+                    <td><span class="bm-badge bm-badge-success bm-text-micro-badge">Active</span></td>
+                    <td>Jan 8, 2026</td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <button class="bm-btn-icon-xs" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-btn-icon-xs" title="Delete"><i class="ph ph-trash bm-text-danger"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">Sports</td>
+                    <td>30</td>
+                    <td><span class="bm-badge bm-badge-success bm-text-micro-badge">Active</span></td>
+                    <td>Jan 10, 2026</td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <button class="bm-btn-icon-xs" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-btn-icon-xs" title="Delete"><i class="ph ph-trash bm-text-danger"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-medium">Books</td>
+                    <td>31</td>
+                    <td><span class="bm-badge bm-badge-warning bm-text-micro-badge">Draft</span></td>
+                    <td>Feb 2, 2026</td>
+                    <td>
+                      <div class="bm-flex-center-gap-xs">
+                        <button class="bm-btn-icon-xs" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-btn-icon-xs" title="Delete"><i class="ph ph-trash bm-text-danger"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Add Category Modal -->
+          <div class="bm-drawer-backdrop bm-d-none" id="addCategoryModal">
+            <div class="bm-modal bm-modal-sm">
+              <div class="bm-modal-header">
+                <h3 class="bm-modal-title">Add Category</h3>
+                <button class="bm-btn-icon-xs" onclick="this.closest('.bm-drawer-backdrop').classList.remove('open')"><i class="ph ph-x"></i></button>
+              </div>
+              <div class="bm-modal-body">
+                <div class="bm-form-group">
+                  <label class="bm-label">Category Name</label>
+                  <input class="bm-input" placeholder="Enter category name">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Parent Category</label>
+                  <select class="bm-select">
+                    <option value="">None (Top Level)</option>
+                    <option>Electronics</option>
+                    <option>Clothing</option>
+                    <option>Home & Garden</option>
+                    <option>Sports</option>
+                    <option>Books</option>
+                  </select>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Description</label>
+                  <textarea class="bm-input" rows="3" placeholder="Category description…"></textarea>
+                </div>
+              </div>
+              <div class="bm-modal-footer">
+                <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="this.closest('.bm-drawer-backdrop').classList.remove('open')">Cancel</button>
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Created','Category created.');this.closest('.bm-drawer-backdrop').classList.remove('open')">Create</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

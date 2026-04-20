@@ -1,0 +1,190 @@
+{% extends "layouts/base.html" %}
+{% set title = "Content" %}
+{% set activeMenu = "content" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+
+          <!-- Page Header -->
+          <div class="bm-flex-between-wrap-mb2">
+            <div>
+              <h1 class="bm-text-2xl-bold-fg">Content</h1>
+              <p class="bm-text-sm-muted-body">Manage articles, posts and media</p>
+            </div>
+            <button class="bm-btn bm-btn-primary"><i class="ph ph-plus bm-text-lg"></i> New Post</button>
+          </div>
+
+          <!-- Stats Strip -->
+          <div class="stats-strip">
+            <div class="stats-strip-card">
+              <div class="stats-strip-icon bm-bg-primary-light">
+                <i class="ph ph-file-text"></i>
+              </div>
+              <div>
+                <div class="bm-text-1375-bold-fg">128</div>
+                <div class="bm-text-sm-muted">Total Posts</div>
+              </div>
+            </div>
+            <div class="stats-strip-card">
+              <div class="stats-strip-icon bm-bg-success-light2">
+                <i class="ph ph-check-circle"></i>
+              </div>
+              <div>
+                <div class="bm-text-1375-bold-fg">94</div>
+                <div class="bm-text-sm-muted">Published</div>
+              </div>
+            </div>
+            <div class="stats-strip-card">
+              <div class="stats-strip-icon bm-bg-warning-light2">
+                <i class="ph ph-note-pencil"></i>
+              </div>
+              <div>
+                <div class="bm-text-1375-bold-fg">18</div>
+                <div class="bm-text-sm-muted">Drafts</div>
+              </div>
+            </div>
+            <div class="stats-strip-card">
+              <div class="stats-strip-icon bm-bg-info-light">
+                <i class="ph ph-clock"></i>
+              </div>
+              <div>
+                <div class="bm-text-1375-bold-fg">16</div>
+                <div class="bm-text-sm-muted">Scheduled</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filters -->
+          <div class="bm-card bm-mb-lg bm-overflow-visible content-filters-card">
+            <div class="bm-card-body bm-px-lg">
+              <div class="bm-flex-gap-wrap">
+                <input class="bm-input bm-w-max-300" type="text" placeholder="Search posts..." />
+                <select class="bm-select bm-w-max-160">
+                  <option value="">All Categories</option>
+                  <option>Technology</option>
+                  <option>Design</option>
+                  <option>Business</option>
+                  <option>Marketing</option>
+                </select>
+                <select class="bm-select bm-w-max-160">
+                  <option value="">All Status</option>
+                  <option>Published</option>
+                  <option>Draft</option>
+                  <option>Scheduled</option>
+                  <option>Archived</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Table -->
+          <div class="bm-card">
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead>
+                  <tr><th scope="col">Title</th><th scope="col">Category</th><th scope="col">Author</th><th scope="col" data-i18n="table.status">Status</th><th scope="col" data-i18n="table.date">Date</th><th scope="col" class="bm-text-right" data-i18n="table.actions">Actions</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="bm-font-medium">Getting Started with Angular 19</div>
+                      <div class="bm-text-sm-muted">A comprehensive guide to new features</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-info">Technology</span></td>
+                    <td><div class="bm-flex-center-gap-md"><div class="bm-avatar bm-avatar-xs">JD</div> John Doe</div></td>
+                    <td><span class="bm-badge bm-badge-success">Published</span></td>
+                    <td class="bm-text-muted-nowrap">Mar 28, 2026</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-font-medium">UI Design Trends for 2026</div>
+                      <div class="bm-text-sm-muted">What's hot in the design world</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-warning">Design</span></td>
+                    <td><div class="bm-flex-center-gap-md"><div class="bm-avatar bm-avatar-xs">AS</div> Alice Smith</div></td>
+                    <td><span class="bm-badge bm-badge-success">Published</span></td>
+                    <td class="bm-text-muted-nowrap">Mar 25, 2026</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-font-medium">Scaling Your SaaS Business</div>
+                      <div class="bm-text-sm-muted">Strategies for sustainable growth</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-primary">Business</span></td>
+                    <td><div class="bm-flex-center-gap-md"><div class="bm-avatar bm-avatar-xs">BW</div> Bob Wilson</div></td>
+                    <td><span class="bm-badge bm-badge-warning">Draft</span></td>
+                    <td class="bm-text-muted-nowrap">Mar 22, 2026</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-font-medium">Email Marketing Best Practices</div>
+                      <div class="bm-text-sm-muted">Boost your open rates and conversion</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-danger">Marketing</span></td>
+                    <td><div class="bm-flex-center-gap-md"><div class="bm-avatar bm-avatar-xs">EJ</div> Emma Johnson</div></td>
+                    <td><span class="bm-badge bm-badge-info">Scheduled</span></td>
+                    <td class="bm-text-muted-nowrap">Apr 1, 2026</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="bm-font-medium">Tailwind CSS Tips & Tricks</div>
+                      <div class="bm-text-sm-muted">Advanced utility class patterns</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-info">Technology</span></td>
+                    <td><div class="bm-flex-center-gap-md"><div class="bm-avatar bm-avatar-xs">JD</div> John Doe</div></td>
+                    <td><span class="bm-badge bm-badge-warning">Draft</span></td>
+                    <td class="bm-text-muted-nowrap">Mar 20, 2026</td>
+                    <td class="bm-text-right">
+                      <div class="bm-action-group">
+                        <button class="bm-action-btn" title="Edit"><i class="ph ph-pencil"></i></button>
+                        <button class="bm-action-btn bm-action-danger" title="Delete"><i class="ph ph-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="bm-flex-header-row">
+              <span class="bm-text-caption-muted">Showing 1-5 of 128</span>
+              <div class="bm-pagination">
+                <button class="bm-page-btn" disabled>‹</button>
+                <button class="bm-page-btn active">1</button>
+                <button class="bm-page-btn">2</button>
+                <button class="bm-page-btn">3</button>
+                <button class="bm-page-btn">…</button>
+                <button class="bm-page-btn">26</button>
+                <button class="bm-page-btn">›</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "layouts/base.html" %}
+{% set title = "Chat" %}
+{% set activeMenu = "chat" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/chat.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed">
+          <div class="chat-layout">
+            <!-- Contacts Sidebar -->
+            <div class="chat-sidebar">
+              <div class="chat-sidebar-header">
+                <h2 class="bm-text-lg-bold">Chats</h2>
+                <input class="bm-input chat-search" type="text" placeholder="Search contacts..." />
+              </div>
+              <div class="chat-contacts">
+                <div class="chat-contact active">
+                  <div class="bm-avatar bm-avatar-sm">AS</div>
+                  <div class="chat-contact-info"><div class="chat-contact-name">Alice Smith</div><div class="chat-contact-last">Sounds great! Let me check...</div></div>
+                  <div class="bm-flex-end-col"><span class="chat-contact-time">2 min</span><span class="chat-contact-unread">3</span></div>
+                </div>
+                <div class="chat-contact">
+                  <div class="bm-avatar bm-avatar-sm">BW</div>
+                  <div class="chat-contact-info"><div class="chat-contact-name">Bob Wilson</div><div class="chat-contact-last">I'll send the files tomorrow</div></div>
+                  <div class="bm-flex-end-col"><span class="chat-contact-time">15 min</span></div>
+                </div>
+                <div class="chat-contact">
+                  <div class="bm-avatar bm-avatar-sm">EJ</div>
+                  <div class="chat-contact-info"><div class="chat-contact-name">Emma Johnson</div><div class="chat-contact-last">The meeting is confirmed for Friday</div></div>
+                  <div class="bm-flex-end-col"><span class="chat-contact-time">1h</span><span class="chat-contact-unread">1</span></div>
+                </div>
+                <div class="chat-contact">
+                  <div class="bm-avatar bm-avatar-sm">DM</div>
+                  <div class="chat-contact-info"><div class="chat-contact-name">David Miller</div><div class="chat-contact-last">Thanks for the update!</div></div>
+                  <div class="bm-flex-end-col"><span class="chat-contact-time">3h</span></div>
+                </div>
+                <div class="chat-contact">
+                  <div class="bm-avatar bm-avatar-sm">SK</div>
+                  <div class="chat-contact-info"><div class="chat-contact-name">Sarah Kim</div><div class="chat-contact-last">Can you review the PR?</div></div>
+                  <div class="bm-flex-end-col"><span class="chat-contact-time">Yesterday</span></div>
+                </div>
+                <div class="chat-contact">
+                  <div class="bm-avatar bm-avatar-sm">MR</div>
+                  <div class="chat-contact-info"><div class="chat-contact-name">Mike Rodriguez</div><div class="chat-contact-last">Deployment is done successfully</div></div>
+                  <div class="bm-flex-end-col"><span class="chat-contact-time">Yesterday</span></div>
+                </div>
+              </div>
+            </div>
+            <!-- Chat Area -->
+            <div class="chat-main">
+              <div class="chat-header">
+                <div class="bm-avatar bm-avatar-sm">AS</div>
+                <div>
+                  <div class="chat-header-name">Alice Smith</div>
+                  <div class="chat-header-status"><span class="bm-dot-success-xs"></span> Online</div>
+                </div>
+                <div class="bm-ml-auto-flex-gap">
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon"><i class="ph ph-phone bm-text-lg"></i></button>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon"><i class="ph ph-video-camera bm-text-lg"></i></button>
+                  <button class="bm-btn bm-btn-ghost bm-btn-icon"><i class="ph ph-dots-three-vertical bm-text-lg"></i></button>
+                </div>
+              </div>
+              <div class="chat-messages">
+                <div class="chat-msg received">
+                  <div class="bm-avatar bm-avatar-xs bm-mt-auto">AS</div>
+                  <div><div class="chat-bubble">Hey John! Have you had a chance to look at the new design mockups?</div><div class="chat-msg-time">10:15 AM</div></div>
+                </div>
+                <div class="chat-msg sent">
+                  <div><div class="chat-bubble">Hi Alice! Yes, I reviewed them this morning. They look fantastic.</div><div class="chat-msg-time">10:18 AM</div></div>
+                </div>
+                <div class="chat-msg received">
+                  <div class="bm-avatar bm-avatar-xs bm-mt-auto">AS</div>
+                  <div><div class="chat-bubble">Great! I was a bit worried about the color scheme. Do you think it works well with the dark mode?</div><div class="chat-msg-time">10:20 AM</div></div>
+                </div>
+                <div class="chat-msg sent">
+                  <div><div class="chat-bubble">Absolutely. The contrast ratios are perfect. I tested it with the accessibility checker and everything passes WCAG AA standards.</div><div class="chat-msg-time">10:22 AM</div></div>
+                </div>
+                <div class="chat-msg received">
+                  <div class="bm-avatar bm-avatar-xs bm-mt-auto">AS</div>
+                  <div><div class="chat-bubble">That's awesome! Should we schedule a meeting to go over the implementation details?</div><div class="chat-msg-time">10:24 AM</div></div>
+                </div>
+                <div class="chat-msg sent">
+                  <div><div class="chat-bubble">Sure, how about Friday at 2 PM? I'll prepare a breakdown of the components we need to build.</div><div class="chat-msg-time">10:25 AM</div></div>
+                </div>
+                <div class="chat-msg received">
+                  <div class="bm-avatar bm-avatar-xs bm-mt-auto">AS</div>
+                  <div><div class="chat-bubble">Sounds great! Let me check my calendar and get back to you.</div><div class="chat-msg-time">10:26 AM</div></div>
+                </div>
+              </div>
+              <div class="chat-input-area">
+                <button class="bm-btn bm-btn-ghost bm-btn-icon"><i class="ph ph-paperclip bm-text-xl"></i></button>
+                <input class="bm-input" type="text" placeholder="Type a message..." />
+                <button class="bm-btn bm-btn-primary bm-btn-icon"><i class="ph ph-paper-plane-tilt bm-text-xl"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+{% endblock %}

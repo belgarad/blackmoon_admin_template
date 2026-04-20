@@ -1,0 +1,180 @@
+{% extends "layouts/base.html" %}
+{% set title = "Invoice Detail" %}
+{% set activeMenu = "invoices" %}
+{% set basePath = "" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/invoices.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="invoices.html" data-i18n="breadcrumb.invoices">Invoices</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">INV-2026-042</span></div>
+              </nav>
+              <h1 class="bm-page-title">Invoice INV-2026-042</h1>
+              <p class="bm-page-subtitle">Issued on Mar 15, 2026</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-printer bm-text-md"></i>Print
+              </button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-download-simple bm-text-md"></i>PDF
+              </button>
+              <button class="bm-btn bm-btn-outline bm-btn-sm">
+                <i class="ph ph-pencil bm-text-md"></i>Edit
+              </button>
+            </div>
+          </div>
+
+          <!-- Invoice Card -->
+          <div class="bm-card bm-p-lg inv-detail">
+
+            <!-- Status & Dates -->
+            <div class="bm-flex-between-wrap bm-mb-lg">
+              <div>
+                <span class="bm-badge bm-badge-warning bm-text-micro-badge">Pending</span>
+                <span class="bm-text-xs bm-text-muted bm-ms-xs">Due in 14 days</span>
+              </div>
+              <div class="bm-text-sm bm-text-muted">
+                Issue Date: <span class="bm-font-medium bm-text-foreground">Mar 15, 2026</span> &nbsp;|&nbsp;
+                Due Date: <span class="bm-font-medium bm-text-foreground">Apr 14, 2026</span>
+              </div>
+            </div>
+
+            <!-- From & To -->
+            <div class="inv-parties bm-mb-lg">
+              <div>
+                <div class="bm-text-xs bm-text-muted bm-text-uppercase bm-mb-xs">From</div>
+                <div class="bm-font-medium">Black Moon Studio</div>
+                <div class="bm-text-sm bm-text-muted" style="line-height:1.6">
+                  123 Creative Avenue<br>
+                  Istanbul, 34000<br>
+                  Turkey<br>
+                  billing@blackmoon.dev
+                </div>
+              </div>
+              <div>
+                <div class="bm-text-xs bm-text-muted bm-text-uppercase bm-mb-xs">Bill To</div>
+                <div class="bm-font-medium">Acme Corporation</div>
+                <div class="bm-text-sm bm-text-muted" style="line-height:1.6">
+                  456 Business Blvd<br>
+                  San Francisco, CA 94102<br>
+                  United States<br>
+                  accounts@acme.com
+                </div>
+              </div>
+            </div>
+
+            <!-- Items Table -->
+            <div class="bm-table-responsive bm-mb-lg">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Tax</th>
+                    <th scope="col">Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td class="bm-font-medium">UI/UX Design — Dashboard Redesign</td>
+                    <td>1</td>
+                    <td>$4,500.00</td>
+                    <td>18%</td>
+                    <td class="bm-font-semibold">$5,310.00</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td class="bm-font-medium">Frontend Development (40h)</td>
+                    <td>40</td>
+                    <td>$125.00</td>
+                    <td>18%</td>
+                    <td class="bm-font-semibold">$5,900.00</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td class="bm-font-medium">Logo & Brand Guidelines</td>
+                    <td>1</td>
+                    <td>$1,200.00</td>
+                    <td>18%</td>
+                    <td class="bm-font-semibold">$1,416.00</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td class="bm-font-medium">Hosting Setup & Configuration</td>
+                    <td>1</td>
+                    <td>$350.00</td>
+                    <td>18%</td>
+                    <td class="bm-font-semibold">$413.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Totals -->
+            <div class="inv-totals-section">
+              <div class="inv-totals-box">
+                <div class="shop-total-row">
+                  <span>Subtotal</span>
+                  <span>$6,175.00</span>
+                </div>
+                <div class="shop-total-row">
+                  <span>Tax (18%)</span>
+                  <span>$1,111.50</span>
+                </div>
+                <div class="shop-total-row">
+                  <span>Discount (5%)</span>
+                  <span class="bm-text-success">-$308.75</span>
+                </div>
+                <div class="shop-total-row shop-total-grand">
+                  <span>Total Due</span>
+                  <span>$6,977.75</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="inv-notes bm-mt-lg">
+              <div class="bm-text-xs bm-text-muted bm-text-uppercase bm-mb-xs">Notes</div>
+              <p class="bm-text-sm bm-text-muted">Thank you for your business. Please transfer the total amount to the bank details below within the payment terms.</p>
+              <div class="bm-text-xs bm-text-muted bm-text-uppercase bm-mb-xs bm-mt-md">Payment Details</div>
+              <p class="bm-text-sm bm-text-muted">
+                Bank: First National Bank<br>
+                IBAN: TR00 0000 0000 0000 0000 00<br>
+                SWIFT: FNBTTR00<br>
+                Reference: INV-2026-042
+              </p>
+            </div>
+
+            <!-- Actions -->
+            <div class="bm-flex-between-wrap bm-mt-lg" style="border-top:1px solid var(--border);padding-top:1rem">
+              <button class="bm-btn bm-btn-outline bm-btn-sm bm-btn-danger" onclick="App.confirm({title:'Void Invoice',text:'This action cannot be undone.',type:'danger'})">
+                <i class="ph ph-prohibit bm-text-md"></i> Void Invoice
+              </button>
+              <div class="bm-flex-gap-xs">
+                <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.info('Reminder','Payment reminder sent to client.')">
+                  <i class="ph ph-bell bm-text-md"></i> Send Reminder
+                </button>
+                <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Paid','Invoice marked as paid.')">
+                  <i class="ph ph-check-circle bm-text-md"></i> Mark as Paid
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+{% endblock %}

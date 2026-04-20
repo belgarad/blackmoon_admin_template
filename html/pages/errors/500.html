@@ -1,0 +1,46 @@
+﻿{% extends "layouts/error.html" %}
+{% set title = "500 Internal Server Error — BlackMoon Admin Kit" %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/error.scss">
+{% endblock %}
+
+{% block content %}
+  <div class="error-wrap">
+    <div class="error-icon">
+      <i class="ph ph-warning bm-text-4xl-danger"></i>
+    </div>
+    <div class="error-code">500</div>
+    <h1 class="bm-text-625-bold-fg" data-i18n="error.serverError">Internal Server Error</h1>
+    <p class="bm-text-base-muted-mb" data-i18n="error.serverErrorDesc">
+      Something went wrong on our end. Our engineers have been notified and are working on a fix.
+    </p>
+    <p class="bm-text-caption-muted-mb5">
+      Error ID: <code class="bm-code-inline" id="errId"></code>
+    </p>
+    <div class="bm-flex-wrap-center">
+      <button class="bm-btn bm-btn-outline" onclick="location.reload()">
+        <i class="ph ph-arrow-clockwise bm-text-md"></i>
+        Try Again
+      </button>
+      <a class="bm-btn bm-btn-primary" href="/pages/dashboard.html">
+        <i class="ph ph-house bm-text-md"></i>
+        Go to Dashboard
+      </a>
+    </div>
+    <div class="bm-tip-card">
+      <div class="bm-text-caption-semibold-mb">What you can try:</div>
+      <ul class="bm-list-indent-text">
+        <li>Refresh the page after a few seconds</li>
+        <li>Clear your browser cache and cookies</li>
+        <li>Check our <a href="#" class="bm-text-primary">status page</a> for outage updates</li>
+        <li>Contact <a href="#" class="bm-text-primary">support@adminkit.io</a> if the issue persists</li>
+      </ul>
+    </div>
+    <p class="bm-mt-xl-caption-muted">© 2025 BlackMoon Admin Kit</p>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="/assets/js/pages/error-500.js"></script>
+{% endblock %}

@@ -1,0 +1,264 @@
+{% extends "layouts/base.html" %}
+{% set title = "Support Tickets" %}
+{% set activeMenu = "support-tickets" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/support.scss">
+{% endblock %}
+
+{% block content %}
+
+          <!-- Page Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="overview.html">Support</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Tickets</span></div>
+              </nav>
+              <h1 class="bm-page-title">My Tickets</h1>
+              <p class="bm-page-subtitle">View and manage your support tickets.</p>
+            </div>
+            <div class="bm-page-actions">
+              <button class="bm-btn bm-btn-primary bm-btn-sm">
+                <i class="ph ph-plus bm-text-md"></i>
+                New Ticket
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Strip -->
+          <div class="bm-grid-auto-lg bm-mb-lg">
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-primary-sm"><i class="ph ph-ticket bm-text-lg-primary"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Total Tickets</div>
+                <div class="bm-stats-card-v2-value">24</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-warning"><i class="ph ph-clock bm-text-lg-warning"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Open</div>
+                <div class="bm-stats-card-v2-value">5</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-info-h"><i class="ph ph-arrow-clockwise bm-text-lg-info"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">In Progress</div>
+                <div class="bm-stats-card-v2-value">3</div>
+              </div>
+            </div>
+            <div class="bm-stats-card-v2">
+              <div class="bm-stats-card-v2-content">
+                <div class="bm-flex-between-start-mb">
+                  <div class="bm-icon-box-success-2"><i class="ph ph-check-circle bm-text-lg-success"></i></div>
+                </div>
+                <div class="bm-stats-card-v2-label">Resolved</div>
+                <div class="bm-stats-card-v2-value">16</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filter Bar -->
+          <div class="bm-card bm-mb-lg bm-overflow-visible">
+            <div class="bm-card-body sup-filter-bar">
+              <div class="bm-flex-center-gap-sm">
+                <button class="bm-btn bm-btn-primary bm-btn-sm">All</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Open</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">In Progress</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Resolved</button>
+                <button class="bm-btn bm-btn-ghost bm-btn-sm">Closed</button>
+              </div>
+              <div class="bm-flex-center-gap-sm">
+                <select class="bm-select bm-select-sm">
+                  <option>All Priorities</option>
+                  <option>Critical</option>
+                  <option>High</option>
+                  <option>Medium</option>
+                  <option>Low</option>
+                </select>
+                <input class="bm-input bm-input-sm" type="text" placeholder="Search tickets…">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tickets Table -->
+          <div class="bm-card">
+            <div class="bm-card-body bm-p-0">
+              <table class="bm-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ticket</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Assigned</th>
+                    <th scope="col">Updated</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="bm-font-mono bm-text-caption-muted">#1024</td>
+                    <td>
+                      <a href="ticket-detail.html" class="bm-text-caption-medium bm-link-default">Unable to export CSV from analytics page</a>
+                      <div class="bm-text-2xs-muted">Reported 2 hours ago</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-danger">Critical</span></td>
+                    <td><span class="bm-badge bm-badge-warning">Open</span></td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">AS</div>
+                        <span class="bm-text-caption-muted">Alice S.</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-caption-muted">2h ago</td>
+                    <td><button class="bm-btn-icon-xs"><i class="ph ph-dots-three"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono bm-text-caption-muted">#1023</td>
+                    <td>
+                      <a href="ticket-detail.html" class="bm-text-caption-medium bm-link-default">Dashboard charts not loading on Safari</a>
+                      <div class="bm-text-2xs-muted">Reported 5 hours ago</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-warning">High</span></td>
+                    <td><span class="bm-badge bm-badge-info">In Progress</span></td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">BW</div>
+                        <span class="bm-text-caption-muted">Bob W.</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-caption-muted">1h ago</td>
+                    <td><button class="bm-btn-icon-xs"><i class="ph ph-dots-three"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono bm-text-caption-muted">#1022</td>
+                    <td>
+                      <a href="ticket-detail.html" class="bm-text-caption-medium bm-link-default">Two-factor SMS not received</a>
+                      <div class="bm-text-2xs-muted">Reported 1 day ago</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-warning">High</span></td>
+                    <td><span class="bm-badge bm-badge-warning">Open</span></td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">CD</div>
+                        <span class="bm-text-caption-muted">Clara D.</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-caption-muted">6h ago</td>
+                    <td><button class="bm-btn-icon-xs"><i class="ph ph-dots-three"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono bm-text-caption-muted">#1021</td>
+                    <td>
+                      <a href="ticket-detail.html" class="bm-text-caption-medium bm-link-default">Feature request: Kanban board column limits</a>
+                      <div class="bm-text-2xs-muted">Reported 2 days ago</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-muted">Low</span></td>
+                    <td><span class="bm-badge bm-badge-info">In Progress</span></td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">EF</div>
+                        <span class="bm-text-caption-muted">Emma F.</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-caption-muted">1d ago</td>
+                    <td><button class="bm-btn-icon-xs"><i class="ph ph-dots-three"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono bm-text-caption-muted">#1020</td>
+                    <td>
+                      <a href="ticket-detail.html" class="bm-text-caption-medium bm-link-default">Invoice PDF formatting broken on mobile</a>
+                      <div class="bm-text-2xs-muted">Reported 3 days ago</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-primary">Medium</span></td>
+                    <td><span class="bm-badge bm-badge-info">In Progress</span></td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">AS</div>
+                        <span class="bm-text-caption-muted">Alice S.</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-caption-muted">2d ago</td>
+                    <td><button class="bm-btn-icon-xs"><i class="ph ph-dots-three"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono bm-text-caption-muted">#1019</td>
+                    <td>
+                      <a href="ticket-detail.html" class="bm-text-caption-medium bm-link-default">Calendar sync delay with Google Calendar</a>
+                      <div class="bm-text-2xs-muted">Reported 4 days ago</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-primary">Medium</span></td>
+                    <td><span class="bm-badge bm-badge-success">Resolved</span></td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">BW</div>
+                        <span class="bm-text-caption-muted">Bob W.</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-caption-muted">3d ago</td>
+                    <td><button class="bm-btn-icon-xs"><i class="ph ph-dots-three"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono bm-text-caption-muted">#1018</td>
+                    <td>
+                      <a href="ticket-detail.html" class="bm-text-caption-medium bm-link-default">Password reset email not arriving</a>
+                      <div class="bm-text-2xs-muted">Reported 5 days ago</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-warning">High</span></td>
+                    <td><span class="bm-badge bm-badge-success">Resolved</span></td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">CD</div>
+                        <span class="bm-text-caption-muted">Clara D.</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-caption-muted">4d ago</td>
+                    <td><button class="bm-btn-icon-xs"><i class="ph ph-dots-three"></i></button></td>
+                  </tr>
+                  <tr>
+                    <td class="bm-font-mono bm-text-caption-muted">#1017</td>
+                    <td>
+                      <a href="ticket-detail.html" class="bm-text-caption-medium bm-link-default">Dark mode toggle not persisting across sessions</a>
+                      <div class="bm-text-2xs-muted">Reported 1 week ago</div>
+                    </td>
+                    <td><span class="bm-badge bm-badge-muted">Low</span></td>
+                    <td><span class="bm-badge bm-badge-success">Resolved</span></td>
+                    <td>
+                      <div class="bm-flex-center-gap-sm">
+                        <div class="bm-avatar bm-avatar-xs">EF</div>
+                        <span class="bm-text-caption-muted">Emma F.</span>
+                      </div>
+                    </td>
+                    <td class="bm-text-caption-muted">5d ago</td>
+                    <td><button class="bm-btn-icon-xs"><i class="ph ph-dots-three"></i></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="bm-flex-center-justify-gap bm-mt-lg">
+            <div class="bm-text-caption-muted">Showing 1–8 of 24 tickets</div>
+            <div class="bm-pagination">
+              <button class="bm-btn bm-btn-ghost bm-btn-sm" disabled><i class="ph ph-caret-left bm-text-md"></i></button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm">1</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">2</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm">3</button>
+              <button class="bm-btn bm-btn-ghost bm-btn-sm"><i class="ph ph-caret-right bm-text-md"></i></button>
+            </div>
+          </div>
+
+{% endblock %}
