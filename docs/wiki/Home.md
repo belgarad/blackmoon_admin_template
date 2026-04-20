@@ -1,6 +1,6 @@
 # BlackMoon Admin Wiki
 
-Bu bölüm, `docs/` altındaki dökümanların wiki formatında erişimi için hazırlanmıştır.
+Bu bölüm, `docs/` altındaki dokümanların wiki formatında erişimi için hazırlanmıştır.
 
 ## Sayfalar
 
@@ -13,4 +13,4 @@ Bu bölüm, `docs/` altındaki dökümanların wiki formatında erişimi için h
 
 ## Not
 
-Bu sayfalar `docs/` altındaki kaynak dökümanların wiki karşılığıdır.
+Bu sayfalar `docs/` altındaki kaynak dokümanların wiki karşılığıdır.
