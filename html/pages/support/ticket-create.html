@@ -1,0 +1,108 @@
+{% extends "layouts/base.html" %}
+{% set title = "New Ticket" %}
+{% set activeMenu = "support-tickets" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/support.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="tickets.html">Support Tickets</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">New Ticket</span></div>
+              </nav>
+              <h1 class="bm-page-title">New Ticket</h1>
+              <p class="bm-page-subtitle">Open a new support ticket</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <a class="bm-btn bm-btn-outline bm-btn-sm" href="tickets.html">
+                <i class="ph ph-x bm-text-md"></i>Cancel
+              </a>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Submitted','Ticket has been created.')">
+                <i class="ph ph-paper-plane-tilt bm-text-md"></i>Submit Ticket
+              </button>
+            </div>
+          </div>
+
+          <div class="bm-grid-main-aside">
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <div class="bm-form-group">
+                  <label class="bm-label">Subject <span class="bm-text-danger">*</span></label>
+                  <input class="bm-input" placeholder="Brief summary of the issue">
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Category</label>
+                    <select class="bm-select">
+                      <option>Billing</option>
+                      <option selected>Technical</option>
+                      <option>Account</option>
+                      <option>Feature Request</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Priority</label>
+                    <select class="bm-select">
+                      <option>Low</option>
+                      <option selected>Normal</option>
+                      <option>High</option>
+                      <option>Urgent</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Description</h3>
+                <div class="bm-form-group">
+                  <textarea class="bm-input" rows="10" placeholder="Describe the issue, including steps to reproduce…"></textarea>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Attachments</h3>
+                <div class="bm-flex-center" style="border:1px dashed var(--border); border-radius:var(--radius-md); padding:2rem; flex-direction:column; gap:.5rem">
+                  <i class="ph ph-upload-simple bm-text-xl bm-text-muted"></i>
+                  <div class="bm-text-sm bm-text-muted">Drag & drop files here, or click to browse</div>
+                  <button class="bm-btn bm-btn-outline bm-btn-sm">Choose Files</button>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Assign To</h4>
+                <select class="bm-select">
+                  <option selected>Auto-assign</option>
+                  <option>Support Team</option>
+                  <option>Billing Team</option>
+                  <option>Engineering</option>
+                </select>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Requester</h4>
+                <input class="bm-input bm-input-sm bm-mb-sm" placeholder="Name">
+                <input class="bm-input bm-input-sm" type="email" placeholder="Email">
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Tags</h4>
+                <input class="bm-input bm-input-sm" placeholder="Add tags (comma separated)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}

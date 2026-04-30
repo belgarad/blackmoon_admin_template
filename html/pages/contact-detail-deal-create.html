@@ -1,0 +1,129 @@
+{% extends "layouts/base.html" %}
+{% set title = "New Deal" %}
+{% set activeMenu = "contacts" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="contacts.html">Contacts</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="contact-detail.html">Contact</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">New Deal</span></div>
+              </nav>
+              <h1 class="bm-page-title">New Deal</h1>
+              <p class="bm-page-subtitle">Add a new deal in the sales pipeline</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <a class="bm-btn bm-btn-outline bm-btn-sm" href="contact-detail.html">
+                <i class="ph ph-x bm-text-md"></i>Cancel
+              </a>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Saved','Deal has been created.')">
+                <i class="ph ph-floppy-disk bm-text-md"></i>Save Deal
+              </button>
+            </div>
+          </div>
+
+          <div class="bm-grid-main-aside">
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Deal Information</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Deal Name <span class="bm-text-danger">*</span></label>
+                  <input class="bm-input" placeholder="e.g. Acme — Annual Renewal">
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Contact</label>
+                    <select class="bm-select">
+                      <option selected>John Doe — Acme Corp.</option>
+                      <option>Jane Smith — Globex Ltd.</option>
+                      <option>Tony Stark — Stark Industries</option>
+                    </select>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Owner</label>
+                    <select class="bm-select">
+                      <option selected>Me</option>
+                      <option>Sarah Johnson</option>
+                      <option>Mike Chen</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Value</label>
+                    <input class="bm-input" type="number" min="0" step="100" placeholder="0">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Currency</label>
+                    <select class="bm-select">
+                      <option selected>USD</option>
+                      <option>EUR</option>
+                      <option>GBP</option>
+                      <option>TRY</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Pipeline</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Stage</label>
+                    <select class="bm-select">
+                      <option>Lead</option>
+                      <option selected>Qualified</option>
+                      <option>Proposal</option>
+                      <option>Negotiation</option>
+                      <option>Won</option>
+                      <option>Lost</option>
+                    </select>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Expected Close</label>
+                    <input class="bm-input" type="date">
+                  </div>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Probability (%)</label>
+                  <input class="bm-input" type="number" min="0" max="100" value="40">
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Notes</h3>
+                <div class="bm-form-group">
+                  <textarea class="bm-input" rows="4" placeholder="Background, decision makers, blockers…"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Source</h4>
+                <select class="bm-select">
+                  <option selected>Website</option>
+                  <option>Referral</option>
+                  <option>Outbound</option>
+                  <option>Event</option>
+                  <option>Partner</option>
+                </select>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Tags</h4>
+                <input class="bm-input bm-input-sm" placeholder="Add tags (comma separated)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}

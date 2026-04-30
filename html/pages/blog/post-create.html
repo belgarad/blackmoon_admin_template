@@ -1,0 +1,117 @@
+{% extends "layouts/base.html" %}
+{% set title = "New Post" %}
+{% set activeMenu = "blog-listing" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/blog.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="listing.html">Blog</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">New Post</span></div>
+              </nav>
+              <h1 class="bm-page-title">New Post</h1>
+              <p class="bm-page-subtitle">Compose and publish a new blog post</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <a class="bm-btn bm-btn-outline bm-btn-sm" href="listing.html">
+                <i class="ph ph-x bm-text-md"></i>Cancel
+              </a>
+              <button class="bm-btn bm-btn-outline bm-btn-sm" onclick="App.toast.success('Saved','Draft saved.')">
+                <i class="ph ph-floppy-disk bm-text-md"></i>Save Draft
+              </button>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Published','Post has been published.')">
+                <i class="ph ph-paper-plane-tilt bm-text-md"></i>Publish
+              </button>
+            </div>
+          </div>
+
+          <div class="bm-grid-main-aside">
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <div class="bm-form-group">
+                  <label class="bm-label">Title <span class="bm-text-danger">*</span></label>
+                  <input class="bm-input" placeholder="Catchy headline goes here…">
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Slug</label>
+                    <input class="bm-input" placeholder="my-awesome-post">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Category</label>
+                    <select class="bm-select">
+                      <option>News</option>
+                      <option selected>Tutorials</option>
+                      <option>Product</option>
+                      <option>Engineering</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Excerpt</label>
+                  <textarea class="bm-input" rows="2" placeholder="Short summary shown in the listing…"></textarea>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Content</h3>
+                <div class="bm-form-group">
+                  <textarea class="bm-input" rows="14" placeholder="Write your post in Markdown or HTML…"></textarea>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">SEO</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Meta Title</label>
+                  <input class="bm-input" placeholder="SEO title">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Meta Description</label>
+                  <textarea class="bm-input" rows="2" placeholder="SEO description"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Featured Image</h4>
+                <div class="bm-flex-center bm-mb-sm" style="aspect-ratio:16/9; background:var(--bg-muted); border-radius:var(--radius-md)">
+                  <i class="ph ph-image bm-text-xl bm-text-muted"></i>
+                </div>
+                <button class="bm-btn bm-btn-outline bm-btn-sm bm-w-full">
+                  <i class="ph ph-upload-simple bm-text-md"></i> Upload Image
+                </button>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Status</h4>
+                <select class="bm-select bm-mb-sm">
+                  <option selected>Draft</option>
+                  <option>Scheduled</option>
+                  <option>Published</option>
+                </select>
+                <label class="bm-label">Publish Date</label>
+                <input class="bm-input bm-input-sm" type="datetime-local">
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Tags</h4>
+                <input class="bm-input bm-input-sm" placeholder="Add tags (comma separated)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}

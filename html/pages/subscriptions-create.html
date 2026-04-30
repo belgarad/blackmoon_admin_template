@@ -1,0 +1,129 @@
+{% extends "layouts/base.html" %}
+{% set title = "New Subscription" %}
+{% set activeMenu = "subscriptions" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="subscriptions.html">Subscriptions</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">New Subscription</span></div>
+              </nav>
+              <h1 class="bm-page-title">New Subscription</h1>
+              <p class="bm-page-subtitle">Provision a new recurring subscription for a customer</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <a class="bm-btn bm-btn-outline bm-btn-sm" href="subscriptions.html">
+                <i class="ph ph-x bm-text-md"></i>Cancel
+              </a>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Saved','Subscription has been created.')">
+                <i class="ph ph-floppy-disk bm-text-md"></i>Create Subscription
+              </button>
+            </div>
+          </div>
+
+          <div class="bm-grid-main-aside">
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Customer</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Customer <span class="bm-text-danger">*</span></label>
+                  <select class="bm-select">
+                    <option selected disabled>Select customer…</option>
+                    <option>Acme Corp.</option>
+                    <option>Globex Ltd.</option>
+                    <option>Initech</option>
+                    <option>Umbrella Inc.</option>
+                  </select>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Billing Email</label>
+                  <input class="bm-input" type="email" placeholder="billing@example.com">
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Plan</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Plan <span class="bm-text-danger">*</span></label>
+                    <select class="bm-select">
+                      <option>Starter — $19/mo</option>
+                      <option selected>Professional — $49/mo</option>
+                      <option>Business — $99/mo</option>
+                      <option>Enterprise — Custom</option>
+                    </select>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Billing Cycle</label>
+                    <select class="bm-select">
+                      <option selected>Monthly</option>
+                      <option>Quarterly</option>
+                      <option>Yearly</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Start Date</label>
+                    <input class="bm-input" type="date" value="2026-04-30">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Trial Period (days)</label>
+                    <input class="bm-input" type="number" min="0" value="14">
+                  </div>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Notes</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Internal Notes</label>
+                  <textarea class="bm-input" rows="3" placeholder="Discount agreements, contract references…"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Payment Method</h4>
+                <select class="bm-select bm-mb-sm">
+                  <option selected>Credit Card</option>
+                  <option>Bank Transfer</option>
+                  <option>PayPal</option>
+                  <option>Invoice</option>
+                </select>
+                <div class="bm-text-xs bm-text-muted">Charged automatically on each renewal.</div>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Status</h4>
+                <select class="bm-select">
+                  <option selected>Active</option>
+                  <option>Pending</option>
+                  <option>Trialing</option>
+                </select>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-sm">Discount</h4>
+                <div class="bm-flex-gap-xs">
+                  <input class="bm-input bm-input-sm" type="number" value="0" min="0" style="width:5rem">
+                  <select class="bm-select bm-select-sm" style="width:auto">
+                    <option>%</option>
+                    <option>$</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}

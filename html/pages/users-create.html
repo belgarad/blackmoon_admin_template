@@ -1,0 +1,158 @@
+{% extends "layouts/base.html" %}
+{% set title = "Add User" %}
+{% set activeMenu = "users" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="users.html" data-i18n="breadcrumb.users">Users</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Add User</span></div>
+              </nav>
+              <h1 class="bm-page-title">Add User</h1>
+              <p class="bm-page-subtitle">Invite a new user and assign their role and permissions</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <a class="bm-btn bm-btn-outline bm-btn-sm" href="users.html">
+                <i class="ph ph-x bm-text-md"></i>Cancel
+              </a>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Saved','User has been created.')">
+                <i class="ph ph-floppy-disk bm-text-md"></i>Save User
+              </button>
+            </div>
+          </div>
+
+          <div class="bm-grid-main-aside">
+
+            <!-- Main Form -->
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Account Information</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">First Name <span class="bm-text-danger">*</span></label>
+                    <input class="bm-input" placeholder="John">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Last Name <span class="bm-text-danger">*</span></label>
+                    <input class="bm-input" placeholder="Doe">
+                  </div>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Username <span class="bm-text-danger">*</span></label>
+                    <input class="bm-input" placeholder="johndoe">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Email <span class="bm-text-danger">*</span></label>
+                    <input class="bm-input" type="email" placeholder="john@example.com">
+                  </div>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Phone</label>
+                  <input class="bm-input" type="tel" placeholder="+1 555-0000">
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Password</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Password <span class="bm-text-danger">*</span></label>
+                    <input class="bm-input" type="password" placeholder="••••••••">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Confirm Password <span class="bm-text-danger">*</span></label>
+                    <input class="bm-input" type="password" placeholder="••••••••">
+                  </div>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-flex-gap-xs"><input type="checkbox" checked> <span>Send password setup email instead</span></label>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Profile</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Job Title</label>
+                    <input class="bm-input" placeholder="Product Manager">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Department</label>
+                    <select class="bm-select">
+                      <option>Engineering</option>
+                      <option selected>Product</option>
+                      <option>Design</option>
+                      <option>Marketing</option>
+                      <option>Sales</option>
+                      <option>Support</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Bio</label>
+                  <textarea class="bm-input" rows="3" placeholder="Short bio…"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Avatar</h4>
+                <div class="bm-flex-center bm-mb-sm">
+                  <div class="bm-avatar bm-avatar-xl"><i class="ph ph-user"></i></div>
+                </div>
+                <button class="bm-btn bm-btn-outline bm-btn-sm bm-w-full">
+                  <i class="ph ph-upload-simple bm-text-md"></i> Upload Photo
+                </button>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Role</h4>
+                <select class="bm-select">
+                  <option>Super Admin</option>
+                  <option>Admin</option>
+                  <option selected>Editor</option>
+                  <option>Author</option>
+                  <option>Viewer</option>
+                </select>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Status</h4>
+                <select class="bm-select">
+                  <option selected>Active</option>
+                  <option>Pending Invite</option>
+                  <option>Suspended</option>
+                </select>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Permissions</h4>
+                <div class="bm-form-group">
+                  <label class="bm-flex-gap-xs"><input type="checkbox" checked> <span>Can log in</span></label>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-flex-gap-xs"><input type="checkbox"> <span>Can manage users</span></label>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-flex-gap-xs"><input type="checkbox"> <span>Can manage billing</span></label>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-flex-gap-xs"><input type="checkbox" checked> <span>Two-factor required</span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}

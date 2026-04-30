@@ -1,0 +1,101 @@
+{% extends "layouts/base.html" %}
+{% set title = "New Folder" %}
+{% set activeMenu = "file-manager-folders" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/file-manager.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="folders.html">Folders</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">New Folder</span></div>
+              </nav>
+              <h1 class="bm-page-title">New Folder</h1>
+              <p class="bm-page-subtitle">Create a folder to organize your files</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <a class="bm-btn bm-btn-outline bm-btn-sm" href="folders.html">
+                <i class="ph ph-x bm-text-md"></i>Cancel
+              </a>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Created','Folder has been created.')">
+                <i class="ph ph-folder-plus bm-text-md"></i>Create Folder
+              </button>
+            </div>
+          </div>
+
+          <div class="bm-grid-main-aside">
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Folder Details</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Folder Name <span class="bm-text-danger">*</span></label>
+                  <input class="bm-input" placeholder="e.g. Marketing Assets">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Parent Folder</label>
+                  <select class="bm-select">
+                    <option selected>/ (root)</option>
+                    <option>Documents</option>
+                    <option>Documents / Contracts</option>
+                    <option>Media</option>
+                    <option>Media / Images</option>
+                    <option>Projects</option>
+                  </select>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Description</label>
+                  <textarea class="bm-input" rows="3" placeholder="What goes in this folder?"></textarea>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Color & Icon</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Icon</label>
+                    <select class="bm-select">
+                      <option selected>Folder</option>
+                      <option>Briefcase</option>
+                      <option>Image</option>
+                      <option>Document</option>
+                      <option>Code</option>
+                    </select>
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Color</label>
+                    <input class="bm-input" type="color" value="#4f46e5">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Access Level</h4>
+                <select class="bm-select">
+                  <option selected>Private</option>
+                  <option>Team</option>
+                  <option>Organization</option>
+                  <option>Public</option>
+                </select>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Tags</h4>
+                <input class="bm-input bm-input-sm" placeholder="Add tags (comma separated)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}

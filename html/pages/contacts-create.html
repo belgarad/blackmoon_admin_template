@@ -1,0 +1,117 @@
+{% extends "layouts/base.html" %}
+{% set title = "Add Contact" %}
+{% set activeMenu = "contacts" %}
+{% set basePath = "" %}
+{% set pageStyles = true %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <!-- Header -->
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="contacts.html">Contacts</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Add Contact</span></div>
+              </nav>
+              <h1 class="bm-page-title">Add Contact</h1>
+              <p class="bm-page-subtitle">Create a new contact in your address book</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <a class="bm-btn bm-btn-outline bm-btn-sm" href="contacts.html">
+                <i class="ph ph-x bm-text-md"></i>Cancel
+              </a>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Saved','Contact has been created.')">
+                <i class="ph ph-floppy-disk bm-text-md"></i>Save Contact
+              </button>
+            </div>
+          </div>
+
+          <div class="bm-grid-main-aside">
+
+            <!-- Main Form -->
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Personal Information</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">First Name <span class="bm-text-danger">*</span></label>
+                    <input class="bm-input" placeholder="John">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Last Name <span class="bm-text-danger">*</span></label>
+                    <input class="bm-input" placeholder="Doe">
+                  </div>
+                </div>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Email <span class="bm-text-danger">*</span></label>
+                    <input class="bm-input" type="email" placeholder="john@example.com">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Phone</label>
+                    <input class="bm-input" type="tel" placeholder="+1 555-0000">
+                  </div>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Company</h3>
+                <div class="bm-grid-2col" style="gap:1rem">
+                  <div class="bm-form-group">
+                    <label class="bm-label">Company</label>
+                    <input class="bm-input" placeholder="Acme Inc.">
+                  </div>
+                  <div class="bm-form-group">
+                    <label class="bm-label">Job Title</label>
+                    <input class="bm-input" placeholder="Product Manager">
+                  </div>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Address</label>
+                  <textarea class="bm-input" rows="2" placeholder="Street, City, Country"></textarea>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Notes</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Internal Notes</label>
+                  <textarea class="bm-input" rows="4" placeholder="Anything worth remembering about this contact…"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Avatar</h4>
+                <div class="bm-flex-center bm-mb-sm">
+                  <div class="bm-avatar bm-avatar-xl"><i class="ph ph-user"></i></div>
+                </div>
+                <button class="bm-btn bm-btn-outline bm-btn-sm bm-w-full">
+                  <i class="ph ph-upload-simple bm-text-md"></i> Upload Photo
+                </button>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Status</h4>
+                <select class="bm-select">
+                  <option selected>Active</option>
+                  <option>Lead</option>
+                  <option>Customer</option>
+                  <option>Inactive</option>
+                </select>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Tags</h4>
+                <input class="bm-input bm-input-sm" placeholder="Add tags (comma separated)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}

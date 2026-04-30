@@ -1,0 +1,104 @@
+{% extends "layouts/base.html" %}
+{% set title = "Create API Key" %}
+{% set activeMenu = "account-api-keys" %}
+{% set basePath = "../" %}
+{% set pageStyles = true %}
+
+{% block headExtra %}
+  <link rel="stylesheet" href="/src/scss/pages/account.scss">
+{% endblock %}
+
+{% block content %}
+
+        <div class="bm-container-fixed bm-pt-175-pb-250">
+
+          <div class="bm-page-header">
+            <div>
+              <nav class="bm-breadcrumb bm-mb-xs">
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="../dashboard.html" data-i18n="breadcrumb.home">Home</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><a class="bm-breadcrumb-link" href="api-keys.html">API Keys</a><span class="bm-breadcrumb-separator">/</span></div>
+                <div class="bm-breadcrumb-item"><span class="bm-breadcrumb-current">Create API Key</span></div>
+              </nav>
+              <h1 class="bm-page-title">Create API Key</h1>
+              <p class="bm-page-subtitle">Generate a new API key with scoped permissions</p>
+            </div>
+            <div class="bm-flex-gap-xs">
+              <a class="bm-btn bm-btn-outline bm-btn-sm" href="api-keys.html">
+                <i class="ph ph-x bm-text-md"></i>Cancel
+              </a>
+              <button class="bm-btn bm-btn-primary bm-btn-sm" onclick="App.toast.success('Generated','New API key has been generated.')">
+                <i class="ph ph-key bm-text-md"></i>Generate Key
+              </button>
+            </div>
+          </div>
+
+          <div class="bm-grid-main-aside">
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Key Details</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Name <span class="bm-text-danger">*</span></label>
+                  <input class="bm-input" placeholder="e.g. Production Server">
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-label">Description</label>
+                  <textarea class="bm-input" rows="2" placeholder="Where and how will this key be used?"></textarea>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">Scopes</h3>
+                <p class="bm-text-sm bm-text-muted bm-mb-md">Choose the permissions this key will have.</p>
+                <div class="bm-form-group">
+                  <label class="bm-flex-gap-xs"><input type="checkbox" checked> <span>read:account</span></label>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-flex-gap-xs"><input type="checkbox" checked> <span>read:projects</span></label>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-flex-gap-xs"><input type="checkbox"> <span>write:projects</span></label>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-flex-gap-xs"><input type="checkbox"> <span>read:billing</span></label>
+                </div>
+                <div class="bm-form-group">
+                  <label class="bm-flex-gap-xs"><input type="checkbox"> <span>admin:webhooks</span></label>
+                </div>
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h3 class="bm-text-md bm-font-semibold bm-mb-md">IP Whitelist</h3>
+                <div class="bm-form-group">
+                  <label class="bm-label">Allowed IPs</label>
+                  <textarea class="bm-input" rows="3" placeholder="One IP or CIDR per line. Leave empty for any."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="bm-card bm-p-lg bm-mb-md">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-md">Expiration</h4>
+                <select class="bm-select bm-mb-sm">
+                  <option>30 days</option>
+                  <option selected>90 days</option>
+                  <option>1 year</option>
+                  <option>Never</option>
+                  <option>Custom date</option>
+                </select>
+                <input class="bm-input bm-input-sm" type="date">
+              </div>
+
+              <div class="bm-card bm-p-lg">
+                <h4 class="bm-text-sm bm-font-semibold bm-mb-sm">Environment</h4>
+                <select class="bm-select">
+                  <option>Development</option>
+                  <option>Staging</option>
+                  <option selected>Production</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}
